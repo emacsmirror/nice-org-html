@@ -298,15 +298,50 @@
 (org-export-define-derived-backend 'et-html 'html
   :translate-alist '((src-block . et-org-html-src-block)))
 
-(defun et-org-html-export-to-html (file)
-  "Exports the current org-mode buffer to customized HTML file"
-  (interactive "FFile Name: ")
-  (org-export-to-file 'et-html file))
-
 ;;==============================================================================
-;; This extends the ox-html function org-html-publish-to-html to the new backend
+;; These functions extend the (similarly named) ox-html ones to the new backend
+
+(defun et-org-html-export-to-html
+    (&optional async subtreep visible-only body-only ext-plist)
+  "Export current buffer to a HTML file using et-org-html custom backend.
+
+If narrowing is active in the current buffer, only export its
+narrowed part.
+
+If a region is active, export that region.
+
+A non-nil optional argument ASYNC means the process should happen
+asynchronously.  The resulting file should be accessible through
+the `org-export-stack' interface.
+
+When optional argument SUBTREEP is non-nil, export the sub-tree
+at point, extracting information from the headline properties
+first.
+
+When optional argument VISIBLE-ONLY is non-nil, don't export
+contents of hidden elements.
+
+When optional argument BODY-ONLY is non-nil, only write code
+between \"<body>\" and \"</body>\" tags.
+
+EXT-PLIST, when provided, is a property list with external
+parameters overriding Org default settings, but still inferior to
+file-local settings.
+
+Return output file's name."
+  (interactive)
+  (let* ((extension (concat
+		     (when (> (length org-html-extension) 0) ".")
+		     (or (plist-get ext-plist :html-extension)
+			 org-html-extension
+			 "html")))
+	 (file (org-export-output-file-name extension subtreep))
+	 (org-export-coding-system org-html-coding-system))
+    (org-export-to-file 'et-html file
+      async subtreep visible-only body-only ext-plist)))
+
 (defun et-org-html-publish-to-html (plist filename pub-dir)
-  "Publish an org file to HTML using a custom backend.
+  "Publish an org file to HTML using a et-org-html custom backend.
 
 FILENAME is the filename of the Org file to be published.  PLIST
 is the property list for the given project.  PUB-DIR is the
@@ -320,6 +355,10 @@ Return output file name."
 				  "html"))
 		      plist pub-dir))
 
+(defun et-org-html-export-to-html-file (file)
+  "Exports the current org-mode buffer to customized HTML file"
+  (interactive "FFile Name: ")
+  (org-export-to-file 'et-html file))
 ;;==============================================================================
 ;; Defined mode
 

@@ -33,7 +33,7 @@
 }
 html {
     font-family: Sans;
-    line-height: 1;
+    line-height: 1.11;
     font-size: calc(15px + 0.390625vw);
     -webkit-text-size-adjust: 100%;
 }
