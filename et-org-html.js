@@ -84,12 +84,15 @@ function copyTextToClipboard(text) {
   document.body.appendChild(textArea);
   textArea.focus();
   textArea.select();
+  var res;
   try {
-    return document.execCommand('copy');
+    res = document.execCommand('copy');
   } catch (err) {
-    return false;
+    res = false;
   }
 
   // Remove invisible textarea
   document.body.removeChild(textArea);
+
+  return res;
 }
