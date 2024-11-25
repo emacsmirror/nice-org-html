@@ -25,13 +25,13 @@ To see the default output, for my chosen themes and with no header or footer, yo
                 (dark  . tomorrow-night-eighties)))
 
         (setq et-org-html-header-path    ; optional
-              "/your/own/path/header.html")
+              "/your/own/header.html")
   
         (setq et-org-html-footer-path    ; optional
-              "/your/own/path/footer.html")
+              "/your/own/footer.html")
 
         (setq et-org-html-extra-css-path ; optional
-              "/your/own/path/style.css"))))
+              "/your/own/style.css"))))
 #+end_src
 + After executing this, when you open a .org file, et-org-html-mode will activate.
 
