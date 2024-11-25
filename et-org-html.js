@@ -85,10 +85,9 @@ function copyTextToClipboard(text) {
   textArea.focus();
   textArea.select();
   try {
-    var success = document.execCommand('copy');
-    console.log(success ? 'Copied text' : 'Could not copy text');
+    return document.execCommand('copy');
   } catch (err) {
-    console.log('Error copying text');
+    return false;
   }
 
   // Remove invisible textarea

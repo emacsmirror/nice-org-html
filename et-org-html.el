@@ -292,7 +292,10 @@
   (concat "\n<script type='text/javascript'>\n"
 	  "var copyBtn" btn-id "=document.querySelector('button[name=" btn-id "]');\n"
 	  "copyBtn" btn-id ".addEventListener('click', function(event) {\n"
-	  "copyTextToClipboard(`" txt "`);\n});\n</script>\n"))
+	  "let res = copyTextToClipboard(`" txt "`);"
+	  "copyBtn" btn-id ".textContent = res ? 'copied' : 'error';"
+	  "setTimeout(() => { copyBtn" btn-id ".textContent = 'copy';}, 3000);"
+	  "\n});\n</script>\n"))
 
 
 (org-export-define-derived-backend 'et-html 'html
