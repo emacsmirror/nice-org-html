@@ -43,7 +43,7 @@ To see the default output, for my chosen themes and with no header or footer, yo
 
 * Things to keep in mind
 + The HTML specified by ~et-org-html-header-path~ and ~et-org-html-footer-path~ will inherit the default styling, unless further styling for these is defined in the file specified by ~et-org-html-extra-css-path~.
-  + For ease of customizing header/footer styling, everything contained in the user-specified HTML files  will be wrapped in ~<div>~ elements, with id = 'injected-head' and id = 'injected-foot', and both with class = 'injected'. 
+  + For ease of customizing header/footer styling, everything contained in the user-specified HTML files  will be wrapped in ~<div>~ elements, with id = 'injected-header' and id = 'injected-footer', and both with class = 'injected'. 
 + The CSS specified by ~et-org-html-extra-css-path~ is appended to the /end/ of the default styling, found in et-org-html.css.
   + This user-specified CSS may also use the template variables, referring to emacs theme face attributes, defined in et-org-html.css.
   + This CSS may override the default styling.

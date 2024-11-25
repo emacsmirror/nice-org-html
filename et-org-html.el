@@ -182,7 +182,7 @@
    (with-temp-buffer
      (when (and (not (equal "" et-org-html-header-path))
 		(file-exists-p et-org-html-header-path))
-       (insert "<div id='injected-head' class='injected'>")
+       (insert "<div id='injected-header' class='injected'>")
        (insert (with-temp-buffer (insert-file-contents et-org-html-header-path)
 				 (buffer-string)))
        (insert "</div>"))
@@ -198,7 +198,7 @@
    (with-temp-buffer
      (when (and (not (equal "" et-org-html-footer-path))
 		(file-exists-p et-org-html-footer-path))
-       (insert "<div id='injected-foot' class='injected'>")
+       (insert "<div id='injected-footer' class='injected'>")
        (insert (with-temp-buffer (insert-file-contents et-org-html-footer-path)
 				 (buffer-string)))
        (insert "</div>"))
