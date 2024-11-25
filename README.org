@@ -19,14 +19,19 @@ To see the default output, for my chosen themes and with no header or footer, yo
       (use-package et-org-html
         :ensure nil ; get from load path
         :hook (org-mode . et-org-html-mode)
-        :config
-        (setq et-org-html-theme-alist    ; mandatory
+        :config    
+        (setq et-org-html-theme-alist
               '((light . solo-jazz)
-                (dark  . tomorrow-night-eighties)))
+                (dark  . tomorrow-night-eighties)))    
+        ;; package default:
+        ;; '((light . leuven) (dark . tango-dark))
+  
+        (setq et-org-html-default-mode 'light)
+        ;; package default: 'dark
 
         (setq et-org-html-header-path    ; optional
               "/your/own/header.html")
-  
+
         (setq et-org-html-footer-path    ; optional
               "/your/own/footer.html")
 

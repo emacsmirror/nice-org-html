@@ -54,8 +54,11 @@
 ;;==============================================================================
 ;; Variables
 
-(defvar et-org-html-theme-alist '((dark . tango-dark) (light . leuven))
+(defvar et-org-html-theme-alist '((light . leuven) (dark . tango-dark))
   "Emacs themes used to generate inline css for dark and light modes.")
+
+(defvar et-org-html-default-mode 'dark
+  "Default HTML page view-mode ('light or 'dark)")
 
 (defun et-org-html-filepath (filename)
   "Get expanded path to a file local to this package"
@@ -205,6 +208,8 @@
      (buffer-string))
    "<script type=\"text/javascript\">\n"
    "<!--/*--><![CDATA[/*><!--*/\n"
+   "document.cookie = 'theme-mode="
+   (if (eq et-org-html-default-mode 'light) "light" "dark") "'\n"
    (with-temp-buffer
      (insert-file-contents et-org-html-js-path)
      (when (and (not (equal "" et-org-html-extra-js-path))
