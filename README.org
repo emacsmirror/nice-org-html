@@ -8,7 +8,7 @@ The leading file - et-org-html.el - defines an emacs pipeline for [[https://orgm
 1. Extending the default org-to-html export backend to include 'copy' links for source blocks annotated with ~#+ATTR_HTML: :copy-button t~
 2. Inserting a table-of-content view toggle, and a light/dark mode toggle, governed by included scripts (et-org-html.js).  
 2. Extracting colors from user-specified emacs themes, inserting these in a CSS template (et-org-to-html.css), and injecting the result into a ~<style>~ element.
-3. Inserting optional, user-defined html headers, footers, and additional CSS styling, for a customized page look-and-feel.
+3. Inserting optional, user-defined HTML header and footer, and additional CSS styling, for a customized page look-and-feel.
 
 To see the default output, for my chosen themes and with no header or footer, you can read this README in HTML format [[https://etown.dev/et-org-html/][here]]. 
 * How to use this package
