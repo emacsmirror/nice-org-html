@@ -62,5 +62,5 @@ This package generates pretty, readable, responsive websites from org files and 
   + This user-specified CSS may override the default styling.
 
 * Credits
-+ Shi Tianshu's [[https://github.com/DogLooksGood/org-html-themify?tab=readme-ov-file][org-html-themify]] provided the basic model / template for CSS interpolation.
++ Shi Tianshu's [[https://github.com/DogLooksGood/org-html-themify?tab=readme-ov-file][org-html-themify]] provided the basic model for CSS interpolation.
 + Various stackoverflow posts were of great help, but alas, I've lost the links.
