@@ -12,7 +12,7 @@ This package generates pretty websites from org files and emacs themes, with you
 
 1. Extracting colors from user-specified emacs themes, inserting these in a CSS template (et-org-to-html.css), and injecting the result into a ~<style>~ element. 
 2. Inserting toggle-buttons for light- and dark-mode, and table-of-content view, governed by included scripts (et-org-html.js).
-3. Extending the default org-to-html export backend to include 'copy' links for source blocks annotated with ~#+ATTR_HTML: :copy-button t~
+3. Extending the default org-to-html export backend to include copy-to-clipboard buttons for source blocks annotated with ~#+ATTR_HTML: :copy-button t~
 4. Injecting optional, user-defined HTML header and footer, and CSS styling and JS scripts, for a customized look-and-feel.   
 
 
