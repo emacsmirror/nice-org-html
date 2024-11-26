@@ -384,10 +384,10 @@ a:hover {
   font-size: 1.25em;
 }
 
-
 img {
-  width: 100%;
+  max-width: 100%;
 }
+
 .org-src-wrapper {
   position: relative;
 }
