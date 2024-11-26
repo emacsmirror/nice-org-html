@@ -60,3 +60,7 @@ This package generates pretty websites from org files and emacs themes, with you
 + The CSS specified by ~et-org-html-extra-css~ is appended to the /end/ of the default styling found in et-org-html.css.
   + This user-specified CSS may also use the template variables defined in et-org-html.css, which ultimately refer to emacs theme face attributes.
   + This user-specified CSS may override the default styling.
+
+* Credits
++ Shi Tianshu's [[https://github.com/DogLooksGood/org-html-themify?tab=readme-ov-file][org-html-themify]] provided the basic model / template for CSS interpolation.
++ Various stackoverflow posts were of great help, but alas, I've lost the links.
