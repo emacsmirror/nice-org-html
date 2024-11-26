@@ -72,13 +72,13 @@
   "Path to (mandatory) JS file that governs generated HTML")
 
 ;; These are all optional
-(defvar et-org-html-header-path ""
+(defvar et-org-html-header ""
   "Path to (optional) header html file to inject as site header")
-(defvar et-org-html-footer-path ""
+(defvar et-org-html-footer ""
   "Path to (optional) footer html file to inject as site footer")
-(defvar et-org-html-extra-css-path ""
+(defvar et-org-html-extra-css ""
   "Path to (optional) CSS file to inject")
-(defvar et-org-html-extra-js-path ""
+(defvar et-org-html-extra-js ""
   "Path to (optional) JS  file to inject")
 
 ;; Backups of initial values
@@ -171,9 +171,9 @@
    "<!--/*--><![CDATA[/*><!--*/\n"
    (with-temp-buffer
      (insert-file-contents et-org-html-css-path)
-     (when (and (not (equal "" et-org-html-extra-css-path))
-		(file-exists-p et-org-html-extra-css-path))
-       (insert-file-contents et-org-html-extra-css-path))
+     (when (and (not (equal "" et-org-html-extra-css))
+		(file-exists-p et-org-html-extra-css))
+       (insert-file-contents et-org-html-extra-css))
      (et-org-html-interpolate-css)
      (buffer-string))
    "/*]]>*/-->\n"
@@ -183,10 +183,10 @@
   "Constructs html preamble to main content area"
   (concat
    (with-temp-buffer
-     (when (and (not (equal "" et-org-html-header-path))
-		(file-exists-p et-org-html-header-path))
+     (when (and (not (equal "" et-org-html-header))
+		(file-exists-p et-org-html-header))
        (insert "<div id='injected-header' class='injected'>")
-       (insert (with-temp-buffer (insert-file-contents et-org-html-header-path)
+       (insert (with-temp-buffer (insert-file-contents et-org-html-header)
 				 (buffer-string)))
        (insert "</div>"))
      (buffer-string))
@@ -199,10 +199,10 @@
   "Constructs html postamble to main content area"
   (concat
    (with-temp-buffer
-     (when (and (not (equal "" et-org-html-footer-path))
-		(file-exists-p et-org-html-footer-path))
+     (when (and (not (equal "" et-org-html-footer))
+		(file-exists-p et-org-html-footer))
        (insert "<div id='injected-footer' class='injected'>")
-       (insert (with-temp-buffer (insert-file-contents et-org-html-footer-path)
+       (insert (with-temp-buffer (insert-file-contents et-org-html-footer)
 				 (buffer-string)))
        (insert "</div>"))
      (buffer-string))
@@ -212,9 +212,9 @@
    (if (eq et-org-html-default-mode 'light) "light" "dark") "'\n"
    (with-temp-buffer
      (insert-file-contents et-org-html-js-path)
-     (when (and (not (equal "" et-org-html-extra-js-path))
-		(file-exists-p et-org-html-extra-js-path))
-       (insert-file-contents et-org-html-extra-js-path))
+     (when (and (not (equal "" et-org-html-extra-js))
+		(file-exists-p et-org-html-extra-js))
+       (insert-file-contents et-org-html-extra-js))
      (buffer-string))
    "/*]]>*/-->\n"
    "</script>"))
