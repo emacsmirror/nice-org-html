@@ -30,7 +30,7 @@ To see an example with a basic header and footer, you can view my personal site 
   #+end_src
 + Note, if values for these variables are not specified, the default viewing mode will be ~'dark~ and the default mode-associated themes used for generating CSS will be the "tsdh-" themes distributed with GNU Emacs.
     
-+ After loading this package, when you open an Org buffer, nice-org-html-mode will activate.
++ After loading this package and hooking nice-org-html-mode to org-mode, when you open an Org buffer, nice-org-html-mode will activate.
 
 + If you then interactively export your Org buffer via the dispatcher (C-c C-e), you will be presented with options to export to 'nice HTML', in addition to the basic HTML export options:
 
