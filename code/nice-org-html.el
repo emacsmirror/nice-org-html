@@ -1,7 +1,7 @@
-;;; nice-org-html.el --- Prettier org-to-html export -*- lexical-binding: t -*-
-;;==============================================================================
-;; Copyright (C) 2024, Ewan Townshend
+;;; nice-org-html.el --- Prettier org-to-html export -*- lexical-binding: t; -*-
 
+;; Copyright (C) 2024, Ewan Townshend
+;;==============================================================================
 ;; Author: Ewan Townshend <ewan@etown.dev>
 ;; URL: https://github.com/ewantown/nice-org-html
 ;; Package-Version: 1.0
@@ -31,7 +31,7 @@
 ;; CSS colors are derived from specified light- and dark-mode Emacs themes.
 ;; Layout is optimized for browser consumption of org files with toc and code.
 
-;;; Credits:
+;; Credits:
 
 ;; Shi Tianshu's org-html-themify provided the basic model for css injection.
 ;; This package has diverged enough to warrant independent distribution.
@@ -39,8 +39,8 @@
 ;; Various stackoverflow posts greatly helped, but alas, they are lost to me.
 
 ;;==============================================================================
-;;; Package provides:
-
+;; Package provides:
+;;
 ;; nice-org-html-mode
 ;; nice-org-html-export-to-html
 ;; nice-org-html-export-to-html-file
@@ -48,7 +48,7 @@
 ;; nice-org-html-make-publishing-function
 
 ;;==============================================================================
-;;; TODO:
+;; TODO:
 ;;
 ;; * Make function to "guess" face-attribute values unspecified by theme
 
@@ -71,7 +71,7 @@
 (require 'hexrgb)
 
 ;;==============================================================================
-;;; User configuration variables
+;; User configuration variables
 
 ;; Mandatory, with defaults:
 (defvar nice-org-html-theme-alist '((light . tsdh-light) (dark . tsdh-dark))
@@ -91,7 +91,7 @@
   "Path to (optional) JS  file to inject.")
 
 ;;==============================================================================
-;;; Package local variables
+;; Package local variables
 
 ;; Backups of initial values
 (defvar nice-org-html--initial-face-overrides nil)
