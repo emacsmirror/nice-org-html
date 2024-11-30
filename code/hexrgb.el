@@ -91,6 +91,9 @@
 ;;
 ;;; Change Log:
 ;;
+;; 2024/11/30 Ewan Townshend
+;;     Replaced 'cl and 'case with 'cl-lib and 'cl-case
+;;     hexrgb-read-color: conditionalize on binding of eyedrop- function symbols
 ;; 2016/12/22 dadams
 ;;     Added: hexrgb-hue-complement, hexrgb-saturation-complement, hexrgb-value-complement.
 ;; 2015/07/08 dadams
@@ -202,7 +205,8 @@
 ;;
 ;;; Code:
 
-(eval-when-compile (require 'cl)) ;; case
+;; 2024-11-30: cl deprecated, use cl-case instead
+(eval-when-compile (require 'cl-lib)) ;; case
 
 ;; Unless you first load `hexrgb.el', then either `palette.el' or `eyedropper.el', you will get
 ;; warnings about variables and functions with prefix `eyedrop-' when you byte-compile
@@ -368,7 +372,10 @@ Interactively, or with non-nil MSGP, show color name in the echo area."
          (color                      (completing-read (or prompt "Color (name or #R+G+B+): ")
                                                       colors))
          hex-string)
-    (when (fboundp 'eyedrop-foreground-at-point)
+    (when (and (fboundp 'eyedrop-foreground-at-point)
+	       (fboundp 'eyedrop-background-at-point)
+	       (fboundp 'eyedrop-foreground-at-mouse)
+	       (fboundp 'eyedrop-background-at-mouse))
       (cond ((string= "*copied foreground*" color) (setq color  eyedrop-picked-foreground))
             ((string= "*copied background*" color) (setq color  eyedrop-picked-background))
             ((string= "*point foreground*" color)  (setq color  (eyedrop-foreground-at-point)))
@@ -584,7 +591,7 @@ Returns a list of RGB components of value 0.0 to 1.0, inclusive."
             pp       (* value (- 1 saturation))
             qq       (* value (- 1 (* saturation fract)))
             ww       (* value (- 1 (* saturation (- 1 (- hue int-hue))))))
-      (case int-hue
+      (cl-case int-hue
         ((0 6) (setq red    value
                      green  ww
                      blue   pp))

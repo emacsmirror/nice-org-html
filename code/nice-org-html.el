@@ -1,11 +1,14 @@
-;;; nice-org-html.el --- Prettier org-to-html export -*- lexical-binding: t -*-
-;;==============================================================================
+;;; nice-org-html.el --- Prettier org-to-html export -*- lexical-binding: t; -*-
+
 ;; Copyright (C) 2024, Ewan Townshend
+
+;;==============================================================================
 
 ;; Author: Ewan Townshend <ewan@etown.dev>
 ;; URL: https://github.com/ewantown/nice-org-html
 ;; Package-Version: 1.0
 ;; Package-Requires: ((emacs "25.1") (s "1.13.0") (dash "2.19.1") (htmlize "1.58") (uuidgen "1.0"))
+;; Keywords: org, org-export, html, css, js, tools
 
 ;;==============================================================================
 ;; This file is not part of GNU Emacs.
@@ -31,7 +34,7 @@
 ;; CSS colors are derived from specified light- and dark-mode Emacs themes.
 ;; Layout is optimized for browser consumption of org files with toc and code.
 
-;;; Credits:
+;; Credits:
 
 ;; Shi Tianshu's org-html-themify provided the basic model for css injection.
 ;; This package has diverged enough to warrant independent distribution.
@@ -39,8 +42,8 @@
 ;; Various stackoverflow posts greatly helped, but alas, they are lost to me.
 
 ;;==============================================================================
-;;; Package provides:
-
+;; Package provides:
+;;
 ;; nice-org-html-mode
 ;; nice-org-html-export-to-html
 ;; nice-org-html-export-to-html-file
@@ -48,7 +51,7 @@
 ;; nice-org-html-make-publishing-function
 
 ;;==============================================================================
-;;; TODO:
+;; TODO:
 ;;
 ;; * Make function to "guess" face-attribute values unspecified by theme
 
@@ -71,14 +74,14 @@
 (require 'hexrgb)
 
 ;;==============================================================================
-;;; User configuration variables
+;; User configuration variables
 
 ;; Mandatory, with defaults:
 (defvar nice-org-html-theme-alist '((light . tsdh-light) (dark . tsdh-dark))
-  "Associates 'light and 'dark view modes with Emacs themes.")
+  "Associates light and dark view modes with Emacs themes.")
 
 (defvar nice-org-html-default-mode 'dark
-  "Default nice HTML page view mode ('light or 'dark).")
+  "Default nice HTML page view mode ((quote light) or (quote dark)).")
 
 ;; Optional
 (defvar nice-org-html-header ""
@@ -91,7 +94,7 @@
   "Path to (optional) JS  file to inject.")
 
 ;;==============================================================================
-;;; Package local variables
+;; Package local variables
 
 ;; Backups of initial values
 (defvar nice-org-html--initial-face-overrides nil)
