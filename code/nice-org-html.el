@@ -1,11 +1,14 @@
 ;;; nice-org-html.el --- Prettier org-to-html export -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2024, Ewan Townshend
+
 ;;==============================================================================
+
 ;; Author: Ewan Townshend <ewan@etown.dev>
 ;; URL: https://github.com/ewantown/nice-org-html
 ;; Package-Version: 1.0
 ;; Package-Requires: ((emacs "25.1") (s "1.13.0") (dash "2.19.1") (htmlize "1.58") (uuidgen "1.0"))
+;; Keywords: org, org-export, html, css, js, tools
 
 ;;==============================================================================
 ;; This file is not part of GNU Emacs.
