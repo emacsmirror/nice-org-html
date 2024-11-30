@@ -78,10 +78,10 @@
 
 ;; Mandatory, with defaults:
 (defvar nice-org-html-theme-alist '((light . tsdh-light) (dark . tsdh-dark))
-  "Associates 'light and 'dark view modes with Emacs themes.")
+  "Associates light and dark view modes with Emacs themes.")
 
 (defvar nice-org-html-default-mode 'dark
-  "Default nice HTML page view mode ('light or 'dark).")
+  "Default nice HTML page view mode ((quote light) or (quote dark)).")
 
 ;; Optional
 (defvar nice-org-html-header ""
