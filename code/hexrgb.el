@@ -91,6 +91,9 @@
 ;;
 ;;; Change Log:
 ;;
+;; 2024/11/30 Ewan Townshend
+;;     Replaced 'cl and 'case with 'cl-lib and 'cl-case
+;;     hexrgb-read-color: conditionalize on binding of eyedrop- function symbols
 ;; 2016/12/22 dadams
 ;;     Added: hexrgb-hue-complement, hexrgb-saturation-complement, hexrgb-value-complement.
 ;; 2015/07/08 dadams
