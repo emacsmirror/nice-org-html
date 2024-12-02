@@ -448,8 +448,8 @@ color component. So for default NB-DIGITS, the form is \"#RRRRGGGGBBBB\"."
 		 (int-to-hex
 		  (lambda (int nbd)
 		    (substring
-		     (format (concat "%0" (number-to-string nb-digits) "X") int)
-		     (- nb-digits)))))
+		     (format (concat "%0" (number-to-string nbd) "X") int)
+		     (- nbd)))))
 	     (concat "#"
 		     (funcall int-to-hex (nth 0 components) digits)      ; red
 		     (funcall int-to-hex (nth 1 components) digits)      ; green
