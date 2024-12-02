@@ -67,9 +67,6 @@
 (require 'htmlize)
 (require 'uuidgen)
 
-;; Distributed with this
-(require 'hexrgb)
-
 ;;==============================================================================
 ;;; User configuration variables
 
@@ -273,9 +270,7 @@
   "Interpret STR of form #{mode:entity:attribute:key?|...} against themes."
   (let* ((clauses (split-string (substring str 2 -1) "|"))
 	 (val (car (-keep 'nice-org-html--interp-clause clauses))))
-    (cond ((null val) "initial")
-	  ((hexrgb-rgb-hex-string-p val) val)
-	  ((hexrgb-color-name-to-hex val 2)))))
+    (if (null val) "initial" (nice-org-html--color-to-hex val 2))))
 
 (defun nice-org-html--interp-clause (c)
   "Interpret clause C against themes."
@@ -429,7 +424,35 @@ See docs for org-html-publish-to-html, which this function emulates."
   (if nice-org-html-mode (nice-org-html--setup) (nice-org-html--teardown)))
 
 ;;==============================================================================
+;; These helper functions are derived from Drew Adams' hexrgb.el
+;; https://www.emacswiki.org/emacs/download/hexrgb.el
 
+(defun nice-org-html--rgb-hex-string-p (color)
+  "Non-nil if COLOR is an RGB string #XXXXXXXXXXXX.
+Each X is a hex digit. The number of Xs must be a multiple of 3, with
+the same number of Xs for each of red, green, and blue."
+  (string-match "^#\\([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]\\)+$" color))
+
+(defun nice-org-html--color-to-hex (color &optional nb-digits)
+  "Return the RGB hex string, starting with \"#\", for the COLOR.
+NB-DIGITS is number of hex digits per component, in (1 2 3 4), default 4.
+The output string is `#' followed by NB-DIGITS hex digits for each
+color component. So for default NB-DIGITS, the form is \"#RRRRGGGGBBBB\"."
+  (cond ((nice-org-html--rgb-hex-string-p color) color)
+	((not (x-color-values color)) (error "No such color: %S" color))
+	(t (let ((digits (or nb-digits 4))
+		 (components (x-color-values color))
+		 (int-to-hex
+		  (lambda (int nbd)
+		    (substring
+		     (format (concat "%0" (number-to-string nb-digits) "X") int)
+		     (- nb-digits)))))
+	     (concat "#"
+		     (funcall int-to-hex (nth 0 components) digits)      ; red
+		     (funcall int-to-hex (nth 1 components) digits)      ; green
+		     (funcall int-to-hex (nth 2 components) digits)))))) ; blue
+
+;;==============================================================================
 (provide 'nice-org-html)
 
 ;;; nice-org-html.el ends here
