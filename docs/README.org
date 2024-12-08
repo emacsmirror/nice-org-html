@@ -3,39 +3,45 @@
 #+OPTIONS: ^:nil toc:3 num:nil
 
 * tl;dr
-This package generates pretty, readable, responsive websites from .org files and Emacs themes. You can optionally specify a header, footer, and additional CSS and JS to be included. To see the default output, for my chosen themes and with no header, footer or extras, view this README in your browser [[https://etown.dev/nice-org-html/][here]]. If you're already there, you can find the GitHub repo [[https://github.com/ewantown/nice-org-html][here]].
+This package generates prettier, responsive websites from .org files and Emacs themes. You can optionally specify a header, footer, and additional CSS and JS to be included. To see the default output, for my chosen themes and with no header, footer or extras, view this README in your browser [[https://etown.dev/nice-org-html/][here]]. If you're already there, you can find the GitHub repo [[https://github.com/ewantown/nice-org-html][here]].
 
 To see an example with a basic header and footer, you can view my personal site [[https://www.etown.dev][here]].
 
 * About this package
- This package defines an Emacs pipeline for [[https://orgmode.org/manual/Exporting.html][exporting]] Org files, or [[https://www.gnu.org/software/emacs/manual/html_node/org/Publishing.html][publishing]] Org projects, to HTML. The generated HTML is optimized for readability and responsiveness and is enriched, compared to the Org Mode defaults. Further, the pipeline enables easy customization by users, leveraging the wide variety of themes already defined for Emacs. This is achieved by:
+ This package defines an Emacs pipeline for [[https://orgmode.org/manual/Exporting.html][exporting]] Org files, or [[https://www.gnu.org/software/emacs/manual/html_node/org/Publishing.html][publishing]] Org projects, to HTML. The generated HTML is optimized for readability and responsiveness, esp. of documents that include code. The pipeline enables easy customization by users, leveraging the variety of themes already defined for Emacs. This is achieved by:
 
 1. Extracting colors from user-specified themes, inserting these in a CSS template (nice-org-html.css), and injecting the result into a ~<style>~ element. 
 2. Inserting toggle-buttons for light- and dark-mode viewing, and a click-to-jump table-of-content view, governed by the included scripts (nice-org-html.js).
 3. Extending the default org-to-html export backend to include copy-to-clipboard buttons for source blocks.
-4. Injecting optional, user-defined HTML header and footer, CSS styling and JS scripts, for a customized look-and-feel.
+4. Injecting optional, user-defined HTML header and footer, CSS styling and JS scripts.
 
 * How to use it
-+ Obtain the package source files and add them to your Emacs load path.
-+ Add something like this use-package snippet to your configuration file:
++ Obtain the source files and add them to your load path. I prefer MELPA and use-package:
+  #+begin_src emacs-lisp
+    (require 'package)
+    (add-to-list 'package-archives
+                 '("melpa" . "http://melpa.org/packages/"))
+    (package-initialize)
+    
+    (unless (package-installed-p 'use-package)
+      (package-install 'use-package))
+  #+end_src
+  
++ Add something like this to your configuration file:
   #+begin_src emacs-lisp
     (use-package nice-org-html
-      :ensure nil ; if added manually
       :hook (org-mode . nice-org-html-mode)
-      :config    
+      :config
       (setq nice-org-html-theme-alist
             '((light . solo-jazz)
               (dark  . tomorrow-night-eighties)))
-      (setq nice-org-html-default-mode 'light)
+      (setq nice-org-html-default-mode 'dark))
   #+end_src
-+ Note, if values for these variables are not specified, the default viewing mode will be ~'dark~ and the default mode-associated themes used for generating CSS will be the "tsdh-" themes distributed with GNU Emacs.
++ Note, if values for these variables are not specified, the default view mode will be ~'dark~ and the mode-associated themes will be the "tsdh-" themes distributed with GNU Emacs.
     
 + After loading this package and hooking nice-org-html-mode to org-mode, when you open an Org buffer, nice-org-html-mode will activate.
 
-+ If you then interactively export your Org buffer via the dispatcher (C-c C-e), you will be presented with options to export to 'nice HTML', in addition to the basic HTML export options:
-
-  #+ATTR_HTML: :style max-width:500px;
-  [[./export-dispatch.png]]
++ If you then interactively export your Org buffer via the dispatcher (C-c C-e), you will be presented with options to export to 'nice HTML', in addition to the basic HTML export options.
 
 + When exporting to 'nice HTML', you will be prompted for (optional) header, footer, CSS, and JS filepaths. If specified, the contents of those files will be injected, accordingly, into the generated HTML. 
 
