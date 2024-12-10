@@ -215,7 +215,7 @@
      (buffer-string))
    "<div id='view-controls'>"
    "<div id='toggle-mode' title='Mode'>&#9788;</div>"
-   "<div id='goto-top' title='Top'>&#8962;</div>"
+   "<div id='goto-top' title='Top'>&#8963;</div>"
    "<div id='toggle-toc' title='Contents'>&#9776;</div>"
    "</div>"))
 
