@@ -4,7 +4,7 @@
 
 ;; Author: Ewan Townshend
 ;; URL: https://github.com/ewantown/nice-org-html
-;; Version: 1.0
+;; Version: 1.1
 
 ;;==============================================================================
 ;; This program is free software; you can redistribute it and/or modify
@@ -199,7 +199,7 @@ body[data-mode='dark'] {
     position: relative;
     display: block;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
     background: var(--bg);
     color: var(--clr-code);
     padding: 0.25rem 0;
