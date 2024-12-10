@@ -5,7 +5,7 @@
 
 ;; Author: Ewan Townshend
 ;; URL: https://github.com/ewantown/nice-org-html
-;; Version: 1.0
+;; Version: 1.1
 
 ;;==============================================================================
 ;; This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,6 @@
  */
 
 const preamble = document.getElementById("preamble");
-const header = document.getElementById("injected-header");
 const controls = document.getElementById("view-controls");
 const toggleTocBtn = document.getElementById("toggle-toc");
 const gotoTopBtn = document.getElementById("goto-top");
@@ -59,8 +58,7 @@ toggleModeBtn.addEventListener('click', () => {
 // Jump to top
 let scrollY = document.documentElement.scrollTop;
 window.addEventListener('scroll', () => {
-  let topHeight = header.offsetHeight + controls.offsetHeight;
-  let atTop = document.documentElement.scrollTop <= topHeight;
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
   gotoTopBtn.dataset.show = !atTop + "";
 });
 gotoTopBtn.addEventListener('click', () => {
@@ -85,7 +83,8 @@ if (toc) {
 	  window.innerHeight - controls.offsetHeight,
 	  toc.offsetHeight
 	);
-      if (scrollY > header.offsetHeight) {
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
 	document.documentElement.scrollTop = preamble.offsetHeight;
       }
       toc.style.height = `${tocHeight}px`;
@@ -100,7 +99,7 @@ if (toc) {
   })
 };
 
-// Instrument anchor linking for sticky header
+// Instrument anchor linking for sticky control bar
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', (e) => {
     e.preventDefault();
