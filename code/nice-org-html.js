@@ -27,13 +27,17 @@
 ;; JS for html exported by et-org-html.el
  */
 
-let cookie = document.cookie.split('; ').find(r => r.startsWith('theme-mode'))
+const preamble = document.getElementById("preamble");
+const header = document.getElementById("injected-header");
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const content = document.getElementById("content");
+const toc = document.getElementById("table-of-contents");
 
-let mode = cookie ? cookie.split('=')[1] : 'dark'; // Default
-
-let toggleModeBtn = document.getElementById('toggle-mode');
-
-setMode(mode);
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
 
 function setMode(mode) {
   document.body.dataset.mode = mode;
@@ -41,27 +45,79 @@ function setMode(mode) {
   document.cookie = 'theme-mode=' + mode;
 }
 
+// Set mode based on stored cookie
+let cookie = document.cookie.split('; ').find(r => r.startsWith('theme-mode'))
+let mode = cookie ? cookie.split('=')[1] : 'dark'; // Default
+setMode(mode);
+
+// Mode toggling
 toggleModeBtn.addEventListener('click', () => {
   mode = document.body.dataset.mode === 'dark' ? 'light' : 'dark';
   setMode(mode);
 })
 
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let topHeight = header.offsetHeight + controls.offsetHeight;
+  let atTop = document.documentElement.scrollTop <= topHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
 
-let toggleTocBtn = document.getElementById('toggle-toc')
-let toc = document.getElementById('table-of-contents')
-
+// Table-of-contents toggling
 if (toc) {
   toggleTocBtn.dataset.show = 'true';
   toggleTocBtn.addEventListener('click', () => {
     let showingToc = document.body.dataset.toc;
-    document.body.dataset.toc = showingToc ? '' : 'true';
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      if (scrollY > header.offsetHeight) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      } 
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }    
     toc.addEventListener('click', () => {
       if (document.body.dataset.toc) {
-	document.body.dataset.toc = "";
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
       }
     })
   })
-}
+};
+
+// Instrument anchor linking for sticky header
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+    
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+        top: offset,
+        behavior: "smooth"
+      });
+    }, 0);
+  });
+});
 
 function copyTextToClipboard(text) {
   // Make invisible textarea
@@ -96,3 +152,4 @@ function copyTextToClipboard(text) {
 
   return res;
 }
+

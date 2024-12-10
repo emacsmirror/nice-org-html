@@ -6,7 +6,7 @@
 
 ;; Author: Ewan Townshend <ewan@etown.dev>
 ;; URL: https://github.com/ewantown/nice-org-html
-;; Package-Version: 1.0
+;; Package-Version: 1.1
 ;; Package-Requires: ((emacs "25.1") (s "1.13.0") (dash "2.19.1") (htmlize "1.58") (uuidgen "1.0"))
 ;; Keywords: org, org-export, html, css, js, tools
 
@@ -214,8 +214,9 @@
        (insert "</div>"))
      (buffer-string))
    "<div id='view-controls'>"
-   "<div id='toggle-mode'>&#9788;</div>"
-   "<div id='toggle-toc'>&#9776;</div>"
+   "<div id='toggle-mode' title='Mode'>&#9788;</div>"
+   "<div id='goto-top' title='Top'>&#8962;</div>"
+   "<div id='toggle-toc' title='Contents'>&#9776;</div>"
    "</div>"))
 
 (defun nice-org-html--postamble ()
