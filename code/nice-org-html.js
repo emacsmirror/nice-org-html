@@ -87,10 +87,10 @@ if (toc) {
 	);
       if (scrollY > header.offsetHeight) {
 	document.documentElement.scrollTop = preamble.offsetHeight;
-      } 
+      }
       toc.style.height = `${tocHeight}px`;
       document.body.dataset.toc = 'true';
-    }    
+    }
     toc.addEventListener('click', () => {
       if (document.body.dataset.toc) {
 	document.body.dataset.toc = '';
@@ -106,14 +106,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const targetId = e.currentTarget.getAttribute('href');
     const target = document.querySelector(targetId);
-    
+
     setTimeout(() => {
       const targetPos = target.getBoundingClientRect().top;
       let offset = targetPos + document.documentElement.scrollTop;
       offset -= controls.offsetHeight;
       window.scrollTo({
-        top: offset,
-        behavior: "smooth"
+	top: offset,
+	behavior: "smooth"
       });
     }, 0);
   });
