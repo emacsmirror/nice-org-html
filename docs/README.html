@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-08 Sun 14:47 -->
+<!-- 2024-12-10 Tue 14:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nice Org to HTML pipeline</title>
@@ -180,23 +180,36 @@ body[data-mode='dark'] {
 
 /* ootb page layout ***********************************************************/
 #view-controls {
-    position: relative;
+    position: sticky;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     top: 0;
     left: 0;
     width: 100%;
     background: var(--bg);
     color: var(--clr-code);
-    height: 2rem;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
 }
 #toggle-mode {
     position: absolute;
     right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
     display: block;
     text-align: center;
     font-size: 1.5rem;
@@ -217,9 +230,11 @@ body[data-mode='dark'] {
     color: var(--clr-code);
     padding: 0.25rem 0;
 }
-#toggle-mode:hover,
-#toggle-toc:hover {
-  cursor: pointer;
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
 }
 
 #table-of-contents {
@@ -455,9 +470,6 @@ img {
 /* responsive layouts *********************************************************/
 
 @media only screen and (max-width: 768px) {
-    #view-controls {
-	margin-top: 1.5em;
-    }
     #toggle-toc[data-show='true'] {
 	padding-right: 5%;
     }
@@ -477,7 +489,8 @@ img {
 
 @media only screen and (max-width: 480px) {
     #view-controls {
-	margin-top: 2em;
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
     }
     #toggle-toc[data-show='true'] {
 	padding-right: 5%;
@@ -501,7 +514,7 @@ img {
 </head>
 <body>
 <div id="preamble" class="status">
-<div id='view-controls'><div id='toggle-mode'>&#9788;</div><div id='toggle-toc'>&#9776;</div></div>
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8962;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
 <h1 class="title">Nice Org to HTML pipeline</h1>
@@ -509,18 +522,18 @@ img {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org03d99eb">tl;dr</a></li>
-<li><a href="#orga653dee">About this package</a></li>
-<li><a href="#org4ab0d27">How to use it</a></li>
-<li><a href="#orgd368f76">Things to keep in mind</a></li>
-<li><a href="#orgb24b668">Credits</a></li>
+<li><a href="#org7b8faa2">tl;dr</a></li>
+<li><a href="#orgb5a41b3">About this package</a></li>
+<li><a href="#org258d822">How to use it</a></li>
+<li><a href="#org1673923">Things to keep in mind</a></li>
+<li><a href="#org1d1f9ec">Credits</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org03d99eb" class="outline-2">
-<h2 id="org03d99eb">tl;dr</h2>
-<div class="outline-text-2" id="text-org03d99eb">
+<div id="outline-container-org7b8faa2" class="outline-2">
+<h2 id="org7b8faa2">tl;dr</h2>
+<div class="outline-text-2" id="text-org7b8faa2">
 <p>
 This package generates prettier, responsive websites from .org files and Emacs themes. You can optionally specify a header, footer, and additional CSS and JS to be included. To see the default output, for my chosen themes and with no header, footer or extras, view this README in your browser <a href="https://etown.dev/nice-org-html/">here</a>. If you're already there, you can find the GitHub repo <a href="https://github.com/ewantown/nice-org-html">here</a>.
 </p>
@@ -531,9 +544,9 @@ To see an example with a basic header and footer, you can view my personal site 
 </div>
 </div>
 
-<div id="outline-container-orga653dee" class="outline-2">
-<h2 id="orga653dee">About this package</h2>
-<div class="outline-text-2" id="text-orga653dee">
+<div id="outline-container-orgb5a41b3" class="outline-2">
+<h2 id="orgb5a41b3">About this package</h2>
+<div class="outline-text-2" id="text-orgb5a41b3">
 <p>
 This package defines an Emacs pipeline for <a href="https://orgmode.org/manual/Exporting.html">exporting</a> Org files, or <a href="https://www.gnu.org/software/emacs/manual/html_node/org/Publishing.html">publishing</a> Org projects, to HTML. The generated HTML is optimized for readability and responsiveness, esp. of documents that include code. The pipeline enables easy customization by users, leveraging the variety of themes already defined for Emacs. This is achieved by:
 </p>
@@ -547,9 +560,9 @@ This package defines an Emacs pipeline for <a href="https://orgmode.org/manual/E
 </div>
 </div>
 
-<div id="outline-container-org4ab0d27" class="outline-2">
-<h2 id="org4ab0d27">How to use it</h2>
-<div class="outline-text-2" id="text-org4ab0d27">
+<div id="outline-container-org258d822" class="outline-2">
+<h2 id="org258d822">How to use it</h2>
+<div class="outline-text-2" id="text-org258d822">
 <ul class="org-ul">
 <li><p>
 Obtain the source files and add them to your load path. I prefer MELPA and use-package:
@@ -564,11 +577,11 @@ Obtain the source files and add them to your load path. I prefer MELPA and use-p
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">unless</span> (package-installed-p 'use-package)
   (package-install 'use-package))
 </pre>
-</div><button class='copyBtn' name=btn_f304cae0cbc1449fb53fe3908bc0009e>copy</button>
+</div><button class='copyBtn' name=btn_8c2d077d19b24872b26796d7c0d48d72>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_f304cae0cbc1449fb53fe3908bc0009e=document.querySelector('button[name=btn_f304cae0cbc1449fb53fe3908bc0009e]');
-copyBtnbtn_f304cae0cbc1449fb53fe3908bc0009e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(require 'package)\n(add-to-list 'package-archives\n             '(\"melpa\" . \"http://melpa.org/packages/\"))\n(package-initialize)\n\n(unless (package-installed-p 'use-package)\n  (package-install 'use-package))\n`);copyBtnbtn_f304cae0cbc1449fb53fe3908bc0009e.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_f304cae0cbc1449fb53fe3908bc0009e.textContent = 'copy';}, 3000);
+var copyBtnbtn_8c2d077d19b24872b26796d7c0d48d72=document.querySelector('button[name=btn_8c2d077d19b24872b26796d7c0d48d72]');
+copyBtnbtn_8c2d077d19b24872b26796d7c0d48d72.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(require 'package)\n(add-to-list 'package-archives\n             '(\"melpa\" . \"http://melpa.org/packages/\"))\n(package-initialize)\n\n(unless (package-installed-p 'use-package)\n  (package-install 'use-package))\n`);copyBtnbtn_8c2d077d19b24872b26796d7c0d48d72.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_8c2d077d19b24872b26796d7c0d48d72.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
@@ -586,11 +599,11 @@ Add something like this to your configuration file:
           (dark  . tomorrow-night-eighties)))
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-default-mode 'dark))
 </pre>
-</div><button class='copyBtn' name=btn_5786e39ee93546a0b8a3576e036cfa39>copy</button>
+</div><button class='copyBtn' name=btn_a114466965744cccadbc9038be6850ec>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_5786e39ee93546a0b8a3576e036cfa39=document.querySelector('button[name=btn_5786e39ee93546a0b8a3576e036cfa39]');
-copyBtnbtn_5786e39ee93546a0b8a3576e036cfa39.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(use-package nice-org-html\n  :hook (org-mode . nice-org-html-mode)\n  :config\n  (setq nice-org-html-theme-alist\n        '((light . solo-jazz)\n          (dark  . tomorrow-night-eighties)))\n  (setq nice-org-html-default-mode 'dark))\n`);copyBtnbtn_5786e39ee93546a0b8a3576e036cfa39.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_5786e39ee93546a0b8a3576e036cfa39.textContent = 'copy';}, 3000);
+var copyBtnbtn_a114466965744cccadbc9038be6850ec=document.querySelector('button[name=btn_a114466965744cccadbc9038be6850ec]');
+copyBtnbtn_a114466965744cccadbc9038be6850ec.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(use-package nice-org-html\n  :hook (org-mode . nice-org-html-mode)\n  :config\n  (setq nice-org-html-theme-alist\n        '((light . solo-jazz)\n          (dark  . tomorrow-night-eighties)))\n  (setq nice-org-html-default-mode 'dark))\n`);copyBtnbtn_a114466965744cccadbc9038be6850ec.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_a114466965744cccadbc9038be6850ec.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
@@ -616,11 +629,11 @@ These variables may also be set globally, and then used or overridden during int
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-js <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/script.js"</span>)
 </pre>
-</div><button class='copyBtn' name=btn_33bf1a44135346e68e22341b7f115601>copy</button>
+</div><button class='copyBtn' name=btn_2399ebc8f2fc4b40b1b694e686ee2aa1>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_33bf1a44135346e68e22341b7f115601=document.querySelector('button[name=btn_33bf1a44135346e68e22341b7f115601]');
-copyBtnbtn_33bf1a44135346e68e22341b7f115601.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq nice-org-html-header \"path/to/your/header.html\")\n\n(setq nice-org-html-footer \"path/to/your/footer.html\")\n\n(setq nice-org-html-css \"path/to/your/style.css\")\n\n(setq nice-org-html-js \"path/to/your/script.js\")\n`);copyBtnbtn_33bf1a44135346e68e22341b7f115601.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_33bf1a44135346e68e22341b7f115601.textContent = 'copy';}, 3000);
+var copyBtnbtn_2399ebc8f2fc4b40b1b694e686ee2aa1=document.querySelector('button[name=btn_2399ebc8f2fc4b40b1b694e686ee2aa1]');
+copyBtnbtn_2399ebc8f2fc4b40b1b694e686ee2aa1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq nice-org-html-header \"path/to/your/header.html\")\n\n(setq nice-org-html-footer \"path/to/your/footer.html\")\n\n(setq nice-org-html-css \"path/to/your/style.css\")\n\n(setq nice-org-html-js \"path/to/your/script.js\")\n`);copyBtnbtn_2399ebc8f2fc4b40b1b694e686ee2aa1.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_2399ebc8f2fc4b40b1b694e686ee2aa1.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
@@ -635,11 +648,11 @@ This package is particularly well-suited to <i>publishing</i> Org <i>projects</i
 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:publishing-function</span> #'nice-org-html-publish-to-html
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">...</span>
 </pre>
-</div><button class='copyBtn' name=btn_5fe7657cb23a4b2a9067dd9c6f1ffa1e>copy</button>
+</div><button class='copyBtn' name=btn_6244767aff3b4e81bda716407d157e30>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_5fe7657cb23a4b2a9067dd9c6f1ffa1e=document.querySelector('button[name=btn_5fe7657cb23a4b2a9067dd9c6f1ffa1e]');
-copyBtnbtn_5fe7657cb23a4b2a9067dd9c6f1ffa1e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`;; ...\n:publishing-function #'nice-org-html-publish-to-html\n;; ...\n`);copyBtnbtn_5fe7657cb23a4b2a9067dd9c6f1ffa1e.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_5fe7657cb23a4b2a9067dd9c6f1ffa1e.textContent = 'copy';}, 3000);
+var copyBtnbtn_6244767aff3b4e81bda716407d157e30=document.querySelector('button[name=btn_6244767aff3b4e81bda716407d157e30]');
+copyBtnbtn_6244767aff3b4e81bda716407d157e30.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`;; ...\n:publishing-function #'nice-org-html-publish-to-html\n;; ...\n`);copyBtnbtn_6244767aff3b4e81bda716407d157e30.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_6244767aff3b4e81bda716407d157e30.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
@@ -664,11 +677,11 @@ For more granular per-project configuration, there is a publishing-function-gene
      <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/style.css"</span>
      <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/script.js"</span>)))
 </pre>
-</div><button class='copyBtn' name=btn_42f1033054e944279b520e3c2b2a791a>copy</button>
+</div><button class='copyBtn' name=btn_a715bf3db23648d0904cbada6c9433bc>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_42f1033054e944279b520e3c2b2a791a=document.querySelector('button[name=btn_42f1033054e944279b520e3c2b2a791a]');
-copyBtnbtn_42f1033054e944279b520e3c2b2a791a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org\"\n   :base-directory \"path/to/source-x/\"       \n   :publishing-directory \"path/to/target-x/\"\n   ;; ...\n   :publishing-function\n   ,(nice-org-html-make-publishing-function\n     '((light . solo-jazz) (dark . tomorrow-night-eighties))\n     'dark\n     \"path/to/your/header.html\"\n     \"path/to/your/footer.html\"\n     \"path/to/your/style.css\"\n     \"path/to/your/script.js\")))\n`);copyBtnbtn_42f1033054e944279b520e3c2b2a791a.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_42f1033054e944279b520e3c2b2a791a.textContent = 'copy';}, 3000);
+var copyBtnbtn_a715bf3db23648d0904cbada6c9433bc=document.querySelector('button[name=btn_a715bf3db23648d0904cbada6c9433bc]');
+copyBtnbtn_a715bf3db23648d0904cbada6c9433bc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org\"\n   :base-directory \"path/to/source-x/\"       \n   :publishing-directory \"path/to/target-x/\"\n   ;; ...\n   :publishing-function\n   ,(nice-org-html-make-publishing-function\n     '((light . solo-jazz) (dark . tomorrow-night-eighties))\n     'dark\n     \"path/to/your/header.html\"\n     \"path/to/your/footer.html\"\n     \"path/to/your/style.css\"\n     \"path/to/your/script.js\")))\n`);copyBtnbtn_a715bf3db23648d0904cbada6c9433bc.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_a715bf3db23648d0904cbada6c9433bc.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
@@ -676,9 +689,9 @@ let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org
 </div>
 </div>
 
-<div id="outline-container-orgd368f76" class="outline-2">
-<h2 id="orgd368f76">Things to keep in mind</h2>
-<div class="outline-text-2" id="text-orgd368f76">
+<div id="outline-container-org1673923" class="outline-2">
+<h2 id="org1673923">Things to keep in mind</h2>
+<div class="outline-text-2" id="text-org1673923">
 <ul class="org-ul">
 <li>The HTML specified by <code>nice-org-html-header</code> and <code>nice-org-html-footer</code> will inherit the package default styling, unless further styling for these is defined in the file specified by <code>nice-org-html-css</code>.</li>
 <li>For easy CSS customization, the contents of each user-specified HTML file are wrapped together in a <code>&lt;div&gt;</code> element; with id = 'injected-header' and id = 'injected-footer', respectively, and both with class = 'injected'.</li>
@@ -688,9 +701,9 @@ let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org
 </div>
 </div>
 
-<div id="outline-container-orgb24b668" class="outline-2">
-<h2 id="orgb24b668">Credits</h2>
-<div class="outline-text-2" id="text-orgb24b668">
+<div id="outline-container-org1d1f9ec" class="outline-2">
+<h2 id="org1d1f9ec">Credits</h2>
+<div class="outline-text-2" id="text-org1d1f9ec">
 <ul class="org-ul">
 <li>Shi Tianshu's <a href="https://github.com/DogLooksGood/org-html-themify?tab=readme-ov-file">org-html-themify</a> provided the basic model for CSS interpolation.</li>
 <li>Various stackoverflow posts were of great help, but alas, I've lost the links.</li>
@@ -731,13 +744,17 @@ document.cookie = 'theme-mode=dark'
 ;; JS for html exported by et-org-html.el
  */
 
-let cookie = document.cookie.split('; ').find(r => r.startsWith('theme-mode'))
+const preamble = document.getElementById("preamble");
+const header = document.getElementById("injected-header");
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const content = document.getElementById("content");
+const toc = document.getElementById("table-of-contents");
 
-let mode = cookie ? cookie.split('=')[1] : 'dark'; // Default
-
-let toggleModeBtn = document.getElementById('toggle-mode');
-
-setMode(mode);
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
 
 function setMode(mode) {
   document.body.dataset.mode = mode;
@@ -745,27 +762,79 @@ function setMode(mode) {
   document.cookie = 'theme-mode=' + mode;
 }
 
+// Set mode based on stored cookie
+let cookie = document.cookie.split('; ').find(r => r.startsWith('theme-mode'))
+let mode = cookie ? cookie.split('=')[1] : 'dark'; // Default
+setMode(mode);
+
+// Mode toggling
 toggleModeBtn.addEventListener('click', () => {
   mode = document.body.dataset.mode === 'dark' ? 'light' : 'dark';
   setMode(mode);
 })
 
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let topHeight = header.offsetHeight + controls.offsetHeight;
+  let atTop = document.documentElement.scrollTop <= topHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
 
-let toggleTocBtn = document.getElementById('toggle-toc')
-let toc = document.getElementById('table-of-contents')
-
+// Table-of-contents toggling
 if (toc) {
   toggleTocBtn.dataset.show = 'true';
   toggleTocBtn.addEventListener('click', () => {
     let showingToc = document.body.dataset.toc;
-    document.body.dataset.toc = showingToc ? '' : 'true';
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      if (scrollY > header.offsetHeight) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      } 
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }    
     toc.addEventListener('click', () => {
       if (document.body.dataset.toc) {
-	document.body.dataset.toc = "";
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
       }
     })
   })
-}
+};
+
+// Instrument anchor linking for sticky header
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+    
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+        top: offset,
+        behavior: "smooth"
+      });
+    }, 0);
+  });
+});
 
 function copyTextToClipboard(text) {
   // Make invisible textarea
@@ -800,6 +869,7 @@ function copyTextToClipboard(text) {
 
   return res;
 }
+
 /*]]>*/-->
 </script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
 </div>
