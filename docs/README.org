@@ -5,7 +5,7 @@
 * tl;dr
 This package generates prettier, responsive websites from .org files and Emacs themes. You can optionally specify a header, footer, and additional CSS and JS to be included. To see the default output, for my chosen themes and with no header, footer or extras, view this README in your browser [[https://etown.dev/nice-org-html/][here]]. If you're already there, you can find the GitHub repo [[https://github.com/ewantown/nice-org-html][here]].
 
-To see an example with a basic header and footer, you can view my personal site [[https://www.etown.dev][here]].
+To see an example with a basic header and footer, see this [[https://www.etown.dev/nice-org-html/sample][sample]].
 
 * About this package
  This package defines an Emacs pipeline for [[https://orgmode.org/manual/Exporting.html][exporting]] Org files, or [[https://www.gnu.org/software/emacs/manual/html_node/org/Publishing.html][publishing]] Org projects, to HTML. The generated HTML is optimized for readability and responsiveness, esp. of documents that include code. The pipeline enables easy customization by users, leveraging the variety of themes already defined for Emacs. This is achieved by:
