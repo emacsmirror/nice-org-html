@@ -23,7 +23,7 @@
 * Pretty Symbols
 ** Basic
 \Gamma, \gamma, \Sigma, \sigma, \Delta, \delta
-** $\LaTeX$
+** LaTeX
 $\Gamma \vdash \Delta$
 
 $\sigma(i) = \sum_{1}^{n} n - i$
