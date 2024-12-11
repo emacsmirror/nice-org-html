@@ -154,44 +154,44 @@ body {
 /* custom facing **************************************************************/
 /* The variable values are injected by CSS pre-processing in et-org-html.el */
 :root {
-  --bc-tb: #3b2685;
+  --bc-tb: #383a42;
   --bc-block: initial;
-  --clr: #3b2685;
+  --clr: #383a42;
   --clr-tb-hd: initial;
   --clr-code: initial;
   --bg: #fafafa;
-  --bg-code: #efeff1;
-  --bg-tb-hd: #efeff1;
-  --bg-block: #f4f4f4;
-  --clr-link: #005cc5;
-  --clr-title: #3b2685;
-  --clr-todo: #00afef;
+  --bg-code: #f0f0f1;
+  --bg-tb-hd: #f0f0f1;
+  --bg-block: initial;
+  --clr-link: #008B8B;
+  --clr-title: #383a42;
+  --clr-todo: #50a14f;
   --bg-todo: initial;
-  --clr-done: #778ca3;
+  --clr-done: #a0a1a7;
   --bg-done: initial;
-  --ts-clr: #009c9f;
+  --ts-clr: #a626a4;
   --mg: 20px;
   --w-toc: 300px;
   --bg-keyword: initial;
-  --clr-keyword: #009c9f;
+  --clr-keyword: #a626a4;
   --bg-constant: initial;
-  --clr-constant: #005cc5;
+  --clr-constant: #008B8B;
   --bg-comment: initial;
-  --clr-comment: #778ca3;
+  --clr-comment: #a0a1a7;
   --bg-comment-delimiter: initial;
   --clr-comment-delimiter: initial;
   --bg-function: initial;
-  --clr-function: #fa1090;
+  --clr-function: #0184bc;
   --bg-variable: initial;
-  --clr-variable: #ff5200;
+  --clr-variable: #8B4513;
   --bg-preprocessor: initial;
-  --clr-preprocessor: #009c9f;
+  --clr-preprocessor: initial;
   --bg-doc: initial;
   --clr-doc: initial;
   --bg-builtin: initial;
-  --clr-builtin: #009c9f;
+  --clr-builtin: #e44649;
   --bg-string: initial;
-  --clr-string: #00afef;
+  --clr-string: #50a14f;
 }
 
 body[data-mode='light'] {
@@ -202,44 +202,44 @@ body[data-mode='light'] {
 body[data-mode='dark'] {
   background: var(--bg);
   color: var(--clr);
-  --bc-tb: #cccccc;
+  --bc-tb: #FF2D00;
   --bc-block: initial;
-  --clr: #cccccc;
-  --clr-code: #cccccc;
-  --clr-tb-hd: #cccccc;
-  --bg: #2d2d2d;
-  --bg-tb-hd: #515151;
-  --bg-code: #515151;
+  --clr: #F5F5F5;
+  --clr-code: initial;
+  --clr-tb-hd: initial;
+  --bg: #333333;
+  --bg-tb-hd: #4D4D4D;
+  --bg-code: #4D4D4D;
   --bg-block: initial;
-  --clr-link: #66cccc;
-  --clr-title: #cccccc;
-  --clr-todo: #99cc99;
+  --clr-link: #1E90FF;
+  --clr-title: #F5F5F5;
+  --clr-todo: #FFA07A;
   --bg-todo: initial;
-  --clr-done: #999999;
+  --clr-done: #CD853F;
   --bg-done: initial;
-  --ts-clr: #cc99cc;
+  --ts-clr: #20B2AA;
   --mg: 20px;
   --w-toc: 300px;
   --bg-keyword: initial;
-  --clr-keyword: #cc99cc;
+  --clr-keyword: #20B2AA;
   --bg-constant: initial;
-  --clr-constant: #66cccc;
+  --clr-constant: #1E90FF;
   --bg-comment: initial;
-  --clr-comment: #999999;
+  --clr-comment: #CD853F;
   --bg-comment-delimiter: initial;
-  --clr-comment-delimiter: #999999;
+  --clr-comment-delimiter: initial;
   --bg-function: initial;
-  --clr-function: #6699cc;
+  --clr-function: #00FF7F;
   --bg-variable: initial;
-  --clr-variable: #f99157;
+  --clr-variable: #9ACD32;
   --bg-preprocessor: initial;
-  --clr-preprocessor: #cc99cc;
+  --clr-preprocessor: #6495ED;
   --bg-doc: initial;
-  --clr-doc: #999999;
+  --clr-doc: #CD5C5C;
   --bg-builtin: initial;
-  --clr-builtin: #66cccc;
+  --clr-builtin: #76EE00;
   --bg-string: initial;
-  --clr-string: #99cc99;
+  --clr-string: #FFA07A;
 }
 
 
@@ -634,11 +634,31 @@ img {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7884087">H1</a></li>
+<li><a href="#org7884087">H1</a>
+<ul>
+<li><a href="#orge4d1740">H2</a>
+<ul>
+<li><a href="#orgae3aab8">H3</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#orgdbb9829">Source Blocks</a></li>
-<li><a href="#org5e2631e">Pretty Symbols</a></li>
+<li><a href="#org5e2631e">Pretty Symbols</a>
+<ul>
+<li><a href="#org7a11e59">Basic</a></li>
+<li><a href="#orgef25a44">LaTeX</a></li>
+</ul>
+</li>
 <li><a href="#orgb2b63b0">Table</a></li>
-<li><a href="#org9f473bb">Lists</a></li>
+<li><a href="#org9f473bb">Lists</a>
+<ul>
+<li><a href="#orgf5282bb">todo List</a></li>
+<li><a href="#orge3f531a">Simple List</a></li>
+<li><a href="#orga02bff8">Sorted List</a></li>
+<li><a href="#org5493849">Check List</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -647,10 +667,14 @@ img {
 <h2 id="org7884087">H1</h2>
 <div class="outline-text-2" id="text-org7884087">
 </div>
-<ul class="org-ul">
-<li><a id="orge4d1740"></a>H2<br />
-<ul class="org-ul">
-<li><a id="orgae3aab8"></a>H3<br />
+<div id="outline-container-orge4d1740" class="outline-3">
+<h3 id="orge4d1740">H2</h3>
+<div class="outline-text-3" id="text-orge4d1740">
+</div>
+<div id="outline-container-orgae3aab8" class="outline-4">
+<h4 id="orgae3aab8">H3</h4>
+<div class="outline-text-4" id="text-orgae3aab8">
+</div>
 <ul class="org-ul">
 <li><a id="org2a571cf"></a>H4<br />
 <ul class="org-ul">
@@ -662,10 +686,8 @@ img {
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
+</div>
+</div>
 </div>
 
 
@@ -680,11 +702,11 @@ img {
 
 (foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
 </pre>
-</div><button class='copyBtn' name=btn_be3a0bc133bf4ed2b5a61fb65f02200f>copy</button>
+</div><button class='copyBtn' name=btn_c6fb03803beb4153a98a7aef0b66febf>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_be3a0bc133bf4ed2b5a61fb65f02200f=document.querySelector('button[name=btn_be3a0bc133bf4ed2b5a61fb65f02200f]');
-copyBtnbtn_be3a0bc133bf4ed2b5a61fb65f02200f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_be3a0bc133bf4ed2b5a61fb65f02200f.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_be3a0bc133bf4ed2b5a61fb65f02200f.textContent = 'copy';}, 3000);
+var copyBtnbtn_c6fb03803beb4153a98a7aef0b66febf=document.querySelector('button[name=btn_c6fb03803beb4153a98a7aef0b66febf]');
+copyBtnbtn_c6fb03803beb4153a98a7aef0b66febf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_c6fb03803beb4153a98a7aef0b66febf.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_c6fb03803beb4153a98a7aef0b66febf.textContent = 'copy';}, 3000);
 });
 </script>
 </div>
@@ -695,15 +717,16 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 <h2 id="org5e2631e">Pretty Symbols</h2>
 <div class="outline-text-2" id="text-org5e2631e">
 </div>
-<ul class="org-ul">
-<li><a id="org7a11e59"></a>Basic<br />
+<div id="outline-container-org7a11e59" class="outline-3">
+<h3 id="org7a11e59">Basic</h3>
 <div class="outline-text-3" id="text-org7a11e59">
 <p>
 &Gamma;, &gamma;, &Sigma;, &sigma;, &Delta;, &delta;
 </p>
 </div>
-</li>
-<li><a id="orgef25a44"></a>LaTeX<br />
+</div>
+<div id="outline-container-orgef25a44" class="outline-3">
+<h3 id="orgef25a44">LaTeX</h3>
 <div class="outline-text-3" id="text-orgef25a44">
 <p>
 \(\Gamma \vdash \Delta\)
@@ -713,8 +736,7 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 \(\sigma(i) = \sum_{1}^{n} n - i\)
 </p>
 </div>
-</li>
-</ul>
+</div>
 </div>
 
 <div id="outline-container-orgb2b63b0" class="outline-2">
@@ -777,15 +799,18 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 <h2 id="org9f473bb">Lists</h2>
 <div class="outline-text-2" id="text-org9f473bb">
 </div>
-<ul class="org-ul">
-<li><a id="orgf5282bb"></a>todo List<br />
+<div id="outline-container-orgf5282bb" class="outline-3">
+<h3 id="orgf5282bb">todo List</h3>
+<div class="outline-text-3" id="text-orgf5282bb">
+</div>
 <ul class="org-ul">
 <li><a id="org6c15984"></a><span class="todo TODO">TODO</span> todo<br /></li>
 <li><a id="orgc57a7f2"></a><span class="done DONE">DONE</span> done<br /></li>
 </ul>
-</li>
+</div>
 
-<li><a id="orge3f531a"></a>Simple List<br />
+<div id="outline-container-orge3f531a" class="outline-3">
+<h3 id="orge3f531a">Simple List</h3>
 <div class="outline-text-3" id="text-orge3f531a">
 <ul class="org-ul">
 <li>item</li>
@@ -793,9 +818,10 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 <li>item</li>
 </ul>
 </div>
-</li>
+</div>
 
-<li><a id="orga02bff8"></a>Sorted List<br />
+<div id="outline-container-orga02bff8" class="outline-3">
+<h3 id="orga02bff8">Sorted List</h3>
 <div class="outline-text-3" id="text-orga02bff8">
 <ol class="org-ol">
 <li>item</li>
@@ -803,17 +829,17 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 <li>item</li>
 </ol>
 </div>
-</li>
+</div>
 
-<li><a id="org5493849"></a>Check List<br />
+<div id="outline-container-org5493849" class="outline-3">
+<h3 id="org5493849">Check List</h3>
 <div class="outline-text-3" id="text-org5493849">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> item</li>
 <li class="on"><code>[X]</code> item</li>
 </ul>
 </div>
-</li>
-</ul>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
