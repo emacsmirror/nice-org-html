@@ -1,0 +1,62 @@
+#+TITLE: Title
+#+AUTHOR: Author
+#+EMAIL: foo@bar.com
+#+OPTIONS: toc:3 num:nil ^:nil
+
+* H1
+** H2
+*** H3
+**** H4
+***** H5
+****** H6
+
+
+* Source Blocks
+#+begin_src emacs-lisp
+  (defun foo (a b c)
+    "Example Elisp function"
+    `(,a ,(plist-get c b)))
+
+  (foo "string" :foo '(:foo 1 :bar 2))
+#+end_src
+
+* Pretty Symbols
+** Basic
+\Gamma, \gamma, \Sigma, \sigma, \Delta, \delta
+** $\LaTeX$
+$\Gamma \vdash \Delta$
+
+$\sigma(i) = \sum_{1}^{n} n - i$
+
+* Table
+
+|  a |  b |  c |  d |
+|----+----+----+----+
+|  0 |  1 |  2 |  3 |
+|  6 |  7 |  8 |  9 |
+| 12 | 13 | 14 | 15 |
+| 18 | 19 | 20 | 21 |
+
+* Lists
+** todo List
+**** TODO todo
+**** DONE done
+
+** Simple List
+- item
+- item
+- item  
+
+** Sorted List
+1. item
+2. item
+3. item
+
+** Check List
+- [ ] item
+- [X] item
+
+
+
+
+

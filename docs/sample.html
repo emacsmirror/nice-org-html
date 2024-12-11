@@ -1,0 +1,1018 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-10 Tue 18:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Title</title>
+<meta name="author" content="Author" />
+<meta name="generator" content="Org Mode" />
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+#injected-header {
+    width: 100%;
+    line-height: 1;    
+}
+#injected-footer {
+    width: 100%;    
+}
+
+.injected header {    
+    text-align: left;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.injected footer {
+    text-align: left;
+    width: 100%;
+}
+
+.injected h1 {
+    width: 100%;    
+    display: flex;
+    text-align: left;
+    padding-left: 5%;
+    font-family: Charter;
+}
+
+.injected nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    padding-left: 5%;
+}
+
+.injected .nav-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.91rem;
+}
+
+.injected .nav-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+}
+
+.injected .separator {
+    width: 100%;
+    height: 0.2rem;
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+    margin: 0.5rem auto;
+}
+
+body[data-theme='light'] .injected .separator {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+}
+
+body[data-theme='dark'] .injected .separator {
+    background-image: linear-gradient(to left, rgba(256, 256, 256, 0), rgba(256, 256, 256, 0.75));
+}
+
+.injected address {
+    padding-left: 5%;
+    padding-bottom: 0.5rem;
+}
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.1
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	system-ui,
+	-apple-system,
+	'Segoe UI',
+	Roboto,
+	Helvetica,
+	Arial,
+	sans-serif,
+	'Apple Color Emoji',
+	'Segoe UI Emoji';
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+  --bc-tb: #3b2685;
+  --bc-block: initial;
+  --clr: #3b2685;
+  --clr-tb-hd: initial;
+  --clr-code: initial;
+  --bg: #fafafa;
+  --bg-code: #efeff1;
+  --bg-tb-hd: #efeff1;
+  --bg-block: #f4f4f4;
+  --clr-link: #005cc5;
+  --clr-title: #3b2685;
+  --clr-todo: #00afef;
+  --bg-todo: initial;
+  --clr-done: #778ca3;
+  --bg-done: initial;
+  --ts-clr: #009c9f;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #009c9f;
+  --bg-constant: initial;
+  --clr-constant: #005cc5;
+  --bg-comment: initial;
+  --clr-comment: #778ca3;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: initial;
+  --bg-function: initial;
+  --clr-function: #fa1090;
+  --bg-variable: initial;
+  --clr-variable: #ff5200;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: #009c9f;
+  --bg-doc: initial;
+  --clr-doc: initial;
+  --bg-builtin: initial;
+  --clr-builtin: #009c9f;
+  --bg-string: initial;
+  --clr-string: #00afef;
+}
+
+body[data-mode='light'] {
+  background: var(--bg);
+  color: var(--clr);
+}
+
+body[data-mode='dark'] {
+  background: var(--bg);
+  color: var(--clr);
+  --bc-tb: #cccccc;
+  --bc-block: initial;
+  --clr: #cccccc;
+  --clr-code: #cccccc;
+  --clr-tb-hd: #cccccc;
+  --bg: #2d2d2d;
+  --bg-tb-hd: #515151;
+  --bg-code: #515151;
+  --bg-block: initial;
+  --clr-link: #66cccc;
+  --clr-title: #cccccc;
+  --clr-todo: #99cc99;
+  --bg-todo: initial;
+  --clr-done: #999999;
+  --bg-done: initial;
+  --ts-clr: #cc99cc;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #cc99cc;
+  --bg-constant: initial;
+  --clr-constant: #66cccc;
+  --bg-comment: initial;
+  --clr-comment: #999999;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: #999999;
+  --bg-function: initial;
+  --clr-function: #6699cc;
+  --bg-variable: initial;
+  --clr-variable: #f99157;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: #cc99cc;
+  --bg-doc: initial;
+  --clr-doc: #999999;
+  --bg-builtin: initial;
+  --clr-builtin: #66cccc;
+  --bg-string: initial;
+  --clr-string: #99cc99;
+}
+
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+  display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+	height: 0;
+	color: inherit;
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+table {
+	text-indent: 0;
+	border-color: inherit;
+}
+
+summary {
+	display: list-item;
+}
+
+h1 {
+  color: var(--clr-title);
+  text-align: center;
+}
+h2, h3, h4, h5, h6, h7 {
+  font-family: Sans Serif;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+h2::before {
+    content: "◉ ";
+}
+h3::before {
+    content: "✸ ";
+}
+h4::before {
+    content: "▷ ";
+}
+
+code {
+  color: var(--clr-code);
+  background: var(--bg-code);
+  border-radius: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+.todo {
+  color: var(--clr-todo);
+  background: var(--bg-todo);
+}
+
+.done {
+  color: var(--clr-done);
+  background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+  font-size: 0.8rem;
+  color: var(--clr-ts);
+}
+
+table {
+  width: 100%;
+  border: 2px solid var(--bc-tb);
+}
+
+thead {
+  color: var(--clr-tb-hd);
+  background: var(--bg-tb-hd);
+}
+
+td, th {
+  border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-link);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.MathJax_Display {
+  font-size: 1.25em;
+}
+
+img {
+  max-width: 100%;
+}
+
+.org-src-wrapper {
+  position: relative;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-wrapper .org-src-container:has(+ .copyBtn) pre {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.org-src-wrapper .srcBtnBar {
+    width: 100%;
+    background: transparent;
+    position: relative;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.org-src-wrapper .copyBtn {
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  background-color: transparent;
+  color: var(--clr-doc);
+  border: none;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+  opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+    #content h1 {
+	font-size: 1.5rem;
+    }
+    #content h2 {
+	font-size: 1.25rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+    #content h1 {
+	font-size: 1.35rem;
+    }
+    #content h2 {
+	font-size: 1.15rem;
+    }
+}
+/*]]>*/-->
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='injected-header' class='injected'><div>
+  <header>
+    <a href="#">
+      <h1 id="myname">Your Name</h1>
+    </a>
+    <div class="separator"></div>
+    <nav>
+      <div class="nav-links">	
+	<a href="#" class="nav-item">Foo</a>
+	<a href="#" class="nav-item">Bar</a>
+	<a href="#" class="nav-item">Baz</a>
+      </div>
+    </nav>
+    <div class="separator"></div>
+  </header>
+</div>
+</div><div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Title</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org5a708e8">H1</a>
+<ul>
+<li><a href="#org581249b">H2</a>
+<ul>
+<li><a href="#org5b94110">H3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8f0d2a9">Source Blocks</a></li>
+<li><a href="#org5a5f80b">Pretty Symbols</a>
+<ul>
+<li><a href="#orgb38f639">Basic</a></li>
+<li><a href="#org99dd2ef">\(\LaTeX\)</a></li>
+</ul>
+</li>
+<li><a href="#orgb96258f">Table</a></li>
+<li><a href="#orgb0dbb79">Lists</a>
+<ul>
+<li><a href="#org6d15808">todo List</a></li>
+<li><a href="#org7eeaa2a">Simple List</a></li>
+<li><a href="#org058e8e7">Sorted List</a></li>
+<li><a href="#org940af44">Check List</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5a708e8" class="outline-2">
+<h2 id="org5a708e8">H1</h2>
+<div class="outline-text-2" id="text-org5a708e8">
+</div>
+<div id="outline-container-org581249b" class="outline-3">
+<h3 id="org581249b">H2</h3>
+<div class="outline-text-3" id="text-org581249b">
+</div>
+<div id="outline-container-org5b94110" class="outline-4">
+<h4 id="org5b94110">H3</h4>
+<div class="outline-text-4" id="text-org5b94110">
+</div>
+<ul class="org-ul">
+<li><a id="orgc96e4a0"></a>H4<br />
+<ul class="org-ul">
+<li><a id="org57ae782"></a>H5<br />
+<ul class="org-ul">
+<li><a id="orgb828e58"></a>H6<br /></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org8f0d2a9" class="outline-2">
+<h2 id="org8f0d2a9">Source Blocks</h2>
+<div class="outline-text-2" id="text-org8f0d2a9">
+<div class='org-src-wrapper'>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">foo</span> (a b c)
+  <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Example Elisp function"</span>
+  `(,a ,(plist-get c b)))
+
+(foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
+</pre>
+</div><button class='copyBtn' name=btn_c2294f0b6d7243d79d5d050d2d2ac43b>copy</button>
+<script type='text/javascript'>
+var copyBtnbtn_c2294f0b6d7243d79d5d050d2d2ac43b=document.querySelector('button[name=btn_c2294f0b6d7243d79d5d050d2d2ac43b]');
+copyBtnbtn_c2294f0b6d7243d79d5d050d2d2ac43b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_c2294f0b6d7243d79d5d050d2d2ac43b.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_c2294f0b6d7243d79d5d050d2d2ac43b.textContent = 'copy';}, 3000);
+});
+</script>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5a5f80b" class="outline-2">
+<h2 id="org5a5f80b">Pretty Symbols</h2>
+<div class="outline-text-2" id="text-org5a5f80b">
+</div>
+<div id="outline-container-orgb38f639" class="outline-3">
+<h3 id="orgb38f639">Basic</h3>
+<div class="outline-text-3" id="text-orgb38f639">
+<p>
+&Gamma;, &gamma;, &Sigma;, &sigma;, &Delta;, &delta;
+</p>
+</div>
+</div>
+<div id="outline-container-org99dd2ef" class="outline-3">
+<h3 id="org99dd2ef">\(\LaTeX\)</h3>
+<div class="outline-text-3" id="text-org99dd2ef">
+<p>
+\(\Gamma \vdash \Delta\)
+</p>
+
+<p>
+\(\sigma(i) = \sum_{1}^{n} n - i\)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb96258f" class="outline-2">
+<h2 id="orgb96258f">Table</h2>
+<div class="outline-text-2" id="text-orgb96258f">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">a</th>
+<th scope="col" class="org-right">b</th>
+<th scope="col" class="org-right">c</th>
+<th scope="col" class="org-right">d</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-right">7</td>
+<td class="org-right">8</td>
+<td class="org-right">9</td>
+</tr>
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-right">13</td>
+<td class="org-right">14</td>
+<td class="org-right">15</td>
+</tr>
+
+<tr>
+<td class="org-right">18</td>
+<td class="org-right">19</td>
+<td class="org-right">20</td>
+<td class="org-right">21</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgb0dbb79" class="outline-2">
+<h2 id="orgb0dbb79">Lists</h2>
+<div class="outline-text-2" id="text-orgb0dbb79">
+</div>
+<div id="outline-container-org6d15808" class="outline-3">
+<h3 id="org6d15808">todo List</h3>
+<div class="outline-text-3" id="text-org6d15808">
+</div>
+<ul class="org-ul">
+<li><a id="org5807dd7"></a><span class="todo TODO">TODO</span> todo<br /></li>
+<li><a id="orgdffccee"></a><span class="done DONE">DONE</span> done<br /></li>
+</ul>
+</div>
+
+<div id="outline-container-org7eeaa2a" class="outline-3">
+<h3 id="org7eeaa2a">Simple List</h3>
+<div class="outline-text-3" id="text-org7eeaa2a">
+<ul class="org-ul">
+<li>item</li>
+<li>item</li>
+<li>item</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org058e8e7" class="outline-3">
+<h3 id="org058e8e7">Sorted List</h3>
+<div class="outline-text-3" id="text-org058e8e7">
+<ol class="org-ol">
+<li>item</li>
+<li>item</li>
+<li>item</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org940af44" class="outline-3">
+<h3 id="org940af44">Check List</h3>
+<div class="outline-text-3" id="text-org940af44">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> item</li>
+<li class="on"><code>[X]</code> item</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id='injected-footer' class='injected'><div>
+  <div class="separator"></div>
+  <footer>
+    <address>
+      <div id="copywrite">&#9400;
+	<a href="mailto:foo@bar.com"> Your Name </a>
+    </address>
+  </footer>
+</div>
+</div><script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+document.cookie = 'theme-mode=dark'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.1
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const content = document.getElementById("content");
+const toc = document.getElementById("table-of-contents");
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'theme-mode=' + mode;
+}
+
+// Set mode based on stored cookie
+let cookie = document.cookie.split('; ').find(r => r.startsWith('theme-mode'))
+let mode = cookie ? cookie.split('=')[1] : 'dark'; // Default
+setMode(mode);
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  mode = document.body.dataset.mode === 'dark' ? 'light' : 'dark';
+  setMode(mode);
+})
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

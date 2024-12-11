@@ -1,0 +1,67 @@
+#injected-header {
+    width: 100%;
+    line-height: 1;    
+}
+#injected-footer {
+    width: 100%;    
+}
+
+.injected header {    
+    text-align: left;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.injected footer {
+    text-align: left;
+    width: 100%;
+}
+
+.injected h1 {
+    width: 100%;    
+    display: flex;
+    text-align: left;
+    padding-left: 5%;
+    font-family: Charter;
+}
+
+.injected nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    padding-left: 5%;
+}
+
+.injected .nav-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.91rem;
+}
+
+.injected .nav-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+}
+
+.injected .separator {
+    width: 100%;
+    height: 0.2rem;
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+    margin: 0.5rem auto;
+}
+
+body[data-theme='light'] .injected .separator {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+}
+
+body[data-theme='dark'] .injected .separator {
+    background-image: linear-gradient(to left, rgba(256, 256, 256, 0), rgba(256, 256, 256, 0.75));
+}
+
+.injected address {
+    padding-left: 5%;
+    padding-bottom: 0.5rem;
+}
