@@ -35,9 +35,10 @@ To see an example with a basic header and footer, see this [[https://www.etown.d
       (setq nice-org-html-theme-alist
             '((light . solo-jazz)
               (dark  . tomorrow-night-eighties)))
-      (setq nice-org-html-default-mode 'dark))
+      (setq nice-org-html-default-mode 'dark)
+      (setq nice-org-html-headline-bullets nil)
   #+end_src
-+ Note, if values for these variables are not specified, the default view mode will be ~'dark~ and the mode-associated themes will be the "tsdh-" themes distributed with GNU Emacs.
++ Note, if values for these variables are not specified, the default view mode will be ~'dark~, the mode-associated themes will be the "tsdh-" themes distributed with GNU Emacs, and bullet marks will /not/ be prefixed to headlines.
     
 + After loading this package and hooking nice-org-html-mode to org-mode, when you open an Org buffer, nice-org-html-mode will activate.
 
@@ -77,6 +78,7 @@ To see an example with a basic header and footer, see this [[https://www.etown.d
        ,(nice-org-html-make-publishing-function
          '((light . solo-jazz) (dark . tomorrow-night-eighties))
          'dark
+         nil
          "path/to/your/header.html"
          "path/to/your/footer.html"
          "path/to/your/style.css"

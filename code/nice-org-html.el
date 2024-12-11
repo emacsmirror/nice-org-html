@@ -6,7 +6,7 @@
 
 ;; Author: Ewan Townshend <ewan@etown.dev>
 ;; URL: https://github.com/ewantown/nice-org-html
-;; Package-Version: 1.1
+;; Package-Version: 1.2
 ;; Package-Requires: ((emacs "25.1") (s "1.13.0") (dash "2.19.1") (htmlize "1.58") (uuidgen "1.0"))
 ;; Keywords: org, org-export, html, css, js, tools
 
@@ -79,6 +79,9 @@
 
 (defvar nice-org-html-default-mode 'dark
   "Default nice HTML page view mode ((quote light) or (quote dark)).")
+
+(defvar nice-org-html-headline-bullets nil
+  "If non-nil, headlines are prefixed with org-superstar style bullets")
 
 ;; Optional
 (defvar nice-org-html-header ""
@@ -194,6 +197,10 @@
    "<!--/*--><![CDATA[/*><!--*/\n"
    (with-temp-buffer
      (insert-file-contents nice-org-html--base-css)
+     (when nice-org-html-header-bullets
+       (insert (concat "h2::before { content: '◉ '; }\n"
+		       "h3::before { content: '✸ '; }\n"
+		       "h4::before { content: '▷ '; }\n")))
      (when (and (not (equal "" nice-org-html-css))
 		(file-exists-p nice-org-html-css))
        (insert-file-contents nice-org-html-css))
@@ -396,7 +403,7 @@ See docs for `org-html-publish-to-html', which this function emulates."
 
 ;;;###autoload
 (defmacro nice-org-html-make-publishing-function
-    (theme-alist default-mode header-html footer-html css js)
+    (theme-alist default-mode bullets header-html footer-html css js)
   "Create org-publishing function which quasi-closes over passed configuration.
 THEME-ALIST shadows `nice-org-html-theme-alist'.
 DEFAULT-MODE shadows `nice-org-html-default-mode'.
@@ -418,6 +425,7 @@ JS shadows `nice-org-html-js'."
 				  nice-org-html-default-mode))
 		(nice-org-html-theme-alist  theme-alist)
 		(nice-org-html-default-mode default-mode)
+		(nice-org-html-headline-bullets ,bullets)
 		(nice-org-html-header ,header-html)
 		(nice-org-html-footer ,footer-html)
 		(nice-org-html-css ,css)

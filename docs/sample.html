@@ -82,7 +82,7 @@ body[data-theme='dark'] .injected .separator {
 
 ;; Author: Ewan Townshend
 ;; URL: https://github.com/ewantown/nice-org-html
-;; Version: 1.1
+;; Version: 1.2
 
 ;;==============================================================================
 ;; This program is free software; you can redistribute it and/or modify
@@ -393,15 +393,6 @@ h2 {
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
-h2::before {
-    content: "◉ ";
-}
-h3::before {
-    content: "✸ ";
-}
-h4::before {
-    content: "▷ ";
-}
 
 code {
   color: var(--clr-code);
@@ -545,9 +536,12 @@ img {
 	width: 90%;
     }
     #content h1 {
-	font-size: 1.5rem;
+	font-size: 1.75rem;
     }
     #content h2 {
+	font-size: 1.5rem;
+    }
+    #content h3 {
 	font-size: 1.25rem;
     }
 }
@@ -567,12 +561,16 @@ img {
 	width: 90%;
     }
     #content h1 {
-	font-size: 1.35rem;
+	font-size: 1.5rem;
     }
     #content h2 {
-	font-size: 1.15rem;
+	font-size: 1.3rem;
     }
+    #content h2 {
+	font-size: 1.1urem;
+    }    
 }
+
 /*]]>*/-->
 </style>
 <script>
@@ -702,11 +700,11 @@ img {
 
 (foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
 </pre>
-</div><button class='copyBtn' name=btn_034818e229974c9eac1bb6d70aa3c1ab>copy</button>
+</div><button class='copyBtn' name=btn_d15b8e2f5c444bfc9a39be754ed53793>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_034818e229974c9eac1bb6d70aa3c1ab=document.querySelector('button[name=btn_034818e229974c9eac1bb6d70aa3c1ab]');
-copyBtnbtn_034818e229974c9eac1bb6d70aa3c1ab.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_034818e229974c9eac1bb6d70aa3c1ab.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_034818e229974c9eac1bb6d70aa3c1ab.textContent = 'copy';}, 3000);
+var copyBtnbtn_d15b8e2f5c444bfc9a39be754ed53793=document.querySelector('button[name=btn_d15b8e2f5c444bfc9a39be754ed53793]');
+copyBtnbtn_d15b8e2f5c444bfc9a39be754ed53793.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_d15b8e2f5c444bfc9a39be754ed53793.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_d15b8e2f5c444bfc9a39be754ed53793.textContent = 'copy';}, 3000);
 });
 </script>
 </div>
@@ -862,7 +860,7 @@ document.cookie = 'theme-mode=dark'
 
 ;; Author: Ewan Townshend
 ;; URL: https://github.com/ewantown/nice-org-html
-;; Version: 1.1
+;; Version: 1.2
 
 ;;==============================================================================
 ;; This program is free software; you can redistribute it and/or modify
