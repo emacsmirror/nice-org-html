@@ -81,7 +81,7 @@
   "Default nice HTML page view mode ((quote light) or (quote dark)).")
 
 (defvar nice-org-html-headline-bullets nil
-  "If non-nil, headlines are prefixed with org-superstar style bullets")
+  "If non-nil, headlines are prefixed with org-superstar style bullets.")
 
 ;; Optional
 (defvar nice-org-html-header ""
