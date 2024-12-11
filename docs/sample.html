@@ -154,44 +154,44 @@ body {
 /* custom facing **************************************************************/
 /* The variable values are injected by CSS pre-processing in et-org-html.el */
 :root {
-  --bc-tb: #383a42;
+  --bc-tb: #3b2685;
   --bc-block: initial;
-  --clr: #383a42;
+  --clr: #3b2685;
   --clr-tb-hd: initial;
   --clr-code: initial;
   --bg: #fafafa;
-  --bg-code: #f0f0f1;
-  --bg-tb-hd: #f0f0f1;
-  --bg-block: initial;
-  --clr-link: #008B8B;
-  --clr-title: #383a42;
-  --clr-todo: #50a14f;
+  --bg-code: #efeff1;
+  --bg-tb-hd: #efeff1;
+  --bg-block: #f4f4f4;
+  --clr-link: #005cc5;
+  --clr-title: #3b2685;
+  --clr-todo: #00afef;
   --bg-todo: initial;
-  --clr-done: #a0a1a7;
+  --clr-done: #778ca3;
   --bg-done: initial;
-  --ts-clr: #a626a4;
+  --ts-clr: #009c9f;
   --mg: 20px;
   --w-toc: 300px;
   --bg-keyword: initial;
-  --clr-keyword: #a626a4;
+  --clr-keyword: #009c9f;
   --bg-constant: initial;
-  --clr-constant: #008B8B;
+  --clr-constant: #005cc5;
   --bg-comment: initial;
-  --clr-comment: #a0a1a7;
+  --clr-comment: #778ca3;
   --bg-comment-delimiter: initial;
   --clr-comment-delimiter: initial;
   --bg-function: initial;
-  --clr-function: #0184bc;
+  --clr-function: #fa1090;
   --bg-variable: initial;
-  --clr-variable: #8B4513;
+  --clr-variable: #ff5200;
   --bg-preprocessor: initial;
-  --clr-preprocessor: initial;
+  --clr-preprocessor: #009c9f;
   --bg-doc: initial;
   --clr-doc: initial;
   --bg-builtin: initial;
-  --clr-builtin: #e44649;
+  --clr-builtin: #009c9f;
   --bg-string: initial;
-  --clr-string: #50a14f;
+  --clr-string: #00afef;
 }
 
 body[data-mode='light'] {
@@ -202,44 +202,44 @@ body[data-mode='light'] {
 body[data-mode='dark'] {
   background: var(--bg);
   color: var(--clr);
-  --bc-tb: #FF2D00;
+  --bc-tb: #cccccc;
   --bc-block: initial;
-  --clr: #F5F5F5;
-  --clr-code: initial;
-  --clr-tb-hd: initial;
-  --bg: #333333;
-  --bg-tb-hd: #4D4D4D;
-  --bg-code: #4D4D4D;
+  --clr: #cccccc;
+  --clr-code: #cccccc;
+  --clr-tb-hd: #cccccc;
+  --bg: #2d2d2d;
+  --bg-tb-hd: #515151;
+  --bg-code: #515151;
   --bg-block: initial;
-  --clr-link: #1E90FF;
-  --clr-title: #F5F5F5;
-  --clr-todo: #FFA07A;
+  --clr-link: #66cccc;
+  --clr-title: #cccccc;
+  --clr-todo: #99cc99;
   --bg-todo: initial;
-  --clr-done: #CD853F;
+  --clr-done: #999999;
   --bg-done: initial;
-  --ts-clr: #20B2AA;
+  --ts-clr: #cc99cc;
   --mg: 20px;
   --w-toc: 300px;
   --bg-keyword: initial;
-  --clr-keyword: #20B2AA;
+  --clr-keyword: #cc99cc;
   --bg-constant: initial;
-  --clr-constant: #1E90FF;
+  --clr-constant: #66cccc;
   --bg-comment: initial;
-  --clr-comment: #CD853F;
+  --clr-comment: #999999;
   --bg-comment-delimiter: initial;
-  --clr-comment-delimiter: initial;
+  --clr-comment-delimiter: #999999;
   --bg-function: initial;
-  --clr-function: #00FF7F;
+  --clr-function: #6699cc;
   --bg-variable: initial;
-  --clr-variable: #9ACD32;
+  --clr-variable: #f99157;
   --bg-preprocessor: initial;
-  --clr-preprocessor: #6495ED;
+  --clr-preprocessor: #cc99cc;
   --bg-doc: initial;
-  --clr-doc: #CD5C5C;
+  --clr-doc: #999999;
   --bg-builtin: initial;
-  --clr-builtin: #76EE00;
+  --clr-builtin: #66cccc;
   --bg-string: initial;
-  --clr-string: #FFA07A;
+  --clr-string: #99cc99;
 }
 
 
@@ -702,11 +702,11 @@ img {
 
 (foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
 </pre>
-</div><button class='copyBtn' name=btn_c6fb03803beb4153a98a7aef0b66febf>copy</button>
+</div><button class='copyBtn' name=btn_034818e229974c9eac1bb6d70aa3c1ab>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_c6fb03803beb4153a98a7aef0b66febf=document.querySelector('button[name=btn_c6fb03803beb4153a98a7aef0b66febf]');
-copyBtnbtn_c6fb03803beb4153a98a7aef0b66febf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_c6fb03803beb4153a98a7aef0b66febf.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_c6fb03803beb4153a98a7aef0b66febf.textContent = 'copy';}, 3000);
+var copyBtnbtn_034818e229974c9eac1bb6d70aa3c1ab=document.querySelector('button[name=btn_034818e229974c9eac1bb6d70aa3c1ab]');
+copyBtnbtn_034818e229974c9eac1bb6d70aa3c1ab.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_034818e229974c9eac1bb6d70aa3c1ab.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_034818e229974c9eac1bb6d70aa3c1ab.textContent = 'copy';}, 3000);
 });
 </script>
 </div>
