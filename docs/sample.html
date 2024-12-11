@@ -3,11 +3,9 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-10 Tue 18:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Title</title>
-<meta name="author" content="Author" />
 <meta name="generator" content="Org Mode" />
 <style type='text/css'>
 <!--/*--><![CDATA[/*><!--*/
@@ -636,66 +634,44 @@ img {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdab9f0d">H1</a>
-<ul>
-<li><a href="#org119556e">H2</a>
-<ul>
-<li><a href="#org30d0f7f">H3</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org0460364">Source Blocks</a></li>
-<li><a href="#org5afdafb">Pretty Symbols</a>
-<ul>
-<li><a href="#org7b26d05">Basic</a></li>
-<li><a href="#orgc794d2d">LaTeX</a></li>
-</ul>
-</li>
-<li><a href="#org261705d">Table</a></li>
-<li><a href="#org0f65b6e">Lists</a>
-<ul>
-<li><a href="#org308e995">todo List</a></li>
-<li><a href="#org7111c51">Simple List</a></li>
-<li><a href="#org673edaa">Sorted List</a></li>
-<li><a href="#org41ab05f">Check List</a></li>
-</ul>
-</li>
+<li><a href="#org7884087">H1</a></li>
+<li><a href="#orgdbb9829">Source Blocks</a></li>
+<li><a href="#org5e2631e">Pretty Symbols</a></li>
+<li><a href="#orgb2b63b0">Table</a></li>
+<li><a href="#org9f473bb">Lists</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgdab9f0d" class="outline-2">
-<h2 id="orgdab9f0d">H1</h2>
-<div class="outline-text-2" id="text-orgdab9f0d">
-</div>
-<div id="outline-container-org119556e" class="outline-3">
-<h3 id="org119556e">H2</h3>
-<div class="outline-text-3" id="text-org119556e">
-</div>
-<div id="outline-container-org30d0f7f" class="outline-4">
-<h4 id="org30d0f7f">H3</h4>
-<div class="outline-text-4" id="text-org30d0f7f">
+<div id="outline-container-org7884087" class="outline-2">
+<h2 id="org7884087">H1</h2>
+<div class="outline-text-2" id="text-org7884087">
 </div>
 <ul class="org-ul">
-<li><a id="org31f01dc"></a>H4<br />
+<li><a id="orge4d1740"></a>H2<br />
 <ul class="org-ul">
-<li><a id="org571b15a"></a>H5<br />
+<li><a id="orgae3aab8"></a>H3<br />
 <ul class="org-ul">
-<li><a id="org9f5f045"></a>H6<br /></li>
+<li><a id="org2a571cf"></a>H4<br />
+<ul class="org-ul">
+<li><a id="orgd6d183f"></a>H5<br />
+<ul class="org-ul">
+<li><a id="org62c2f15"></a>H6<br /></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
-</div>
 
 
-<div id="outline-container-org0460364" class="outline-2">
-<h2 id="org0460364">Source Blocks</h2>
-<div class="outline-text-2" id="text-org0460364">
+<div id="outline-container-orgdbb9829" class="outline-2">
+<h2 id="orgdbb9829">Source Blocks</h2>
+<div class="outline-text-2" id="text-orgdbb9829">
 <div class='org-src-wrapper'>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">foo</span> (a b c)
@@ -704,32 +680,31 @@ img {
 
 (foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
 </pre>
-</div><button class='copyBtn' name=btn_1996ce1dbeca4b0392238908c7d2786f>copy</button>
+</div><button class='copyBtn' name=btn_be3a0bc133bf4ed2b5a61fb65f02200f>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_1996ce1dbeca4b0392238908c7d2786f=document.querySelector('button[name=btn_1996ce1dbeca4b0392238908c7d2786f]');
-copyBtnbtn_1996ce1dbeca4b0392238908c7d2786f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_1996ce1dbeca4b0392238908c7d2786f.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_1996ce1dbeca4b0392238908c7d2786f.textContent = 'copy';}, 3000);
+var copyBtnbtn_be3a0bc133bf4ed2b5a61fb65f02200f=document.querySelector('button[name=btn_be3a0bc133bf4ed2b5a61fb65f02200f]');
+copyBtnbtn_be3a0bc133bf4ed2b5a61fb65f02200f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_be3a0bc133bf4ed2b5a61fb65f02200f.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_be3a0bc133bf4ed2b5a61fb65f02200f.textContent = 'copy';}, 3000);
 });
 </script>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5afdafb" class="outline-2">
-<h2 id="org5afdafb">Pretty Symbols</h2>
-<div class="outline-text-2" id="text-org5afdafb">
+<div id="outline-container-org5e2631e" class="outline-2">
+<h2 id="org5e2631e">Pretty Symbols</h2>
+<div class="outline-text-2" id="text-org5e2631e">
 </div>
-<div id="outline-container-org7b26d05" class="outline-3">
-<h3 id="org7b26d05">Basic</h3>
-<div class="outline-text-3" id="text-org7b26d05">
+<ul class="org-ul">
+<li><a id="org7a11e59"></a>Basic<br />
+<div class="outline-text-3" id="text-org7a11e59">
 <p>
 &Gamma;, &gamma;, &Sigma;, &sigma;, &Delta;, &delta;
 </p>
 </div>
-</div>
-<div id="outline-container-orgc794d2d" class="outline-3">
-<h3 id="orgc794d2d">LaTeX</h3>
-<div class="outline-text-3" id="text-orgc794d2d">
+</li>
+<li><a id="orgef25a44"></a>LaTeX<br />
+<div class="outline-text-3" id="text-orgef25a44">
 <p>
 \(\Gamma \vdash \Delta\)
 </p>
@@ -738,12 +713,13 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 \(\sigma(i) = \sum_{1}^{n} n - i\)
 </p>
 </div>
-</div>
+</li>
+</ul>
 </div>
 
-<div id="outline-container-org261705d" class="outline-2">
-<h2 id="org261705d">Table</h2>
-<div class="outline-text-2" id="text-org261705d">
+<div id="outline-container-orgb2b63b0" class="outline-2">
+<h2 id="orgb2b63b0">Table</h2>
+<div class="outline-text-2" id="text-orgb2b63b0">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -797,51 +773,47 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 
-<div id="outline-container-org0f65b6e" class="outline-2">
-<h2 id="org0f65b6e">Lists</h2>
-<div class="outline-text-2" id="text-org0f65b6e">
-</div>
-<div id="outline-container-org308e995" class="outline-3">
-<h3 id="org308e995">todo List</h3>
-<div class="outline-text-3" id="text-org308e995">
+<div id="outline-container-org9f473bb" class="outline-2">
+<h2 id="org9f473bb">Lists</h2>
+<div class="outline-text-2" id="text-org9f473bb">
 </div>
 <ul class="org-ul">
-<li><a id="org61267ab"></a><span class="todo TODO">TODO</span> todo<br /></li>
-<li><a id="org81026fd"></a><span class="done DONE">DONE</span> done<br /></li>
+<li><a id="orgf5282bb"></a>todo List<br />
+<ul class="org-ul">
+<li><a id="org6c15984"></a><span class="todo TODO">TODO</span> todo<br /></li>
+<li><a id="orgc57a7f2"></a><span class="done DONE">DONE</span> done<br /></li>
 </ul>
-</div>
+</li>
 
-<div id="outline-container-org7111c51" class="outline-3">
-<h3 id="org7111c51">Simple List</h3>
-<div class="outline-text-3" id="text-org7111c51">
+<li><a id="orge3f531a"></a>Simple List<br />
+<div class="outline-text-3" id="text-orge3f531a">
 <ul class="org-ul">
 <li>item</li>
 <li>item</li>
 <li>item</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-org673edaa" class="outline-3">
-<h3 id="org673edaa">Sorted List</h3>
-<div class="outline-text-3" id="text-org673edaa">
+<li><a id="orga02bff8"></a>Sorted List<br />
+<div class="outline-text-3" id="text-orga02bff8">
 <ol class="org-ol">
 <li>item</li>
 <li>item</li>
 <li>item</li>
 </ol>
 </div>
-</div>
+</li>
 
-<div id="outline-container-org41ab05f" class="outline-3">
-<h3 id="org41ab05f">Check List</h3>
-<div class="outline-text-3" id="text-org41ab05f">
+<li><a id="org5493849"></a>Check List<br />
+<div class="outline-text-3" id="text-org5493849">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> item</li>
 <li class="on"><code>[X]</code> item</li>
 </ul>
 </div>
-</div>
+</li>
+</ul>
 </div>
 </div>
 <div id="postamble" class="status">
