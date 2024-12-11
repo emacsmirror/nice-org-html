@@ -197,7 +197,7 @@
    "<!--/*--><![CDATA[/*><!--*/\n"
    (with-temp-buffer
      (insert-file-contents nice-org-html--base-css)
-     (when nice-org-html-header-bullets
+     (when nice-org-html-headline-bullets
        (insert (concat "h2::before { content: '◉ '; }\n"
 		       "h3::before { content: '✸ '; }\n"
 		       "h4::before { content: '▷ '; }\n")))

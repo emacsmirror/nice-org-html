@@ -36,7 +36,7 @@ To see an example with a basic header and footer, see this [[https://www.etown.d
             '((light . solo-jazz)
               (dark  . tomorrow-night-eighties)))
       (setq nice-org-html-default-mode 'dark)
-      (setq nice-org-html-headline-bullets nil)
+      (setq nice-org-html-headline-bullets nil))
   #+end_src
 + Note, if values for these variables are not specified, the default view mode will be ~'dark~, the mode-associated themes will be the "tsdh-" themes distributed with GNU Emacs, and bullet marks will /not/ be prefixed to headlines.
     
