@@ -81,9 +81,10 @@
   "Default nice HTML page view mode ((quote light) or (quote dark)).")
 
 (defvar nice-org-html-headline-bullets nil
-  "If non-nil, headlines (up to level 3) are prefixed with bullets.
+  "If non-nil, headlines are prefixed with bullets.
 If non-nil but not a plist of bullets, e.g. t, default bullets are used.
-Else, bullets are strings specified by plist of form '(:h1 x :h2 y :h3 z).")
+Else, bullets are strings, b1...b5, specified by plist of form:
+'(:h1 b1 :h2 b2 :h3 b3 :h4 b4 :h5 b5).")
 
 ;; Optional
 (defvar nice-org-html-header ""
@@ -205,19 +206,20 @@ Else, bullets are strings specified by plist of form '(:h1 x :h2 y :h3 z).")
 			   (--all?
 			    (and (plist-member bulletvar it)
 				 (stringp (plist-get bulletvar it)))
-			    '(:h1 :h2 :h3)))
+			    '(:h1 :h2 :h3 :h4 :h5)))
 		      bulletvar
-		    '(:h1 "◉" :h2 "✸" :h3 "▷")))
+		    '(:h1 "◉" :h2 "✸" :h3 "▷" :h4 "⦁" :h5 "○")))
 		 (mkcss
 		  (lambda (n)
 		    (let* ((bullet (plist-get bullets (intern (format ":h%d" n)))))
 		      (format (concat "h%d::before { content: '%s';\n"
-				      "margin-right: calc(%d * 0.2em);\n}\n")
+				      "margin-right: calc(%d * 0.2%dem);\n}\n")
 			      (+ 1 n) ;; HTML h1 reserved for title
 			      bullet
-			      (if (equal bullet "") 0 (+ 1 n)))))))
+			      (if (equal bullet "") 0 (+ 1 n))
+			      (+ 1 n))))))
        (insert (--reduce-r-from (concat it acc) ""
-				(--map (funcall mkcss it) '(1 2 3)))))
+				(--map (funcall mkcss it) '(1 2 3 4 5)))))
      (when (and (not (equal "" nice-org-html-css))
 		(file-exists-p nice-org-html-css))
        (insert-file-contents nice-org-html-css))

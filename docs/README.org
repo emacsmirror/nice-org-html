@@ -39,6 +39,16 @@ To see an example with a basic header and footer, see this [[https://www.etown.d
       (setq nice-org-html-headline-bullets nil))
   #+end_src
 + Note, if values for these variables are not specified, the default view mode will be ~'dark~, the mode-associated themes will be the "tsdh-" themes distributed with GNU Emacs, and bullet marks will /not/ be prefixed to headlines.
+  + To prefix headlines with the default bullets, instead use:
+    #+begin_src emacs-lisp
+      (setq nice-org-html-headline-bullets t)
+    #+end_src    
+  + Or you can specify headline bullets with a plist like this (the defaults):
+    #+begin_src emacs-lisp
+      (setq nice-org-html-headline-bullets
+            '(:h1 "◉" :h2 "✸" :h3 "▷" :h4 "⦁" :h5 "○"))
+    #+end_src
+
     
 + After loading this package and hooking nice-org-html-mode to org-mode, when you open an Org buffer, nice-org-html-mode will activate.
 
@@ -78,7 +88,7 @@ To see an example with a basic header and footer, see this [[https://www.etown.d
        ,(nice-org-html-make-publishing-function
          '((light . solo-jazz) (dark . tomorrow-night-eighties))
          'dark
-         nil
+         '(:h1 "" :h2 "✸" :h3 "▷" :h4 "" :h5 "")
          "path/to/your/header.html"
          "path/to/your/footer.html"
          "path/to/your/style.css"
@@ -90,6 +100,7 @@ To see an example with a basic header and footer, see this [[https://www.etown.d
 + For easy CSS customization, the contents of each user-specified HTML file are wrapped together in a ~<div>~ element; with id = 'injected-header' and id = 'injected-footer', respectively, and both with class = 'injected'.
 + The CSS specified by ~nice-org-html-css~ may also use the CSS variables defined in nice-org-html.css, which ultimately refer to Emacs face attribute values determined by your chosen themes.
 + The CSS specified by ~nice-org-html-css~ may override the default styling.
++ You can specify ~""~ as the bullet for a headline level to omit bullets for that level.
 
 * Credits
 + Shi Tianshu's [[https://github.com/DogLooksGood/org-html-themify?tab=readme-ov-file][org-html-themify]] provided the basic model for CSS interpolation.
