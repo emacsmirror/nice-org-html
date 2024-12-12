@@ -210,11 +210,12 @@ Else, bullets are strings specified by plist of form '(:h1 x :h2 y :h3 z).")
 		    '(:h1 "◉" :h2 "✸" :h3 "▷")))
 		 (mkcss
 		  (lambda (n)
-		    (format (concat "h%d::before { content: '%s';\n"
-				    "margin-right: calc(%d * 0.2em);\n}\n")
-			    (+ 1 n) ;; HTML h1 reserved for title
-			    (plist-get bullets (intern (format ":h%d" n)))
-			    (+ 1 n)))))
+		    (let* ((bullet (plist-get bullets (intern (format ":h%d" n)))))
+		      (format (concat "h%d::before { content: '%s';\n"
+				      "margin-right: calc(%d * 0.2em);\n}\n")
+			      (+ 1 n) ;; HTML h1 reserved for title
+			      bullet
+			      (if (equal bullet "") 0 (+ 1 n)))))))
        (insert (--reduce-r-from (concat it acc) ""
 				(--map (funcall mkcss it) '(1 2 3)))))
      (when (and (not (equal "" nice-org-html-css))
