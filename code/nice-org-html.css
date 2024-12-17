@@ -49,15 +49,17 @@ body {
     align-items: center;
     justify-content: center;
     font-family:
-	system-ui,
 	-apple-system,
-	'Segoe UI',
+	BlinkMacSystemFont,
+	segoe ui,
 	Roboto,
-	Helvetica,
-	Arial,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
 	sans-serif,
-	'Apple Color Emoji',
-	'Segoe UI Emoji';
+	system-ui
 }
 
 #preamble,
@@ -307,9 +309,6 @@ summary {
 h1 {
   color: var(--clr-title);
   text-align: center;
-}
-h2, h3, h4, h5, h6, h7 {
-  font-family: Sans Serif;
 }
 h2 {
     margin-top: 2rem;

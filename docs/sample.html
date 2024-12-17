@@ -127,15 +127,17 @@ body {
     align-items: center;
     justify-content: center;
     font-family:
-	system-ui,
 	-apple-system,
-	'Segoe UI',
+	BlinkMacSystemFont,
+	segoe ui,
 	Roboto,
-	Helvetica,
-	Arial,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
 	sans-serif,
-	'Apple Color Emoji',
-	'Segoe UI Emoji';
+	system-ui
 }
 
 #preamble,
@@ -385,9 +387,6 @@ summary {
 h1 {
   color: var(--clr-title);
   text-align: center;
-}
-h2, h3, h4, h5, h6, h7 {
-  font-family: Sans Serif;
 }
 h2 {
     margin-top: 2rem;
@@ -679,11 +678,11 @@ img {
 
 (foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
 </pre>
-</div><button class='copyBtn' name=btn_af760b290c9a4b9782c9d04dc347b067>copy</button>
+</div><button class='copyBtn' name=btn_5ccf66258f4d41aea86538107dd1d1e5>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_af760b290c9a4b9782c9d04dc347b067=document.querySelector('button[name=btn_af760b290c9a4b9782c9d04dc347b067]');
-copyBtnbtn_af760b290c9a4b9782c9d04dc347b067.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_af760b290c9a4b9782c9d04dc347b067.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_af760b290c9a4b9782c9d04dc347b067.textContent = 'copy';}, 3000);
+var copyBtnbtn_5ccf66258f4d41aea86538107dd1d1e5=document.querySelector('button[name=btn_5ccf66258f4d41aea86538107dd1d1e5]');
+copyBtnbtn_5ccf66258f4d41aea86538107dd1d1e5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_5ccf66258f4d41aea86538107dd1d1e5.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_5ccf66258f4d41aea86538107dd1d1e5.textContent = 'copy';}, 3000);
 });
 </script>
 </div>
