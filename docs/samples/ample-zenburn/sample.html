@@ -9,73 +9,6 @@
 <meta name="generator" content="Org Mode" />
 <style type='text/css'>
 <!--/*--><![CDATA[/*><!--*/
-#injected-header {
-    width: 100%;
-    line-height: 1;    
-}
-#injected-footer {
-    width: 100%;    
-}
-
-.injected header {    
-    text-align: left;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-.injected footer {
-    text-align: left;
-    width: 100%;
-}
-
-.injected h1 {
-    width: 100%;    
-    display: flex;
-    text-align: left;
-    padding-left: 5%;
-    font-family: Charter;
-}
-
-.injected nav {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    text-align: left;
-    padding-left: 5%;
-}
-
-.injected .nav-links {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1.91rem;
-}
-
-.injected .nav-item {
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    padding: 0.5rem 0;
-}
-
-.injected .separator {
-    width: 100%;
-    height: 0.2rem;
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
-    margin: 0.5rem auto;
-}
-
-body[data-theme='light'] .injected .separator {
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
-}
-
-body[data-theme='dark'] .injected .separator {
-    background-image: linear-gradient(to left, rgba(256, 256, 256, 0), rgba(256, 256, 256, 0.75));
-}
-
-.injected address {
-    padding-left: 5%;
-    padding-bottom: 0.5rem;
-}
 /* nice-org-html.css
 ;;==============================================================================
 ;; Copyright (C) 2024, Ewan Townshend
@@ -156,44 +89,44 @@ body {
 /* custom facing **************************************************************/
 /* The variable values are injected by CSS pre-processing in et-org-html.el */
 :root {
-  --bc-tb: #3b2685;
+  --bc-tb: #6E6E6E;
   --bc-block: initial;
-  --clr: #3b2685;
-  --clr-tb-hd: initial;
-  --clr-code: initial;
-  --bg: #fafafa;
-  --bg-code: #efeff1;
-  --bg-tb-hd: #efeff1;
-  --bg-block: #f4f4f4;
-  --clr-link: #005cc5;
-  --clr-title: #3b2685;
-  --clr-todo: #00afef;
+  --clr: #6E6E6E;
+  --clr-tb-hd: #6E6E6E;
+  --clr-code: #6E6E6E;
+  --bg: #cBc9b1;
+  --bg-code: #BBB9A1;
+  --bg-tb-hd: #BBB9A1;
+  --bg-block: initial;
+  --clr-link: #9B55C3;
+  --clr-title: #6E6E6E;
+  --clr-todo: #5D5C01;
   --bg-todo: initial;
-  --clr-done: #778ca3;
+  --clr-done: #959595;
   --bg-done: initial;
-  --ts-clr: #009c9f;
+  --ts-clr: #4170B3;
   --mg: 20px;
   --w-toc: 300px;
   --bg-keyword: initial;
-  --clr-keyword: #009c9f;
+  --clr-keyword: #4170B3;
   --bg-constant: initial;
-  --clr-constant: #005cc5;
+  --clr-constant: #9B55C3;
   --bg-comment: initial;
-  --clr-comment: #778ca3;
+  --clr-comment: #959595;
   --bg-comment-delimiter: initial;
-  --clr-comment-delimiter: initial;
+  --clr-comment-delimiter: #959595;
   --bg-function: initial;
-  --clr-function: #fa1090;
+  --clr-function: #4A8F30;
   --bg-variable: initial;
-  --clr-variable: #ff5200;
+  --clr-variable: #787800;
   --bg-preprocessor: initial;
-  --clr-preprocessor: #009c9f;
+  --clr-preprocessor: #FF8512;
   --bg-doc: initial;
-  --clr-doc: initial;
+  --clr-doc: #7D7C21;
   --bg-builtin: initial;
-  --clr-builtin: #009c9f;
+  --clr-builtin: #528FD1;
   --bg-string: initial;
-  --clr-string: #00afef;
+  --clr-string: #5D5C01;
 }
 
 body[data-mode='light'] {
@@ -204,46 +137,51 @@ body[data-mode='light'] {
 body[data-mode='dark'] {
   background: var(--bg);
   color: var(--clr);
-  --bc-tb: #cccccc;
+  --bc-tb: #DCDCCC;
   --bc-block: initial;
-  --clr: #cccccc;
-  --clr-code: #cccccc;
-  --clr-tb-hd: #cccccc;
-  --bg: #2d2d2d;
-  --bg-tb-hd: #515151;
-  --bg-code: #515151;
-  --bg-block: initial;
-  --clr-link: #66cccc;
-  --clr-title: #cccccc;
-  --clr-todo: #99cc99;
+  --clr: #DCDCCC;
+  --clr-code: #8FB28F;
+  --clr-tb-hd: #8FB28F;
+  --bg: #3F3F3F;
+  --bg-tb-hd: #2B2B2B;
+  --bg-code: #2B2B2B;
+  --bg-block: #494949;
+  --clr-link: #BFEBBF;
+  --clr-title: #DCDCCC;
+  --clr-todo: #CC9393;
   --bg-todo: initial;
-  --clr-done: #999999;
+  --clr-done: #7F9F7F;
   --bg-done: initial;
-  --ts-clr: #cc99cc;
+  --ts-clr: #F0DFAF;
   --mg: 20px;
   --w-toc: 300px;
   --bg-keyword: initial;
-  --clr-keyword: #cc99cc;
+  --clr-keyword: #F0DFAF;
   --bg-constant: initial;
-  --clr-constant: #66cccc;
+  --clr-constant: #BFEBBF;
   --bg-comment: initial;
-  --clr-comment: #999999;
+  --clr-comment: #7F9F7F;
   --bg-comment-delimiter: initial;
-  --clr-comment-delimiter: #999999;
+  --clr-comment-delimiter: #5F7F5F;
   --bg-function: initial;
-  --clr-function: #6699cc;
+  --clr-function: #93E0E3;
   --bg-variable: initial;
-  --clr-variable: #f99157;
+  --clr-variable: #DFAF8F;
   --bg-preprocessor: initial;
-  --clr-preprocessor: #cc99cc;
+  --clr-preprocessor: #94BFF3;
   --bg-doc: initial;
-  --clr-doc: #999999;
+  --clr-doc: #9FC59F;
   --bg-builtin: initial;
-  --clr-builtin: #66cccc;
+  --clr-builtin: #DCDCCC;
   --bg-string: initial;
-  --clr-string: #99cc99;
+  --clr-string: #CC9393;
 }
 
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
 
 /* ootb page layout ***********************************************************/
 #view-controls {
@@ -401,17 +339,6 @@ code {
   padding-right: 5px;
 }
 
-pre {
-    padding: 1rem;
-    border: 1px solid var(--bc-block);
-    border-radius: 0.5rem;
-    background: var(--bg-block);
-    font-size: 0.9rem;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: thin;
-}
-
 pre::-webkit-scrollbar {
   display: none;
 }
@@ -468,6 +395,22 @@ a:hover {
 
 img {
   max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
 }
 
 .org-src-wrapper {
@@ -589,23 +532,7 @@ img {
 </head>
 <body>
 <div id="preamble" class="status">
-<div id='injected-header' class='injected'><div>
-  <header>
-    <a href="#">
-      <h1 id="myname">Your Name</h1>
-    </a>
-    <div class="separator"></div>
-    <nav>
-      <div class="nav-links">	
-	<a href="#" class="nav-item">Foo</a>
-	<a href="#" class="nav-item">Bar</a>
-	<a href="#" class="nav-item">Baz</a>
-      </div>
-    </nav>
-    <div class="separator"></div>
-  </header>
-</div>
-</div><div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
 <h1 class="title">Title</h1>
@@ -613,53 +540,53 @@ img {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7884087">H1</a>
+<li><a href="#org1a99be0">H1</a>
 <ul>
-<li><a href="#orge4d1740">H2</a>
+<li><a href="#org8dd25e4">H2</a>
 <ul>
-<li><a href="#orgae3aab8">H3</a></li>
+<li><a href="#orgce39fdb">H3</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgdbb9829">Source Blocks</a></li>
-<li><a href="#org5e2631e">Pretty Symbols</a>
+<li><a href="#org306e27a">Source Blocks</a></li>
+<li><a href="#org37c15fb">Pretty Symbols</a>
 <ul>
-<li><a href="#org7a11e59">Basic</a></li>
-<li><a href="#orgef25a44">LaTeX</a></li>
+<li><a href="#org5b15947">Basic</a></li>
+<li><a href="#org72e38fb">LaTeX</a></li>
 </ul>
 </li>
-<li><a href="#orgb2b63b0">Table</a></li>
-<li><a href="#org9f473bb">Lists</a>
+<li><a href="#org50f19c0">Table</a></li>
+<li><a href="#org67de628">Lists</a>
 <ul>
-<li><a href="#orgf5282bb">todo List</a></li>
-<li><a href="#orge3f531a">Simple List</a></li>
-<li><a href="#orga02bff8">Sorted List</a></li>
-<li><a href="#org5493849">Check List</a></li>
+<li><a href="#org3a79eeb">todo List</a></li>
+<li><a href="#orge6aef10">Simple List</a></li>
+<li><a href="#org5a46323">Sorted List</a></li>
+<li><a href="#orgccc93c4">Check List</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7884087" class="outline-2">
-<h2 id="org7884087">H1</h2>
-<div class="outline-text-2" id="text-org7884087">
+<div id="outline-container-org1a99be0" class="outline-2">
+<h2 id="org1a99be0">H1</h2>
+<div class="outline-text-2" id="text-org1a99be0">
 </div>
-<div id="outline-container-orge4d1740" class="outline-3">
-<h3 id="orge4d1740">H2</h3>
-<div class="outline-text-3" id="text-orge4d1740">
+<div id="outline-container-org8dd25e4" class="outline-3">
+<h3 id="org8dd25e4">H2</h3>
+<div class="outline-text-3" id="text-org8dd25e4">
 </div>
-<div id="outline-container-orgae3aab8" class="outline-4">
-<h4 id="orgae3aab8">H3</h4>
-<div class="outline-text-4" id="text-orgae3aab8">
+<div id="outline-container-orgce39fdb" class="outline-4">
+<h4 id="orgce39fdb">H3</h4>
+<div class="outline-text-4" id="text-orgce39fdb">
 </div>
-<div id="outline-container-org2a571cf" class="outline-5">
-<h5 id="org2a571cf">H4</h5>
-<div class="outline-text-5" id="text-org2a571cf">
+<div id="outline-container-org859e821" class="outline-5">
+<h5 id="org859e821">H4</h5>
+<div class="outline-text-5" id="text-org859e821">
 </div>
-<div id="outline-container-orgd6d183f" class="outline-6">
-<h6 id="orgd6d183f">H5</h6>
+<div id="outline-container-org4eff5fa" class="outline-6">
+<h6 id="org4eff5fa">H5</h6>
 </div>
 </div>
 </div>
@@ -667,9 +594,9 @@ img {
 </div>
 
 
-<div id="outline-container-orgdbb9829" class="outline-2">
-<h2 id="orgdbb9829">Source Blocks</h2>
-<div class="outline-text-2" id="text-orgdbb9829">
+<div id="outline-container-org306e27a" class="outline-2">
+<h2 id="org306e27a">Source Blocks</h2>
+<div class="outline-text-2" id="text-org306e27a">
 <div class='org-src-wrapper'>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">foo</span> (a b c)
@@ -678,32 +605,32 @@ img {
 
 (foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
 </pre>
-</div><button class='copyBtn' name=btn_eb04af8723644f2eaf91dd15cb7bc5f1>copy</button>
+</div><button class='copyBtn' name=btn_c9458b0a453d4684bdaeb16be51bb501>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_eb04af8723644f2eaf91dd15cb7bc5f1=document.querySelector('button[name=btn_eb04af8723644f2eaf91dd15cb7bc5f1]');
-copyBtnbtn_eb04af8723644f2eaf91dd15cb7bc5f1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_eb04af8723644f2eaf91dd15cb7bc5f1.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_eb04af8723644f2eaf91dd15cb7bc5f1.textContent = 'copy';}, 3000);
+var copyBtnbtn_c9458b0a453d4684bdaeb16be51bb501=document.querySelector('button[name=btn_c9458b0a453d4684bdaeb16be51bb501]');
+copyBtnbtn_c9458b0a453d4684bdaeb16be51bb501.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_c9458b0a453d4684bdaeb16be51bb501.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_c9458b0a453d4684bdaeb16be51bb501.textContent = 'copy';}, 3000);
 });
 </script>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5e2631e" class="outline-2">
-<h2 id="org5e2631e">Pretty Symbols</h2>
-<div class="outline-text-2" id="text-org5e2631e">
+<div id="outline-container-org37c15fb" class="outline-2">
+<h2 id="org37c15fb">Pretty Symbols</h2>
+<div class="outline-text-2" id="text-org37c15fb">
 </div>
-<div id="outline-container-org7a11e59" class="outline-3">
-<h3 id="org7a11e59">Basic</h3>
-<div class="outline-text-3" id="text-org7a11e59">
+<div id="outline-container-org5b15947" class="outline-3">
+<h3 id="org5b15947">Basic</h3>
+<div class="outline-text-3" id="text-org5b15947">
 <p>
 &Gamma;, &gamma;, &Sigma;, &sigma;, &Delta;, &delta;
 </p>
 </div>
 </div>
-<div id="outline-container-orgef25a44" class="outline-3">
-<h3 id="orgef25a44">LaTeX</h3>
-<div class="outline-text-3" id="text-orgef25a44">
+<div id="outline-container-org72e38fb" class="outline-3">
+<h3 id="org72e38fb">LaTeX</h3>
+<div class="outline-text-3" id="text-org72e38fb">
 <p>
 \(\Gamma \vdash \Delta\)
 </p>
@@ -715,9 +642,9 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 
-<div id="outline-container-orgb2b63b0" class="outline-2">
-<h2 id="orgb2b63b0">Table</h2>
-<div class="outline-text-2" id="text-orgb2b63b0">
+<div id="outline-container-org50f19c0" class="outline-2">
+<h2 id="org50f19c0">Table</h2>
+<div class="outline-text-2" id="text-org50f19c0">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -771,25 +698,25 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 
-<div id="outline-container-org9f473bb" class="outline-2">
-<h2 id="org9f473bb">Lists</h2>
-<div class="outline-text-2" id="text-org9f473bb">
+<div id="outline-container-org67de628" class="outline-2">
+<h2 id="org67de628">Lists</h2>
+<div class="outline-text-2" id="text-org67de628">
 </div>
-<div id="outline-container-orgf5282bb" class="outline-3">
-<h3 id="orgf5282bb">todo List</h3>
-<div class="outline-text-3" id="text-orgf5282bb">
+<div id="outline-container-org3a79eeb" class="outline-3">
+<h3 id="org3a79eeb">todo List</h3>
+<div class="outline-text-3" id="text-org3a79eeb">
 </div>
-<div id="outline-container-org6c15984" class="outline-5">
-<h5 id="org6c15984"><span class="todo TODO">TODO</span> todo</h5>
+<div id="outline-container-orgf41c780" class="outline-5">
+<h5 id="orgf41c780"><span class="todo TODO">TODO</span> todo</h5>
 </div>
-<div id="outline-container-orgc57a7f2" class="outline-5">
-<h5 id="orgc57a7f2"><span class="done DONE">DONE</span> done</h5>
+<div id="outline-container-org4a86f2c" class="outline-5">
+<h5 id="org4a86f2c"><span class="done DONE">DONE</span> done</h5>
 </div>
 </div>
 
-<div id="outline-container-orge3f531a" class="outline-3">
-<h3 id="orge3f531a">Simple List</h3>
-<div class="outline-text-3" id="text-orge3f531a">
+<div id="outline-container-orge6aef10" class="outline-3">
+<h3 id="orge6aef10">Simple List</h3>
+<div class="outline-text-3" id="text-orge6aef10">
 <ul class="org-ul">
 <li>item</li>
 <li>item</li>
@@ -798,9 +725,9 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 
-<div id="outline-container-orga02bff8" class="outline-3">
-<h3 id="orga02bff8">Sorted List</h3>
-<div class="outline-text-3" id="text-orga02bff8">
+<div id="outline-container-org5a46323" class="outline-3">
+<h3 id="org5a46323">Sorted List</h3>
+<div class="outline-text-3" id="text-org5a46323">
 <ol class="org-ol">
 <li>item</li>
 <li>item</li>
@@ -809,9 +736,9 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 
-<div id="outline-container-org5493849" class="outline-3">
-<h3 id="org5493849">Check List</h3>
-<div class="outline-text-3" id="text-org5493849">
+<div id="outline-container-orgccc93c4" class="outline-3">
+<h3 id="orgccc93c4">Check List</h3>
+<div class="outline-text-3" id="text-orgccc93c4">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> item</li>
 <li class="on"><code>[X]</code> item</li>
@@ -821,18 +748,11 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 <div id="postamble" class="status">
-<div id='injected-footer' class='injected'><div>
-  <div class="separator"></div>
-  <footer>
-    <address>
-      <div id="copywrite">&#9400;
-	<a href="mailto:foo@bar.com"> Your Name </a>
-    </address>
-  </footer>
-</div>
-</div><script type="text/javascript">
+<script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
-document.cookie = 'theme-mode=dark'
+document.cookie = 'mode=dark'
+document.cookie = 'light=ample-light'
+document.cookie = 'dark=zenburn'
 /*
 ;; nice-org-html.js
 ;;==============================================================================
@@ -874,14 +794,16 @@ const toc = document.getElementById("table-of-contents");
 document.body.insertBefore(controls, content);
 
 function setMode(mode) {
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
   document.body.dataset.mode = mode;
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
   toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
-  document.cookie = 'theme-mode=' + mode;
+  document.cookie = 'mode=' + mode;
 }
 
 // Set mode based on stored cookie
-let cookie = document.cookie.split('; ').find(r => r.startsWith('theme-mode'))
-let mode = cookie ? cookie.split('=')[1] : 'dark'; // Default
+let modeCookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+let mode = modeCookie ? modeCookie.split('=')[1] : 'dark'; // Default
 setMode(mode);
 
 // Mode toggling
