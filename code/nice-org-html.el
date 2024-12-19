@@ -77,8 +77,10 @@
 (defvar nice-org-html-theme-alist '((light . tsdh-light) (dark . tsdh-dark))
   "Associates light and dark view modes with Emacs themes.")
 
-(defvar nice-org-html-default-mode 'dark
-  "Default nice HTML page view mode ((quote light) or (quote dark)).")
+(defvar nice-org-html-default-mode 'query
+  "Default nice HTML page viewing mode.
+One of: ((quote light) or (quote dark)) or (quote query).
+If (quote query), get for browser-set preference, fallback: (quote dark).")
 
 (defvar nice-org-html-headline-bullets nil
   "If non-nil, headlines are prefixed with bullets.

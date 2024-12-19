@@ -48,9 +48,9 @@ With the README I also publish these samples, which include a basic header and f
       (setq nice-org-html-default-mode 'dark)
       (setq nice-org-html-headline-bullets nil))
   #+end_src
-+ If values for any these variables are /not/ specified, these defaults will be used:
++ If values for any of these variables are /not/ specified, these defaults will be used:
   + Themes: ~tsdh-light~ and ~tsdh-dark~ distributed with GNU Emacs
-  + Default mode: ~'query~
+  + Default viewing mode: ~'query~
     + This will check against the visitor's browser-set preference, and default to ~'dark~ if no preference is specified. Anti-fingerprinting settings may prevent reading the browser setting, or cause the browser to mask it (usually, by showing a preference for ~'light~).
   + Headline bullets: ~'nil~ -- i.e. bullets will /not/ be prefixed to headlines
     + To prefix headlines with the default bullets, instead use:
