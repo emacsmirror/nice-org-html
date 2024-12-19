@@ -529,14 +529,14 @@ Along with the README, I publish these samples, which include a basic header and
 </p>
 
 <ul class="org-ul">
-<li><a href="https://etown.dev/nice-org-html/docs/samples/solarized/sample">solarized</a></li>
-<li><a href="https://etown.dev/nice-org-html/docs/samples/spacemacs/sample">spacemacs</a></li>
-<li><a href="https://etown.dev/nice-org-html/docs/samples/eighties-jazz/sample">eighties-jazz</a></li>
-<li><a href="https://etown.dev/nice-org-html/docs/samples/ample-zenburn/sample">ample-zenburn</a></li>
-<li><a href="https://etown.dev/nice-org-html/docs/samples/tomorrow/sample">tomorrow</a></li>
-<li><a href="https://etown.dev/nice-org-html/docs/samples/leuven/sample">leuven</a></li>
-<li><a href="https://etown.dev/nice-org-html/docs/samples/modus/sample">modus</a></li>
-<li><a href="https://etown.dev/nice-org-html/docs/samples/tsdh/sample">tsdh</a></li>
+<li><a href="https://etown.dev/nice-org-html/samples/solarized/sample">solarized</a></li>
+<li><a href="https://etown.dev/nice-org-html/samples/spacemacs/sample">spacemacs</a></li>
+<li><a href="https://etown.dev/nice-org-html/samples/eighties-jazz/sample">eighties-jazz</a></li>
+<li><a href="https://etown.dev/nice-org-html/samples/ample-zenburn/sample">ample-zenburn</a></li>
+<li><a href="https://etown.dev/nice-org-html/samples/tomorrow/sample">tomorrow</a></li>
+<li><a href="https://etown.dev/nice-org-html/samples/leuven/sample">leuven</a></li>
+<li><a href="https://etown.dev/nice-org-html/samples/modus/sample">modus</a></li>
+<li><a href="https://etown.dev/nice-org-html/samples/tsdh/sample">tsdh</a></li>
 </ul>
 </div>
 </div>
@@ -574,11 +574,11 @@ Obtain the source files and add them to your load path. I prefer MELPA and use-p
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">unless</span> (package-installed-p 'use-package)
   (package-install 'use-package))
 </pre>
-</div><button class='copyBtn' name=btn_7f37f3b294004e598bc02edf8c240362>copy</button>
+</div><button class='copyBtn' name=btn_c8a262f64c0d4fb3801981e99f2ccbff>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_7f37f3b294004e598bc02edf8c240362=document.querySelector('button[name=btn_7f37f3b294004e598bc02edf8c240362]');
-copyBtnbtn_7f37f3b294004e598bc02edf8c240362.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(require 'package)\n(add-to-list 'package-archives\n             '(\"melpa\" . \"http://melpa.org/packages/\"))\n(package-initialize)\n\n(unless (package-installed-p 'use-package)\n  (package-install 'use-package))\n`);copyBtnbtn_7f37f3b294004e598bc02edf8c240362.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_7f37f3b294004e598bc02edf8c240362.textContent = 'copy';}, 3000);
+var copyBtnbtn_c8a262f64c0d4fb3801981e99f2ccbff=document.querySelector('button[name=btn_c8a262f64c0d4fb3801981e99f2ccbff]');
+copyBtnbtn_c8a262f64c0d4fb3801981e99f2ccbff.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(require 'package)\n(add-to-list 'package-archives\n             '(\"melpa\" . \"http://melpa.org/packages/\"))\n(package-initialize)\n\n(unless (package-installed-p 'use-package)\n  (package-install 'use-package))\n`);copyBtnbtn_c8a262f64c0d4fb3801981e99f2ccbff.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_c8a262f64c0d4fb3801981e99f2ccbff.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
@@ -597,11 +597,11 @@ Add something like this to your configuration file:
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-default-mode 'dark)
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-headline-bullets nil))
 </pre>
-</div><button class='copyBtn' name=btn_9f251bfd4c4f4f23889fd77c460da016>copy</button>
+</div><button class='copyBtn' name=btn_e817a55f6572437da8a604b7f16dc172>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_9f251bfd4c4f4f23889fd77c460da016=document.querySelector('button[name=btn_9f251bfd4c4f4f23889fd77c460da016]');
-copyBtnbtn_9f251bfd4c4f4f23889fd77c460da016.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(use-package nice-org-html\n  :hook (org-mode . nice-org-html-mode)\n  :config\n  (setq nice-org-html-theme-alist\n        '((light . solo-jazz)\n          (dark  . tomorrow-night-eighties)))\n  (setq nice-org-html-default-mode 'dark)\n  (setq nice-org-html-headline-bullets nil))\n`);copyBtnbtn_9f251bfd4c4f4f23889fd77c460da016.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_9f251bfd4c4f4f23889fd77c460da016.textContent = 'copy';}, 3000);
+var copyBtnbtn_e817a55f6572437da8a604b7f16dc172=document.querySelector('button[name=btn_e817a55f6572437da8a604b7f16dc172]');
+copyBtnbtn_e817a55f6572437da8a604b7f16dc172.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(use-package nice-org-html\n  :hook (org-mode . nice-org-html-mode)\n  :config\n  (setq nice-org-html-theme-alist\n        '((light . solo-jazz)\n          (dark  . tomorrow-night-eighties)))\n  (setq nice-org-html-default-mode 'dark)\n  (setq nice-org-html-headline-bullets nil))\n`);copyBtnbtn_e817a55f6572437da8a604b7f16dc172.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_e817a55f6572437da8a604b7f16dc172.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
@@ -614,11 +614,11 @@ To prefix headlines with the default bullets, instead use:
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-headline-bullets t)
 </pre>
-</div><button class='copyBtn' name=btn_46aa0bca9e63442aa43be2efb40cd1ed>copy</button>
+</div><button class='copyBtn' name=btn_4291762297344611b7d8515540bde1c5>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_46aa0bca9e63442aa43be2efb40cd1ed=document.querySelector('button[name=btn_46aa0bca9e63442aa43be2efb40cd1ed]');
-copyBtnbtn_46aa0bca9e63442aa43be2efb40cd1ed.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets t)\n`);copyBtnbtn_46aa0bca9e63442aa43be2efb40cd1ed.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_46aa0bca9e63442aa43be2efb40cd1ed.textContent = 'copy';}, 3000);
+var copyBtnbtn_4291762297344611b7d8515540bde1c5=document.querySelector('button[name=btn_4291762297344611b7d8515540bde1c5]');
+copyBtnbtn_4291762297344611b7d8515540bde1c5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets t)\n`);copyBtnbtn_4291762297344611b7d8515540bde1c5.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_4291762297344611b7d8515540bde1c5.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
@@ -630,11 +630,11 @@ Or you can specify headline bullets with a plist like this (the defaults):
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-headline-bullets
       '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h1</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#9673;"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h2</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#10040;"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h3</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#9655;"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h4</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#10625;"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h5</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#9675;"</span>))
 </pre>
-</div><button class='copyBtn' name=btn_ad8ad0fe942544339c262d40597e5456>copy</button>
+</div><button class='copyBtn' name=btn_b3260b38a19b43d38a1aa4842d1bd75e>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_ad8ad0fe942544339c262d40597e5456=document.querySelector('button[name=btn_ad8ad0fe942544339c262d40597e5456]');
-copyBtnbtn_ad8ad0fe942544339c262d40597e5456.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets\n      '(:h1 \"◉\" :h2 \"✸\" :h3 \"▷\" :h4 \"⦁\" :h5 \"○\"))\n`);copyBtnbtn_ad8ad0fe942544339c262d40597e5456.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_ad8ad0fe942544339c262d40597e5456.textContent = 'copy';}, 3000);
+var copyBtnbtn_b3260b38a19b43d38a1aa4842d1bd75e=document.querySelector('button[name=btn_b3260b38a19b43d38a1aa4842d1bd75e]');
+copyBtnbtn_b3260b38a19b43d38a1aa4842d1bd75e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets\n      '(:h1 \"◉\" :h2 \"✸\" :h3 \"▷\" :h4 \"⦁\" :h5 \"○\"))\n`);copyBtnbtn_b3260b38a19b43d38a1aa4842d1bd75e.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_b3260b38a19b43d38a1aa4842d1bd75e.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
@@ -660,11 +660,11 @@ These variables may also be set globally, and then used or overridden during int
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-js <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/script.js"</span>)
 </pre>
-</div><button class='copyBtn' name=btn_c0e290c9c6a4427ca0d686405b820052>copy</button>
+</div><button class='copyBtn' name=btn_562d66d35cef4537a7411f50b590a3ee>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_c0e290c9c6a4427ca0d686405b820052=document.querySelector('button[name=btn_c0e290c9c6a4427ca0d686405b820052]');
-copyBtnbtn_c0e290c9c6a4427ca0d686405b820052.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq nice-org-html-header \"path/to/your/header.html\")\n\n(setq nice-org-html-footer \"path/to/your/footer.html\")\n\n(setq nice-org-html-css \"path/to/your/style.css\")\n\n(setq nice-org-html-js \"path/to/your/script.js\")\n`);copyBtnbtn_c0e290c9c6a4427ca0d686405b820052.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_c0e290c9c6a4427ca0d686405b820052.textContent = 'copy';}, 3000);
+var copyBtnbtn_562d66d35cef4537a7411f50b590a3ee=document.querySelector('button[name=btn_562d66d35cef4537a7411f50b590a3ee]');
+copyBtnbtn_562d66d35cef4537a7411f50b590a3ee.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq nice-org-html-header \"path/to/your/header.html\")\n\n(setq nice-org-html-footer \"path/to/your/footer.html\")\n\n(setq nice-org-html-css \"path/to/your/style.css\")\n\n(setq nice-org-html-js \"path/to/your/script.js\")\n`);copyBtnbtn_562d66d35cef4537a7411f50b590a3ee.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_562d66d35cef4537a7411f50b590a3ee.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
@@ -679,11 +679,11 @@ This package is particularly well-suited to <i>publishing</i> Org <i>projects</i
 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:publishing-function</span> #'nice-org-html-publish-to-html
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">...</span>
 </pre>
-</div><button class='copyBtn' name=btn_c3db0a924db9421ea3ddbf7ee352892e>copy</button>
+</div><button class='copyBtn' name=btn_1023c723c4734db9a60efe83d6685229>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_c3db0a924db9421ea3ddbf7ee352892e=document.querySelector('button[name=btn_c3db0a924db9421ea3ddbf7ee352892e]');
-copyBtnbtn_c3db0a924db9421ea3ddbf7ee352892e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`;; ...\n:publishing-function #'nice-org-html-publish-to-html\n;; ...\n`);copyBtnbtn_c3db0a924db9421ea3ddbf7ee352892e.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_c3db0a924db9421ea3ddbf7ee352892e.textContent = 'copy';}, 3000);
+var copyBtnbtn_1023c723c4734db9a60efe83d6685229=document.querySelector('button[name=btn_1023c723c4734db9a60efe83d6685229]');
+copyBtnbtn_1023c723c4734db9a60efe83d6685229.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`;; ...\n:publishing-function #'nice-org-html-publish-to-html\n;; ...\n`);copyBtnbtn_1023c723c4734db9a60efe83d6685229.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_1023c723c4734db9a60efe83d6685229.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
@@ -709,11 +709,11 @@ For more granular per-project configuration, there is a publishing-function-gene
      <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/style.css"</span>
      <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/script.js"</span>)))
 </pre>
-</div><button class='copyBtn' name=btn_61f1e46669de4954b10575972111499a>copy</button>
+</div><button class='copyBtn' name=btn_ac52e87b207e485ba385ae651dfa1212>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_61f1e46669de4954b10575972111499a=document.querySelector('button[name=btn_61f1e46669de4954b10575972111499a]');
-copyBtnbtn_61f1e46669de4954b10575972111499a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org\"\n   :base-directory \"path/to/source-x/\"       \n   :publishing-directory \"path/to/target-x/\"\n   ;; ...\n   :publishing-function\n   ,(nice-org-html-make-publishing-function\n     '((light . solo-jazz) (dark . tomorrow-night-eighties))\n     'dark\n     '(:h1 \"\" :h2 \"✸\" :h3 \"▷\" :h4 \"\" :h5 \"\")\n     \"path/to/your/header.html\"\n     \"path/to/your/footer.html\"\n     \"path/to/your/style.css\"\n     \"path/to/your/script.js\")))\n`);copyBtnbtn_61f1e46669de4954b10575972111499a.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_61f1e46669de4954b10575972111499a.textContent = 'copy';}, 3000);
+var copyBtnbtn_ac52e87b207e485ba385ae651dfa1212=document.querySelector('button[name=btn_ac52e87b207e485ba385ae651dfa1212]');
+copyBtnbtn_ac52e87b207e485ba385ae651dfa1212.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org\"\n   :base-directory \"path/to/source-x/\"       \n   :publishing-directory \"path/to/target-x/\"\n   ;; ...\n   :publishing-function\n   ,(nice-org-html-make-publishing-function\n     '((light . solo-jazz) (dark . tomorrow-night-eighties))\n     'dark\n     '(:h1 \"\" :h2 \"✸\" :h3 \"▷\" :h4 \"\" :h5 \"\")\n     \"path/to/your/header.html\"\n     \"path/to/your/footer.html\"\n     \"path/to/your/style.css\"\n     \"path/to/your/script.js\")))\n`);copyBtnbtn_ac52e87b207e485ba385ae651dfa1212.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_ac52e87b207e485ba385ae651dfa1212.textContent = 'copy';}, 3000);
 });
 </script>
 </div></li>
