@@ -39,14 +39,16 @@ const toc = document.getElementById("table-of-contents");
 document.body.insertBefore(controls, content);
 
 function setMode(mode) {
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
   document.body.dataset.mode = mode;
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
   toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
-  document.cookie = 'theme-mode=' + mode;
+  document.cookie = 'mode=' + mode;
 }
 
 // Set mode based on stored cookie
-let cookie = document.cookie.split('; ').find(r => r.startsWith('theme-mode'))
-let mode = cookie ? cookie.split('=')[1] : 'dark'; // Default
+let modeCookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+let mode = modeCookie ? modeCookie.split('=')[1] : 'dark'; // Default
 setMode(mode);
 
 // Mode toggling

@@ -166,6 +166,11 @@ body[data-mode='dark'] {
   --clr-string: #{dark:font-lock-string-face:foreground};
 }
 
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
 
 /* ootb page layout ***********************************************************/
 #view-controls {
@@ -323,17 +328,6 @@ code {
   padding-right: 5px;
 }
 
-pre {
-    padding: 1rem;
-    border: 1px solid var(--bc-block);
-    border-radius: 0.5rem;
-    background: var(--bg-block);
-    font-size: 0.9rem;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: thin;
-}
-
 pre::-webkit-scrollbar {
   display: none;
 }
@@ -390,6 +384,22 @@ a:hover {
 
 img {
   max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
 }
 
 .org-src-wrapper {
