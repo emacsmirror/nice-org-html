@@ -7,14 +7,14 @@ This package generates prettier, responsive websites from .org files and your ch
 
 Along with the README, I publish these samples, which include a basic header and footer:
 
-+ [[https://etown.dev/nice-org-html/samples/solarized/sample][solarized]]
-+ [[https://etown.dev/nice-org-html/samples/spacemacs/sample][spacemacs]]
-+ [[https://etown.dev/nice-org-html/samples/eighties-jazz/sample][eighties-jazz]]
-+ [[https://etown.dev/nice-org-html/samples/ample-zenburn/sample.org][ample-zenburn]]
-+ [[https://etown.dev/nice-org-html/samples/tomorrow/sample.org][tomorrow]]
-+ [[https://etown.dev/nice-org-html/samples/leuven/sample.org][leuven]]
-+ [[https://etown.dev/nice-org-html/samples/modus/sample.org][modus]]
-+ [[https://etown.dev/nice-org-html/samples/tsdh/sample.org][tsdh]]
++ [[https://etown.dev/nice-org-html/docs/samples/solarized/sample][solarized]]
++ [[https://etown.dev/nice-org-html/docs/samples/spacemacs/sample][spacemacs]]
++ [[https://etown.dev/nice-org-html/docs/samples/eighties-jazz/sample][eighties-jazz]]
++ [[https://etown.dev/nice-org-html/docs/samples/ample-zenburn/sample][ample-zenburn]]
++ [[https://etown.dev/nice-org-html/docs/samples/tomorrow/sample][tomorrow]]
++ [[https://etown.dev/nice-org-html/docs/samples/leuven/sample][leuven]]
++ [[https://etown.dev/nice-org-html/docs/samples/modus/sample][modus]]
++ [[https://etown.dev/nice-org-html/docs/samples/tsdh/sample][tsdh]]
 
 * About this package
  nice-org-html defines an Emacs pipeline for [[https://orgmode.org/manual/Exporting.html][exporting]] Org files, or [[https://www.gnu.org/software/emacs/manual/html_node/org/Publishing.html][publishing]] Org projects, to HTML. The generated HTML is optimized for readability and responsiveness, esp. of documents that include code, and makes it easy to achieve a custom look-and-feel, in part by leveraging the variety of themes available for Emacs. Under the hood, this is achieved by:
