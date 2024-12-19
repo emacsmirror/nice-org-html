@@ -38,24 +38,36 @@ const toc = document.getElementById("table-of-contents");
 // Move sticky control bar (injected within preamble)
 document.body.insertBefore(controls, content);
 
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
 function setMode(mode) {
-  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
   document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
   document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
   toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
   document.cookie = 'mode=' + mode;
 }
 
-// Set mode based on stored cookie
-let modeCookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
-let mode = modeCookie ? modeCookie.split('=')[1] : 'dark'; // Default
-setMode(mode);
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
 
 // Mode toggling
 toggleModeBtn.addEventListener('click', () => {
-  mode = document.body.dataset.mode === 'dark' ? 'light' : 'dark';
-  setMode(mode);
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
 })
+
 
 // Jump to top
 let scrollY = document.documentElement.scrollTop;

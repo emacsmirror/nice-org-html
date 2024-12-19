@@ -258,8 +258,8 @@ Else, bullets are strings, b1...b5, specified by plist of form:
      (buffer-string))
    "<script type=\"text/javascript\">\n"
    "<!--/*--><![CDATA[/*><!--*/\n"
-   "document.cookie = 'mode="
-   (if (eq nice-org-html-default-mode 'light) "light" "dark") "'\n"
+   "if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {\n"
+   "document.cookie = 'mode=" (symbol-name nice-org-html-default-mode) "'\n}\n"
    "document.cookie = 'light="
    (symbol-name (cdr (assoc 'light nice-org-html-theme-alist))) "'\n"
    "document.cookie = 'dark="

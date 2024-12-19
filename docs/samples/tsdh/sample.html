@@ -688,11 +688,11 @@ pre.src {
 
 (foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
 </pre>
-</div><button class='copyBtn' name=btn_4d5bd5f06a414572bab2e39e380cb616>copy</button>
+</div><button class='copyBtn' name=btn_038b9d696efc413ba12cf925d559d572>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_4d5bd5f06a414572bab2e39e380cb616=document.querySelector('button[name=btn_4d5bd5f06a414572bab2e39e380cb616]');
-copyBtnbtn_4d5bd5f06a414572bab2e39e380cb616.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_4d5bd5f06a414572bab2e39e380cb616.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_4d5bd5f06a414572bab2e39e380cb616.textContent = 'copy';}, 3000);
+var copyBtnbtn_038b9d696efc413ba12cf925d559d572=document.querySelector('button[name=btn_038b9d696efc413ba12cf925d559d572]');
+copyBtnbtn_038b9d696efc413ba12cf925d559d572.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_038b9d696efc413ba12cf925d559d572.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_038b9d696efc413ba12cf925d559d572.textContent = 'copy';}, 3000);
 });
 </script>
 </div>
@@ -842,7 +842,9 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div><script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
 document.cookie = 'mode=dark'
+}
 document.cookie = 'light=tsdh-light'
 document.cookie = 'dark=tsdh-dark'
 /*
@@ -885,24 +887,36 @@ const toc = document.getElementById("table-of-contents");
 // Move sticky control bar (injected within preamble)
 document.body.insertBefore(controls, content);
 
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
 function setMode(mode) {
-  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
   document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
   document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
   toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
   document.cookie = 'mode=' + mode;
 }
 
-// Set mode based on stored cookie
-let modeCookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
-let mode = modeCookie ? modeCookie.split('=')[1] : 'dark'; // Default
-setMode(mode);
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
 
 // Mode toggling
 toggleModeBtn.addEventListener('click', () => {
-  mode = document.body.dataset.mode === 'dark' ? 'light' : 'dark';
-  setMode(mode);
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
 })
+
 
 // Jump to top
 let scrollY = document.documentElement.scrollTop;
