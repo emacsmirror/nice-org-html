@@ -5,7 +5,7 @@
 * tl;dr
 This package generates prettier, responsive websites from .org files and your choice of Emacs themes. You can optionally specify a header, footer, and additional CSS and JS to be included. To see the default output, for my chosen themes and with no header, footer or extras, view this README in your browser [[https://etown.dev/nice-org-html/][here]]. If you're already there, you can find the GitHub repo [[https://github.com/ewantown/nice-org-html][here]].
 
-Along with the README, I publish these samples, which include a basic header and footer:
+With the README I also publish these samples, which include a basic header and footer:
 
 + [[https://etown.dev/nice-org-html/samples/solarized/sample][solarized]]
 + [[https://etown.dev/nice-org-html/samples/spacemacs/sample][spacemacs]]
@@ -17,15 +17,16 @@ Along with the README, I publish these samples, which include a basic header and
 + [[https://etown.dev/nice-org-html/samples/tsdh/sample][tsdh]]
 
 * About this package
- nice-org-html defines an Emacs pipeline for [[https://orgmode.org/manual/Exporting.html][exporting]] Org files, or [[https://www.gnu.org/software/emacs/manual/html_node/org/Publishing.html][publishing]] Org projects, to HTML. The generated HTML is optimized for readability and responsiveness, esp. of documents that include code, and makes it easy to achieve a custom look-and-feel, in part by leveraging the variety of themes available for Emacs. Under the hood, this is achieved by:
+ *nice-org-html* defines an Emacs pipeline for [[https://orgmode.org/manual/Exporting.html][exporting]] Org files, or [[https://www.gnu.org/software/emacs/manual/html_node/org/Publishing.html][publishing]] Org projects, to HTML. The generated HTML is optimized for readability and responsiveness, esp. of documents that include code, and makes it easy to achieve a custom look-and-feel, in part by leveraging the variety of themes available for Emacs. Under the hood, this is achieved by:
 
 1. Extracting colors from user-specified themes, inserting these in a CSS template (nice-org-html.css), and injecting the result into a ~<style>~ element. 
 2. Inserting toggle-buttons for light- and dark-mode viewing, and a click-to-jump table-of-content view, governed by the included scripts (nice-org-html.js).
 3. Extending the default org-to-html export backend to include copy-to-clipboard buttons for source blocks.
-4. Injecting optional, user-defined HTML header and footer, CSS styling and JS scripts.
+4. Injecting (optional) HTML header and footer, CSS styling, and JS scripts.
 
 * How to use it
-+ Obtain the source files and add them to your load path. I prefer MELPA and use-package:
+** Setup
++ Get the source files on your load path. E.g. with MELPA and use-package:
   #+begin_src emacs-lisp
     (require 'package)
     (add-to-list 'package-archives
@@ -47,17 +48,21 @@ Along with the README, I publish these samples, which include a basic header and
       (setq nice-org-html-default-mode 'dark)
       (setq nice-org-html-headline-bullets nil))
   #+end_src
-+ Note, if values for these variables are not specified, the default view mode will be ~'dark~, the mode-associated themes will be the "tsdh-" themes distributed with GNU Emacs, and bullet marks will /not/ be prefixed to headlines.
-  + To prefix headlines with the default bullets, instead use:
-    #+begin_src emacs-lisp
-      (setq nice-org-html-headline-bullets t)
-    #+end_src    
-  + Or you can specify headline bullets with a plist like this (the defaults):
-    #+begin_src emacs-lisp
-      (setq nice-org-html-headline-bullets
-            '(:h1 "◉" :h2 "✸" :h3 "▷" :h4 "⦁" :h5 "○"))
-    #+end_src
-    
++ If values for any these variables are /not/ specified, these defaults will be used:
+  + Themes: ~tsdh-light~ and ~tsdh-dark~ distributed with GNU Emacs
+  + Default mode: ~'query~
+    + This will check against the visitor's browser-set preference, and default to ~'dark~ if no preference is specified. Anti-fingerprinting settings may prevent reading the browser setting, or cause the browser to mask it (usually, by showing a preference for ~'light~).
+  + Headline bullets: ~'nil~ -- i.e. bullets will /not/ be prefixed to headlines
+    + To prefix headlines with the default bullets, instead use:
+      #+begin_src emacs-lisp
+        (setq nice-org-html-headline-bullets t)
+      #+end_src    
+    + Or you can specify headline bullets with a plist like this (the defaults):
+      #+begin_src emacs-lisp
+        (setq nice-org-html-headline-bullets
+              '(:h1 "◉" :h2 "✸" :h3 "▷" :h4 "⦁" :h5 "○"))
+      #+end_src
+** Exporting          
 + After loading this package and hooking nice-org-html-mode to org-mode, when you open an Org buffer, nice-org-html-mode will activate.
 
 + If you then interactively export your Org buffer via the dispatcher (C-c C-e), you will be presented with options to export to 'nice HTML', in addition to the basic HTML export options.
@@ -75,7 +80,7 @@ Along with the README, I publish these samples, which include a basic header and
 
     (setq nice-org-html-js "path/to/your/script.js")
   #+end_src
-
+** Publishing
 + This package is particularly well-suited to /publishing/ Org /projects/, as websites comprised of many linked pages. The included publishing function, ~nice-org-html-publish-to-html~, relies on global values for all of the above variables. To use it, in specifying the value of ~org-publish-projects-alist~, for a given project just specify:
 
   #+begin_src emacs-lisp
@@ -84,7 +89,7 @@ Along with the README, I publish these samples, which include a basic header and
     ;; ...
   #+end_src
 
-+ For more granular per-project configuration, there is a publishing-function-generating macro, ~nice-org-html-make-publishing-function~, which takes values for all of the above configuration variables, and defines-then-returns a publishing function unique to that invocation. For example, your per-project configuration - i.e. the value of ~org-publish-projects-alist~ - may look something like this:
++ For more granular per-project configuration, there is a publishing-function-generating macro, ~nice-org-html-make-publishing-function~, which takes values for all of the above configuration variables, and defines a publishing function unique to that invocation. For example, your per-project configuration - i.e. the value of ~org-publish-projects-alist~ - may look something like this:
   
   #+begin_src emacs-lisp
     `(("project-x/files"
@@ -104,8 +109,7 @@ Along with the README, I publish these samples, which include a basic header and
   #+end_src
 
 * Things to keep in mind
-+ *Important:* for downloaded themes, you must run ~M-x load-theme~ /before/ exporting
-  + Failing to do so may brick your Emacs instance, requiring a restart
++ *Important*: for downloaded themes, you must run ~M-x load-theme~ once, at some point, /before/ exporting or publishing, so that Emacs "recognizes" the theme as safe to load. Failure to do so may brick an Emacs instance, requiring a restart.
 
 + You can specify ~""~ as the bullet for a headline level to omit bullets for that level.
       
@@ -117,6 +121,15 @@ Along with the README, I publish these samples, which include a basic header and
   
 + The CSS specified by ~nice-org-html-css~ may override the default styling.
 
+* Contributing
++ If you find a bug and want it fixed, please raise an issue.
++ If you would like to add or refine something feel free to:
+  1. Fork the repo
+  2. Clone your fork and develop / use it
+  3. Create a pull request -- I'll probably approve it
++ Note: there are so many themes for Emacs, that it's tough to make them all render nicely with a uniform mapping of face-attributes to CSS variables. But fear not! If you find that this package doesn't "play nice" with your preferred theme, there is a built-in mechanism for re-mapping variables on a per-theme basis, precisely to handle these outliers. Just raise an issue, or take a look at the CSS specific to 'leuven' themes and create a PR with something similar.
+  
 * Credits
++ All of the theme developers, without which this package would be useless.
 + Shi Tianshu's [[https://github.com/DogLooksGood/org-html-themify?tab=readme-ov-file][org-html-themify]] provided the basic model for CSS interpolation.
 + Various stackoverflow posts were of great help, but alas, I've lost the links.
