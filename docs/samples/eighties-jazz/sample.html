@@ -46,6 +46,7 @@
 .injected .nav-title {
     text-align: left;
     text-decoration: none;
+    font-weight: 500;
     transition: all .15s ease-in;
     text-transform: uppercase;
     letter-spacing: .075rem;
@@ -80,7 +81,7 @@
 
 .injected .nav-link {
     position: relative;
-    float: right;    
+    float: right;
     margin: 0;
 }
 
@@ -93,23 +94,15 @@
 
 .injected .separator {
     width: 100%;
-    height: 0.2rem;
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+    height: 0.125rem;
+    background: var(--bg-code);
     margin-top: 1rem;    
-}
-
-body[data-theme='light'] .injected .separator {
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
-}
-
-body[data-theme='dark'] .injected .separator {
-    background-image: linear-gradient(to left, rgba(256, 256, 256, 0), rgba(256, 256, 256, 0.75));
 }
 
 .injected address {
     padding-left: 5%;
     margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;    
 }
 
 
@@ -126,6 +119,9 @@ body[data-theme='dark'] .injected .separator {
 	font-size: 2rem;
 	transform: translateX(0.25rem) translateY(-0.5rem);
 	
+    }
+    .injected nav #nav-toggle:checked + label span::before {
+	transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
     }    
     .injected .nav-list {
 	position: relative;
@@ -140,8 +136,8 @@ body[data-theme='dark'] .injected .separator {
     }
     .injected nav #nav-toggle:checked + label + .menu-sep {
 	display: block;
-	width: 100%;
-	margin-left: -5%;
+	width: 100vw;
+	margin-left: -6%;
 	margin-right: -5%;
 	margin-bottom: 1rem;
     }    
@@ -149,13 +145,15 @@ body[data-theme='dark'] .injected .separator {
 	display: block;
 	opacity: 1;
 	max-height: 100rem;
-    }
+    }    
     .injected .nav-item {
 	float: none !important;
 	text-align: center !important;
     }
     .injected .nav-link {
 	line-height: 2rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
 	float: none !important;
     }
 }
@@ -779,11 +777,11 @@ pre.src {
 
 (foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
 </pre>
-</div><button class='copyBtn' name=btn_ce14e8d332dc4f76a1164626f699eaa7>copy</button>
+</div><button class='copyBtn' name=btn_af48e425907342ada99b760ebc4f94bd>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_ce14e8d332dc4f76a1164626f699eaa7=document.querySelector('button[name=btn_ce14e8d332dc4f76a1164626f699eaa7]');
-copyBtnbtn_ce14e8d332dc4f76a1164626f699eaa7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_ce14e8d332dc4f76a1164626f699eaa7.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_ce14e8d332dc4f76a1164626f699eaa7.textContent = 'copy';}, 3000);
+var copyBtnbtn_af48e425907342ada99b760ebc4f94bd=document.querySelector('button[name=btn_af48e425907342ada99b760ebc4f94bd]');
+copyBtnbtn_af48e425907342ada99b760ebc4f94bd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_af48e425907342ada99b760ebc4f94bd.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_af48e425907342ada99b760ebc4f94bd.textContent = 'copy';}, 3000);
 });
 </script>
 </div>
