@@ -14,20 +14,20 @@
     line-height: 1;
 }
 #injected-footer {
-    width: 100%;    
+    width: 100%;
+    line-height: 1;
 }
 
 .injected header {    
     top: 0;
     left: 0;
-    width: 100%;
 }
 .injected footer {
-    text-align: left;
-    width: 100%;
+    bottom: 0;
+    left: 0;
 }
 
-.injected nav {
+.injected nav {    
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding-left: 5%;
@@ -47,17 +47,24 @@
     color: var(--clr-link);
 }
 
-.injected .nav-title {
+.injected .nav-title,
+.injected .nav-author {
     text-align: left;
     text-decoration: none;
-    font-weight: 500;    
-    text-transform: uppercase;
-    letter-spacing: .075rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+.injected .nav-author {
+    padding-right: 2rem;
+}
 
-.injected #nav-toggle {
+.injected .nav-title {    
+    text-transform: uppercase;
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.injected .nav-toggle {
     display: none;
 }
 .injected .nav-button {
@@ -70,17 +77,22 @@
 
 .injected .nav-list {
     display: inline;
-    float: right;    
+    float: right;
     list-style: none;
     margin-bottom: 0;
     margin-top: 0;
 }
 
+.injected footer .nav-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .injected .nav-item {
     position: relative;
     float: left;
-    margin: 0;
-    
+    margin: 0;    
 }
 
 .injected .nav-link {
@@ -96,12 +108,19 @@
 
 .injected .separator {
     width: 100%;
+    max-width: 100vw;
     height: 0.125rem;
-    background: var(--bg-code);
-    margin-top: 1rem;    
+    background: var(--bg-code);    
 }
 
-.injected address {
+.injected header .separator {
+    margin-top: 1rem;
+}
+.injected footer .separator {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+.injected footer address {
     padding-left: 5%;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;    
@@ -109,23 +128,23 @@
 
 
 @media only screen and (max-width: 768px) {
-    .injected .nav-button {
+    /* top */
+    .injected header .nav-button {
 	display: inline;
 	position: relative;
 	float: right;
 	font-size: 1rem;
     }
-    .injected .nav-button span::before {
+    .injected header .nav-button span::before {
 	display: inline-block;
 	content: '\2807';
 	font-size: 2rem;
-	transform: translateX(0.25rem) translateY(-0.5rem);
-	
+	transform: translateX(0.25rem) translateY(-0.5rem);	
     }
-    .injected nav #nav-toggle:checked + label span::before {
+    .injected header #nav-toggle-top:checked + label span::before {
 	transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
     }    
-    .injected .nav-list {
+    .injected header .nav-list {
 	position: relative;
 	display: none;
 	float: none !important;
@@ -136,28 +155,111 @@
 	padding-right: 0;
 	opacity: 0;
     }
-    .injected nav #nav-toggle:checked + label + .menu-sep {
+    .injected header #nav-toggle-top:checked + label + .menu-sep {
+	position: relative;
 	display: block;
-	width: 100vw;
-	margin-left: -6%;
-	margin-right: -5%;
-	margin-bottom: 1rem;
+	width: 111%;
+	left: -5.5%;
+	right: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 1rem;
+	margin-bottom: 1rem;	
     }    
-    .injected nav #nav-toggle:checked + label ~ ul {
+    .injected #nav-toggle-top:checked + label ~ ul {
 	display: block;
 	opacity: 1;
 	max-height: 100rem;
     }    
-    .injected .nav-item {
+    .injected header .nav-item {
 	float: none !important;
 	text-align: center !important;
     }
-    .injected .nav-link {
+    .injected header .nav-link {
 	line-height: 2rem;
 	margin-left: 2rem;
 	margin-right: 2rem;
 	float: none !important;
     }
+
+    /* bottom */
+    .injected footer .nav-button {
+	display: inline;
+	position: relative;
+	float: right;
+	font-size: 1rem;
+    }
+    .injected footer .nav-button span::before {
+	display: inline-block;
+	content: '\2807';
+	font-size: 2rem;
+	transform: translateX(0.25rem) translateY(-0.5rem);	
+    }
+    .injected footer  #nav-toggle-bot:checked + label span::before {
+	transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    }    
+    .injected footer .nav-list {
+	position: relative;
+	display: none;
+	float: none !important;
+	z-index: 5;
+	width: 100%;
+	margin-top: 1rem;
+	padding-left: 0;
+	padding-right: 0;
+	opacity: 0;
+	bottom: -100%;
+    }
+    .injected footer #nav-toggle-bot:checked + label + .menu-sep {
+	position: relative;
+	display: block;
+	width: 111%;
+	left: -5.5%;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+    }    
+    .injected #nav-toggle-bot:checked + label ~ ul {
+	display: block;
+	opacity: 1;
+	max-height: 100rem;
+	bottom: 0;
+    }    
+    .injected footer .nav-item {
+	float: none !important;
+	text-align: center !important;
+    }
+    .injected footer .nav-link {
+	line-height: 2rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	float: none !important;
+    }
+    .injected .nav-author {
+	line-height: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+    }
+    
+    /*
+    .injected footer .nav-list {
+	flex-direction: column;
+	align-items: flex-start;
+	text-align: left;
+	float: left;
+	line-height: 1.5rem;
+	margin-left: 0rem;
+	margin-right: 0rem;
+	margin-bottom: 1rem;
+	padding-left: 0;
+    }        
+    .injected footer .nav-link {
+	margin: 0rem;
+	align-items: flex-start;
+	text-align: left;	
+    }
+    */
 }
 /* nice-org-html.css
 ;;==============================================================================
@@ -682,13 +784,11 @@ pre.src {
 </head>
 <body>
 <div id="preamble" class="status">
-<div id='injected-header' class='injected'><header>
+<div id='injected-header' class='injected'><header>  
   <nav>
-    <a class="nav-title" href="#">
-      Your Name
-    </a>
-    <input id="nav-toggle" type="checkbox">
-    <label class="nav-button" for="nav-toggle">
+    <a class="nav-title" href="#"> Your Name </a>
+    <input class="nav-toggle" id="nav-toggle-top" type="checkbox">
+    <label class="nav-button" for="nav-toggle-top">
       <span/>
     </label>
     <div class="separator menu-sep"></div>
@@ -779,11 +879,11 @@ pre.src {
 
 (foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
 </pre>
-</div><button class='copyBtn' name=btn_90c993be58174b4390207c4f3c98854b>&#10697;</button>
+</div><button class='copyBtn' name=btn_7c7921dbcdf847ca857db667ef3b348e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_90c993be58174b4390207c4f3c98854b=document.querySelector('button[name=btn_90c993be58174b4390207c4f3c98854b]');
-copyBtnbtn_90c993be58174b4390207c4f3c98854b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_90c993be58174b4390207c4f3c98854b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_90c993be58174b4390207c4f3c98854b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7c7921dbcdf847ca857db667ef3b348e=document.querySelector('button[name=btn_7c7921dbcdf847ca857db667ef3b348e]');
+copyBtnbtn_7c7921dbcdf847ca857db667ef3b348e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_7c7921dbcdf847ca857db667ef3b348e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7c7921dbcdf847ca857db667ef3b348e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div>
@@ -922,15 +1022,34 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 <div id="postamble" class="status">
-<div id='injected-footer' class='injected'><div>
+<div id='injected-footer' class='injected'><footer>
   <div class="separator"></div>
-  <footer>
-    <address>
-      <div id="copywrite">&#9400;
-	<a href="mailto:foo@bar.com"> Your Name </a>
-    </address>
-  </footer>
-</div>
+  <nav>
+    <a class="nav-author" href="#">&#9400; Author Name </a>
+    <input class="nav-toggle" id="nav-toggle-bot" type="checkbox">
+    <label class="nav-button" for="nav-toggle-bot">
+      <span/>
+    </label>
+    <div class="separator menu-sep"></div>
+    <ul class="nav-list">
+      <li class="nav-item">
+	<a class="nav-link" href="bar.com"> Linasfask1 </a>
+      </li>
+      <li class="nav-item">
+	<a class="nav-link" href="bar.com"> Linkasdfasd1 </a>
+      </li>
+      <li class="nav-item">
+	<a class="nav-link" href="bar.com"> Linasdk1 </a>
+      </li>
+      <li class="nav-item">
+	<a class="nav-link" href="bar.com"> Linkasdfs1 </a>
+      </li>
+      <li class="nav-item">
+	<a class="nav-link" href="bar.com"> Link </a>
+      </li>
+    </ul>
+  </nav>
+</footer>
 </div><script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {

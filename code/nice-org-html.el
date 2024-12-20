@@ -89,12 +89,29 @@ Else, bullets are strings, b1...b5, specified by plist of form:
 '(:h1 b1 :h2 b2 :h3 b3 :h4 b4 :h5 b5).")
 
 ;; Optional
-(defvar nice-org-html-header ""
-  "Path to (optional) header html file to inject as page header.")
-(defvar nice-org-html-footer ""
-  "Path to (optional) footer html file to inject as page footer.")
+(defvar nice-org-html-header nil
+    "(Optional) structure to interpret, and/or inject, as page header.
+
+If a string, a path to HTML file containing e.g. a <header> element to inject.
+
+If a list, a list of form:
+    '((\"title\"' . url0]) (\"link1 . \"url1\") ... (\"linkN\" . \"urlN\")
+to be interpreted using default header structure, user beware visual overflow.
+If url0 is nil, not a string, \"title\" will not be hyperlinked.")
+
+(defvar nice-org-html-footer nil
+  "(Optional) structure to interpret, and/or inject, as page footer.
+
+If a string, a path to HTML file containing e.g. a <footer> element to inject.
+
+If a list, a list of form:
+    '((\"title\"' . url0]) (\"link1 . \"url1\") ... (\"linkN\" . \"urlN\")
+to be interpreted using footer header structure, user beware visual overflow.
+If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
+
 (defvar nice-org-html-css ""
   "Path to (optional) CSS file to inject.")
+
 (defvar nice-org-html-js ""
   "Path to (optional) JS  file to inject.")
 
@@ -186,7 +203,7 @@ Else, bullets are strings, b1...b5, specified by plist of form:
 ;; HTML Modifications
 
 (defun nice-org-html--inject (export-backend)
-  "Inject custom styling and scripts when EXPORT-BACKEND is nice-html."
+  "Inject custom styling and scripts when EXPORT-BACKEND is `nice-html'."
   (when (eq export-backend 'nice-html)
     (let ((style (nice-org-html--style))
 	  (preamble (nice-org-html--preamble))
@@ -202,26 +219,7 @@ Else, bullets are strings, b1...b5, specified by plist of form:
    "<!--/*--><![CDATA[/*><!--*/\n"
    (with-temp-buffer
      (insert-file-contents nice-org-html--base-css)
-     (when-let* ((bulletvar nice-org-html-headline-bullets)
-		 (bullets
-		  (if (and (listp bulletvar)
-			   (--all?
-			    (and (plist-member bulletvar it)
-				 (stringp (plist-get bulletvar it)))
-			    '(:h1 :h2 :h3 :h4 :h5)))
-		      bulletvar
-		    '(:h1 "◉" :h2 "✸" :h3 "▷" :h4 "⦁" :h5 "○")))
-		 (mkcss
-		  (lambda (n)
-		    (let* ((bullet (plist-get bullets (intern (format ":h%d" n)))))
-		      (format (concat "h%d::before { content: '%s';\n"
-				      "margin-right: calc(%d * 0.2%dem);\n}\n")
-			      (+ 1 n) ;; HTML h1 reserved for title
-			      bullet
-			      (if (equal bullet "") 0 (+ 1 n))
-			      (+ 1 n))))))
-       (insert (--reduce-r-from (concat it acc) ""
-				(--map (funcall mkcss it) '(1 2 3 4 5)))))
+     (when-let* ((css (nice-org-html--bullet-css))) (insert css))
      (when (and (not (equal "" nice-org-html-css))
 		(file-exists-p nice-org-html-css))
        (insert-file-contents nice-org-html-css))
@@ -230,22 +228,73 @@ Else, bullets are strings, b1...b5, specified by plist of form:
    "/*]]>*/-->\n"
    "</style>\n"))
 
+(defun nice-org-html--bullet-css ()
+  "CSS string if `nice-org-html-headline-bullets' is non-nil, else nil."
+  (and-let* ((bulletvar nice-org-html-headline-bullets)
+	     (bullets
+	      (if (and (listp bulletvar)
+		       (--all?
+			(and (plist-member bulletvar it)
+			     (stringp (plist-get bulletvar it)))
+			'(:h1 :h2 :h3 :h4 :h5)))
+		  bulletvar
+		'(:h1 "◉" :h2 "✸" :h3 "▷" :h4 "⦁" :h5 "○")))
+	     (mkcss
+	      (lambda (n)
+		(let* ((bullet (plist-get bullets (intern (format ":h%d" n)))))
+		  (format (concat "h%d::before { content: '%s';\n"
+				  "margin-right: calc(%d * 0.2%dem);\n}\n")
+			  (+ 1 n) ;; HTML h1 reserved for title
+			  bullet
+			  (if (equal bullet "") 0 (+ 1 n))
+			  (+ 1 n))))))
+    (--reduce-r-from (concat it acc) ""
+		     (--map (funcall mkcss it) '(1 2 3 4 5)))))
+
 (defun nice-org-html--preamble ()
   "Construct html preamble to main content area."
-  (concat
-   (with-temp-buffer
-     (when (and (not (equal "" nice-org-html-header))
-		(file-exists-p nice-org-html-header))
-       (insert "<div id='injected-header' class='injected'>")
-       (insert (with-temp-buffer (insert-file-contents nice-org-html-header)
-				 (buffer-string)))
-       (insert "</div>"))
-     (buffer-string))
-   "<div id='view-controls'>"
-   "<div id='toggle-mode' title='Mode'>&#9788;</div>"
-   "<div id='goto-top' title='Top'>&#8963;</div>"
-   "<div id='toggle-toc' title='Contents'>&#9776;</div>"
-   "</div>"))
+  (concat (or (nice-org-html--header-css) "")      
+	  "<div id='view-controls'>"
+	  "<div id='toggle-mode' title='Mode'>&#9788;</div>"
+	  "<div id='goto-top' title='Top'>&#8963;</div>"
+	  "<div id='toggle-toc' title='Contents'>&#9776;</div>"
+	  "</div>"))
+
+(defun nice-org-html--header-css ()
+  "CSS string if `nice-org-html-header' is non-nil, else nil"  
+  (and-let* ((data nice-org-html-header))
+    (or (and (stringp data) (not (equal "" data)) (file-exists-p data)
+	     (concat "<div id='injected-header' class='injected'>"
+		     (with-temp-buffer (insert-file-contents data)
+				       (buffer-string))
+		     "</div>"))
+	(and-let* ((_ (consp data))
+		   (_ (--all? (and (consp it) (stringp (car it))) data))
+		   (tcell (car data))
+		   (thref (cdr tcell))
+		   (links (cdr data))
+		   (link-css
+		    (lambda (c) (concat "<li class='nav-item'>\n"
+				   "<a class='nav-link' href='" (cdr c) "'>\n"
+				   (car c)
+				   "</a>\n</li>"
+				   "<a href='" (car c) "'")))
+		   (title-css
+		    (let* ((tag (concat (or (and thref "a") "span"))))
+		      (concat "<" tag " class='nav-title' "
+			      (or (and (equal tag "a")
+				       (format "href='%s' " thref))
+				  "")
+			      ">\n" (car tcell) "\n</" tag ">\n"))))
+	  (concat "<header>\n <nav>\n" title-css "\n"
+		  "<input id='nav-toggle' type='checkbox'>\n"
+		  "<label class='nav-button' for='nav-toggle'></span></label>\n"
+		  "<div class='separator menu-sep'></div>\n"
+		  "<ul class='nav-list'>\n"
+		  (--reduce-r-from (concat it acc "\n") ""
+				   (--map (funcall link-css it) links))
+		  "</ul>\n" "</nav>\n"
+		  "<div class='separator'></div>\n</header>\n")))))
 
 (defun nice-org-html--postamble ()
   "Construct html postamble to main content area."
