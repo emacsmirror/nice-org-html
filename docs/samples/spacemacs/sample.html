@@ -11,14 +11,13 @@
 <!--/*--><![CDATA[/*><!--*/
 #injected-header {
     width: 100%;
-    line-height: 1;    
+    line-height: 1;
 }
 #injected-footer {
     width: 100%;    
 }
 
 .injected header {    
-    text-align: left;
     top: 0;
     left: 0;
     width: 100%;
@@ -28,40 +27,75 @@
     width: 100%;
 }
 
-.injected h1 {
-    width: 100%;    
-    display: flex;
-    text-align: left;
-    padding-left: 5%;
-    font-family: Charter;
-}
-
 .injected nav {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    text-align: left;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding-left: 5%;
+    padding-right: 5%;
 }
 
-.injected .nav-links {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1.91rem;
+.injected nav a {
+    display: inline;
+    color: var(--clr-title);
+}
+
+.injected nav a:hover {
+    color: var(--clr-link);
+}
+
+.injected .nav-title {
+    text-align: left;
+    text-decoration: none;
+    transition: all .15s ease-in;
+    text-transform: uppercase;
+    letter-spacing: .075rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.injected #nav-toggle {
+    display: none;
+}
+.injected .nav-button {
+    display: none;
+}
+
+.injected .menu-sep {
+    display: none;
+}
+
+.injected .nav-list {
+    display: inline;
+    float: right;    
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .injected .nav-item {
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    padding: 0.5rem 0;
+    float: left;
+    margin: 0;
+    position: relative;
+}
+
+.injected .nav-link {
+    position: relative;
+    float: right;    
+    margin: 0;
+}
+
+.injected .nav-link {
+    margin-left: 2rem;
+    margin-right: 0rem;
+    text-decoration: none;
+    transition: all .15s ease-in;
 }
 
 .injected .separator {
     width: 100%;
     height: 0.2rem;
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
-    margin: 0.5rem auto;
+    margin-top: 1rem;    
 }
 
 body[data-theme='light'] .injected .separator {
@@ -74,7 +108,56 @@ body[data-theme='dark'] .injected .separator {
 
 .injected address {
     padding-left: 5%;
-    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .injected .nav-button {
+	display: inline;
+	position: relative;
+	float: right;
+	font-size: 1rem;
+    }
+    .injected .nav-button span::before {
+	display: inline-block;
+	content: '\2807';
+	font-size: 2rem;
+	transform: translateX(0.25rem) translateY(-0.5rem);
+	
+    }    
+    .injected .nav-list {
+	position: relative;
+	display: none;
+	float: none !important;
+	z-index: 5;
+	width: 100%;
+	margin-top: 1rem;
+	padding-left: 0;
+	padding-right: 0;
+	opacity: 0;
+    }
+    .injected nav #nav-toggle:checked + label + .menu-sep {
+	display: block;
+	width: 100%;
+	margin-left: -5%;
+	margin-right: -5%;
+	margin-bottom: 1rem;
+    }    
+    .injected nav #nav-toggle:checked + label ~ ul {
+	display: block;
+	opacity: 1;
+	max-height: 100rem;
+    }
+    .injected .nav-item {
+	float: none !important;
+	text-align: center !important;
+    }
+    .injected .nav-link {
+	line-height: 2rem;
+	float: none !important;
+    }
 }
 /* nice-org-html.css
 ;;==============================================================================
@@ -599,22 +682,30 @@ pre.src {
 </head>
 <body>
 <div id="preamble" class="status">
-<div id='injected-header' class='injected'><div>
-  <header>
-    <a href="#">
-      <h1 id="myname">Your Name</h1>
+<div id='injected-header' class='injected'><header>
+  <nav>
+    <a class="nav-title" href="#">
+      Your Name
     </a>
-    <div class="separator"></div>
-    <nav>
-      <div class="nav-links">	
-	<a href="#" class="nav-item">Foo</a>
-	<a href="#" class="nav-item">Bar</a>
-	<a href="#" class="nav-item">Baz</a>
-      </div>
-    </nav>
-    <div class="separator"></div>
-  </header>
-</div>
+    <input id="nav-toggle" type="checkbox">
+    <label class="nav-button" for="nav-toggle">
+      <span/>
+    </label>
+    <div class="separator menu-sep"></div>
+    <ul class="nav-list">
+      <li class="nav-item">
+	<a href="#" class="nav-link">Foo</a>
+      </li>
+      <li class="nav-item">
+	<a href="#" class="nav-link">Bar</a>
+      </li>
+      <li class="nav-item">
+	<a href="#" class="nav-link">Baz</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="separator"></div>  
+</header>
 </div><div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -688,11 +779,11 @@ pre.src {
 
 (foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
 </pre>
-</div><button class='copyBtn' name=btn_7517052d953c4b0e9b1686c930f97f2a>copy</button>
+</div><button class='copyBtn' name=btn_46305221e5ef43b5abe7e711aaa7dc93>copy</button>
 <script type='text/javascript'>
-var copyBtnbtn_7517052d953c4b0e9b1686c930f97f2a=document.querySelector('button[name=btn_7517052d953c4b0e9b1686c930f97f2a]');
-copyBtnbtn_7517052d953c4b0e9b1686c930f97f2a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_7517052d953c4b0e9b1686c930f97f2a.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_7517052d953c4b0e9b1686c930f97f2a.textContent = 'copy';}, 3000);
+var copyBtnbtn_46305221e5ef43b5abe7e711aaa7dc93=document.querySelector('button[name=btn_46305221e5ef43b5abe7e711aaa7dc93]');
+copyBtnbtn_46305221e5ef43b5abe7e711aaa7dc93.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_46305221e5ef43b5abe7e711aaa7dc93.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_46305221e5ef43b5abe7e711aaa7dc93.textContent = 'copy';}, 3000);
 });
 </script>
 </div>

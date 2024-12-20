@@ -1,16 +1,24 @@
-<div>
-  <header>
-    <a href="#">
-      <h1 id="myname">Your Name</h1>
+<header>
+  <nav>
+    <a class="nav-title" href="#">
+      Your Name
     </a>
-    <div class="separator"></div>
-    <nav>
-      <div class="nav-links">	
-	<a href="#" class="nav-item">Foo</a>
-	<a href="#" class="nav-item">Bar</a>
-	<a href="#" class="nav-item">Baz</a>
-      </div>
-    </nav>
-    <div class="separator"></div>
-  </header>
-</div>
+    <input id="nav-toggle" type="checkbox">
+    <label class="nav-button" for="nav-toggle">
+      <span/>
+    </label>
+    <div class="separator menu-sep"></div>
+    <ul class="nav-list">
+      <li class="nav-item">
+	<a href="#" class="nav-link">Foo</a>
+      </li>
+      <li class="nav-item">
+	<a href="#" class="nav-link">Bar</a>
+      </li>
+      <li class="nav-item">
+	<a href="#" class="nav-link">Baz</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="separator"></div>  
+</header>
