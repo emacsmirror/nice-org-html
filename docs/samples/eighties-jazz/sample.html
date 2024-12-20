@@ -34,20 +34,23 @@
     padding-right: 5%;
 }
 
-.injected nav a {
+.injected header a,
+.injected footer a {
     display: inline;
     color: var(--clr-title);
+    text-decoration: none;
+    transition: all .15s ease-in;
 }
 
-.injected nav a:hover {
+.injected header a:hover,
+.injected footer a:hover {
     color: var(--clr-link);
 }
 
 .injected .nav-title {
     text-align: left;
     text-decoration: none;
-    font-weight: 500;
-    transition: all .15s ease-in;
+    font-weight: 500;    
     text-transform: uppercase;
     letter-spacing: .075rem;
     margin-top: 1rem;
@@ -74,9 +77,10 @@
 }
 
 .injected .nav-item {
+    position: relative;
     float: left;
     margin: 0;
-    position: relative;
+    
 }
 
 .injected .nav-link {
@@ -88,8 +92,6 @@
 .injected .nav-link {
     margin-left: 2rem;
     margin-right: 0rem;
-    text-decoration: none;
-    transition: all .15s ease-in;
 }
 
 .injected .separator {
@@ -777,11 +779,11 @@ pre.src {
 
 (foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
 </pre>
-</div><button class='copyBtn' name=btn_af48e425907342ada99b760ebc4f94bd>copy</button>
+</div><button class='copyBtn' name=btn_37e65225b3694f4697fd7c10349e19e7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_af48e425907342ada99b760ebc4f94bd=document.querySelector('button[name=btn_af48e425907342ada99b760ebc4f94bd]');
-copyBtnbtn_af48e425907342ada99b760ebc4f94bd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_af48e425907342ada99b760ebc4f94bd.textContent = res ? 'copied' : 'error';setTimeout(() => { copyBtnbtn_af48e425907342ada99b760ebc4f94bd.textContent = 'copy';}, 3000);
+var copyBtnbtn_37e65225b3694f4697fd7c10349e19e7=document.querySelector('button[name=btn_37e65225b3694f4697fd7c10349e19e7]');
+copyBtnbtn_37e65225b3694f4697fd7c10349e19e7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_37e65225b3694f4697fd7c10349e19e7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_37e65225b3694f4697fd7c10349e19e7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div>

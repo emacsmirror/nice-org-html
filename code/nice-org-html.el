@@ -349,7 +349,7 @@ Else, bullets are strings, b1...b5, specified by plist of form:
 
 (defun nice-org-html--copy-src-button (btn-id)
   "Construct html <button> for unique BTN-ID."
-  (concat "<button class='copyBtn' name=" btn-id ">copy</button>"))
+  (concat "<button class='copyBtn' name=" btn-id ">&#10697;</button>"))
 
 (defun nice-org-html--copy-src-script (btn-id txt)
   "Construct html <script> for copy button with BTN-ID and source content TXT."
@@ -357,8 +357,8 @@ Else, bullets are strings, b1...b5, specified by plist of form:
 	  "var copyBtn" btn-id "=document.querySelector('button[name=" btn-id "]');\n"
 	  "copyBtn" btn-id ".addEventListener('click', function(event) {\n"
 	  "let res = copyTextToClipboard(`" txt "`);"
-	  "copyBtn" btn-id ".textContent = res ? 'copied' : 'error';"
-	  "setTimeout(() => { copyBtn" btn-id ".textContent = 'copy';}, 3000);"
+	  "copyBtn" btn-id ".innerHTML = res ? '&#10003;' : 'error';"
+	  "setTimeout(() => { copyBtn" btn-id ".innerHTML = '&#10697;'}, 3000);"
 	  "\n});\n</script>\n"))
 
 (org-export-define-derived-backend 'nice-html 'html

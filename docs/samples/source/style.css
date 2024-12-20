@@ -23,20 +23,23 @@
     padding-right: 5%;
 }
 
-.injected nav a {
+.injected header a,
+.injected footer a {
     display: inline;
     color: var(--clr-title);
+    text-decoration: none;
+    transition: all .15s ease-in;
 }
 
-.injected nav a:hover {
+.injected header a:hover,
+.injected footer a:hover {
     color: var(--clr-link);
 }
 
 .injected .nav-title {
     text-align: left;
     text-decoration: none;
-    font-weight: 500;
-    transition: all .15s ease-in;
+    font-weight: 500;    
     text-transform: uppercase;
     letter-spacing: .075rem;
     margin-top: 1rem;
@@ -63,9 +66,10 @@
 }
 
 .injected .nav-item {
+    position: relative;
     float: left;
     margin: 0;
-    position: relative;
+    
 }
 
 .injected .nav-link {
@@ -77,8 +81,6 @@
 .injected .nav-link {
     margin-left: 2rem;
     margin-right: 0rem;
-    text-decoration: none;
-    transition: all .15s ease-in;
 }
 
 .injected .separator {
