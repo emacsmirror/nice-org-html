@@ -248,65 +248,96 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
 			  bullet
 			  (if (equal bullet "") 0 (+ 1 n))
 			  (+ 1 n))))))
-    (--reduce-r-from (concat it acc) ""
+    (--reduce-from (concat it acc) ""
 		     (--map (funcall mkcss it) '(1 2 3 4 5)))))
 
 (defun nice-org-html--preamble ()
   "Construct html preamble to main content area."
-  (concat (or (nice-org-html--header-css) "")      
+  (concat (or (nice-org-html--header-html) "")      
 	  "<div id='view-controls'>"
 	  "<div id='toggle-mode' title='Mode'>&#9788;</div>"
 	  "<div id='goto-top' title='Top'>&#8963;</div>"
 	  "<div id='toggle-toc' title='Contents'>&#9776;</div>"
 	  "</div>"))
 
-(defun nice-org-html--header-css ()
-  "CSS string if `nice-org-html-header' is non-nil, else nil"  
+(defun nice-org-html--bar-builder (data class)
+  "Constructs components of header/footer bar, returns as pair."
+  (print "PROBE-BAR-BUILDER")
+  (print data)
+  (print "\n")
+  (and-let* ((_ (consp data))
+	     (_ (--all? (and (consp it) (stringp (car it))) data))
+	     (tcell (car data))
+	     (thref (cdr tcell))
+	     (mklink
+	      (lambda (c) (concat "<li class='nav-item'>\n"
+			     "<a class='nav-link' href='" (cdr c) "'>\n"
+			     (car c)
+			     "</a>\n</li>")))
+	     (left-html
+	      (let* ((tag (concat (or (and thref "a") "span"))))
+		(concat "<" tag " class='" class "'"
+			(or (and (equal tag "a")
+				 (format "href='%s' " thref))
+			    "")
+			">\n" (car tcell) "\n</" tag ">\n"))))
+    `(,left-html . ,(--reduce-from (concat acc it "\n") ""      
+				   (--map (funcall  mklink it) (cdr data))))))
+
+(defun nice-org-html--header-html ()
+  "Constructs HTML string if `nice-org-html-header' is header data, else nil"  
   (and-let* ((data nice-org-html-header))
     (or (and (stringp data) (not (equal "" data)) (file-exists-p data)
 	     (concat "<div id='injected-header' class='injected'>"
 		     (with-temp-buffer (insert-file-contents data)
 				       (buffer-string))
 		     "</div>"))
-	(and-let* ((_ (consp data))
-		   (_ (--all? (and (consp it) (stringp (car it))) data))
-		   (tcell (car data))
-		   (thref (cdr tcell))
-		   (links (cdr data))
-		   (link-css
-		    (lambda (c) (concat "<li class='nav-item'>\n"
-				   "<a class='nav-link' href='" (cdr c) "'>\n"
-				   (car c)
-				   "</a>\n</li>"
-				   "<a href='" (car c) "'")))
-		   (title-css
-		    (let* ((tag (concat (or (and thref "a") "span"))))
-		      (concat "<" tag " class='nav-title' "
-			      (or (and (equal tag "a")
-				       (format "href='%s' " thref))
-				  "")
-			      ">\n" (car tcell) "\n</" tag ">\n"))))
-	  (concat "<header>\n <nav>\n" title-css "\n"
-		  "<input id='nav-toggle' type='checkbox'>\n"
-		  "<label class='nav-button' for='nav-toggle'></span></label>\n"
+	
+	(and-let* ((components (nice-org-html--bar-builder data "nav-title"))
+		   (left-html (car components))
+		   (links-html (cdr components)))
+	  (concat "<div id='generated-header' class='generated'>"
+		  "<header>\n <nav>\n"
+		  left-html
+		  "<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>\n"
+		  "<label class='nav-button' for='nav-toggle-top'><span/></label>\n"
 		  "<div class='separator menu-sep'></div>\n"
 		  "<ul class='nav-list'>\n"
-		  (--reduce-r-from (concat it acc "\n") ""
-				   (--map (funcall link-css it) links))
+		  links-html		  
+		  "</ul>\n" "<div class='separator'></div>\n" "</nav>\n"
+		  "</header>\n</div>\n")))))
+
+
+(defun nice-org-html--footer-html ()
+  "Constructs HTML string if `nice-org-html-footer' is footer data, else nil"  
+  (and-let* ((data nice-org-html-footer))
+    (or (and (stringp data) (not (equal "" data)) (file-exists-p data)
+	     (concat "<div id='injected-footer' class='injected'>"
+		     (with-temp-buffer (insert-file-contents data)
+				       (buffer-string))
+		     "</div>"))
+	
+	(and-let* ((components (nice-org-html--bar-builder data "nav-author"))
+		   (left-html (car components))
+		   (links-html (cdr components)))
+	  (concat "<div id='generated-footer' class='generated'>"
+		  "<footer>\n <nav>\n"
+		  "<div class='separator'></div>\n"
+		  left-html
+		  "<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>\n"
+		  "<label class='nav-button' for='nav-toggle-bot'><span/></label>\n"
+		  "<div class='separator menu-sep'></div>\n"
+		  "<ul class='nav-list'>\n"
+		  links-html		  
 		  "</ul>\n" "</nav>\n"
-		  "<div class='separator'></div>\n</header>\n")))))
+		  "</footer>\n</div>\n")))))
+
+
 
 (defun nice-org-html--postamble ()
   "Construct html postamble to main content area."
   (concat
-   (with-temp-buffer
-     (when (and (not (equal "" nice-org-html-footer))
-		(file-exists-p nice-org-html-footer))
-       (insert "<div id='injected-footer' class='injected'>")
-       (insert (with-temp-buffer (insert-file-contents nice-org-html-footer)
-				 (buffer-string)))
-       (insert "</div>"))
-     (buffer-string))
+   (or (nice-org-html--footer-html) "")      
    "<script type=\"text/javascript\">\n"
    "<!--/*--><![CDATA[/*><!--*/\n"
    "if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {\n"
@@ -326,6 +357,7 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
    "<div hidden>"
    "Generated by: https://github.com/ewantown/nice-org-html"
    "</div>"))
+
 
 ;;==============================================================================
 ;; Emacs theme / CSS Interpolation
@@ -478,12 +510,12 @@ See docs for `org-html-publish-to-html', which this function emulates."
 
 ;;;###autoload
 (defmacro nice-org-html-make-publishing-function
-    (theme-alist default-mode bullets header-html footer-html css js)
+    (theme-alist default-mode bullets header footer css js)
   "Create org-publishing function which quasi-closes over passed configuration.
 THEME-ALIST shadows `nice-org-html-theme-alist'.
 DEFAULT-MODE shadows `nice-org-html-default-mode'.
-HEADER-HTML shadows `nice-org-html-header'.
-FOOTER-HTML shadows `nice-org-html-footer'.
+HEADER shadows `nice-org-html-header'.
+FOOTER shadows `nice-org-html-footer'.
 CSS shadows `nice-org-html-css'.
 JS shadows `nice-org-html-js'."
   (declare (debug t))
@@ -501,8 +533,8 @@ JS shadows `nice-org-html-js'."
 		(nice-org-html-theme-alist  theme-alist)
 		(nice-org-html-default-mode default-mode)
 		(nice-org-html-headline-bullets ,bullets)
-		(nice-org-html-header ,header-html)
-		(nice-org-html-footer ,footer-html)
+		(nice-org-html-header ,header)
+		(nice-org-html-footer ,footer)
 		(nice-org-html-css ,css)
 		(nice-org-html-js  ,js))
 	   (nice-org-html-publish-to-html plist filename pub-dir)))

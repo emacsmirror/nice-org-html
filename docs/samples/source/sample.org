@@ -1,33 +1,48 @@
-#+TITLE: Title
+#+TITLE: Sample
 #+AUTHOR: Author
 #+EMAIL: foo@bar.com
 #+OPTIONS: toc:3 num:nil ^:nil
 
-* H1
-** H2
-*** H3
-**** H4
-***** H5
+* H1 - one '*'s
+** H2 - two '*'s
+*** H3 - three '*'s
+**** H4 - four '*'s
+***** H5 - five '*'s
 
+** Source Blocks
+This is the sort of configuration used to generate this sample:
+  #+begin_src emacs-lisp
+    (setq org-publish-project-alist
+          `(;; ... Entries like below built programmatically:
+            ("nice-org-html/samples/X"
+             :base-directory "nice-org-html/samples/source"
+             :publishing-directory "nice-org-html/samples/X"
+             :htmlize-source t
+             :with-toc t
+             ;; ...
+             :publishing-function
+             ,(nice-org-html-make-publishing-function
+               '((light . ,light-theme) (dark . ,dark-theme))
+               'dark ; dark default
+               'nil  ; no headline bullets
+               '(("SITE NAME" . "/route/to/home.html")
+                 ("Foo" . "/route/to/foo.html")
+                 ("Bar" . "/route/to/bar.html")
+                 ("Baz" . "/route/to/baz.html"))
+               '(("© Author Name" . "mailto:a@b.com")                    
+                 ("GitHub" . "https://github.com/ewantown")
+                 ("LinkedIn" . "https://linkedin.com/me"))
+               "" "")))) ; CSS and JS unused
+  #+end_src
 
-* Source Blocks
-#+begin_src emacs-lisp
-  (defun foo (a b c)
-    "Example Elisp function"
-    `(,a ,(plist-get c b)))
-
-  (foo "string" :foo '(:foo 1 :bar 2))
-#+end_src
-
-* Pretty Symbols
-** Basic
+** Pretty Symbols
++ Basic:
 \Gamma, \gamma, \Sigma, \sigma, \Delta, \delta
-** LaTeX
-$\Gamma \vdash \Delta$
++ LaTeX
+  $\Gamma \vdash \Delta$
+  $\sigma(i) = \sum_{1}^{n} n - i$
 
-$\sigma(i) = \sum_{1}^{n} n - i$
-
-* Table
+** Table
 
 |  a |  b |  c |  d |
 |----+----+----+----+
@@ -36,22 +51,22 @@ $\sigma(i) = \sum_{1}^{n} n - i$
 | 12 | 13 | 14 | 15 |
 | 18 | 19 | 20 | 21 |
 
-* Lists
-** todo List
+** Lists
+*** todo List
 **** TODO todo
 **** DONE done
 
-** Simple List
+*** Simple List
 - item
 - item
-- item  
+- item
 
-** Sorted List
+*** Sorted List
 1. item
 2. item
 3. item
 
-** Check List
+*** Check List
 - [ ] item
 - [X] item
 

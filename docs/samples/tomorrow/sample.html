@@ -5,262 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Title</title>
+<title>Sample</title>
 <meta name="generator" content="Org Mode" />
 <style type='text/css'>
 <!--/*--><![CDATA[/*><!--*/
-#injected-header {
-    width: 100%;
-    line-height: 1;
-}
-#injected-footer {
-    width: 100%;
-    line-height: 1;
-}
-
-.injected header {    
-    top: 0;
-    left: 0;
-}
-.injected footer {
-    bottom: 0;
-    left: 0;
-}
-
-.injected nav {    
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
-.injected header a,
-.injected footer a {
-    display: inline;
-    color: var(--clr-title);
-    text-decoration: none;
-    transition: all .15s ease-in;
-}
-
-.injected header a:hover,
-.injected footer a:hover {
-    color: var(--clr-link);
-}
-
-.injected .nav-title,
-.injected .nav-author {
-    text-align: left;
-    text-decoration: none;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-.injected .nav-author {
-    padding-right: 2rem;
-}
-
-.injected .nav-title {    
-    text-transform: uppercase;
-    letter-spacing: .075rem;
-    font-weight: 500;
-}
-
-.injected .nav-toggle {
-    display: none;
-}
-.injected .nav-button {
-    display: none;
-}
-
-.injected .menu-sep {
-    display: none;
-}
-
-.injected .nav-list {
-    display: inline;
-    float: right;
-    list-style: none;
-    margin-bottom: 0;
-    margin-top: 0;
-}
-
-.injected footer .nav-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.injected .nav-item {
-    position: relative;
-    float: left;
-    margin: 0;    
-}
-
-.injected .nav-link {
-    position: relative;
-    float: right;
-    margin: 0;
-}
-
-.injected .nav-link {
-    margin-left: 2rem;
-    margin-right: 0rem;
-}
-
-.injected .separator {
-    width: 100%;
-    max-width: 100vw;
-    height: 0.125rem;
-    background: var(--bg-code);    
-}
-
-.injected header .separator {
-    margin-top: 1rem;
-}
-.injected footer .separator {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-}
-.injected footer address {
-    padding-left: 5%;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;    
-}
-
-
-@media only screen and (max-width: 768px) {
-    /* top */
-    .injected header .nav-button {
-	display: inline;
-	position: relative;
-	float: right;
-	font-size: 1rem;
-    }
-    .injected header .nav-button span::before {
-	display: inline-block;
-	content: '\2807';
-	font-size: 2rem;
-	transform: translateX(0.25rem) translateY(-0.5rem);	
-    }
-    .injected header #nav-toggle-top:checked + label span::before {
-	transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
-    }    
-    .injected header .nav-list {
-	position: relative;
-	display: none;
-	float: none !important;
-	z-index: 5;
-	width: 100%;
-	margin-top: 1rem;
-	padding-left: 0;
-	padding-right: 0;
-	opacity: 0;
-    }
-    .injected header #nav-toggle-top:checked + label + .menu-sep {
-	position: relative;
-	display: block;
-	width: 111%;
-	left: -5.5%;
-	right: 0;
-	margin-left: 0;
-	margin-right: 0;
-	margin-top: 1rem;
-	margin-bottom: 1rem;	
-    }    
-    .injected #nav-toggle-top:checked + label ~ ul {
-	display: block;
-	opacity: 1;
-	max-height: 100rem;
-    }    
-    .injected header .nav-item {
-	float: none !important;
-	text-align: center !important;
-    }
-    .injected header .nav-link {
-	line-height: 2rem;
-	margin-left: 2rem;
-	margin-right: 2rem;
-	float: none !important;
-    }
-
-    /* bottom */
-    .injected footer .nav-button {
-	display: inline;
-	position: relative;
-	float: right;
-	font-size: 1rem;
-    }
-    .injected footer .nav-button span::before {
-	display: inline-block;
-	content: '\2807';
-	font-size: 2rem;
-	transform: translateX(0.25rem) translateY(-0.5rem);	
-    }
-    .injected footer  #nav-toggle-bot:checked + label span::before {
-	transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
-    }    
-    .injected footer .nav-list {
-	position: relative;
-	display: none;
-	float: none !important;
-	z-index: 5;
-	width: 100%;
-	margin-top: 1rem;
-	padding-left: 0;
-	padding-right: 0;
-	opacity: 0;
-	bottom: -100%;
-    }
-    .injected footer #nav-toggle-bot:checked + label + .menu-sep {
-	position: relative;
-	display: block;
-	width: 111%;
-	left: -5.5%;
-	margin-left: 0;
-	margin-right: 0;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-    }    
-    .injected #nav-toggle-bot:checked + label ~ ul {
-	display: block;
-	opacity: 1;
-	max-height: 100rem;
-	bottom: 0;
-    }    
-    .injected footer .nav-item {
-	float: none !important;
-	text-align: center !important;
-    }
-    .injected footer .nav-link {
-	line-height: 2rem;
-	margin-left: 2rem;
-	margin-right: 2rem;
-	float: none !important;
-    }
-    .injected .nav-author {
-	line-height: 1rem;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-    }
-    
-    /*
-    .injected footer .nav-list {
-	flex-direction: column;
-	align-items: flex-start;
-	text-align: left;
-	float: left;
-	line-height: 1.5rem;
-	margin-left: 0rem;
-	margin-right: 0rem;
-	margin-bottom: 1rem;
-	padding-left: 0;
-    }        
-    .injected footer .nav-link {
-	margin: 0rem;
-	align-items: flex-start;
-	text-align: left;	
-    }
-    */
-}
 /* nice-org-html.css
 ;;==============================================================================
 ;; Copyright (C) 2024, Ewan Townshend
@@ -747,6 +495,227 @@ pre.src {
     }
 }
 
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 100%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: all .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated nav {
+    display: block;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;    
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline-block;
+    position: relative;
+    float: left;
+    text-align: left;
+    text-decoration: none;
+    margin-right: 2em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.generated .nav-title {    
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {    
+    max-height: 0;
+    visbility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {    
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .generated footer {
+	padding-bottom: 0;
+    }
+    
+    .generated header .separator {
+	margin-top: 0;
+	margin-bottom:0;
+    }
+    .generated footer .separator {
+	margin-bottom: 1rem;	
+    }    
+
+    .generated .nav-toggle {
+	visibility: visible;
+    }
+    
+    .generated .nav-toggle + label span::before {
+	transition: all 0.2s ease-in;
+    }
+    .generated .nav-toggle:checked + label span::before {
+	transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+	transition: all 0.2s ease;
+    }
+
+    .generated .menu-sep {    
+	display: flex;
+	max-height: 0rem;
+    }    
+    .generated .nav-toggle:checked + label + .menu-sep {
+	display: block;
+	position: relative;	
+	max-height: 1rem;
+	transition: max-height 0.2s ease;
+    }
+
+    .generated .nav-list {
+	float: none !important;
+	position: relative;
+	display: block;
+	padding-left: 0;
+	padding-right: 0;
+	z-index: 5;
+	width: 100%;
+	height: auto;
+	max-height: 0;
+	margin: 0;
+	overflow-y: hidden;
+	transition: max-height 0.2s ease;
+    }
+    .generated .nav-toggle:checked + label ~ .nav-list {
+	display: block;
+	max-height: 100rem;
+	overflow-y: hidden;
+    }
+    .generated header .nav-toggle:checked + label ~ .nav-list {
+	transition: max-height 0.2s ease;
+    }
+
+    .generated .nav-button {
+	display: inline;
+	position: relative;
+	float: right;
+	font-size: 1rem;
+    }
+    .generated .nav-button span::before {
+	display: inline-block;
+	content: '\2807';
+	font-size: 2rem;
+	transform: translateX(0.25rem) translateY(-0.5rem);
+    }
+
+    .generated header .nav-title,
+    .generated footer .nav-author {
+	display: inline;
+	padding-top: 0;
+	margin-bottom: 0;
+    }
+
+    .generated .nav-item {
+	float: none !important;
+	text-align: center !important;
+    }
+    .generated .nav-link {
+	line-height: 2rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	float: none !important;
+    }
+
+    .generated footer .separator.menu-sep {
+	margin-bottom: -1rem;
+    }
+
+}
 /*]]>*/-->
 </style>
 <script>
@@ -784,52 +753,49 @@ pre.src {
 </head>
 <body>
 <div id="preamble" class="status">
-<div id='injected-header' class='injected'><header>  
-  <nav>
-    <a class="nav-title" href="#"> Your Name </a>
-    <input class="nav-toggle" id="nav-toggle-top" type="checkbox">
-    <label class="nav-button" for="nav-toggle-top">
-      <span/>
-    </label>
-    <div class="separator menu-sep"></div>
-    <ul class="nav-list">
-      <li class="nav-item">
-	<a href="#" class="nav-link">Foo</a>
-      </li>
-      <li class="nav-item">
-	<a href="#" class="nav-link">Bar</a>
-      </li>
-      <li class="nav-item">
-	<a href="#" class="nav-link">Baz</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="separator"></div>  
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/route/to/home.html' >
+SITE NAME
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/route/to/foo.html'>
+Foo</a>
+</li>
+<li class='nav-item'>
+<a class='nav-link' href='/route/to/bar.html'>
+Bar</a>
+</li>
+<li class='nav-item'>
+<a class='nav-link' href='/route/to/baz.html'>
+Baz</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
 </header>
-</div><div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
-<h1 class="title">Title</h1>
+<h1 class="title">Sample</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4f2250e">H1</a>
+<li><a href="#orgea8b63b">H1 - one '*'s</a>
 <ul>
-<li><a href="#org04ccbf5">H2</a>
+<li><a href="#org342f81e">H2 - two '*'s</a>
 <ul>
-<li><a href="#orge0f3c43">H3</a></li>
-</ul>
-</li>
+<li><a href="#org5ea9ff4">H3 - three '*'s</a></li>
 </ul>
 </li>
 <li><a href="#org7ffa425">Source Blocks</a></li>
-<li><a href="#org9dead56">Pretty Symbols</a>
-<ul>
-<li><a href="#org0f323cb">Basic</a></li>
-<li><a href="#org6f143d1">LaTeX</a></li>
-</ul>
-</li>
+<li><a href="#org9dead56">Pretty Symbols</a></li>
 <li><a href="#orgdb66794">Table</a></li>
 <li><a href="#org5b4b618">Lists</a>
 <ul>
@@ -840,85 +806,95 @@ pre.src {
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-org4f2250e" class="outline-2">
-<h2 id="org4f2250e">H1</h2>
-<div class="outline-text-2" id="text-org4f2250e">
+<div id="outline-container-orgea8b63b" class="outline-2">
+<h2 id="orgea8b63b">H1 - one '*'s</h2>
+<div class="outline-text-2" id="text-orgea8b63b">
 </div>
-<div id="outline-container-org04ccbf5" class="outline-3">
-<h3 id="org04ccbf5">H2</h3>
-<div class="outline-text-3" id="text-org04ccbf5">
+<div id="outline-container-org342f81e" class="outline-3">
+<h3 id="org342f81e">H2 - two '*'s</h3>
+<div class="outline-text-3" id="text-org342f81e">
 </div>
-<div id="outline-container-orge0f3c43" class="outline-4">
-<h4 id="orge0f3c43">H3</h4>
-<div class="outline-text-4" id="text-orge0f3c43">
+<div id="outline-container-org5ea9ff4" class="outline-4">
+<h4 id="org5ea9ff4">H3 - three '*'s</h4>
+<div class="outline-text-4" id="text-org5ea9ff4">
 </div>
-<div id="outline-container-org627b1f9" class="outline-5">
-<h5 id="org627b1f9">H4</h5>
-<div class="outline-text-5" id="text-org627b1f9">
+<div id="outline-container-org06c4c49" class="outline-5">
+<h5 id="org06c4c49">H4 - four '*'s</h5>
+<div class="outline-text-5" id="text-org06c4c49">
 </div>
-<div id="outline-container-org54d4141" class="outline-6">
-<h6 id="org54d4141">H5</h6>
-</div>
+<div id="outline-container-org4ab8d91" class="outline-6">
+<h6 id="org4ab8d91">H5 - five '*'s</h6>
 </div>
 </div>
 </div>
 </div>
 
-
-<div id="outline-container-org7ffa425" class="outline-2">
-<h2 id="org7ffa425">Source Blocks</h2>
-<div class="outline-text-2" id="text-org7ffa425">
+<div id="outline-container-org7ffa425" class="outline-3">
+<h3 id="org7ffa425">Source Blocks</h3>
+<div class="outline-text-3" id="text-org7ffa425">
+<p>
+This is the sort of configuration used to generate this sample:
+</p>
 <div class='org-src-wrapper'>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">foo</span> (a b c)
-  <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Example Elisp function"</span>
-  `(,a ,(plist-get c b)))
-
-(foo <span style="color: var(--clr-string); background-color: var(--bg-string);">"string"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foo</span> 1 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bar</span> 2))
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> org-publish-project-alist
+      `(<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">... Entries like below built programmatically:</span>
+        (<span style="color: var(--clr-string); background-color: var(--bg-string);">"nice-org-html/samples/X"</span>
+         <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:base-directory</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"nice-org-html/samples/source"</span>
+         <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:publishing-directory</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"nice-org-html/samples/X"</span>
+         <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:htmlize-source</span> t
+         <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:with-toc</span> t
+         <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">...</span>
+         <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:publishing-function</span>
+         ,(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">nice-org-html-make-publishing-function</span>
+           '((light . ,light-theme) (dark . ,dark-theme))
+           'dark <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">dark default</span>
+           'nil  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">no headline bullets</span>
+           '((<span style="color: var(--clr-string); background-color: var(--bg-string);">"SITE NAME"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/home.html"</span>)
+             (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Foo"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/foo.html"</span>)
+             (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Bar"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/bar.html"</span>)
+             (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Baz"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/baz.html"</span>))
+           '((<span style="color: var(--clr-string); background-color: var(--bg-string);">"&#169; Author Name"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"mailto:a@b.com"</span>)                    
+             (<span style="color: var(--clr-string); background-color: var(--bg-string);">"GitHub"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/ewantown"</span>)
+             (<span style="color: var(--clr-string); background-color: var(--bg-string);">"LinkedIn"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://linkedin.com/me"</span>))
+           <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span>)))) <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">CSS and JS unused</span>
 </pre>
-</div><button class='copyBtn' name=btn_15b418e8e8fe4c188967665ea2ed63b3>&#10697;</button>
+</div><button class='copyBtn' name=btn_16af9153931c4665ba56cad628055b71>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_15b418e8e8fe4c188967665ea2ed63b3=document.querySelector('button[name=btn_15b418e8e8fe4c188967665ea2ed63b3]');
-copyBtnbtn_15b418e8e8fe4c188967665ea2ed63b3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\n  \`(,a ,(plist-get c b)))\n\n(foo \"string\" :foo '(:foo 1 :bar 2))\n`);copyBtnbtn_15b418e8e8fe4c188967665ea2ed63b3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_15b418e8e8fe4c188967665ea2ed63b3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_16af9153931c4665ba56cad628055b71=document.querySelector('button[name=btn_16af9153931c4665ba56cad628055b71]');
+copyBtnbtn_16af9153931c4665ba56cad628055b71.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`(;; ... Entries like below built programmatically:\n        (\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-make-publishing-function\n           '((light . ,light-theme) (dark . ,dark-theme))\n           'dark ; dark default\n           'nil  ; no headline bullets\n           '((\"SITE NAME\" . \"/route/to/home.html\")\n             (\"Foo\" . \"/route/to/foo.html\")\n             (\"Bar\" . \"/route/to/bar.html\")\n             (\"Baz\" . \"/route/to/baz.html\"))\n           '((\"© Author Name\" . \"mailto:a@b.com\")                    \n             (\"GitHub\" . \"https://github.com/ewantown\")\n             (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           \"\" \"\")))) ; CSS and JS unused\n`);copyBtnbtn_16af9153931c4665ba56cad628055b71.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_16af9153931c4665ba56cad628055b71.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9dead56" class="outline-2">
-<h2 id="org9dead56">Pretty Symbols</h2>
-<div class="outline-text-2" id="text-org9dead56">
-</div>
-<div id="outline-container-org0f323cb" class="outline-3">
-<h3 id="org0f323cb">Basic</h3>
-<div class="outline-text-3" id="text-org0f323cb">
+<div id="outline-container-org9dead56" class="outline-3">
+<h3 id="org9dead56">Pretty Symbols</h3>
+<div class="outline-text-3" id="text-org9dead56">
+<ul class="org-ul">
+<li>Basic:</li>
+</ul>
 <p>
 &Gamma;, &gamma;, &Sigma;, &sigma;, &Delta;, &delta;
 </p>
-</div>
-</div>
-<div id="outline-container-org6f143d1" class="outline-3">
-<h3 id="org6f143d1">LaTeX</h3>
-<div class="outline-text-3" id="text-org6f143d1">
-<p>
+<ul class="org-ul">
+<li>LaTeX
 \(\Gamma \vdash \Delta\)
-</p>
-
-<p>
-\(\sigma(i) = \sum_{1}^{n} n - i\)
-</p>
-</div>
+\(\sigma(i) = \sum_{1}^{n} n - i\)</li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-orgdb66794" class="outline-2">
-<h2 id="orgdb66794">Table</h2>
-<div class="outline-text-2" id="text-orgdb66794">
+<div id="outline-container-orgdb66794" class="outline-3">
+<h3 id="orgdb66794">Table</h3>
+<div class="outline-text-3" id="text-orgdb66794">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -972,13 +948,13 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 
-<div id="outline-container-org5b4b618" class="outline-2">
-<h2 id="org5b4b618">Lists</h2>
-<div class="outline-text-2" id="text-org5b4b618">
+<div id="outline-container-org5b4b618" class="outline-3">
+<h3 id="org5b4b618">Lists</h3>
+<div class="outline-text-3" id="text-org5b4b618">
 </div>
-<div id="outline-container-orgb8e8e68" class="outline-3">
-<h3 id="orgb8e8e68">todo List</h3>
-<div class="outline-text-3" id="text-orgb8e8e68">
+<div id="outline-container-orgb8e8e68" class="outline-4">
+<h4 id="orgb8e8e68">todo List</h4>
+<div class="outline-text-4" id="text-orgb8e8e68">
 </div>
 <div id="outline-container-orgc16775c" class="outline-5">
 <h5 id="orgc16775c"><span class="todo TODO">TODO</span> todo</h5>
@@ -988,9 +964,9 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 
-<div id="outline-container-org10d048d" class="outline-3">
-<h3 id="org10d048d">Simple List</h3>
-<div class="outline-text-3" id="text-org10d048d">
+<div id="outline-container-org10d048d" class="outline-4">
+<h4 id="org10d048d">Simple List</h4>
+<div class="outline-text-4" id="text-org10d048d">
 <ul class="org-ul">
 <li>item</li>
 <li>item</li>
@@ -999,9 +975,9 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 
-<div id="outline-container-org379888a" class="outline-3">
-<h3 id="org379888a">Sorted List</h3>
-<div class="outline-text-3" id="text-org379888a">
+<div id="outline-container-org379888a" class="outline-4">
+<h4 id="org379888a">Sorted List</h4>
+<div class="outline-text-4" id="text-org379888a">
 <ol class="org-ol">
 <li>item</li>
 <li>item</li>
@@ -1010,9 +986,9 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 
-<div id="outline-container-orgf30fbff" class="outline-3">
-<h3 id="orgf30fbff">Check List</h3>
-<div class="outline-text-3" id="text-orgf30fbff">
+<div id="outline-container-orgf30fbff" class="outline-4">
+<h4 id="orgf30fbff">Check List</h4>
+<div class="outline-text-4" id="text-orgf30fbff">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> item</li>
 <li class="on"><code>[X]</code> item</li>
@@ -1021,36 +997,31 @@ let res = copyTextToClipboard(`(defun foo (a b c)\n  \"Example Elisp function\"\
 </div>
 </div>
 </div>
+</div>
 <div id="postamble" class="status">
-<div id='injected-footer' class='injected'><footer>
-  <div class="separator"></div>
-  <nav>
-    <a class="nav-author" href="#">&#9400; Author Name </a>
-    <input class="nav-toggle" id="nav-toggle-bot" type="checkbox">
-    <label class="nav-button" for="nav-toggle-bot">
-      <span/>
-    </label>
-    <div class="separator menu-sep"></div>
-    <ul class="nav-list">
-      <li class="nav-item">
-	<a class="nav-link" href="bar.com"> Linasfask1 </a>
-      </li>
-      <li class="nav-item">
-	<a class="nav-link" href="bar.com"> Linkasdfasd1 </a>
-      </li>
-      <li class="nav-item">
-	<a class="nav-link" href="bar.com"> Linasdk1 </a>
-      </li>
-      <li class="nav-item">
-	<a class="nav-link" href="bar.com"> Linkasdfs1 </a>
-      </li>
-      <li class="nav-item">
-	<a class="nav-link" href="bar.com"> Link </a>
-      </li>
-    </ul>
-  </nav>
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='mailto:a@b.com' >
+© Author Name
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='https://github.com/ewantown'>
+GitHub</a>
+</li>
+<li class='nav-item'>
+<a class='nav-link' href='https://linkedin.com/me'>
+LinkedIn</a>
+</li>
+</ul>
+</nav>
 </footer>
-</div><script type="text/javascript">
+</div>
+<script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
 document.cookie = 'mode=dark'
@@ -1087,11 +1058,13 @@ document.cookie = 'dark=tomorrow-night'
  */
 
 const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
 const controls = document.getElementById("view-controls");
 const toggleTocBtn = document.getElementById("toggle-toc");
 const gotoTopBtn = document.getElementById("goto-top");
 const toggleModeBtn = document.getElementById("toggle-mode");
-const content = document.getElementById("content");
 const toc = document.getElementById("table-of-contents");
 
 // Move sticky control bar (injected within preamble)
@@ -1225,6 +1198,32 @@ function copyTextToClipboard(text) {
   return res;
 }
 
+// Handle the default header / footer drawers
+let header = document.getElementById("generated-header");
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+
+let footer = document.getElementById("generated-footer");
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
 /*]]>*/-->
 </script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
 </div>
