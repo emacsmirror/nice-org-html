@@ -69,7 +69,7 @@ With the README I also publish these samples, which include a list-specified hea
 
 + When exporting to 'nice HTML', you will be prompted for (optional) header and footer, and CSS and JS filepaths. If specified, the contents of those variables will be injected, accordingly, into the generated HTML.
   + CSS and JS must be paths (strings) to files with contents to be injected.
-  + Header and footer may be a path to an HTML file, or a list of cons cells (pairs).
+  + Header and footer may be a path to an HTML file, or a list of cons pairs.
   + A default HTML structure will be used for the header and/or footer, if a list of this form:
     #+begin_src emacs-lisp
       '(("left" . uri0) ("link1" . "uri1") ... ("linkN" . "uriN"))
