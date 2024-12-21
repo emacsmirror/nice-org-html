@@ -82,7 +82,7 @@ With the README I also publish these samples, which include a list-specified hea
   #+begin_src emacs-lisp    
     (setq nice-org-html-header
           '(("title" . "/home.html")
-            ("foo" . "/foo.html") ("bar.html" . "/bar.html")))
+            ("foo" . "/foo.html") ("bar" . "/bar.html")))
     ;; Or: (setq nice-org-html-header "path/to/your/header.html")
 
     (setq nice-org-html-footer
