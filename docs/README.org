@@ -3,9 +3,9 @@
 #+OPTIONS: ^:nil toc:3 num:nil
 
 * tl;dr
-This package generates prettier, responsive websites from .org files and your choice of Emacs themes. You can optionally specify a header, footer, and additional CSS and JS to be included. To see the default output, for my chosen themes and with no header, footer or extras, view this README in your browser [[https://etown.dev/nice-org-html/][here]]. If you're already there, you can find the GitHub repo [[https://github.com/ewantown/nice-org-html][here]].
+This package generates pretty, responsive, websites from .org files and your choice of Emacs themes. You can optionally specify a header, footer, and additional CSS and JS to be included. To see the default output, for my chosen themes and with no header, footer or extras, view this README in your browser [[https://etown.dev/nice-org-html/][here]]. If you're already there, you can find the GitHub repo [[https://github.com/ewantown/nice-org-html][here]].
 
-With the README I also publish these samples, which include a basic header and footer:
+With the README I also publish these samples, which include a list-specified header and footer:
 
 + [[https://etown.dev/nice-org-html/samples/solarized/sample][solarized]]
 + [[https://etown.dev/nice-org-html/samples/spacemacs/sample][spacemacs]]
@@ -22,7 +22,7 @@ With the README I also publish these samples, which include a basic header and f
 1. Extracting colors from user-specified themes, inserting these in a CSS template (nice-org-html.css), and injecting the result into a ~<style>~ element. 
 2. Inserting toggle-buttons for light- and dark-mode viewing, and a click-to-jump table-of-content view, governed by the included scripts (nice-org-html.js).
 3. Extending the default org-to-html export backend to include copy-to-clipboard buttons for source blocks.
-4. Injecting (optional) HTML header and footer, CSS styling, and JS scripts.
+4. Injecting (optional) header and footer, CSS styling, and JS scripts.
 
 * How to use it
 ** Setup
@@ -67,19 +67,34 @@ With the README I also publish these samples, which include a basic header and f
 
 + If you then interactively export your Org buffer via the dispatcher (C-c C-e), you will be presented with options to export to 'nice HTML', in addition to the basic HTML export options.
 
-+ When exporting to 'nice HTML', you will be prompted for (optional) header, footer, CSS, and JS filepaths. If specified, the contents of those files will be injected, accordingly, into the generated HTML. 
-
++ When exporting to 'nice HTML', you will be prompted for (optional) header and footer, and CSS and JS filepaths. If specified, the contents of those variables will be injected, accordingly, into the generated HTML.
+  + CSS and JS must be paths (strings) to files with contents to be injected.
+  + Header and footer may be a path to an HTML file, or a list of cons cells (pairs).
+  + A default HTML structure will be used for the header and/or footer, if a list of this form:
+    #+begin_src emacs-lisp
+      '(("left" . uri0) ("link1" . "uri1") ... ("linkN" . "uriN"))
+    #+end_src
+    + ~left~ will be displayed as anchor text, and hyperlinked if ~uri0~ is non-nil.
+    + ~link1~ ... ~linkN~ will be hyperlinks, collapsed into a drawer for mobile viewers.
+      
 + These variables may also be set globally, and then used or overridden during interactive export. For example:
 
-  #+begin_src emacs-lisp
-    (setq nice-org-html-header "path/to/your/header.html")
+  #+begin_src emacs-lisp    
+    (setq nice-org-html-header
+          '(("title" . "/home.html")
+            ("foo" . "/foo.html") ("bar.html" . "/bar.html")))
+    ;; Or: (setq nice-org-html-header "path/to/your/header.html")
 
-    (setq nice-org-html-footer "path/to/your/footer.html")
+    (setq nice-org-html-footer
+          '(("© author" . "mailto:a@b.c")
+            ("oof" . "https://oof.a") ("rab" . "https://rab.b")))
+    ;; Or: (setq nice-org-html-header "path/to/your/footer.html")
 
     (setq nice-org-html-css "path/to/your/style.css")
 
     (setq nice-org-html-js "path/to/your/script.js")
   #+end_src
+
 ** Publishing
 + This package is particularly well-suited to /publishing/ Org /projects/, as websites comprised of many linked pages. The included publishing function, ~nice-org-html-publish-to-html~, relies on global values for all of the above variables. To use it, in specifying the value of ~org-publish-projects-alist~, for a given project just specify:
 
@@ -99,7 +114,7 @@ With the README I also publish these samples, which include a basic header and f
        ;; ...
        :publishing-function
        ,(nice-org-html-make-publishing-function
-         '((light . solo-jazz) (dark . tomorrow-night-eighties))
+         '((light . spacemacs-light) (dark . spacemacs-dark))
          'dark
          '(:h1 "" :h2 "✸" :h3 "▷" :h4 "" :h5 "")
          "path/to/your/header.html"
