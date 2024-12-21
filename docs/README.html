@@ -9,20 +9,20 @@
 <meta name="generator" content="Org Mode" />
 <style type='text/css'>
 <!--/*--><![CDATA[/*><!--*/
-h2::before { content: '';
-margin-right: calc(0 * 0.22em);
-}
-h3::before { content: '▷';
-margin-right: calc(3 * 0.23em);
-}
-h4::before { content: '';
-margin-right: calc(0 * 0.24em);
+h6::before { content: '';
+margin-right: calc(0 * 0.26em);
 }
 h5::before { content: '';
 margin-right: calc(0 * 0.25em);
 }
-h6::before { content: '';
-margin-right: calc(0 * 0.26em);
+h4::before { content: '';
+margin-right: calc(0 * 0.24em);
+}
+h3::before { content: '▷';
+margin-right: calc(3 * 0.23em);
+}
+h2::before { content: '';
+margin-right: calc(0 * 0.22em);
 }
 /* nice-org-html.css
 ;;==============================================================================
@@ -510,6 +510,227 @@ pre.src {
     }
 }
 
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 100%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: all .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated nav {
+    display: block;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;    
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline-block;
+    position: relative;
+    float: left;
+    text-align: left;
+    text-decoration: none;
+    margin-right: 2em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.generated .nav-title {    
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {    
+    max-height: 0;
+    visbility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {    
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .generated footer {
+	padding-bottom: 0;
+    }
+    
+    .generated header .separator {
+	margin-top: 0;
+	margin-bottom:0;
+    }
+    .generated footer .separator {
+	margin-bottom: 1rem;	
+    }    
+
+    .generated .nav-toggle {
+	visibility: visible;
+    }
+    
+    .generated .nav-toggle + label span::before {
+	transition: all 0.2s ease-in;
+    }
+    .generated .nav-toggle:checked + label span::before {
+	transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+	transition: all 0.2s ease;
+    }
+
+    .generated .menu-sep {    
+	display: flex;
+	max-height: 0rem;
+    }    
+    .generated .nav-toggle:checked + label + .menu-sep {
+	display: block;
+	position: relative;	
+	max-height: 1rem;
+	transition: max-height 0.2s ease;
+    }
+
+    .generated .nav-list {
+	float: none !important;
+	position: relative;
+	display: block;
+	padding-left: 0;
+	padding-right: 0;
+	z-index: 5;
+	width: 100%;
+	height: auto;
+	max-height: 0;
+	margin: 0;
+	overflow-y: hidden;
+	transition: max-height 0.2s ease;
+    }
+    .generated .nav-toggle:checked + label ~ .nav-list {
+	display: block;
+	max-height: 100rem;
+	overflow-y: hidden;
+    }
+    .generated header .nav-toggle:checked + label ~ .nav-list {
+	transition: max-height 0.2s ease;
+    }
+
+    .generated .nav-button {
+	display: inline;
+	position: relative;
+	float: right;
+	font-size: 1rem;
+    }
+    .generated .nav-button span::before {
+	display: inline-block;
+	content: '\2807';
+	font-size: 2rem;
+	transform: translateX(0.25rem) translateY(-0.5rem);
+    }
+
+    .generated header .nav-title,
+    .generated footer .nav-author {
+	display: inline;
+	padding-top: 0;
+	margin-bottom: 0;
+    }
+
+    .generated .nav-item {
+	float: none !important;
+	text-align: center !important;
+    }
+    .generated .nav-link {
+	line-height: 2rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	float: none !important;
+    }
+
+    .generated footer .separator.menu-sep {
+	margin-bottom: -1rem;
+    }
+
+}
 /*]]>*/-->
 </style>
 </head>
@@ -600,11 +821,11 @@ Get the source files on your load path. E.g. with MELPA and use-package:
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">unless</span> (package-installed-p 'use-package)
   (package-install 'use-package))
 </pre>
-</div><button class='copyBtn' name=btn_168439e38f5042d98943e4910e044d32>&#10697;</button>
+</div><button class='copyBtn' name=btn_872124993ef54f879fbd2d143f1844c4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_168439e38f5042d98943e4910e044d32=document.querySelector('button[name=btn_168439e38f5042d98943e4910e044d32]');
-copyBtnbtn_168439e38f5042d98943e4910e044d32.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(require 'package)\n(add-to-list 'package-archives\n             '(\"melpa\" . \"http://melpa.org/packages/\"))\n(package-initialize)\n\n(unless (package-installed-p 'use-package)\n  (package-install 'use-package))\n`);copyBtnbtn_168439e38f5042d98943e4910e044d32.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_168439e38f5042d98943e4910e044d32.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_872124993ef54f879fbd2d143f1844c4=document.querySelector('button[name=btn_872124993ef54f879fbd2d143f1844c4]');
+copyBtnbtn_872124993ef54f879fbd2d143f1844c4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(require 'package)\n(add-to-list 'package-archives\n             '(\"melpa\" . \"http://melpa.org/packages/\"))\n(package-initialize)\n\n(unless (package-installed-p 'use-package)\n  (package-install 'use-package))\n`);copyBtnbtn_872124993ef54f879fbd2d143f1844c4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_872124993ef54f879fbd2d143f1844c4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div></li>
@@ -623,11 +844,11 @@ Add something like this to your configuration file:
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-default-mode 'dark)
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-headline-bullets nil))
 </pre>
-</div><button class='copyBtn' name=btn_a843e63c6412457ab81b3d67e4fa77af>&#10697;</button>
+</div><button class='copyBtn' name=btn_24368c24c3ac4b9ba339a00f89fd028e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a843e63c6412457ab81b3d67e4fa77af=document.querySelector('button[name=btn_a843e63c6412457ab81b3d67e4fa77af]');
-copyBtnbtn_a843e63c6412457ab81b3d67e4fa77af.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(use-package nice-org-html\n  :hook (org-mode . nice-org-html-mode)\n  :config\n  (setq nice-org-html-theme-alist\n        '((light . solo-jazz)\n          (dark  . tomorrow-night-eighties)))\n  (setq nice-org-html-default-mode 'dark)\n  (setq nice-org-html-headline-bullets nil))\n`);copyBtnbtn_a843e63c6412457ab81b3d67e4fa77af.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a843e63c6412457ab81b3d67e4fa77af.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_24368c24c3ac4b9ba339a00f89fd028e=document.querySelector('button[name=btn_24368c24c3ac4b9ba339a00f89fd028e]');
+copyBtnbtn_24368c24c3ac4b9ba339a00f89fd028e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(use-package nice-org-html\n  :hook (org-mode . nice-org-html-mode)\n  :config\n  (setq nice-org-html-theme-alist\n        '((light . solo-jazz)\n          (dark  . tomorrow-night-eighties)))\n  (setq nice-org-html-default-mode 'dark)\n  (setq nice-org-html-headline-bullets nil))\n`);copyBtnbtn_24368c24c3ac4b9ba339a00f89fd028e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_24368c24c3ac4b9ba339a00f89fd028e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div></li>
@@ -647,11 +868,11 @@ To prefix headlines with the default bullets, instead use:
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-headline-bullets t)
 </pre>
-</div><button class='copyBtn' name=btn_303a764a5d5444deaa72166abf23477a>&#10697;</button>
+</div><button class='copyBtn' name=btn_3af65082463147168c2433c8016befe5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_303a764a5d5444deaa72166abf23477a=document.querySelector('button[name=btn_303a764a5d5444deaa72166abf23477a]');
-copyBtnbtn_303a764a5d5444deaa72166abf23477a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets t)\n`);copyBtnbtn_303a764a5d5444deaa72166abf23477a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_303a764a5d5444deaa72166abf23477a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3af65082463147168c2433c8016befe5=document.querySelector('button[name=btn_3af65082463147168c2433c8016befe5]');
+copyBtnbtn_3af65082463147168c2433c8016befe5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets t)\n`);copyBtnbtn_3af65082463147168c2433c8016befe5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3af65082463147168c2433c8016befe5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div></li>
@@ -663,11 +884,11 @@ Or you can specify headline bullets with a plist like this (the defaults):
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-headline-bullets
       '(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h1</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#9673;"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h2</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#10040;"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h3</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#9655;"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h4</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#10625;"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h5</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#9675;"</span>))
 </pre>
-</div><button class='copyBtn' name=btn_82ff584bc544403185c0ad4112ddcc99>&#10697;</button>
+</div><button class='copyBtn' name=btn_1e07ec6dd57949f398402fe87b7aa5aa>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_82ff584bc544403185c0ad4112ddcc99=document.querySelector('button[name=btn_82ff584bc544403185c0ad4112ddcc99]');
-copyBtnbtn_82ff584bc544403185c0ad4112ddcc99.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets\n      '(:h1 \"◉\" :h2 \"✸\" :h3 \"▷\" :h4 \"⦁\" :h5 \"○\"))\n`);copyBtnbtn_82ff584bc544403185c0ad4112ddcc99.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_82ff584bc544403185c0ad4112ddcc99.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1e07ec6dd57949f398402fe87b7aa5aa=document.querySelector('button[name=btn_1e07ec6dd57949f398402fe87b7aa5aa]');
+copyBtnbtn_1e07ec6dd57949f398402fe87b7aa5aa.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets\n      '(:h1 \"◉\" :h2 \"✸\" :h3 \"▷\" :h4 \"⦁\" :h5 \"○\"))\n`);copyBtnbtn_1e07ec6dd57949f398402fe87b7aa5aa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e07ec6dd57949f398402fe87b7aa5aa.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div></li>
@@ -700,11 +921,11 @@ These variables may also be set globally, and then used or overridden during int
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-js <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/script.js"</span>)
 </pre>
-</div><button class='copyBtn' name=btn_2cdcea80f37a46589afcd19fa4d04dab>&#10697;</button>
+</div><button class='copyBtn' name=btn_d33191b0b6b9477689c524530c4090ac>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2cdcea80f37a46589afcd19fa4d04dab=document.querySelector('button[name=btn_2cdcea80f37a46589afcd19fa4d04dab]');
-copyBtnbtn_2cdcea80f37a46589afcd19fa4d04dab.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq nice-org-html-header \"path/to/your/header.html\")\n\n(setq nice-org-html-footer \"path/to/your/footer.html\")\n\n(setq nice-org-html-css \"path/to/your/style.css\")\n\n(setq nice-org-html-js \"path/to/your/script.js\")\n`);copyBtnbtn_2cdcea80f37a46589afcd19fa4d04dab.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2cdcea80f37a46589afcd19fa4d04dab.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d33191b0b6b9477689c524530c4090ac=document.querySelector('button[name=btn_d33191b0b6b9477689c524530c4090ac]');
+copyBtnbtn_d33191b0b6b9477689c524530c4090ac.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq nice-org-html-header \"path/to/your/header.html\")\n\n(setq nice-org-html-footer \"path/to/your/footer.html\")\n\n(setq nice-org-html-css \"path/to/your/style.css\")\n\n(setq nice-org-html-js \"path/to/your/script.js\")\n`);copyBtnbtn_d33191b0b6b9477689c524530c4090ac.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d33191b0b6b9477689c524530c4090ac.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div></li>
@@ -725,11 +946,11 @@ This package is particularly well-suited to <i>publishing</i> Org <i>projects</i
 <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:publishing-function</span> #'nice-org-html-publish-to-html
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">...</span>
 </pre>
-</div><button class='copyBtn' name=btn_e9795ab89c4042e4866611af3eb07895>&#10697;</button>
+</div><button class='copyBtn' name=btn_083166fb93d04b90b5b509dc0083ea12>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e9795ab89c4042e4866611af3eb07895=document.querySelector('button[name=btn_e9795ab89c4042e4866611af3eb07895]');
-copyBtnbtn_e9795ab89c4042e4866611af3eb07895.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`;; ...\n:publishing-function #'nice-org-html-publish-to-html\n;; ...\n`);copyBtnbtn_e9795ab89c4042e4866611af3eb07895.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e9795ab89c4042e4866611af3eb07895.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_083166fb93d04b90b5b509dc0083ea12=document.querySelector('button[name=btn_083166fb93d04b90b5b509dc0083ea12]');
+copyBtnbtn_083166fb93d04b90b5b509dc0083ea12.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`;; ...\n:publishing-function #'nice-org-html-publish-to-html\n;; ...\n`);copyBtnbtn_083166fb93d04b90b5b509dc0083ea12.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_083166fb93d04b90b5b509dc0083ea12.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div></li>
@@ -755,11 +976,11 @@ For more granular per-project configuration, there is a publishing-function-gene
      <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/style.css"</span>
      <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/script.js"</span>)))
 </pre>
-</div><button class='copyBtn' name=btn_187b25be3c2945678053108cde3bf4ee>&#10697;</button>
+</div><button class='copyBtn' name=btn_1bd4f6b74efd4352868b70b07dba5638>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_187b25be3c2945678053108cde3bf4ee=document.querySelector('button[name=btn_187b25be3c2945678053108cde3bf4ee]');
-copyBtnbtn_187b25be3c2945678053108cde3bf4ee.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org\"\n   :base-directory \"path/to/source-x/\"       \n   :publishing-directory \"path/to/target-x/\"\n   ;; ...\n   :publishing-function\n   ,(nice-org-html-make-publishing-function\n     '((light . solo-jazz) (dark . tomorrow-night-eighties))\n     'dark\n     '(:h1 \"\" :h2 \"✸\" :h3 \"▷\" :h4 \"\" :h5 \"\")\n     \"path/to/your/header.html\"\n     \"path/to/your/footer.html\"\n     \"path/to/your/style.css\"\n     \"path/to/your/script.js\")))\n`);copyBtnbtn_187b25be3c2945678053108cde3bf4ee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_187b25be3c2945678053108cde3bf4ee.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1bd4f6b74efd4352868b70b07dba5638=document.querySelector('button[name=btn_1bd4f6b74efd4352868b70b07dba5638]');
+copyBtnbtn_1bd4f6b74efd4352868b70b07dba5638.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org\"\n   :base-directory \"path/to/source-x/\"       \n   :publishing-directory \"path/to/target-x/\"\n   ;; ...\n   :publishing-function\n   ,(nice-org-html-make-publishing-function\n     '((light . solo-jazz) (dark . tomorrow-night-eighties))\n     'dark\n     '(:h1 \"\" :h2 \"✸\" :h3 \"▷\" :h4 \"\" :h5 \"\")\n     \"path/to/your/header.html\"\n     \"path/to/your/footer.html\"\n     \"path/to/your/style.css\"\n     \"path/to/your/script.js\")))\n`);copyBtnbtn_1bd4f6b74efd4352868b70b07dba5638.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1bd4f6b74efd4352868b70b07dba5638.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div></li>
@@ -852,11 +1073,13 @@ document.cookie = 'dark=tomorrow-night-eighties'
  */
 
 const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
 const controls = document.getElementById("view-controls");
 const toggleTocBtn = document.getElementById("toggle-toc");
 const gotoTopBtn = document.getElementById("goto-top");
 const toggleModeBtn = document.getElementById("toggle-mode");
-const content = document.getElementById("content");
 const toc = document.getElementById("table-of-contents");
 
 // Move sticky control bar (injected within preamble)
@@ -990,6 +1213,32 @@ function copyTextToClipboard(text) {
   return res;
 }
 
+// Handle the default header / footer drawers
+let header = document.getElementById("generated-header");
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+
+let footer = document.getElementById("generated-footer");
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
 /*]]>*/-->
 </script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
 </div>

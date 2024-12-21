@@ -28,11 +28,13 @@
  */
 
 const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
 const controls = document.getElementById("view-controls");
 const toggleTocBtn = document.getElementById("toggle-toc");
 const gotoTopBtn = document.getElementById("goto-top");
 const toggleModeBtn = document.getElementById("toggle-mode");
-const content = document.getElementById("content");
 const toc = document.getElementById("table-of-contents");
 
 // Move sticky control bar (injected within preamble)
@@ -166,3 +168,29 @@ function copyTextToClipboard(text) {
   return res;
 }
 
+// Handle the default header / footer drawers
+let header = document.getElementById("generated-header");
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+
+let footer = document.getElementById("generated-footer");
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}

@@ -484,3 +484,224 @@ pre.src {
     }
 }
 
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 100%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: all .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated nav {
+    display: block;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;    
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline-block;
+    position: relative;
+    float: left;
+    text-align: left;
+    text-decoration: none;
+    margin-right: 2em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.generated .nav-title {    
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {    
+    max-height: 0;
+    visbility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {    
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .generated footer {
+	padding-bottom: 0;
+    }
+    
+    .generated header .separator {
+	margin-top: 0;
+	margin-bottom:0;
+    }
+    .generated footer .separator {
+	margin-bottom: 1rem;	
+    }    
+
+    .generated .nav-toggle {
+	visibility: visible;
+    }
+    
+    .generated .nav-toggle + label span::before {
+	transition: all 0.2s ease-in;
+    }
+    .generated .nav-toggle:checked + label span::before {
+	transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+	transition: all 0.2s ease;
+    }
+
+    .generated .menu-sep {    
+	display: flex;
+	max-height: 0rem;
+    }    
+    .generated .nav-toggle:checked + label + .menu-sep {
+	display: block;
+	position: relative;	
+	max-height: 1rem;
+	transition: max-height 0.2s ease;
+    }
+
+    .generated .nav-list {
+	float: none !important;
+	position: relative;
+	display: block;
+	padding-left: 0;
+	padding-right: 0;
+	z-index: 5;
+	width: 100%;
+	height: auto;
+	max-height: 0;
+	margin: 0;
+	overflow-y: hidden;
+	transition: max-height 0.2s ease;
+    }
+    .generated .nav-toggle:checked + label ~ .nav-list {
+	display: block;
+	max-height: 100rem;
+	overflow-y: hidden;
+    }
+    .generated header .nav-toggle:checked + label ~ .nav-list {
+	transition: max-height 0.2s ease;
+    }
+
+    .generated .nav-button {
+	display: inline;
+	position: relative;
+	float: right;
+	font-size: 1rem;
+    }
+    .generated .nav-button span::before {
+	display: inline-block;
+	content: '\2807';
+	font-size: 2rem;
+	transform: translateX(0.25rem) translateY(-0.5rem);
+    }
+
+    .generated header .nav-title,
+    .generated footer .nav-author {
+	display: inline;
+	padding-top: 0;
+	margin-bottom: 0;
+    }
+
+    .generated .nav-item {
+	float: none !important;
+	text-align: center !important;
+    }
+    .generated .nav-link {
+	line-height: 2rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	float: none !important;
+    }
+
+    .generated footer .separator.menu-sep {
+	margin-bottom: -1rem;
+    }
+
+}
