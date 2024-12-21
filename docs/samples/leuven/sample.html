@@ -864,11 +864,11 @@ This is the sort of configuration used to generate this sample:
              (<span style="color: var(--clr-string); background-color: var(--bg-string);">"LinkedIn"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://linkedin.com/me"</span>))
            <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span>)))) <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">CSS and JS unused</span>
 </pre>
-</div><button class='copyBtn' name=btn_29574e13f3284beba44ccbc9a0db76b7>&#10697;</button>
+</div><button class='copyBtn' name=btn_6aad24f172414c18a6e45e6f0bd26e6b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_29574e13f3284beba44ccbc9a0db76b7=document.querySelector('button[name=btn_29574e13f3284beba44ccbc9a0db76b7]');
-copyBtnbtn_29574e13f3284beba44ccbc9a0db76b7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`(;; ... Entries like below built programmatically:\n        (\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-make-publishing-function\n           '((light . ,light-theme) (dark . ,dark-theme))\n           'dark ; dark default\n           'nil  ; no headline bullets\n           '((\"SITE NAME\" . \"/route/to/home.html\")\n             (\"Foo\" . \"/route/to/foo.html\")\n             (\"Bar\" . \"/route/to/bar.html\")\n             (\"Baz\" . \"/route/to/baz.html\"))\n           '((\"© Author Name\" . \"mailto:a@b.com\")                    \n             (\"GitHub\" . \"https://github.com/ewantown\")\n             (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           \"\" \"\")))) ; CSS and JS unused\n`);copyBtnbtn_29574e13f3284beba44ccbc9a0db76b7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_29574e13f3284beba44ccbc9a0db76b7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6aad24f172414c18a6e45e6f0bd26e6b=document.querySelector('button[name=btn_6aad24f172414c18a6e45e6f0bd26e6b]');
+copyBtnbtn_6aad24f172414c18a6e45e6f0bd26e6b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`(;; ... Entries like below built programmatically:\n        (\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-make-publishing-function\n           '((light . ,light-theme) (dark . ,dark-theme))\n           'dark ; dark default\n           'nil  ; no headline bullets\n           '((\"SITE NAME\" . \"/route/to/home.html\")\n             (\"Foo\" . \"/route/to/foo.html\")\n             (\"Bar\" . \"/route/to/bar.html\")\n             (\"Baz\" . \"/route/to/baz.html\"))\n           '((\"© Author Name\" . \"mailto:a@b.com\")                    \n             (\"GitHub\" . \"https://github.com/ewantown\")\n             (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           \"\" \"\")))) ; CSS and JS unused\n`);copyBtnbtn_6aad24f172414c18a6e45e6f0bd26e6b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6aad24f172414c18a6e45e6f0bd26e6b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div>
@@ -879,15 +879,22 @@ let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`(;; ... 
 <h3 id="org6a7fdca">Pretty Symbols</h3>
 <div class="outline-text-3" id="text-org6a7fdca">
 <ul class="org-ul">
-<li>Basic:</li>
-</ul>
+<li><p>
+Basic:
+</p>
+
 <p>
 &Gamma;, &gamma;, &Sigma;, &sigma;, &Delta;, &delta;
+</p></li>
+
+<li><p>
+\(\LaTeX\):
 </p>
-<ul class="org-ul">
-<li>LaTeX
+
+<p>
 \(\Gamma \vdash \Delta\)
-\(\sigma(i) = \sum_{1}^{n} n - i\)</li>
+\(\sigma(i) = \sum_{1}^{n} n - i\)
+</p></li>
 </ul>
 </div>
 </div>
