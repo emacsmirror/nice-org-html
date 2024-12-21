@@ -37,8 +37,11 @@ This is the sort of configuration used to generate this sample:
 
 ** Pretty Symbols
 + Basic:
-\Gamma, \gamma, \Sigma, \sigma, \Delta, \delta
-+ LaTeX
+
+  \Gamma, \gamma, \Sigma, \sigma, \Delta, \delta
+
++ $\LaTeX$:
+  
   $\Gamma \vdash \Delta$
   $\sigma(i) = \sum_{1}^{n} n - i$
 
