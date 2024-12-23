@@ -528,14 +528,15 @@ See docs for `org-html-publish-to-html', which this function emulates."
 
 ;;;###autoload
 (defmacro nice-org-html-make-publishing-function
-    (theme-alist default-mode bullets header footer css js)
+    (theme-alist default-mode bullets header footer css js &optional options)
   "Create org-publishing function which quasi-closes over passed configuration.
 THEME-ALIST shadows `nice-org-html-theme-alist'.
 DEFAULT-MODE shadows `nice-org-html-default-mode'.
 HEADER shadows `nice-org-html-header'.
 FOOTER shadows `nice-org-html-footer'.
 CSS shadows `nice-org-html-css'.
-JS shadows `nice-org-html-js'."
+JS shadows `nice-org-html-js'.
+OPTIONS shadows `nice-org-html-options'."
   (declare (debug t))
   (let ((sym (gensym "nice-org-html-publishing-function-")))
     `(progn
@@ -554,9 +555,123 @@ JS shadows `nice-org-html-js'."
 		(nice-org-html-header ,header)
 		(nice-org-html-footer ,footer)
 		(nice-org-html-css ,css)
-		(nice-org-html-js  ,js))
+		(nice-org-html-js  ,js)
+		(nice-org-html-options
+		 (if ,options ,options ,nice-org-html-options)))
 	   (nice-org-html-publish-to-html plist filename pub-dir)))
        ',sym)))
+
+;; (defmacro nice-org-html-publishing-function (&rest config)    
+;;   "Create org-publishing function which quasi-closes over passed configuration.
+;; CONFIG is a plist, supporting the following properties:
+;; :theme-alist, shadows `nice-org-html-theme-alist'.
+;; :default-mode, shadows `nice-org-html-theme-alist'.
+;; :headline-bullets, shadows `nice-org-html-headline-bullets'
+;; :header, shadows `nice-org-html-header'.
+;; :footer, shadows `nice-org-html-footer'.
+;; :css, shadows `nice-org-html-css'.
+;; :js, shadows `nice-org-html-js'.
+;; :layout, nil (for dynamic) or one of {\"compact\" \"expanded\"}.
+
+;; Required but unspecified params are backstopped by globally set values."
+;;   (declare (debug t))
+;;   (let* ((sym (gensym "nice-org-html-publishing-function-")))
+;;     `(defun ,sym (plist filename pub-dir)
+;;        (let* ((config ',config)
+;; 	      (backstop
+;; 	       (lambda (p stop &optional pred)		 
+;; 		 (let* ((mem (plist-member config p))
+;; 			(ent (plist-get config p)))
+;; 		   (cond ((and mem pred) (if (funcall pred ent) ent stop))
+;; 			 (mem ent)
+;; 			 (t stop)))))	      
+;; 	      (nice-org-html-theme-alist
+;; 	       (funcall backstop :theme-alist nice-org-html-theme-alist
+;; 		 (lambda (e) (and (listp e) (assoc 'light e) (assoc 'dark e)))))
+;; 	      (nice-org-html-default-mode
+;; 	       (funcall backstop :default-mode nice-org-html-default-mode
+;; 		 (lambda (e) (memq e '(light dark)))))
+;; 	      (nice-org-html-headline-bullets
+;; 	       (funcall backstop :headline-bullets nice-org-html-headline-bullets))
+;; 	      (nice-org-html-header
+;; 	       (funcall backstop :header nice-org-html-header))
+;; 	      (nice-org-html-footer
+;; 	       (funcall backstop :footer nice-org-html-footer))
+;; 	      (nice-org-html-css
+;; 	       (funcall backstop :css nice-org-html-css))
+;; 	      (nice-org-html-js
+;; 	       (funcall backstop :js nice-org-html-js))	      
+;; 	      ;; (nice-org-html-options
+;; 	      ;;  (let* ((main '(:theme-alist :default-mode :headline-bullets
+;; 	      ;; 				   :header :footer :css :js))
+;; 	      ;; 	      (rest (--filter (not (memq it main))
+;; 	      ;; 			      (--map (car (plist-member ',config it))
+;; 	      ;; 				     ',config))))
+;; 	      ;; 	 (--reduce-from (plist-put acc it (plist-get ',config it))
+;; 	      ;; 			nice-org-html-options		  
+;; 				;; rest)))
+;; 	      )
+;; 	 (print "TEST")
+;; 	 (print config)
+;; 	 (nice-org-html-publish-to-html plist filename pub-dir)))))
+
+
+(defmacro nice-org-html-publishing-function (&rest config)    
+  "Create org-publishing function which quasi-closes over passed configuration.
+CONFIG is a plist, supporting the following properties:
+:theme-alist, shadows `nice-org-html-theme-alist'.
+:default-mode, shadows `nice-org-html-theme-alist'.
+:headline-bullets, shadows `nice-org-html-headline-bullets'
+:header, shadows `nice-org-html-header'.
+:footer, shadows `nice-org-html-footer'.
+:css, shadows `nice-org-html-css'.
+:js, shadows `nice-org-html-js'.
+:layout, nil (for dynamic) or one of {\"compact\" \"expanded\"}.
+
+Required but unspecified params are backstopped by globally set values."
+  (declare (debug t))
+  (let* ((sym (gensym "nice-org-html-publishing-function-")))
+    `(defun ,sym (plist filename pub-dir)
+       (let* ((config ',config)
+	      (nice-org-html-theme-alist
+	       (if (plist-member config :theme-alist)
+		   (plist-get config :theme-alist)
+		 nice-org-html-theme-alist))
+	      (nice-org-html-default-mode
+	       (if (plist-member config :default-mode)
+		   (plist-get config :default-mode)
+		 nice-org-html-theme-default-mode))
+	      (nice-org-html-headline-bullets
+	       (if (plist-member config :headline-bullets)
+		   (plist-get config :headline-bullets)
+		 nice-org-html-headline-bullets))
+	      (nice-org-html-header
+	       (if (plist-member config :header)
+		   (plist-get config :header)
+		 nice-org-html-header))
+	      (nice-org-html-footer
+	       (if (plist-member config :footer)
+		   (plist-get config :footer)
+		 nice-org-html-footer))
+	      (nice-org-html-css
+	       (if (plist-member config :css)
+		   (plist-get config :css)
+		 nice-org-html-css))
+	      (nice-org-html-js
+	       (if (plist-member config :js)
+		   (plist-get config :js)
+		 nice-org-html-js))
+	      (nice-org-html-options
+	       (--reduce-from
+		(plist-put acc it (plist-get config it))
+		nice-org-html-options
+		(-filter
+		 (lambda (s) (--all? (not (eq s it))
+				'(:theme-alist :default-mode :headline-bullets
+					       :header :footer :css :js)))
+		 (--map (car (plist-member config it)) config)))))
+	 (nice-org-html-publish-to-html plist filename pub-dir)))))
+
 
 ;;==============================================================================
 ;; Defined mode
