@@ -80,7 +80,7 @@
 (defvar nice-org-html-default-mode 'query
   "Default nice HTML page viewing mode.
 One of: ((quote light) or (quote dark)) or (quote query).
-If (quote query), get for browser-set preference, fallback: (quote dark).")
+If (quote query), gets browser-set preference, with fallback to (quote dark).")
 
 (defvar nice-org-html-headline-bullets nil
   "If non-nil, headlines are prefixed with bullets.
@@ -95,9 +95,9 @@ Else, bullets are strings, b1...b5, specified by plist of form:
 If a string, a path to HTML file containing e.g. a <header> element to inject.
 
 If a list, a list of form:
-    '((\"title\"' . url0]) (\"link1 . \"url1\") ... (\"linkN\" . \"urlN\")
-to be interpreted using default header structure, user beware visual overflow.
-If url0 is nil, not a string, \"title\" will not be hyperlinked.")
+    '((\"anchor\"' . url0]) (\"link1 . \"url1\") ... (\"linkN\" . \"urlN\")
+to be interpreted using default header structure.
+If url0 is nil (not a string), then \"anchor\" will not be hyperlinked.")
 
 (defvar nice-org-html-footer nil
   "(Optional) structure to interpret, and/or inject, as page footer.
@@ -105,15 +105,21 @@ If url0 is nil, not a string, \"title\" will not be hyperlinked.")
 If a string, a path to HTML file containing e.g. a <footer> element to inject.
 
 If a list, a list of form:
-    '((\"title\"' . url0]) (\"link1 . \"url1\") ... (\"linkN\" . \"urlN\")
-to be interpreted using footer header structure, user beware visual overflow.
-If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
+    '((\"anchor\"' . url0]) (\"link1 . \"url1\") ... (\"linkN\" . \"urlN\")
+to be interpreted using default footer structure.
+If url0 is nil (not a string), then \"anchor\" will not be hyperlinked.")
 
 (defvar nice-org-html-css ""
   "Path to (optional) CSS file to inject.")
 
 (defvar nice-org-html-js ""
   "Path to (optional) JS  file to inject.")
+
+(defvar nice-org-html-options nil
+  "Property list mapping additional configuration keywords to values (strings).
+Options currently supported:
+- :layout \"compact\": force header/footer link-collapse into drawer
+- :layout \"expanded\": prevent header/footer link-collapse into drawer")
 
 ;;==============================================================================
 ;; Package local variables
@@ -346,6 +352,17 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
    (symbol-name (cdr (assoc 'light nice-org-html-theme-alist))) "'\n"
    "document.cookie = 'dark="
    (symbol-name (cdr (assoc 'dark  nice-org-html-theme-alist))) "'\n"
+   (if (and nice-org-html-options
+	    (--all? (and (consp it) (stringp (car it)) (stringp (cdr it)))
+		    nice-org-html-options))
+       (concat "document.cookie = 'options="
+	       (string-remove-suffix
+		"__"
+		(--reduce-from (concat acc (car it) ":" (cdr it) "__")
+			       ""
+			       nice-org-html-options))
+	       "';\n")
+     "")
    (with-temp-buffer
      (insert-file-contents nice-org-html--base-js)
      (when (and (not (equal "" nice-org-html-js))
@@ -364,8 +381,8 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
 
 (defun nice-org-html--interpolate-css ()
   "Interpolate hex values in CSS template."
+  (setq inhibit-redisplay t)
   (let ((initial-themes custom-enabled-themes))
-    (setq inhibit-redisplay t)
     (mapc (lambda (th) (disable-theme th)) initial-themes)
     (goto-char (point-min))
     ;; loop over CSS template variables
@@ -379,10 +396,11 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
     (goto-char (point-max))
     ;; restore prior theme configuration
     (unless (-contains? initial-themes nice-org-html--temp-theme)
-      (disable-theme nice-org-html--temp-theme)
-      (setq custom-enabled-themes initial-themes))
-    (mapc (lambda (th) (load-theme th t nil)) initial-themes)
-    (setq inhibit-redisplay nil)))
+      (disable-theme nice-org-html--temp-theme))
+    (setq nice-org-html--temp-theme nil)	    
+    (setq custom-enabled-themes initial-themes)
+    (mapc (lambda (th) (load-theme th t nil)) initial-themes))
+  (setq inhibit-redisplay nil))
 
 (defun nice-org-html--get-hex-val (str)
   "Interpret STR of form #{mode:entity:attribute:key?|...} against themes."
