@@ -500,7 +500,9 @@ pre.src {
 
 #generated-header,
 #generated-footer {
-    width: 100%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
     line-height: 1;
 }
 .generated header {
@@ -516,18 +518,13 @@ pre.src {
     display: inline;
     color: var(--clr-title);
     text-decoration: none;
-    transition: all .15s ease-in;
+    transition: color .15s ease-in;
 }
 .generated header a:hover,
 .generated footer a:hover {
     color: var(--clr-link);
 }
 
-.generated nav {
-    display: block;
-    padding-left: 5%;
-    padding-right: 5%;
-}
 .generated header nav {
     position: relative;
     margin-top: 1rem;
@@ -535,7 +532,7 @@ pre.src {
     left: 0;
 }
 .generated footer nav {
-    position: relative;    
+    position: relative;
     bottom: 0;
     left: 0;
 }
@@ -551,17 +548,24 @@ pre.src {
 
 .generated a .nav-title,
 .generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+
+    /*
     display: inline-block;
     position: relative;
     float: left;
     text-align: left;
     text-decoration: none;
-    margin-right: 2em;
+    padding-right: 6em;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    */
 }
 
-.generated .nav-title {    
+.generated .nav-title {
     letter-spacing: .075rem;
     font-weight: 500;
 }
@@ -573,9 +577,11 @@ pre.src {
     display: none;
 }
 .generated .nav-list {
-    display: flex;
+    overflow-y: hidden;
+    display: block;
+    /*display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap;*/
     float: right;
     list-style: none;
     margin-bottom: 0;
@@ -594,9 +600,9 @@ pre.src {
     margin-right: 0rem;
 }
 
-.generated .nav-toggle {    
+.generated .nav-toggle {
     max-height: 0;
-    visbility: hidden;
+    visibility: hidden;
     overflow-y: hidden;
 }
 
@@ -610,7 +616,7 @@ pre.src {
     margin-top: 0;
 }
 
-.generated .menu-sep {    
+.generated .menu-sep {
     display: none;
     max-height: 0;
     overflow-y: hidden;
@@ -621,23 +627,24 @@ pre.src {
     padding-bottom: 1rem;
 }
 
+/*
 @media only screen and (max-width: 768px) {
     .generated footer {
 	padding-bottom: 0;
     }
-    
+
     .generated header .separator {
 	margin-top: 0;
 	margin-bottom:0;
     }
     .generated footer .separator {
-	margin-bottom: 1rem;	
-    }    
+	margin-bottom: 1rem;
+    }
 
     .generated .nav-toggle {
 	visibility: visible;
     }
-    
+
     .generated .nav-toggle + label span::before {
 	transition: all 0.2s ease-in;
     }
@@ -646,13 +653,13 @@ pre.src {
 	transition: all 0.2s ease;
     }
 
-    .generated .menu-sep {    
+    .generated .menu-sep {
 	display: flex;
 	max-height: 0rem;
-    }    
+    }
     .generated .nav-toggle:checked + label + .menu-sep {
 	display: block;
-	position: relative;	
+	position: relative;
 	max-height: 1rem;
 	transition: max-height 0.2s ease;
     }
@@ -715,6 +722,95 @@ pre.src {
 	margin-bottom: -1rem;
     }
 
+}
+*/
+
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+	margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
 }
 /*]]>*/-->
 </style>
@@ -843,32 +939,30 @@ This is the sort of configuration used to generate this sample:
 <div class='org-src-wrapper'>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> org-publish-project-alist
-      `(<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">... Entries like below built programmatically:</span>
-        (<span style="color: var(--clr-string); background-color: var(--bg-string);">"nice-org-html/samples/X"</span>
+      `((<span style="color: var(--clr-string); background-color: var(--bg-string);">"nice-org-html/samples/X"</span>
          <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:base-directory</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"nice-org-html/samples/source"</span>
          <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:publishing-directory</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"nice-org-html/samples/X"</span>
          <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:htmlize-source</span> t
          <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:with-toc</span> t
          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">...</span>
          <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:publishing-function</span>
-         ,(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">nice-org-html-make-publishing-function</span>
-           '((light . ,light-theme) (dark . ,dark-theme))
-           'dark <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">dark default</span>
-           'nil  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">no headline bullets</span>
-           '((<span style="color: var(--clr-string); background-color: var(--bg-string);">"SITE NAME"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/home.html"</span>)
-             (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Foo"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/foo.html"</span>)
-             (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Bar"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/bar.html"</span>)
-             (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Baz"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/baz.html"</span>))
-           '((<span style="color: var(--clr-string); background-color: var(--bg-string);">"&#169; Author Name"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"mailto:a@b.com"</span>)                    
-             (<span style="color: var(--clr-string); background-color: var(--bg-string);">"GitHub"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/ewantown"</span>)
-             (<span style="color: var(--clr-string); background-color: var(--bg-string);">"LinkedIn"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://linkedin.com/me"</span>))
-           <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span>)))) <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">CSS and JS unused</span>
+         ,(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">nice-org-html-publishing-function</span>
+           <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:theme-alist</span> ((light . &lt;light-theme&gt;) (dark . &lt;dark-theme&gt;))
+           <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:default-mode</span> dark
+           <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:header</span> ((<span style="color: var(--clr-string); background-color: var(--bg-string);">"SITE NAME"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/home.html"</span>)
+                    (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Foo"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/foo.html"</span>)
+                    (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Bar"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/bar.html"</span>)
+                    (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Baz"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/baz.html"</span>))
+
+           <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:footer</span> ((<span style="color: var(--clr-string); background-color: var(--bg-string);">"&#169; Author Name"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"mailto:a@b.com"</span>)
+                    (<span style="color: var(--clr-string); background-color: var(--bg-string);">"GitHub"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/ewantown"</span>)
+                    (<span style="color: var(--clr-string); background-color: var(--bg-string);">"LinkedIn"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://linkedin.com/me"</span>))))))
 </pre>
-</div><button class='copyBtn' name=btn_fdb0e8111f29468d8b5d42c18e828df1>&#10697;</button>
+</div><button class='copyBtn' name=btn_d6b2027096a5409f84be9ab90d690564>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fdb0e8111f29468d8b5d42c18e828df1=document.querySelector('button[name=btn_fdb0e8111f29468d8b5d42c18e828df1]');
-copyBtnbtn_fdb0e8111f29468d8b5d42c18e828df1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`(;; ... Entries like below built programmatically:\n        (\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-make-publishing-function\n           '((light . ,light-theme) (dark . ,dark-theme))\n           'dark ; dark default\n           'nil  ; no headline bullets\n           '((\"SITE NAME\" . \"/route/to/home.html\")\n             (\"Foo\" . \"/route/to/foo.html\")\n             (\"Bar\" . \"/route/to/bar.html\")\n             (\"Baz\" . \"/route/to/baz.html\"))\n           '((\"© Author Name\" . \"mailto:a@b.com\")                    \n             (\"GitHub\" . \"https://github.com/ewantown\")\n             (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           \"\" \"\")))) ; CSS and JS unused\n`);copyBtnbtn_fdb0e8111f29468d8b5d42c18e828df1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fdb0e8111f29468d8b5d42c18e828df1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d6b2027096a5409f84be9ab90d690564=document.querySelector('button[name=btn_d6b2027096a5409f84be9ab90d690564]');
+copyBtnbtn_d6b2027096a5409f84be9ab90d690564.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))))))\n`);copyBtnbtn_d6b2027096a5409f84be9ab90d690564.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d6b2027096a5409f84be9ab90d690564.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div>
@@ -1074,6 +1168,18 @@ const gotoTopBtn = document.getElementById("goto-top");
 const toggleModeBtn = document.getElementById("toggle-mode");
 const toc = document.getElementById("table-of-contents");
 
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
 // Move sticky control bar (injected within preamble)
 document.body.insertBefore(controls, content);
 
@@ -1095,7 +1201,7 @@ function setMode(mode) {
 let mode = getMode();
 if (mode && ["light", "dark"].includes(mode)) {
   setMode(mode);
-} else {
+} else {  
   let prop = "prefers-color-scheme";
   let pref = (mode === "query") && window.matchMedia &&
     ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
@@ -1206,13 +1312,13 @@ function copyTextToClipboard(text) {
 }
 
 // Handle the default header / footer drawers
-let header = document.getElementById("generated-header");
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
 if (header) {
   let toggle = header.querySelector("header nav input.nav-toggle");
   if (toggle) { toggle.checked = false; }
 }
-
-let footer = document.getElementById("generated-footer");
 if (footer) {
   let nav = footer.querySelector("nav");
   let toggle = nav && nav.querySelector(".nav-toggle");
@@ -1231,6 +1337,53 @@ if (footer) {
    });
   }
 }
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
 /*]]>*/-->
 </script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
 </div>

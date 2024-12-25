@@ -104,7 +104,7 @@ With the README I also publish these samples, which include a list-specified hea
     ;; ...
   #+end_src
 
-+ For more granular per-project configuration, there is a publishing-function-generating macro, ~nice-org-html-make-publishing-function~, which takes values for all of the above configuration variables, and defines a publishing function unique to that invocation. For example, your per-project configuration - i.e. the value of ~org-publish-projects-alist~ - may look something like this:
++ For more granular per-project configuration, there is a publishing-function-generating macro, ~nice-org-html-publishing-function~, which takes values for the above configuration variables, and defines a publishing function unique to that invocation. For example, your per-project configuration - i.e. the value of ~org-publish-projects-alist~ - may look something like this:
   
   #+begin_src emacs-lisp
     `(("project-x/files"
@@ -114,15 +114,19 @@ With the README I also publish these samples, which include a list-specified hea
        ;; ...
        :publishing-function
        ,(nice-org-html-make-publishing-function
-         '((light . spacemacs-light) (dark . spacemacs-dark))
-         'dark
-         '(:h1 "" :h2 "✸" :h3 "▷" :h4 "" :h5 "")
-         "path/to/your/header.html"
-         "path/to/your/footer.html"
-         "path/to/your/style.css"
-         "path/to/your/script.js")))
+         :theme-alist ((light . spacemacs-light) (dark . spacemacs-dark))
+         :default-mode dark
+         :headline-bullets (:h1 "" :h2 "✸" :h3 "▷" :h4 "" :h5 "")
+         :header "path/to/your/header.html"
+         :footer "path/to/your/footer.html"
+         :css "path/to/your/style.css"
+         :js "path/to/your/script.js")))
   #+end_src
 
+  + Any variables for which values are not specified in the configuration passed to this macro will take their global values.
+
++ Finally, there is a less ergonomic alternative macro, ~nice-org-html-make-publishing-function~, which takes values for all of the above configuration variables as direct arguments, rather than properties. The function defined by this macro does not validate its arguments, and the macro is primarily for use in contexts where invocations need to be constructed programmatically, with lexically bound variables spliced in. For most uses, ~nice-org-html-publishing-function~ should be preferred over the "-make-" alternative.
+  
 * Things to keep in mind
 + *Important*: for downloaded themes, you must run ~M-x load-theme~ once, at some point, /before/ exporting or publishing, so that Emacs "recognizes" the theme as safe to load. Failure to do so may brick an Emacs instance, requiring a restart.
 

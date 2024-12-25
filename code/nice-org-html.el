@@ -48,6 +48,7 @@
 ;; nice-org-html-export-to-html
 ;; nice-org-html-export-to-html-file
 ;; nice-org-html-publish-to-html
+;; nice-org-html-publishing-function
 ;; nice-org-html-make-publishing-function
 
 ;;==============================================================================
@@ -80,7 +81,7 @@
 (defvar nice-org-html-default-mode 'query
   "Default nice HTML page viewing mode.
 One of: ((quote light) or (quote dark)) or (quote query).
-If (quote query), get for browser-set preference, fallback: (quote dark).")
+If (quote query), gets browser-set preference, with fallback to (quote dark).")
 
 (defvar nice-org-html-headline-bullets nil
   "If non-nil, headlines are prefixed with bullets.
@@ -95,9 +96,9 @@ Else, bullets are strings, b1...b5, specified by plist of form:
 If a string, a path to HTML file containing e.g. a <header> element to inject.
 
 If a list, a list of form:
-    '((\"title\"' . url0]) (\"link1 . \"url1\") ... (\"linkN\" . \"urlN\")
-to be interpreted using default header structure, user beware visual overflow.
-If url0 is nil, not a string, \"title\" will not be hyperlinked.")
+    '((\"anchor\"' . url0]) (\"link1 . \"url1\") ... (\"linkN\" . \"urlN\")
+to be interpreted using default header structure.
+If url0 is nil (not a string), then \"anchor\" will not be hyperlinked.")
 
 (defvar nice-org-html-footer nil
   "(Optional) structure to interpret, and/or inject, as page footer.
@@ -105,15 +106,21 @@ If url0 is nil, not a string, \"title\" will not be hyperlinked.")
 If a string, a path to HTML file containing e.g. a <footer> element to inject.
 
 If a list, a list of form:
-    '((\"title\"' . url0]) (\"link1 . \"url1\") ... (\"linkN\" . \"urlN\")
-to be interpreted using footer header structure, user beware visual overflow.
-If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
+    '((\"anchor\"' . url0]) (\"link1 . \"url1\") ... (\"linkN\" . \"urlN\")
+to be interpreted using default footer structure.
+If url0 is nil (not a string), then \"anchor\" will not be hyperlinked.")
 
 (defvar nice-org-html-css ""
   "Path to (optional) CSS file to inject.")
 
 (defvar nice-org-html-js ""
   "Path to (optional) JS  file to inject.")
+
+(defvar nice-org-html-options nil
+  "Property list mapping additional configuration keywords to values (strings).
+Options currently supported:
+:layout \"compact\", force header/footer link-collapse into drawer
+:layout \"expanded\", prevent header/footer link-collapse into drawer")
 
 ;;==============================================================================
 ;; Package local variables
@@ -219,8 +226,11 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
    "<!--/*--><![CDATA[/*><!--*/\n"
    (with-temp-buffer
      (insert-file-contents nice-org-html--base-css)
+     (goto-char (point-max))
      (when-let* ((css (nice-org-html--bullet-css))) (insert css))
-     (when (and (not (equal "" nice-org-html-css))
+     (goto-char (point-max))
+     (when (and nice-org-html-css
+		(not (equal "" nice-org-html-css))
 		(file-exists-p nice-org-html-css))
        (insert-file-contents nice-org-html-css))
      (nice-org-html--interpolate-css)
@@ -253,7 +263,7 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
 
 (defun nice-org-html--preamble ()
   "Construct html preamble to main content area."
-  (concat (or (nice-org-html--header-html) "")      
+  (concat (or (nice-org-html--header-html) "")
 	  "<div id='view-controls'>"
 	  "<div id='toggle-mode' title='Mode'>&#9788;</div>"
 	  "<div id='goto-top' title='Top'>&#8963;</div>"
@@ -262,9 +272,6 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
 
 (defun nice-org-html--bar-builder (data class)
   "Constructs components of header/footer bar, returns as pair."
-  (print "PROBE-BAR-BUILDER")
-  (print data)
-  (print "\n")
   (and-let* ((_ (consp data))
 	     (_ (--all? (and (consp it) (stringp (car it))) data))
 	     (tcell (car data))
@@ -281,18 +288,18 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
 				 (format "href='%s' " thref))
 			    "")
 			">\n" (car tcell) "\n</" tag ">\n"))))
-    `(,left-html . ,(--reduce-from (concat acc it "\n") ""      
+    `(,left-html . ,(--reduce-from (concat acc it "\n") ""
 				   (--map (funcall  mklink it) (cdr data))))))
 
 (defun nice-org-html--header-html ()
-  "Constructs HTML string if `nice-org-html-header' is header data, else nil"  
+  "Constructs HTML string if `nice-org-html-header' is header data, else nil"
   (and-let* ((data nice-org-html-header))
     (or (and (stringp data) (not (equal "" data)) (file-exists-p data)
 	     (concat "<div id='injected-header' class='injected'>"
 		     (with-temp-buffer (insert-file-contents data)
 				       (buffer-string))
 		     "</div>"))
-	
+
 	(and-let* ((components (nice-org-html--bar-builder data "nav-title"))
 		   (left-html (car components))
 		   (links-html (cdr components)))
@@ -303,20 +310,20 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
 		  "<label class='nav-button' for='nav-toggle-top'><span/></label>\n"
 		  "<div class='separator menu-sep'></div>\n"
 		  "<ul class='nav-list'>\n"
-		  links-html		  
+		  links-html
 		  "</ul>\n" "<div class='separator'></div>\n" "</nav>\n"
 		  "</header>\n</div>\n")))))
 
 
 (defun nice-org-html--footer-html ()
-  "Constructs HTML string if `nice-org-html-footer' is footer data, else nil"  
+  "Constructs HTML string if `nice-org-html-footer' is footer data, else nil"
   (and-let* ((data nice-org-html-footer))
     (or (and (stringp data) (not (equal "" data)) (file-exists-p data)
 	     (concat "<div id='injected-footer' class='injected'>"
 		     (with-temp-buffer (insert-file-contents data)
 				       (buffer-string))
 		     "</div>"))
-	
+
 	(and-let* ((components (nice-org-html--bar-builder data "nav-author"))
 		   (left-html (car components))
 		   (links-html (cdr components)))
@@ -328,7 +335,7 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
 		  "<label class='nav-button' for='nav-toggle-bot'><span/></label>\n"
 		  "<div class='separator menu-sep'></div>\n"
 		  "<ul class='nav-list'>\n"
-		  links-html		  
+		  links-html
 		  "</ul>\n" "</nav>\n"
 		  "</footer>\n</div>\n")))))
 
@@ -337,7 +344,7 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
 (defun nice-org-html--postamble ()
   "Construct html postamble to main content area."
   (concat
-   (or (nice-org-html--footer-html) "")      
+   (or (nice-org-html--footer-html) "")
    "<script type=\"text/javascript\">\n"
    "<!--/*--><![CDATA[/*><!--*/\n"
    "if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {\n"
@@ -346,9 +353,26 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
    (symbol-name (cdr (assoc 'light nice-org-html-theme-alist))) "'\n"
    "document.cookie = 'dark="
    (symbol-name (cdr (assoc 'dark  nice-org-html-theme-alist))) "'\n"
+   (if (and nice-org-html-options (plistp nice-org-html-options))
+       (concat "document.cookie = 'options="
+	       (string-remove-suffix
+		"__"
+		(--reduce-from
+		 (concat acc (string-remove-prefix ":" (symbol-name (car it)))
+			 ":" (cdr it) "__")
+		 ""
+		 (--filter it
+			   (--map
+			    (if (plist-member nice-org-html-options it)
+				(cons it (plist-get nice-org-html-options it))
+			      nil)
+			    nice-org-html-options))))
+	       "';\n")
+     "")
    (with-temp-buffer
      (insert-file-contents nice-org-html--base-js)
-     (when (and (not (equal "" nice-org-html-js))
+     (when (and nice-org-html-js
+		(not (equal "" nice-org-html-js))
 		(file-exists-p nice-org-html-js))
        (insert-file-contents nice-org-html-js))
      (buffer-string))
@@ -358,14 +382,13 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
    "Generated by: https://github.com/ewantown/nice-org-html"
    "</div>"))
 
-
 ;;==============================================================================
 ;; Emacs theme / CSS Interpolation
 
 (defun nice-org-html--interpolate-css ()
   "Interpolate hex values in CSS template."
+  (setq inhibit-redisplay t)
   (let ((initial-themes custom-enabled-themes))
-    (setq inhibit-redisplay t)
     (mapc (lambda (th) (disable-theme th)) initial-themes)
     (goto-char (point-min))
     ;; loop over CSS template variables
@@ -379,10 +402,11 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
     (goto-char (point-max))
     ;; restore prior theme configuration
     (unless (-contains? initial-themes nice-org-html--temp-theme)
-      (disable-theme nice-org-html--temp-theme)
-      (setq custom-enabled-themes initial-themes))
-    (mapc (lambda (th) (load-theme th t nil)) initial-themes)
-    (setq inhibit-redisplay nil)))
+      (disable-theme nice-org-html--temp-theme))
+    (setq nice-org-html--temp-theme nil)
+    (setq custom-enabled-themes initial-themes)
+    (mapc (lambda (th) (load-theme th t nil)) initial-themes))
+  (setq inhibit-redisplay nil))
 
 (defun nice-org-html--get-hex-val (str)
   "Interpret STR of form #{mode:entity:attribute:key?|...} against themes."
@@ -462,9 +486,9 @@ If url0 is nil, \"title\" will not be hyperlinked in the default footer.")
   "Export current buffer to HTML file in PWD using nice-org-html custom backend.
 See docs for `org-html-export-to-html', which this function emulates."
   (interactive)
-  (let* ((nice-org-html-header (read-string "HTML header file (optional): "
+  (let* ((nice-org-html-header (read-string "Header file or list (optional): "
 					    nice-org-html-header nil nil nil))
-	 (nice-org-html-footer (read-string "HTML footer file (optional): "
+	 (nice-org-html-footer (read-string "Footer file or list (optional): "
 					    nice-org-html-footer nil nil nil))
 	 (nice-org-html-css (read-string "Additional CSS file (optional): "
 					 nice-org-html-css nil nil nil))
@@ -486,9 +510,9 @@ See docs for `org-html-export-to-html', which this function emulates."
   "Export current buffer as nice HTML to interactively specified file.
 Optional arguments are pass-through, so see docs for `org-export-to-file'."
   (let* ((file (read-string "Target file path (mandatory): "))
-	 (nice-org-html-header (read-string "HTML header file (optional): "
+	 (nice-org-html-header (read-string "Header file or list (optional): "
 					    nice-org-html-header nil nil nil))
-	 (nice-org-html-footer (read-string "HTML footer file (optional): "
+	 (nice-org-html-footer (read-string "Footer file or list (optional): "
 					    nice-org-html-footer nil nil nil))
 	 (nice-org-html-css (read-string "Additional CSS file (optional): "
 					 nice-org-html-css nil nil nil))
@@ -509,36 +533,122 @@ See docs for `org-html-publish-to-html', which this function emulates."
 		      plist pub-dir))
 
 ;;;###autoload
-(defmacro nice-org-html-make-publishing-function
-    (theme-alist default-mode bullets header footer css js)
+(defmacro nice-org-html-publishing-function (&rest config)
   "Create org-publishing function which quasi-closes over passed configuration.
+
+CONFIG is a plist, supporting the following properties:
+:theme-alist, shadows `nice-org-html-theme-alist'.
+:default-mode, shadows `nice-org-html-theme-alist'.
+:headline-bullets, shadows `nice-org-html-headline-bullets'
+:header, shadows `nice-org-html-header'.
+:footer, shadows `nice-org-html-footer'.
+:css, shadows `nice-org-html-css'.
+:js, shadows `nice-org-html-js'.
+:layout, nil (for dynamic) or one of {\"compact\" \"expanded\"}.
+
+Required but unspecified parameters are backstopped by globally set values."
+  (declare (debug t))
+  (let* ((sym (gensym "nice-org-html-publishing-function-")))
+    `(defun ,sym (plist filename pub-dir)
+       (let* ((config ',config)
+	      (backstop
+	       (lambda (key stop &optional pred)
+		 (let* ((mem (plist-member config key))
+			(ent (plist-get config key)))
+		   (cond ((and mem pred) (if (funcall pred ent) ent stop))
+			 (mem ent)
+			 (t stop)))))
+	      (nice-org-html-theme-alist
+	       (funcall backstop :theme-alist nice-org-html-theme-alist
+		 (lambda (e)
+		   (or (and (consp e) (assoc 'light e) (assoc 'dark e)
+			    (--all? (member it (custom-available-themes))
+				    (--map (cdr it) e)))
+		       (progn (when e (message "Error: invalid themes: %S" e))
+			      nil)))))
+	      (nice-org-html-default-mode
+	       (funcall backstop :default-mode nice-org-html-default-mode
+		 (lambda (e)
+		   (or (and (symbolp e) (member e '(light dark)))
+		       (progn (when e (message "Error: invalid mode: %S" e))
+			      nil)))))
+	      (nice-org-html-headline-bullets
+	       (funcall backstop :headline-bullets nice-org-html-headline-bullets))
+	      (nice-org-html-header
+	       (funcall backstop :header nice-org-html-header
+		 (lambda (e)
+		   (or (and (stringp e) (file-exists-p e))
+		       (and (consp e)
+			    (--all? (and (consp it) (stringp (car it))) e))
+		       (progn (when e (message "Error: invalid header: %S" e))
+			      nil)))))
+	      (nice-org-html-footer
+	       (funcall backstop :footer nice-org-html-footer
+		 (lambda (e)
+		   (or (and e (stringp e) (file-exists-p e))
+		       (and (consp e)
+			    (--all? (and (consp it) (stringp (car it))) e))
+		       (progn (when e (message "Error: invalid footer: %S" e))
+			      nil)))))
+	      (nice-org-html-css
+	       (funcall backstop :css nice-org-html-css
+		 (lambda (e)
+		   (or (and e (stringp e) (file-exists-p e))
+		       (progn (when e (message "Error: invalid CSS file: %S" e))
+			  nil)))))
+	      (nice-org-html-js
+	       (funcall backstop :js nice-org-html-js
+		 (lambda (e)
+		   (or (and (stringp e) (file-exists-p e))
+		       (progn (when e (message "Error: invalid JS file: %S" e))
+			      nil)))))
+	      (base '(:theme-alist :default-mode))
+	      (main (append base '(:headline-bullets :header :footer :css :js)))
+	      (nice-org-html-options
+	       (--reduce-from
+		(plist-put acc it (plist-get config it))
+		nice-org-html-options
+		(-filter (lambda (s) (and s (--all? (not (eq s it)) main)))
+			 (--map (car-safe (plist-member config it)) config)))))
+	 (nice-org-html-publish-to-html plist filename pub-dir)))))
+
+
+;;;###autoload
+    (defmacro nice-org-html-make-publishing-function
+	(theme-alist default-mode bullets header footer css js &optional options)
+      "Create org-publishing function which quasi-closes over passed configuration.
+
+For most uses, `nice-org-html-publishing-function' is a better alternative, as
+the function defined by this \"maker\" macro does not validate its arguments.
+
+This macro is primarily for cases where invocations need to be constructed
+programmatically, with lexically bound variables or parameters spliced in.
+
 THEME-ALIST shadows `nice-org-html-theme-alist'.
 DEFAULT-MODE shadows `nice-org-html-default-mode'.
 HEADER shadows `nice-org-html-header'.
 FOOTER shadows `nice-org-html-footer'.
 CSS shadows `nice-org-html-css'.
-JS shadows `nice-org-html-js'."
-  (declare (debug t))
-  (let ((sym (gensym "nice-org-html-publishing-function-")))
-    `(progn
-       (defun ,sym (plist filename pub-dir)
-	 (let* ((theme-alist (or (and (listp ,theme-alist)
-				      (assoc 'light ,theme-alist)
-				      (assoc 'dark  ,theme-alist)
-				      ,theme-alist)
-				 nice-org-html-theme-alist))
-		(default-mode (or (and (memq ,default-mode '(light dark))
-				       ,default-mode)
-				  nice-org-html-default-mode))
-		(nice-org-html-theme-alist  theme-alist)
-		(nice-org-html-default-mode default-mode)
-		(nice-org-html-headline-bullets ,bullets)
-		(nice-org-html-header ,header)
-		(nice-org-html-footer ,footer)
-		(nice-org-html-css ,css)
-		(nice-org-html-js  ,js))
-	   (nice-org-html-publish-to-html plist filename pub-dir)))
-       ',sym)))
+JS shadows `nice-org-html-js'.
+OPTIONS shadows `nice-org-html-options'."
+      (declare (debug t))
+      (let ((sym (gensym "nice-org-html-publishing-function-")))
+	`(defun ,sym (plist filename pub-dir)
+	   (let* ((nice-org-html-theme-alist  ,theme-alist)
+		  (nice-org-html-default-mode ,default-mode)
+		  (nice-org-html-headline-bullets ,bullets)
+		  (nice-org-html-header ,header)
+		  (nice-org-html-footer ,footer)
+		  (nice-org-html-css ,css)
+		  (nice-org-html-js  ,js)
+		  (nice-org-html-options
+		   (--reduce-from
+		    (plist-put acc it (plist-get ,options it))
+		    nice-org-html-options
+		    (-filter
+		     (lambda (s) s)
+		     (--map (car-safe (plist-member ,options it)) ,options)))))
+	     (nice-org-html-publish-to-html plist filename pub-dir)))))
 
 ;;==============================================================================
 ;; Defined mode

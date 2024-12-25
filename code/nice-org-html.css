@@ -489,7 +489,9 @@ pre.src {
 
 #generated-header,
 #generated-footer {
-    width: 100%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
     line-height: 1;
 }
 .generated header {
@@ -505,18 +507,13 @@ pre.src {
     display: inline;
     color: var(--clr-title);
     text-decoration: none;
-    transition: all .15s ease-in;
+    transition: color .15s ease-in;
 }
 .generated header a:hover,
 .generated footer a:hover {
     color: var(--clr-link);
 }
 
-.generated nav {
-    display: block;
-    padding-left: 5%;
-    padding-right: 5%;
-}
 .generated header nav {
     position: relative;
     margin-top: 1rem;
@@ -524,7 +521,7 @@ pre.src {
     left: 0;
 }
 .generated footer nav {
-    position: relative;    
+    position: relative;
     bottom: 0;
     left: 0;
 }
@@ -540,17 +537,24 @@ pre.src {
 
 .generated a .nav-title,
 .generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+
+    /*
     display: inline-block;
     position: relative;
     float: left;
     text-align: left;
     text-decoration: none;
-    margin-right: 2em;
+    padding-right: 6em;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    */
 }
 
-.generated .nav-title {    
+.generated .nav-title {
     letter-spacing: .075rem;
     font-weight: 500;
 }
@@ -562,9 +566,11 @@ pre.src {
     display: none;
 }
 .generated .nav-list {
-    display: flex;
+    overflow-y: hidden;
+    display: block;
+    /*display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap;*/
     float: right;
     list-style: none;
     margin-bottom: 0;
@@ -583,9 +589,9 @@ pre.src {
     margin-right: 0rem;
 }
 
-.generated .nav-toggle {    
+.generated .nav-toggle {
     max-height: 0;
-    visbility: hidden;
+    visibility: hidden;
     overflow-y: hidden;
 }
 
@@ -599,7 +605,7 @@ pre.src {
     margin-top: 0;
 }
 
-.generated .menu-sep {    
+.generated .menu-sep {
     display: none;
     max-height: 0;
     overflow-y: hidden;
@@ -610,23 +616,24 @@ pre.src {
     padding-bottom: 1rem;
 }
 
+/*
 @media only screen and (max-width: 768px) {
     .generated footer {
 	padding-bottom: 0;
     }
-    
+
     .generated header .separator {
 	margin-top: 0;
 	margin-bottom:0;
     }
     .generated footer .separator {
-	margin-bottom: 1rem;	
-    }    
+	margin-bottom: 1rem;
+    }
 
     .generated .nav-toggle {
 	visibility: visible;
     }
-    
+
     .generated .nav-toggle + label span::before {
 	transition: all 0.2s ease-in;
     }
@@ -635,13 +642,13 @@ pre.src {
 	transition: all 0.2s ease;
     }
 
-    .generated .menu-sep {    
+    .generated .menu-sep {
 	display: flex;
 	max-height: 0rem;
-    }    
+    }
     .generated .nav-toggle:checked + label + .menu-sep {
 	display: block;
-	position: relative;	
+	position: relative;
 	max-height: 1rem;
 	transition: max-height 0.2s ease;
     }
@@ -704,4 +711,93 @@ pre.src {
 	margin-bottom: -1rem;
     }
 
+}
+*/
+
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+	margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
 }
