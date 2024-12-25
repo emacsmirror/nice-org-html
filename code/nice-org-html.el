@@ -226,8 +226,11 @@ Options currently supported:
    "<!--/*--><![CDATA[/*><!--*/\n"
    (with-temp-buffer
      (insert-file-contents nice-org-html--base-css)
+     (goto-char (point-max))
      (when-let* ((css (nice-org-html--bullet-css))) (insert css))
-     (when (and (not (equal "" nice-org-html-css))
+     (goto-char (point-max))
+     (when (and nice-org-html-css
+		(not (equal "" nice-org-html-css))
 		(file-exists-p nice-org-html-css))
        (insert-file-contents nice-org-html-css))
      (nice-org-html--interpolate-css)
@@ -269,9 +272,6 @@ Options currently supported:
 
 (defun nice-org-html--bar-builder (data class)
   "Constructs components of header/footer bar, returns as pair."
-  (print "PROBE-BAR-BUILDER")
-  (print data)
-  (print "\n")
   (and-let* ((_ (consp data))
 	     (_ (--all? (and (consp it) (stringp (car it))) data))
 	     (tcell (car data))
@@ -371,7 +371,8 @@ Options currently supported:
      "")
    (with-temp-buffer
      (insert-file-contents nice-org-html--base-js)
-     (when (and (not (equal "" nice-org-html-js))
+     (when (and nice-org-html-js
+		(not (equal "" nice-org-html-js))
 		(file-exists-p nice-org-html-js))
        (insert-file-contents nice-org-html-js))
      (buffer-string))
@@ -584,7 +585,7 @@ Required but unspecified parameters are backstopped by globally set values."
 	      (nice-org-html-footer
 	       (funcall backstop :footer nice-org-html-footer
 		 (lambda (e)
-		   (or (and (stringp e) (file-exists-p e))
+		   (or (and e (stringp e) (file-exists-p e))
 		       (and (consp e)
 			    (--all? (and (consp it) (stringp (car it))) e))
 		       (progn (when e (message "Error: invalid footer: %S" e))
@@ -592,9 +593,9 @@ Required but unspecified parameters are backstopped by globally set values."
 	      (nice-org-html-css
 	       (funcall backstop :css nice-org-html-css
 		 (lambda (e)
-		   (or (and (stringp e) (file-exists-p e))
+		   (or (and e (stringp e) (file-exists-p e))
 		       (progn (when e (message "Error: invalid CSS file: %S" e))
-			      nil)))))
+			  nil)))))
 	      (nice-org-html-js
 	       (funcall backstop :js nice-org-html-js
 		 (lambda (e)
@@ -611,10 +612,11 @@ Required but unspecified parameters are backstopped by globally set values."
 			 (--map (car-safe (plist-member config it)) config)))))
 	 (nice-org-html-publish-to-html plist filename pub-dir)))))
 
+
 ;;;###autoload
-(defmacro nice-org-html-make-publishing-function
-    (theme-alist default-mode bullets header footer css js &optional options)
-  "Create org-publishing function which quasi-closes over passed configuration.
+    (defmacro nice-org-html-make-publishing-function
+	(theme-alist default-mode bullets header footer css js &optional options)
+      "Create org-publishing function which quasi-closes over passed configuration.
 
 For most uses, `nice-org-html-publishing-function' is a better alternative, as
 the function defined by this \"maker\" macro does not validate its arguments.
@@ -629,24 +631,24 @@ FOOTER shadows `nice-org-html-footer'.
 CSS shadows `nice-org-html-css'.
 JS shadows `nice-org-html-js'.
 OPTIONS shadows `nice-org-html-options'."
-  (declare (debug t))
-  (let ((sym (gensym "nice-org-html-publishing-function-")))
-    `(defun ,sym (plist filename pub-dir)
-       (let* ((nice-org-html-theme-alist  ,theme-alist)
-	      (nice-org-html-default-mode ,default-mode)
-	      (nice-org-html-headline-bullets ,bullets)
-	      (nice-org-html-header ,header)
-	      (nice-org-html-footer ,footer)
-	      (nice-org-html-css ,css)
-	      (nice-org-html-js  ,js)
-	      (nice-org-html-options
-	       (--reduce-from
-		(plist-put acc it (plist-get ,options it))
-		nice-org-html-options
-		(-filter
-		 (lambda (s) s)
-		 (--map (car-safe (plist-member ,options it)) ,options)))))
-	 (nice-org-html-publish-to-html plist filename pub-dir)))))
+      (declare (debug t))
+      (let ((sym (gensym "nice-org-html-publishing-function-")))
+	`(defun ,sym (plist filename pub-dir)
+	   (let* ((nice-org-html-theme-alist  ,theme-alist)
+		  (nice-org-html-default-mode ,default-mode)
+		  (nice-org-html-headline-bullets ,bullets)
+		  (nice-org-html-header ,header)
+		  (nice-org-html-footer ,footer)
+		  (nice-org-html-css ,css)
+		  (nice-org-html-js  ,js)
+		  (nice-org-html-options
+		   (--reduce-from
+		    (plist-put acc it (plist-get ,options it))
+		    nice-org-html-options
+		    (-filter
+		     (lambda (s) s)
+		     (--map (car-safe (plist-member ,options it)) ,options)))))
+	     (nice-org-html-publish-to-html plist filename pub-dir)))))
 
 ;;==============================================================================
 ;; Defined mode

@@ -491,7 +491,7 @@ pre.src {
 #generated-footer {
     width: 90%;
     margin-left: 5%;
-    margin-right: 5%;    
+    margin-right: 5%;
     line-height: 1;
 }
 .generated header {
@@ -521,7 +521,7 @@ pre.src {
     left: 0;
 }
 .generated footer nav {
-    position: relative;    
+    position: relative;
     bottom: 0;
     left: 0;
 }
@@ -541,7 +541,7 @@ pre.src {
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding-right: 10rem;
-    
+
     /*
     display: inline-block;
     position: relative;
@@ -554,7 +554,7 @@ pre.src {
     */
 }
 
-.generated .nav-title {    
+.generated .nav-title {
     letter-spacing: .075rem;
     font-weight: 500;
 }
@@ -567,7 +567,7 @@ pre.src {
 }
 .generated .nav-list {
     overflow-y: hidden;
-    display: block;	
+    display: block;
     /*display: flex;
     flex-direction: row;
     flex-wrap: wrap;*/
@@ -589,7 +589,7 @@ pre.src {
     margin-right: 0rem;
 }
 
-.generated .nav-toggle {    
+.generated .nav-toggle {
     max-height: 0;
     visibility: hidden;
     overflow-y: hidden;
@@ -605,7 +605,7 @@ pre.src {
     margin-top: 0;
 }
 
-.generated .menu-sep {    
+.generated .menu-sep {
     display: none;
     max-height: 0;
     overflow-y: hidden;
@@ -621,19 +621,19 @@ pre.src {
     .generated footer {
 	padding-bottom: 0;
     }
-    
+
     .generated header .separator {
 	margin-top: 0;
 	margin-bottom:0;
     }
     .generated footer .separator {
-	margin-bottom: 1rem;	
-    }    
+	margin-bottom: 1rem;
+    }
 
     .generated .nav-toggle {
 	visibility: visible;
     }
-    
+
     .generated .nav-toggle + label span::before {
 	transition: all 0.2s ease-in;
     }
@@ -642,13 +642,13 @@ pre.src {
 	transition: all 0.2s ease;
     }
 
-    .generated .menu-sep {    
+    .generated .menu-sep {
 	display: flex;
 	max-height: 0rem;
-    }    
+    }
     .generated .nav-toggle:checked + label + .menu-sep {
 	display: block;
-	position: relative;	
+	position: relative;
 	max-height: 1rem;
 	transition: max-height 0.2s ease;
     }
@@ -718,19 +718,19 @@ pre.src {
 .generated.compact footer {
     padding-bottom: 0;
 }
-    
+
 .generated.compact header .separator {
     margin-top: 0;
     margin-bottom:0;
 }
 .generated.compact footer .separator {
-	margin-bottom: 1rem;	
-}    
+	margin-bottom: 1rem;
+}
 
 .generated.compact .nav-toggle {
     visibility: visible;
 }
-    
+
 .generated.compact .nav-toggle + label span::before {
     transition: all 0.2s ease-in;
 }
@@ -739,13 +739,13 @@ pre.src {
     transition: all 0.2s ease;
 }
 
-.generated.compact .menu-sep {    
+.generated.compact .menu-sep {
     display: flex;
     max-height: 0rem;
-}    
+}
 .generated.compact .nav-toggle:checked + label + .menu-sep {
     display: block;
-    position: relative;	
+    position: relative;
     max-height: 1rem;
     transition: max-height 0.2s ease;
 }
