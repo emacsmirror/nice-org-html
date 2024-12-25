@@ -113,7 +113,7 @@ With the README I also publish these samples, which include a list-specified hea
        :publishing-directory "path/to/target-x/"
        ;; ...
        :publishing-function
-       ,(nice-org-html-make-publishing-function
+       ,(nice-org-html-publishing-function
          :theme-alist ((light . spacemacs-light) (dark . spacemacs-dark))
          :default-mode dark
          :headline-bullets (:h1 "" :h2 "✸" :h3 "▷" :h4 "" :h5 "")
