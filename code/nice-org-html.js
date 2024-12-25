@@ -37,6 +37,7 @@ const gotoTopBtn = document.getElementById("goto-top");
 const toggleModeBtn = document.getElementById("toggle-mode");
 const toc = document.getElementById("table-of-contents");
 
+// Get and parse options passed in cookie string
 const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
 const options = {};
 if (optCookie) {
@@ -69,7 +70,7 @@ function setMode(mode) {
 let mode = getMode();
 if (mode && ["light", "dark"].includes(mode)) {
   setMode(mode);
-} else {
+} else {  
   let prop = "prefers-color-scheme";
   let pref = (mode === "query") && window.matchMedia &&
     ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
