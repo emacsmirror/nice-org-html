@@ -552,17 +552,6 @@ pre.src {
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding-right: 10rem;
-
-    /*
-    display: inline-block;
-    position: relative;
-    float: left;
-    text-align: left;
-    text-decoration: none;
-    padding-right: 6em;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    */
 }
 
 .generated .nav-title {
@@ -627,103 +616,6 @@ pre.src {
     padding-bottom: 1rem;
 }
 
-/*
-@media only screen and (max-width: 768px) {
-    .generated footer {
-	padding-bottom: 0;
-    }
-
-    .generated header .separator {
-	margin-top: 0;
-	margin-bottom:0;
-    }
-    .generated footer .separator {
-	margin-bottom: 1rem;
-    }
-
-    .generated .nav-toggle {
-	visibility: visible;
-    }
-
-    .generated .nav-toggle + label span::before {
-	transition: all 0.2s ease-in;
-    }
-    .generated .nav-toggle:checked + label span::before {
-	transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
-	transition: all 0.2s ease;
-    }
-
-    .generated .menu-sep {
-	display: flex;
-	max-height: 0rem;
-    }
-    .generated .nav-toggle:checked + label + .menu-sep {
-	display: block;
-	position: relative;
-	max-height: 1rem;
-	transition: max-height 0.2s ease;
-    }
-
-    .generated .nav-list {
-	float: none !important;
-	position: relative;
-	display: block;
-	padding-left: 0;
-	padding-right: 0;
-	z-index: 5;
-	width: 100%;
-	height: auto;
-	max-height: 0;
-	margin: 0;
-	overflow-y: hidden;
-	transition: max-height 0.2s ease;
-    }
-    .generated .nav-toggle:checked + label ~ .nav-list {
-	display: block;
-	max-height: 100rem;
-	overflow-y: hidden;
-    }
-    .generated header .nav-toggle:checked + label ~ .nav-list {
-	transition: max-height 0.2s ease;
-    }
-
-    .generated .nav-button {
-	display: inline;
-	position: relative;
-	float: right;
-	font-size: 1rem;
-    }
-    .generated .nav-button span::before {
-	display: inline-block;
-	content: '\2807';
-	font-size: 2rem;
-	transform: translateX(0.25rem) translateY(-0.5rem);
-    }
-
-    .generated header .nav-title,
-    .generated footer .nav-author {
-	display: inline;
-	padding-top: 0;
-	margin-bottom: 0;
-    }
-
-    .generated .nav-item {
-	float: none !important;
-	text-align: center !important;
-    }
-    .generated .nav-link {
-	line-height: 2rem;
-	margin-left: 2rem;
-	margin-right: 2rem;
-	float: none !important;
-    }
-
-    .generated footer .separator.menu-sep {
-	margin-bottom: -1rem;
-    }
-
-}
-*/
 
 
 .generated.compact footer {
@@ -953,16 +845,15 @@ This is the sort of configuration used to generate this sample:
                     (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Foo"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/foo.html"</span>)
                     (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Bar"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/bar.html"</span>)
                     (<span style="color: var(--clr-string); background-color: var(--bg-string);">"Baz"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"/route/to/baz.html"</span>))
-
            <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:footer</span> ((<span style="color: var(--clr-string); background-color: var(--bg-string);">"&#169; Author Name"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"mailto:a@b.com"</span>)
                     (<span style="color: var(--clr-string); background-color: var(--bg-string);">"GitHub"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/ewantown"</span>)
                     (<span style="color: var(--clr-string); background-color: var(--bg-string);">"LinkedIn"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://linkedin.com/me"</span>))))))
 </pre>
-</div><button class='copyBtn' name=btn_d2def2cd0f184934a225c1fdcfa45d4e>&#10697;</button>
+</div><button class='copyBtn' name=btn_8a1c181dc16d4eabbe9866cf95284ad0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d2def2cd0f184934a225c1fdcfa45d4e=document.querySelector('button[name=btn_d2def2cd0f184934a225c1fdcfa45d4e]');
-copyBtnbtn_d2def2cd0f184934a225c1fdcfa45d4e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))))))\n`);copyBtnbtn_d2def2cd0f184934a225c1fdcfa45d4e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d2def2cd0f184934a225c1fdcfa45d4e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8a1c181dc16d4eabbe9866cf95284ad0=document.querySelector('button[name=btn_8a1c181dc16d4eabbe9866cf95284ad0]');
+copyBtnbtn_8a1c181dc16d4eabbe9866cf95284ad0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))))))\n`);copyBtnbtn_8a1c181dc16d4eabbe9866cf95284ad0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8a1c181dc16d4eabbe9866cf95284ad0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div>
