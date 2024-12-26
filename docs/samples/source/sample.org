@@ -27,7 +27,6 @@ This is the sort of configuration used to generate this sample:
                         ("Foo" . "/route/to/foo.html")
                         ("Bar" . "/route/to/bar.html")
                         ("Baz" . "/route/to/baz.html"))
-
                :footer (("© Author Name" . "mailto:a@b.com")
                         ("GitHub" . "https://github.com/ewantown")
                         ("LinkedIn" . "https://linkedin.com/me"))))))

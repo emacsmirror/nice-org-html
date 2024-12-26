@@ -541,17 +541,6 @@ pre.src {
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding-right: 10rem;
-
-    /*
-    display: inline-block;
-    position: relative;
-    float: left;
-    text-align: left;
-    text-decoration: none;
-    padding-right: 6em;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    */
 }
 
 .generated .nav-title {
@@ -616,103 +605,6 @@ pre.src {
     padding-bottom: 1rem;
 }
 
-/*
-@media only screen and (max-width: 768px) {
-    .generated footer {
-	padding-bottom: 0;
-    }
-
-    .generated header .separator {
-	margin-top: 0;
-	margin-bottom:0;
-    }
-    .generated footer .separator {
-	margin-bottom: 1rem;
-    }
-
-    .generated .nav-toggle {
-	visibility: visible;
-    }
-
-    .generated .nav-toggle + label span::before {
-	transition: all 0.2s ease-in;
-    }
-    .generated .nav-toggle:checked + label span::before {
-	transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
-	transition: all 0.2s ease;
-    }
-
-    .generated .menu-sep {
-	display: flex;
-	max-height: 0rem;
-    }
-    .generated .nav-toggle:checked + label + .menu-sep {
-	display: block;
-	position: relative;
-	max-height: 1rem;
-	transition: max-height 0.2s ease;
-    }
-
-    .generated .nav-list {
-	float: none !important;
-	position: relative;
-	display: block;
-	padding-left: 0;
-	padding-right: 0;
-	z-index: 5;
-	width: 100%;
-	height: auto;
-	max-height: 0;
-	margin: 0;
-	overflow-y: hidden;
-	transition: max-height 0.2s ease;
-    }
-    .generated .nav-toggle:checked + label ~ .nav-list {
-	display: block;
-	max-height: 100rem;
-	overflow-y: hidden;
-    }
-    .generated header .nav-toggle:checked + label ~ .nav-list {
-	transition: max-height 0.2s ease;
-    }
-
-    .generated .nav-button {
-	display: inline;
-	position: relative;
-	float: right;
-	font-size: 1rem;
-    }
-    .generated .nav-button span::before {
-	display: inline-block;
-	content: '\2807';
-	font-size: 2rem;
-	transform: translateX(0.25rem) translateY(-0.5rem);
-    }
-
-    .generated header .nav-title,
-    .generated footer .nav-author {
-	display: inline;
-	padding-top: 0;
-	margin-bottom: 0;
-    }
-
-    .generated .nav-item {
-	float: none !important;
-	text-align: center !important;
-    }
-    .generated .nav-link {
-	line-height: 2rem;
-	margin-left: 2rem;
-	margin-right: 2rem;
-	float: none !important;
-    }
-
-    .generated footer .separator.menu-sep {
-	margin-bottom: -1rem;
-    }
-
-}
-*/
 
 
 .generated.compact footer {
