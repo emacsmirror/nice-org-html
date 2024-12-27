@@ -693,3 +693,20 @@ pre.src {
 .generated.compact footer .separator.menu-sep {
     margin-bottom: -1rem;
 }
+
+
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+
+

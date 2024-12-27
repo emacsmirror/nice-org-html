@@ -12,24 +12,25 @@
 ** Source Blocks
 This is the sort of configuration used to generate this sample:
   #+begin_src emacs-lisp
-    (setq org-publish-project-alist
-          `(("nice-org-html/samples/X"
-             :base-directory "nice-org-html/samples/source"
-             :publishing-directory "nice-org-html/samples/X"
-             :htmlize-source t
-             :with-toc t
-             ;; ...
-             :publishing-function
-             ,(nice-org-html-publishing-function
-               :theme-alist ((light . <light-theme>) (dark . <dark-theme>))
-               :default-mode dark
-               :header (("SITE NAME" . "/route/to/home.html")
-                        ("Foo" . "/route/to/foo.html")
-                        ("Bar" . "/route/to/bar.html")
-                        ("Baz" . "/route/to/baz.html"))
-               :footer (("© Author Name" . "mailto:a@b.com")
-                        ("GitHub" . "https://github.com/ewantown")
-                        ("LinkedIn" . "https://linkedin.com/me"))))))
+        (setq org-publish-project-alist
+              `(("nice-org-html/samples/X"
+                 :base-directory "nice-org-html/samples/source"
+                 :publishing-directory "nice-org-html/samples/X"
+                 :htmlize-source t
+                 :with-toc t
+                 ;; ...
+                 :publishing-function
+                 ,(nice-org-html-publishing-function
+                   :theme-alist ((light . <light-theme>) (dark . <dark-theme>))
+                   :default-mode dark
+                   :header (("SITE NAME" . "/route/to/home.html")
+                            ("Foo" . "/route/to/foo.html")
+                            ("Bar" . "/route/to/bar.html")
+                            ("Baz" . "/route/to/baz.html"))
+                   :footer (("© Author Name" . "mailto:a@b.com")
+                            ("GitHub" . "https://github.com/ewantown")
+                            ("LinkedIn" . "https://linkedin.com/me"))
+                   :collapsing t))))
   #+end_src
 
 ** Pretty Symbols

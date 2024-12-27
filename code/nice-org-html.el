@@ -364,7 +364,10 @@ Options currently supported:
 		 (--filter it
 			   (--map
 			    (if (plist-member nice-org-html-options it)
-				(cons it (plist-get nice-org-html-options it))
+				(let ((ent (plist-get nice-org-html-options it)))
+				  (cons it (cond ((stringp ent) ent)
+						 (ent "t")
+						 (t "nil"))))
 			      nil)
 			    nice-org-html-options))))
 	       "';\n")
@@ -486,14 +489,19 @@ Options currently supported:
   "Export current buffer to HTML file in PWD using nice-org-html custom backend.
 See docs for `org-html-export-to-html', which this function emulates."
   (interactive)
-  (let* ((nice-org-html-header (read-string "Header file or list (optional): "
-					    nice-org-html-header nil nil nil))
-	 (nice-org-html-footer (read-string "Footer file or list (optional): "
-					    nice-org-html-footer nil nil nil))
+  (let* ((nice-org-html-header
+	  (read (read-string "Header file or list (optional): "
+			     nice-org-html-header nil nil nil)))
+	 (nice-org-html-footer
+	  (read (read-string "Footer file or list (optional): "
+			      nice-org-html-footer nil nil nil)))
 	 (nice-org-html-css (read-string "Additional CSS file (optional): "
 					 nice-org-html-css nil nil nil))
 	 (nice-org-html-js (read-string "Additional JS file (optional): "
 					nice-org-html-js nil nil nil))
+	 (nice-org-html-options
+	  (read (read-string "Options plist (optional): "
+			      nice-org-html-options nil nil nil)))
 	 (extension (concat
 		     (when (> (length org-html-extension) 0) ".")
 		     (or (plist-get ext-plist :html-extension)
@@ -510,14 +518,19 @@ See docs for `org-html-export-to-html', which this function emulates."
   "Export current buffer as nice HTML to interactively specified file.
 Optional arguments are pass-through, so see docs for `org-export-to-file'."
   (let* ((file (read-string "Target file path (mandatory): "))
-	 (nice-org-html-header (read-string "Header file or list (optional): "
-					    nice-org-html-header nil nil nil))
-	 (nice-org-html-footer (read-string "Footer file or list (optional): "
-					    nice-org-html-footer nil nil nil))
+	 (nice-org-html-header
+	  (read (read-string "Header file or list (optional): "
+			     nice-org-html-header nil nil nil)))
+	 (nice-org-html-footer
+	  (read (read-string "Footer file or list (optional): "
+			      nice-org-html-footer nil nil nil)))
 	 (nice-org-html-css (read-string "Additional CSS file (optional): "
 					 nice-org-html-css nil nil nil))
 	 (nice-org-html-js (read-string "Additional JS file (optional): "
-					nice-org-html-js nil nil nil)))
+					nice-org-html-js nil nil nil))
+	 (nice-org-html-options
+	  (read (read-string "Options plist (optional): "
+			      nice-org-html-options nil nil nil))))
     (org-export-to-file 'nice-html file
       async subtreep visible-only body-only ext-plist nil)))
 
@@ -604,10 +617,11 @@ Required but unspecified parameters are backstopped by globally set values."
 			      nil)))))
 	      (base '(:theme-alist :default-mode))
 	      (main (append base '(:headline-bullets :header :footer :css :js)))
+	      (options nice-org-html-options)
 	      (nice-org-html-options
 	       (--reduce-from
 		(plist-put acc it (plist-get config it))
-		nice-org-html-options
+		options
 		(-filter (lambda (s) (and s (--all? (not (eq s it)) main)))
 			 (--map (car-safe (plist-member config it)) config)))))
 	 (nice-org-html-publish-to-html plist filename pub-dir)))))

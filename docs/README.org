@@ -46,7 +46,7 @@ With the README I also publish these samples, which include a list-specified hea
             '((light . solo-jazz)
               (dark  . tomorrow-night-eighties)))
       (setq nice-org-html-default-mode 'dark)
-      (setq nice-org-html-headline-bullets nil))
+      (setq nice-org-html-headline-bullets nil)      
   #+end_src
 + If values for any of these variables are /not/ specified, these defaults will be used:
   + Themes: ~tsdh-light~ and ~tsdh-dark~ distributed with GNU Emacs
@@ -62,12 +62,24 @@ With the README I also publish these samples, which include a list-specified hea
         (setq nice-org-html-headline-bullets
               '(:h1 "◉" :h2 "✸" :h3 "▷" :h4 "⦁" :h5 "○"))
       #+end_src
++ Further look-and-feel customization is handled through the ~nice-org-html-options~ plist. The following properties and values are supported (so far):
+
+  |-------------+------------+--------------------------------------------------------------|
+  | Property    | Value      | Effect                                                       |
+  |-------------+------------+--------------------------------------------------------------|
+  | :layout     | "compact"  | Header and footer links always contained in drawer           |
+  |-------------+------------+--------------------------------------------------------------|
+  | :layout     | "expanded" | Header and footer links never contained in drawer            |
+  |-------------+------------+--------------------------------------------------------------|
+  | :collapsing | t          | Clicking headlines collapses / expands sections              |
+  |-------------+------------+--------------------------------------------------------------|
+
 ** Exporting          
 + After loading this package and hooking nice-org-html-mode to org-mode, when you open an Org buffer, nice-org-html-mode will activate.
 
 + If you then interactively export your Org buffer via the dispatcher (C-c C-e), you will be presented with options to export to 'nice HTML', in addition to the basic HTML export options.
 
-+ When exporting to 'nice HTML', you will be prompted for (optional) header and footer, and CSS and JS filepaths. If specified, the contents of those variables will be injected, accordingly, into the generated HTML.
++ When exporting to 'nice HTML', you will be prompted for (all optional) options plist, header and footer, and CSS and JS filepaths. If specified, the contents of those variables will be injected, accordingly, into the generated HTML. 
   + CSS and JS must be paths (strings) to files with contents to be injected.
   + Header and footer may be a path to an HTML file, or a list of cons pairs.
   + A default HTML structure will be used for the header and/or footer, if a list of this form:
@@ -93,6 +105,8 @@ With the README I also publish these samples, which include a list-specified hea
     (setq nice-org-html-css "path/to/your/style.css")
 
     (setq nice-org-html-js "path/to/your/script.js")
+
+    (setq nice-org-html-options '(:layout "compact" :collapsing t))
   #+end_src
 
 ** Publishing
@@ -104,7 +118,7 @@ With the README I also publish these samples, which include a list-specified hea
     ;; ...
   #+end_src
 
-+ For more granular per-project configuration, there is a publishing-function-generating macro, ~nice-org-html-publishing-function~, which takes values for the above configuration variables, and defines a publishing function unique to that invocation. For example, your per-project configuration - i.e. the value of ~org-publish-projects-alist~ - may look something like this:
++ For more granular per-project configuration, there is a publishing-function-generating macro, ~nice-org-html-publishing-function~, which takes values for the above configuration variables, and defines a publishing function unique to that invocation. Note: the options plist is constructed out of remaining arguments to this macro, so options should be specified directly. For example, your per-project configuration - i.e. the value of ~org-publish-projects-alist~ - may look something like this:
   
   #+begin_src emacs-lisp
     `(("project-x/files"
@@ -120,10 +134,12 @@ With the README I also publish these samples, which include a list-specified hea
          :header "path/to/your/header.html"
          :footer "path/to/your/footer.html"
          :css "path/to/your/style.css"
-         :js "path/to/your/script.js")))
+         :js "path/to/your/script.js"
+         :layout "compact"
+         :collapsing t)))
   #+end_src
 
-  + Any variables for which values are not specified in the configuration passed to this macro will take their global values.
+  + Any variable for which values are not specified will take the global (or default) value.
 
 + Finally, there is a less ergonomic alternative macro, ~nice-org-html-make-publishing-function~, which takes values for all of the above configuration variables as direct arguments, rather than properties. The function defined by this macro does not validate its arguments, and the macro is primarily for use in contexts where invocations need to be constructed programmatically, with lexically bound variables spliced in. For most uses, ~nice-org-html-publishing-function~ should be preferred over the "-make-" alternative.
   
