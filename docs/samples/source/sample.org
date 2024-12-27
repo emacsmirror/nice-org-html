@@ -9,7 +9,7 @@
 **** H4 - four '*'s
 ***** H5 - five '*'s
 
-** Source Blocks
+* Source Blocks
 This is the sort of configuration used to generate this sample:
   #+begin_src emacs-lisp
         (setq org-publish-project-alist
@@ -33,7 +33,7 @@ This is the sort of configuration used to generate this sample:
                    :collapsing t))))
   #+end_src
 
-** Pretty Symbols
+* Pretty Symbols
 + Basic:
 
   \Gamma, \gamma, \Sigma, \sigma, \Delta, \delta
@@ -43,7 +43,7 @@ This is the sort of configuration used to generate this sample:
   $\Gamma \vdash \Delta$
   $\sigma(i) = \sum_{1}^{n} n - i$
 
-** Table
+* Table
 
 |  a |  b |  c |  d |
 |----+----+----+----+
@@ -52,26 +52,21 @@ This is the sort of configuration used to generate this sample:
 | 12 | 13 | 14 | 15 |
 | 18 | 19 | 20 | 21 |
 
-** Lists
-*** todo List
+* Lists
+** todo List
 **** TODO todo
 **** DONE done
 
-*** Simple List
+** Simple List
 - item
 - item
 - item
 
-*** Sorted List
+** Sorted List
 1. item
 2. item
 3. item
 
-*** Check List
+** Check List
 - [ ] item
 - [X] item
-
-
-
-
-
