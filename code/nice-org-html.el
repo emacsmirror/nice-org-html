@@ -275,14 +275,14 @@ Options currently supported:
   (and-let* ((_ (consp data))
 	     (_ (--all? (and (consp it) (stringp (car it))) data))
 	     (tcell (car data))
-	     (thref (cdr tcell))
+	     (thref (or (cdr tcell) 'f))
 	     (mklink
 	      (lambda (c) (concat "<li class='nav-item'>\n"
 			     "<a class='nav-link' href='" (cdr c) "'>\n"
 			     (car c)
 			     "</a>\n</li>")))
 	     (left-html
-	      (let* ((tag (concat (or (and thref "a") "span"))))
+	      (let* ((tag (concat (or (and (not (eq thref 'f)) "a") "span"))))
 		(concat "<" tag " class='" class "'"
 			(or (and (equal tag "a")
 				 (format "href='%s' " thref))
@@ -323,7 +323,6 @@ Options currently supported:
 		     (with-temp-buffer (insert-file-contents data)
 				       (buffer-string))
 		     "</div>"))
-
 	(and-let* ((components (nice-org-html--bar-builder data "nav-author"))
 		   (left-html (car components))
 		   (links-html (cdr components)))
