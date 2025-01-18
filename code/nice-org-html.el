@@ -488,19 +488,24 @@ Options currently supported:
   "Export current buffer to HTML file in PWD using nice-org-html custom backend.
 See docs for `org-html-export-to-html', which this function emulates."
   (interactive)
-  (let* ((nice-org-html-header
-	  (read (read-string "Header file or list (optional): "
-			     nice-org-html-header nil nil nil)))
+  (let* ((convert (lambda (s) (and (not (equal "" s))
+			      (let ((val (read s)))
+				(if (listp val) val (symbol-name val))))))
+	 (nice-org-html-header
+	  (funcall convert (read-string "Header file or list (optional): "
+				  nice-org-html-header nil nil nil)))
 	 (nice-org-html-footer
-	  (read (read-string "Footer file or list (optional): "
-			      nice-org-html-footer nil nil nil)))
-	 (nice-org-html-css (read-string "Additional CSS file (optional): "
-					 nice-org-html-css nil nil nil))
-	 (nice-org-html-js (read-string "Additional JS file (optional): "
-					nice-org-html-js nil nil nil))
+	  (funcall convert (read-string "Footer file or list (optional): "
+				  nice-org-html-footer nil nil nil)))
+	 (nice-org-html-css
+	  (read-string "Additional CSS file (optional): "
+		       nice-org-html-css nil nil nil))
+	 (nice-org-html-js
+	  (read-string "Additional JS file (optional): "
+		       nice-org-html-js nil nil nil))
 	 (nice-org-html-options
-	  (read (read-string "Options plist (optional): "
-			      nice-org-html-options nil nil nil)))
+	  (funcall convert (read-string "Options plist (optional): "
+				  nice-org-html-options nil nil nil)))
 	 (extension (concat
 		     (when (> (length org-html-extension) 0) ".")
 		     (or (plist-get ext-plist :html-extension)
@@ -516,20 +521,26 @@ See docs for `org-html-export-to-html', which this function emulates."
     (&optional async subtreep visible-only body-only ext-plist)
   "Export current buffer as nice HTML to interactively specified file.
 Optional arguments are pass-through, so see docs for `org-export-to-file'."
-  (let* ((file (read-string "Target file path (mandatory): "))
+  (let* ((convert (lambda (s) (and (not (equal "" s))
+			      (let ((val (read s)))
+				(if (listp val) val (symbol-name val))))))
+	 (file
+	  (read-string "Target file path (mandatory): "))
 	 (nice-org-html-header
-	  (read (read-string "Header file or list (optional): "
-			     nice-org-html-header nil nil nil)))
+	  (funcall convert (read-string "Header file or list (optional): "
+				  nice-org-html-header nil nil nil)))
 	 (nice-org-html-footer
-	  (read (read-string "Footer file or list (optional): "
-			      nice-org-html-footer nil nil nil)))
-	 (nice-org-html-css (read-string "Additional CSS file (optional): "
-					 nice-org-html-css nil nil nil))
-	 (nice-org-html-js (read-string "Additional JS file (optional): "
-					nice-org-html-js nil nil nil))
+	  (funcall convert (read-string "Footer file or list (optional): "
+				  nice-org-html-footer nil nil nil)))
+	 (nice-org-html-css
+	  (read-string "Additional CSS file (optional): "
+		       nice-org-html-css nil nil nil))
+	 (nice-org-html-js
+	  (read-string "Additional JS file (optional): "
+		       nice-org-html-js nil nil nil))
 	 (nice-org-html-options
-	  (read (read-string "Options plist (optional): "
-			      nice-org-html-options nil nil nil))))
+	  (funcall convert (read-string "Options plist (optional): "
+				  nice-org-html-options nil nil nil))))
     (org-export-to-file 'nice-html file
       async subtreep visible-only body-only ext-plist nil)))
 
