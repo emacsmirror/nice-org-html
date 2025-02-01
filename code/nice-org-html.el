@@ -441,6 +441,7 @@ Options currently supported:
 (defun nice-org-html--src-block (src-block contents info)
   "Transform SRC-BLOCK with CONTENTS and INFO to html with copy button."
     (let* ((btn-id (concat "btn_" (s-replace "-" "" (uuidgen-4))))
+	   (lang (org-element-property :language src-block))
 	   (content
 	    (let ((print-escape-newlines t))
 	      (prin1-to-string (org-export-format-code-default src-block info))))
@@ -449,10 +450,18 @@ Options currently supported:
 			   (s-chop-suffix "\""
 					  (s-replace "`" "\\`" content)))))
       (concat "<div class='org-src-wrapper'>\n"
-	      (org-export-with-backend 'html src-block contents info)
+	      "<div class='org-src-bar'>"
+	      (nice-org-html--src-lang-label lang)
 	      (nice-org-html--copy-src-button btn-id)
 	      (nice-org-html--copy-src-script btn-id content^)
+	      "</div>"
+	      (org-export-with-backend 'html src-block contents info)
 	      "</div>")))
+
+(defun nice-org-html--src-lang-label (lang)
+  "Construct language label for LANG"
+  (concat "<span class='srcLangLabel'>" (upcase lang) "</span>"))
+
 
 (defun nice-org-html--copy-src-button (btn-id)
   "Construct html <button> for unique BTN-ID."

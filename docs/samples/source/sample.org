@@ -11,7 +11,7 @@
 
 * Source Blocks
 This is the sort of configuration used to generate this sample:
-  #+begin_src emacs-lisp
+  #+begin_src elisp
         (setq org-publish-project-alist
               `(("nice-org-html/samples/X"
                  :base-directory "nice-org-html/samples/source"

@@ -73,6 +73,8 @@ With the README I also publish these samples, which include a list-specified hea
   |-------------+------------+--------------------------------------------------------------|
   | :collapsing | t          | Clicking headlines collapses / expands sections              |
   |-------------+------------+--------------------------------------------------------------|
+  | :src-lang   | t          | Source language displayed in header of source blocks         |
+  |-------------+------------+--------------------------------------------------------------|
 
 ** Exporting          
 + After loading this package and hooking nice-org-html-mode to org-mode, when you open an Org buffer, nice-org-html-mode will activate.

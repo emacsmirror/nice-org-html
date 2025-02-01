@@ -29,7 +29,7 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 html {
     font-family: Sans;
@@ -78,92 +78,92 @@ body {
 /* custom facing **************************************************************/
 /* The variable values are injected by CSS pre-processing in et-org-html.el */
 :root {
-  --bc-tb: #{light:mode-line:box:color|light:default:foreground};
-  --bc-block: #{light:org-meta-line:foreground|light:org-meta-line:background};
-  --clr: #{light:default:foreground};
-  --clr-tb-hd: #{light:mode-line:foreground};
-  --clr-code: #{light:mode-line:foreground};
-  --bg: #{light:default:background};
-  --bg-code: #{light:mode-line:background};
-  --bg-tb-hd: #{light:mode-line:background};
-  --bg-block: #{light:org-block:background};
-  --clr-link: #{light:font-lock-constant-face:foreground};
-  --clr-title: #{light:default:foreground};
-  --clr-todo: #{light:font-lock-string-face:foreground};
-  --bg-todo: #{light:font-lock-string-face:background};
-  --clr-done: #{light:font-lock-comment-face:foreground};
-  --bg-done: #{light:font-lock-comment-face:background};
-  --ts-clr: #{light:font-lock-keyword-face:foreground};
-  --mg: 20px;
-  --w-toc: 300px;
-  --bg-keyword: #{light:font-lock-keyword-face:background};
-  --clr-keyword: #{light:font-lock-keyword-face:foreground};
-  --bg-constant: #{light:font-lock-constant-face:background};
-  --clr-constant: #{light:font-lock-constant-face:foreground};
-  --bg-comment: #{light:font-lock-comment-face:background};
-  --clr-comment: #{light:font-lock-comment-face:foreground};
-  --bg-comment-delimiter: #{light:font-lock-comment-delimiter-face:background};
-  --clr-comment-delimiter: #{light:font-lock-comment-delimiter-face:foreground};
-  --bg-function: #{light:font-lock-function-name-face:background};
-  --clr-function: #{light:font-lock-function-name-face:foreground};
-  --bg-variable: #{light:font-lock-variable-name-face:background};
-  --clr-variable: #{light:font-lock-variable-name-face:foreground};
-  --bg-preprocessor: #{light:font-lock-preprocessor-face:background};
-  --clr-preprocessor: #{light:font-lock-preprocessor-face:foreground};
-  --bg-doc: #{light:font-lock-doc-face:background};
-  --clr-doc: #{light:font-lock-doc-face:foreground};
-  --bg-builtin: #{light:font-lock-builtin-face:background};
-  --clr-builtin: #{light:font-lock-builtin-face:foreground};
-  --bg-string: #{light:font-lock-string-face:background};
-  --clr-string: #{light:font-lock-string-face:foreground};
+    --bc-tb: #{light:mode-line:box:color|light:default:foreground};
+    --bc-block: #{light:org-meta-line:foreground|light:org-meta-line:background};
+    --clr: #{light:default:foreground};
+    --clr-tb-hd: #{light:mode-line:foreground};
+    --clr-code: #{light:mode-line:foreground};
+    --bg: #{light:default:background};
+    --bg-code: #{light:mode-line:background};
+    --bg-tb-hd: #{light:mode-line:background};
+    --bg-block: #{light:org-block:background};
+    --clr-link: #{light:font-lock-constant-face:foreground};
+    --clr-title: #{light:default:foreground};
+    --clr-todo: #{light:font-lock-string-face:foreground};
+    --bg-todo: #{light:font-lock-string-face:background};
+    --clr-done: #{light:font-lock-comment-face:foreground};
+    --bg-done: #{light:font-lock-comment-face:background};
+    --ts-clr: #{light:font-lock-keyword-face:foreground};
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: #{light:font-lock-keyword-face:background};
+    --clr-keyword: #{light:font-lock-keyword-face:foreground};
+    --bg-constant: #{light:font-lock-constant-face:background};
+    --clr-constant: #{light:font-lock-constant-face:foreground};
+    --bg-comment: #{light:font-lock-comment-face:background};
+    --clr-comment: #{light:font-lock-comment-face:foreground};
+    --bg-comment-delimiter: #{light:font-lock-comment-delimiter-face:background};
+    --clr-comment-delimiter: #{light:font-lock-comment-delimiter-face:foreground};
+    --bg-function: #{light:font-lock-function-name-face:background};
+    --clr-function: #{light:font-lock-function-name-face:foreground};
+    --bg-variable: #{light:font-lock-variable-name-face:background};
+    --clr-variable: #{light:font-lock-variable-name-face:foreground};
+    --bg-preprocessor: #{light:font-lock-preprocessor-face:background};
+    --clr-preprocessor: #{light:font-lock-preprocessor-face:foreground};
+    --bg-doc: #{light:font-lock-doc-face:background};
+    --clr-doc: #{light:font-lock-doc-face:foreground};
+    --bg-builtin: #{light:font-lock-builtin-face:background};
+    --clr-builtin: #{light:font-lock-builtin-face:foreground};
+    --bg-string: #{light:font-lock-string-face:background};
+    --clr-string: #{light:font-lock-string-face:foreground};
 }
 
 body[data-mode='light'] {
-  background: var(--bg);
-  color: var(--clr);
+    background: var(--bg);
+    color: var(--clr);
 }
 
 body[data-mode='dark'] {
-  background: var(--bg);
-  color: var(--clr);
-  --bc-tb: #{dark:mode-line:box:color|dark:default:foreground};
-  --bc-block: #{dark:org-meta-line:foreground|dark:org-meta-line:background};
-  --clr: #{dark:default:foreground};
-  --clr-code: #{dark:mode-line:foreground};
-  --clr-tb-hd: #{dark:mode-line:foreground};
-  --bg: #{dark:default:background};
-  --bg-tb-hd: #{dark:mode-line:background};
-  --bg-code: #{dark:mode-line:background};
-  --bg-block: #{dark:org-block:background};
-  --clr-link: #{dark:font-lock-constant-face:foreground};
-  --clr-title: #{dark:default:foreground};
-  --clr-todo: #{dark:font-lock-string-face:foreground};
-  --bg-todo: #{dark:font-lock-string-face:background};
-  --clr-done: #{dark:font-lock-comment-face:foreground};
-  --bg-done: #{dark:font-lock-comment-face:background};
-  --ts-clr: #{dark:font-lock-keyword-face:foreground};
-  --mg: 20px;
-  --w-toc: 300px;
-  --bg-keyword: #{dark:font-lock-keyword-face:background};
-  --clr-keyword: #{dark:font-lock-keyword-face:foreground};
-  --bg-constant: #{dark:font-lock-constant-face:background};
-  --clr-constant: #{dark:font-lock-constant-face:foreground};
-  --bg-comment: #{dark:font-lock-comment-face:background};
-  --clr-comment: #{dark:font-lock-comment-face:foreground};
-  --bg-comment-delimiter: #{dark:font-lock-comment-delimiter-face:background};
-  --clr-comment-delimiter: #{dark:font-lock-comment-delimiter-face:foreground};
-  --bg-function: #{dark:font-lock-function-name-face:background};
-  --clr-function: #{dark:font-lock-function-name-face:foreground};
-  --bg-variable: #{dark:font-lock-variable-name-face:background};
-  --clr-variable: #{dark:font-lock-variable-name-face:foreground};
-  --bg-preprocessor: #{dark:font-lock-preprocessor-face:background};
-  --clr-preprocessor: #{dark:font-lock-preprocessor-face:foreground};
-  --bg-doc: #{dark:font-lock-doc-face:background};
-  --clr-doc: #{dark:font-lock-doc-face:foreground};
-  --bg-builtin: #{dark:font-lock-builtin-face:background};
-  --clr-builtin: #{dark:font-lock-builtin-face:foreground};
-  --bg-string: #{dark:font-lock-string-face:background};
-  --clr-string: #{dark:font-lock-string-face:foreground};
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #{dark:mode-line:box:color|dark:default:foreground};
+    --bc-block: #{dark:org-meta-line:foreground|dark:org-meta-line:background};
+    --clr: #{dark:default:foreground};
+    --clr-code: #{dark:mode-line:foreground};
+    --clr-tb-hd: #{dark:mode-line:foreground};
+    --bg: #{dark:default:background};
+    --bg-tb-hd: #{dark:mode-line:background};
+    --bg-code: #{dark:mode-line:background};
+    --bg-block: #{dark:org-block:background};
+    --clr-link: #{dark:font-lock-constant-face:foreground};
+    --clr-title: #{dark:default:foreground};
+    --clr-todo: #{dark:font-lock-string-face:foreground};
+    --bg-todo: #{dark:font-lock-string-face:background};
+    --clr-done: #{dark:font-lock-comment-face:foreground};
+    --bg-done: #{dark:font-lock-comment-face:background};
+    --ts-clr: #{dark:font-lock-keyword-face:foreground};
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: #{dark:font-lock-keyword-face:background};
+    --clr-keyword: #{dark:font-lock-keyword-face:foreground};
+    --bg-constant: #{dark:font-lock-constant-face:background};
+    --clr-constant: #{dark:font-lock-constant-face:foreground};
+    --bg-comment: #{dark:font-lock-comment-face:background};
+    --clr-comment: #{dark:font-lock-comment-face:foreground};
+    --bg-comment-delimiter: #{dark:font-lock-comment-delimiter-face:background};
+    --clr-comment-delimiter: #{dark:font-lock-comment-delimiter-face:foreground};
+    --bg-function: #{dark:font-lock-function-name-face:background};
+    --clr-function: #{dark:font-lock-function-name-face:foreground};
+    --bg-variable: #{dark:font-lock-variable-name-face:background};
+    --clr-variable: #{dark:font-lock-variable-name-face:foreground};
+    --bg-preprocessor: #{dark:font-lock-preprocessor-face:background};
+    --clr-preprocessor: #{dark:font-lock-preprocessor-face:foreground};
+    --bg-doc: #{dark:font-lock-doc-face:background};
+    --clr-doc: #{dark:font-lock-doc-face:foreground};
+    --bg-builtin: #{dark:font-lock-builtin-face:background};
+    --clr-builtin: #{dark:font-lock-builtin-face:foreground};
+    --bg-string: #{dark:font-lock-string-face:background};
+    --clr-string: #{dark:font-lock-string-face:foreground};
 }
 
 /* exceptions for badly rendering themes **************************************/
@@ -245,7 +245,7 @@ body[data-theme='leuven-dark'] {
 }
 
 #table-of-contents::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 body[data-toc="true"] #content * {
@@ -260,13 +260,13 @@ body[data-toc="true"] #content #table-of-contents * {
 /* misc elements **************************************************************/
 
 hr {
-	height: 0;
-	color: inherit;
+    height: 0;
+    color: inherit;
 }
 
 b,
 strong {
-	font-weight: bolder;
+    font-weight: bolder;
 }
 
 code,
@@ -283,37 +283,37 @@ pre {
 }
 
 small {
-	font-size: 80%;
+    font-size: 80%;
 }
 
 sub,
 sup {
-	font-size: 75%;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
 }
 
 sub {
-	bottom: -0.25em;
+    bottom: -0.25em;
 }
 
 sup {
-	top: -0.5em;
+    top: -0.5em;
 }
 
 table {
-	text-indent: 0;
-	border-color: inherit;
+    text-indent: 0;
+    border-color: inherit;
 }
 
 summary {
-	display: list-item;
+    display: list-item;
 }
 
 h1 {
-  color: var(--clr-title);
-  text-align: center;
+    color: var(--clr-title);
+    text-align: center;
 }
 h2 {
     margin-top: 2rem;
@@ -321,44 +321,44 @@ h2 {
 }
 
 code {
-  color: var(--clr-code);
-  background: var(--bg-code);
-  border-radius: 2px;
-  padding-left: 5px;
-  padding-right: 5px;
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 pre::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .todo {
-  color: var(--clr-todo);
-  background: var(--bg-todo);
+    color: var(--clr-todo);
+    background: var(--bg-todo);
 }
 
 .done {
-  color: var(--clr-done);
-  background: var(--bg-done);
+    color: var(--clr-done);
+    background: var(--bg-done);
 }
 
 .timestamp-wrapper {
-  font-size: 0.8rem;
-  color: var(--clr-ts);
+    font-size: 0.8rem;
+    color: var(--clr-ts);
 }
 
 table {
-  width: 100%;
-  border: 2px solid var(--bc-tb);
+    width: 100%;
+    border: 2px solid var(--bc-tb);
 }
 
 thead {
-  color: var(--clr-tb-hd);
-  background: var(--bg-tb-hd);
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
 }
 
 td, th {
-  border: thin solid var(--bc-tb);
+    border: thin solid var(--bc-tb);
 }
 
 li {
@@ -370,20 +370,20 @@ li {
 }
 
 a {
-  text-decoration: none;
-  color: var(--clr-link);
+    text-decoration: none;
+    color: var(--clr-link);
 }
 
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .MathJax_Display {
-  font-size: 1.25em;
+    font-size: 1.25em;
 }
 
 img {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 pre {
@@ -397,62 +397,84 @@ pre {
     scrollbar-width: thin;
 }
 
-pre.src {
-    border: none !important;
-    background: var(--bg-code) !important;
-}
-
 .org-src-wrapper {
-  position: relative;
-}
-
-.org-src-wrapper .org-src-container {
     position: relative;
     border: 1px solid var(--bc-block);
     border-radius: 0.5rem;
     background: var(--bg-code);
 }
 
-.org-src-wrapper .org-src-container:has(+ .copyBtn) pre {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
-
-.org-src-wrapper .srcBtnBar {
-    width: 100%;
-    background: transparent;
+.org-src-bar {
     position: relative;
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
 }
 
-.org-src-wrapper .copyBtn {
-  position: absolute;
-  top: 0rem;
-  right: 0rem;
-  background-color: transparent;
-  color: var(--clr-doc);
-  border: none;
-  padding: 0.5rem;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 0.8rem;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: opacity 0.3s;
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
 }
 
 .org-src-wrapper .copyBtn:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 .org-src-wrapper .copyBtn i {
     margin-right: 0.5rem;
     padding: 0.5rem;
 }
-
 
 /* responsive layouts *********************************************************/
 
@@ -557,9 +579,6 @@ pre.src {
 .generated .nav-list {
     overflow-y: hidden;
     display: block;
-    /*display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;*/
     float: right;
     list-style: none;
     margin-bottom: 0;
@@ -605,8 +624,6 @@ pre.src {
     padding-bottom: 1rem;
 }
 
-
-
 .generated.compact footer {
     padding-bottom: 0;
 }
@@ -616,7 +633,7 @@ pre.src {
     margin-bottom:0;
 }
 .generated.compact footer .separator {
-	margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .generated.compact .nav-toggle {
@@ -694,8 +711,6 @@ pre.src {
     margin-bottom: -1rem;
 }
 
-
-
 .hidden {
     display: none;
 }
@@ -708,5 +723,3 @@ pre.src {
     display: inline-block;
     content: '...';
 }
-
-

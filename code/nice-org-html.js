@@ -253,6 +253,10 @@ if ((header || footer)) {
   }
 }
 
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
 
 if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
   let levels = [2, 3, 4, 5, 6];
