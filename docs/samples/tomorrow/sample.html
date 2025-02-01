@@ -860,11 +860,11 @@ Baz</a>
 This is the sort of configuration used to generate this sample:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELISP</span><button class='copyBtn' name=btn_2eb845e70726403e919ec17fc41a20f8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELISP</span><button class='copyBtn' name=btn_4a6a2a8a43344c089583fad3fd1f6300>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2eb845e70726403e919ec17fc41a20f8=document.querySelector('button[name=btn_2eb845e70726403e919ec17fc41a20f8]');
-copyBtnbtn_2eb845e70726403e919ec17fc41a20f8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           :collapsing t))))\n`);copyBtnbtn_2eb845e70726403e919ec17fc41a20f8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2eb845e70726403e919ec17fc41a20f8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4a6a2a8a43344c089583fad3fd1f6300=document.querySelector('button[name=btn_4a6a2a8a43344c089583fad3fd1f6300]');
+copyBtnbtn_4a6a2a8a43344c089583fad3fd1f6300.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           :collapsing t\n           :src-lang t))))\n`);copyBtnbtn_4a6a2a8a43344c089583fad3fd1f6300.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4a6a2a8a43344c089583fad3fd1f6300.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -886,7 +886,8 @@ let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice
            <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:footer</span> ((<span style="color: var(--clr-string); background-color: var(--bg-string);">"&#169; Author Name"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"mailto:a@b.com"</span>)
                     (<span style="color: var(--clr-string); background-color: var(--bg-string);">"GitHub"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/ewantown"</span>)
                     (<span style="color: var(--clr-string); background-color: var(--bg-string);">"LinkedIn"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://linkedin.com/me"</span>))
-           <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:collapsing</span> t))))
+           <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:collapsing</span> t
+           <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:src-lang</span> t))))
 </pre>
 </div></div>
 </div>
@@ -1051,7 +1052,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=tomorrow-day'
 document.cookie = 'dark=tomorrow-night'
-document.cookie = 'options=collapsing:t';
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================
