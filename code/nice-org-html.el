@@ -514,7 +514,7 @@ See docs for `org-html-export-to-html', which this function emulates."
 		       nice-org-html-js nil nil nil))
 	 (nice-org-html-options
 	  (funcall convert (read-string "Options plist (optional): "
-				  nice-org-html-options nil nil nil)))
+			      (prin1-to-string nice-org-html-options) nil nil nil)))
 	 (extension (concat
 		     (when (> (length org-html-extension) 0) ".")
 		     (or (plist-get ext-plist :html-extension)
