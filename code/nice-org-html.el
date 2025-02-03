@@ -549,7 +549,7 @@ Optional arguments are pass-through, so see docs for `org-export-to-file'."
 		       nice-org-html-js nil nil nil))
 	 (nice-org-html-options
 	  (funcall convert (read-string "Options plist (optional): "
-				  nice-org-html-options nil nil nil))))
+			      (prin1-to-string nice-org-html-options) nil nil nil))))
     (org-export-to-file 'nice-html file
       async subtreep visible-only body-only ext-plist nil)))
 
