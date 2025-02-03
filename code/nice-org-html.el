@@ -500,12 +500,13 @@ See docs for `org-html-export-to-html', which this function emulates."
   (let* ((convert (lambda (s) (and (not (equal "" s))
 			      (let ((val (read s)))
 				(if (listp val) val (symbol-name val))))))
+	 (present (lambda (x) (if (stringp x) x (prin1-to-string x))))
 	 (nice-org-html-header
 	  (funcall convert (read-string "Header file or list (optional): "
-				  nice-org-html-header nil nil nil)))
+				  (funcall present nice-org-html-header) nil nil nil)))
 	 (nice-org-html-footer
 	  (funcall convert (read-string "Footer file or list (optional): "
-				  nice-org-html-footer nil nil nil)))
+				  (funcall present nice-org-html-footer) nil nil nil)))
 	 (nice-org-html-css
 	  (read-string "Additional CSS file (optional): "
 		       nice-org-html-css nil nil nil))
@@ -514,7 +515,7 @@ See docs for `org-html-export-to-html', which this function emulates."
 		       nice-org-html-js nil nil nil))
 	 (nice-org-html-options
 	  (funcall convert (read-string "Options plist (optional): "
-			      (prin1-to-string nice-org-html-options) nil nil nil)))
+			      (funcall present nice-org-html-options) nil nil nil)))
 	 (extension (concat
 		     (when (> (length org-html-extension) 0) ".")
 		     (or (plist-get ext-plist :html-extension)
@@ -533,14 +534,15 @@ Optional arguments are pass-through, so see docs for `org-export-to-file'."
   (let* ((convert (lambda (s) (and (not (equal "" s))
 			      (let ((val (read s)))
 				(if (listp val) val (symbol-name val))))))
+	 (present (lambda (x) (if (stringp x) x (prin1-to-string x))))
 	 (file
 	  (read-string "Target file path (mandatory): "))
 	 (nice-org-html-header
 	  (funcall convert (read-string "Header file or list (optional): "
-				  nice-org-html-header nil nil nil)))
+				  (funcall present nice-org-html-header) nil nil nil)))
 	 (nice-org-html-footer
 	  (funcall convert (read-string "Footer file or list (optional): "
-				  nice-org-html-footer nil nil nil)))
+				  (funcall present nice-org-html-footer) nil nil nil)))
 	 (nice-org-html-css
 	  (read-string "Additional CSS file (optional): "
 		       nice-org-html-css nil nil nil))
@@ -549,7 +551,7 @@ Optional arguments are pass-through, so see docs for `org-export-to-file'."
 		       nice-org-html-js nil nil nil))
 	 (nice-org-html-options
 	  (funcall convert (read-string "Options plist (optional): "
-			      (prin1-to-string nice-org-html-options) nil nil nil))))
+			      (funcall present nice-org-html-options) nil nil nil))))
     (org-export-to-file 'nice-html file
       async subtreep visible-only body-only ext-plist nil)))
 
