@@ -511,7 +511,7 @@ pre {
 .admonition-title.note:before {
     content: '';
     display: inline-block;
-    margin-right: 0.25rem;
+    margin-right: 0.5rem;
     width: 1rem;
     height: 1rem;
     background-color: var(--clr-note);
@@ -532,7 +532,7 @@ pre {
     content: '';
     fill: var(--clr-tip);    
     display: inline-block;
-    margin-right: 0.25rem;
+    margin-right: 0.5rem;
     width: 1rem;
     height: 1rem;
     background-color: var(--clr-tip);
@@ -550,7 +550,7 @@ pre {
     content: '';
     fill: var(--clr-important);    
     display: inline-block;
-    margin-right: 0.25rem;
+    margin-right: 0.5rem;
     width: 1rem;
     height: 1rem;
     background-color: var(--clr-important);
@@ -568,7 +568,7 @@ pre {
     content: '';
     color: var(--clr-warning);    
     display: inline-block;
-    margin-right: 0.25rem;
+    margin-right: 0.5rem;
     width: 1rem;
     height: 1rem;
     background-color: var(--clr-warning);
@@ -587,7 +587,7 @@ pre {
     content: '';
     fill: var(--clr-caution);    
     display: inline-block;
-    margin-right: 0.25rem;
+    margin-right: 0.5rem;
     width: 1rem;
     height: 1rem;
     background-color: var(--clr-caution);
