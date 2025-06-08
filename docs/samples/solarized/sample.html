@@ -909,7 +909,7 @@ pre {
 <li><a href="#orga02229d">Source Blocks</a></li>
 <li><a href="#orgb0faa37">Admonitions</a></li>
 <li><a href="#org78de406">Pretty Symbols</a></li>
-<li><a href="#org82c831f">Table</a></li>
+<li><a href="#org8b7ee59">Tables</a></li>
 <li><a href="#org510f51e">Lists</a>
 <ul>
 <li><a href="#orgcdafd50">todo List</a></li>
@@ -951,11 +951,11 @@ pre {
 This is the sort of configuration used to generate this sample:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELISP</span><button class='copyBtn' name=btn_fa2bbc5a1a4f4e369ea0e40d28677d26>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELISP</span><button class='copyBtn' name=btn_5592c98f19f94709b25965ff587681b2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fa2bbc5a1a4f4e369ea0e40d28677d26=document.querySelector('button[name=btn_fa2bbc5a1a4f4e369ea0e40d28677d26]');
-copyBtnbtn_fa2bbc5a1a4f4e369ea0e40d28677d26.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           :collapsing t\n           :src-lang t))))\n`);copyBtnbtn_fa2bbc5a1a4f4e369ea0e40d28677d26.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fa2bbc5a1a4f4e369ea0e40d28677d26.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5592c98f19f94709b25965ff587681b2=document.querySelector('button[name=btn_5592c98f19f94709b25965ff587681b2]');
+copyBtnbtn_5592c98f19f94709b25965ff587681b2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           :collapsing t\n           :src-lang t))))\n`);copyBtnbtn_5592c98f19f94709b25965ff587681b2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5592c98f19f94709b25965ff587681b2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1006,9 +1006,11 @@ This is a warning
 </p>
 </div></div>
 
-<div class='admonition caution'><div class='admonition-title caution'>Caution</div><div class='admonition-content caution'><p>
-This is a caution
-</p>
+<div class='admonition caution'><div class='admonition-title caution'>Caution</div><div class='admonition-content caution'><ul class="org-ul">
+<li>This is a caution</li>
+<li>Lists works fine here</li>
+<li>As does everything else below</li>
+</ul>
 </div></div>
 </div>
 </div>
@@ -1035,9 +1037,9 @@ Basic:
 </ul>
 </div>
 </div>
-<div id="outline-container-org82c831f" class="outline-2">
-<h2 id="org82c831f">Table</h2>
-<div class="outline-text-2" id="text-org82c831f">
+<div id="outline-container-org8b7ee59" class="outline-2">
+<h2 id="org8b7ee59">Tables</h2>
+<div class="outline-text-2" id="text-org8b7ee59">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 

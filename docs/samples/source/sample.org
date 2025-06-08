@@ -52,8 +52,11 @@ This is a warning
 #+end_warning
 
 #+begin_caution
-This is a caution
++ This is a caution
++ Lists works fine here
++ As does everything else below
 #+end_caution
+
 * Pretty Symbols
 + Basic:
 
@@ -64,7 +67,7 @@ This is a caution
   $\Gamma \vdash \Delta$
   $\sigma(i) = \sum_{1}^{n} n - i$
 
-* Table
+* Tables
 
 |  a |  b |  c |  d |
 |----+----+----+----+
