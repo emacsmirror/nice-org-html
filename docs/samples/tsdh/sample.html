@@ -89,45 +89,45 @@ body {
 /* custom facing **************************************************************/
 /* The variable values are injected by CSS pre-processing in et-org-html.el */
 :root {
-    --bc-tb: #3b2685;
+    --bc-tb: #383a42;
     --bc-block: initial;
-    --clr: #3b2685;
+    --clr: #383a42;
     --clr-tb-hd: initial;
     --clr-code: initial;
     --bg: #fafafa;
-    --bg-code: #efeff1;
-    --bg-tb-hd: #efeff1;
-    --bg-block: #f4f4f4;
-    --clr-link: #005cc5;
-    --clr-title: #3b2685;
-    --clr-todo: #00afef;
+    --bg-code: #f0f0f1;
+    --bg-tb-hd: #f0f0f1;
+    --bg-block: initial;
+    --clr-link: #008B8B;
+    --clr-title: #383a42;
+    --clr-todo: #50a14f;
     --bg-todo: initial;
-    --clr-done: #778ca3;
+    --clr-done: #a0a1a7;
     --bg-done: initial;
-    --ts-clr: #009c9f;
+    --ts-clr: #a626a4;
     --mg: 20px;
     --w-toc: 300px;
     --bg-keyword: initial;
-    --clr-keyword: #009c9f;
+    --clr-keyword: #a626a4;
     --bg-constant: initial;
-    --clr-constant: #005cc5;
+    --clr-constant: #008B8B;
     --bg-comment: initial;
-    --clr-comment: #778ca3;
+    --clr-comment: #a0a1a7;
     --bg-comment-delimiter: initial;
     --clr-comment-delimiter: initial;
     --bg-function: initial;
-    --clr-function: #fa1090;
+    --clr-function: #0184bc;
     --bg-variable: initial;
-    --clr-variable: #ff5200;
+    --clr-variable: #8B4513;
     --bg-preprocessor: initial;
-    --clr-preprocessor: #009c9f;
+    --clr-preprocessor: initial;
     --bg-doc: initial;
     --clr-doc: initial;
     --bg-builtin: initial;
-    --clr-builtin: #009c9f;
+    --clr-builtin: #e44649;
     --bg-string: initial;
-    --clr-string: #00afef;
-    --clr-note: #FFC0CB;
+    --clr-string: #50a14f;
+    --clr-note: #0969da;
     --clr-tip: #1a7f37;
     --clr-important: #8250df;
     --clr-warning: #9a6700;
@@ -142,45 +142,45 @@ body[data-mode='light'] {
 body[data-mode='dark'] {
     background: var(--bg);
     color: var(--clr);
-    --bc-tb: #cccccc;
+    --bc-tb: #FF2D00;
     --bc-block: initial;
-    --clr: #cccccc;
-    --clr-code: #cccccc;
-    --clr-tb-hd: #cccccc;
-    --bg: #2d2d2d;
-    --bg-tb-hd: #515151;
-    --bg-code: #515151;
+    --clr: #F5F5F5;
+    --clr-code: initial;
+    --clr-tb-hd: initial;
+    --bg: #333333;
+    --bg-tb-hd: #4D4D4D;
+    --bg-code: #4D4D4D;
     --bg-block: initial;
-    --clr-link: #66cccc;
-    --clr-title: #cccccc;
-    --clr-todo: #99cc99;
+    --clr-link: #1E90FF;
+    --clr-title: #F5F5F5;
+    --clr-todo: #FFA07A;
     --bg-todo: initial;
-    --clr-done: #999999;
+    --clr-done: #CD853F;
     --bg-done: initial;
-    --ts-clr: #cc99cc;
+    --ts-clr: #20B2AA;
     --mg: 20px;
     --w-toc: 300px;
     --bg-keyword: initial;
-    --clr-keyword: #cc99cc;
+    --clr-keyword: #20B2AA;
     --bg-constant: initial;
-    --clr-constant: #66cccc;
+    --clr-constant: #1E90FF;
     --bg-comment: initial;
-    --clr-comment: #999999;
+    --clr-comment: #CD853F;
     --bg-comment-delimiter: initial;
-    --clr-comment-delimiter: #999999;
+    --clr-comment-delimiter: initial;
     --bg-function: initial;
-    --clr-function: #6699cc;
+    --clr-function: #00FF7F;
     --bg-variable: initial;
-    --clr-variable: #f99157;
+    --clr-variable: #9ACD32;
     --bg-preprocessor: initial;
-    --clr-preprocessor: #cc99cc;
+    --clr-preprocessor: #6495ED;
     --bg-doc: initial;
-    --clr-doc: #999999;
+    --clr-doc: #CD5C5C;
     --bg-builtin: initial;
-    --clr-builtin: #66cccc;
+    --clr-builtin: #76EE00;
     --bg-string: initial;
-    --clr-string: #99cc99;
-    --clr-note: #FFC0CB;
+    --clr-string: #FFA07A;
+    --clr-note: #0969da;
     --clr-tip: #1a7f37;
     --clr-important: #8250df;
     --clr-warning: #9a6700;
@@ -951,11 +951,11 @@ pre {
 This is the sort of configuration used to generate this sample:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELISP</span><button class='copyBtn' name=btn_c0dd1a47caa947f981272007cf28a6ec>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELISP</span><button class='copyBtn' name=btn_a488f243a81e4cb8bb1d3afce62b6422>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c0dd1a47caa947f981272007cf28a6ec=document.querySelector('button[name=btn_c0dd1a47caa947f981272007cf28a6ec]');
-copyBtnbtn_c0dd1a47caa947f981272007cf28a6ec.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           :collapsing t\n           :src-lang t))))\n`);copyBtnbtn_c0dd1a47caa947f981272007cf28a6ec.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c0dd1a47caa947f981272007cf28a6ec.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a488f243a81e4cb8bb1d3afce62b6422=document.querySelector('button[name=btn_a488f243a81e4cb8bb1d3afce62b6422]');
+copyBtnbtn_a488f243a81e4cb8bb1d3afce62b6422.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           :collapsing t\n           :src-lang t))))\n`);copyBtnbtn_a488f243a81e4cb8bb1d3afce62b6422.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a488f243a81e4cb8bb1d3afce62b6422.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1144,8 +1144,8 @@ Basic:
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
 document.cookie = 'mode=dark'
 }
-document.cookie = 'light=solo-jazz'
-document.cookie = 'dark=tomorrow-night-eighties'
+document.cookie = 'light=tsdh-light'
+document.cookie = 'dark=tsdh-dark'
 document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
