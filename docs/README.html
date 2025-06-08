@@ -127,6 +127,11 @@ body {
     --clr-builtin: #657b83;
     --bg-string: initial;
     --clr-string: #2aa198;
+    --clr-note: #FFC0CB;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
 }
 
 body[data-mode='light'] {
@@ -175,6 +180,11 @@ body[data-mode='dark'] {
     --clr-builtin: #66cccc;
     --bg-string: initial;
     --clr-string: #99cc99;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
 }
 
 /* exceptions for badly rendering themes **************************************/
@@ -487,6 +497,114 @@ pre {
     padding: 0.5rem;
 }
 
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
 /* responsive layouts *********************************************************/
 
 @media only screen and (max-width: 768px) {
@@ -762,25 +880,24 @@ margin-right: calc(0 * 0.22em);
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbfb81c1">tl;dr</a></li>
-<li><a href="#org97cadb1">About this package</a></li>
-<li><a href="#org17dd89c">How to use it</a>
+<li><a href="#org71d32d6">tl;dr</a></li>
+<li><a href="#orge3b9280">About this package</a></li>
+<li><a href="#org208c042">How to use it</a>
 <ul>
-<li><a href="#orga031f26">Setup</a></li>
-<li><a href="#org558123a">Exporting</a></li>
-<li><a href="#orge746884">Publishing</a></li>
+<li><a href="#orgf331017">Setup</a></li>
+<li><a href="#org1b483c3">Exporting</a></li>
+<li><a href="#org939102f">Publishing</a></li>
 </ul>
 </li>
-<li><a href="#orge5ed366">Things to keep in mind</a></li>
-<li><a href="#orgfa8b7dd">Contributing</a></li>
-<li><a href="#org2676451">Credits</a></li>
+<li><a href="#orgc4b494b">Things to keep in mind</a></li>
+<li><a href="#orgc377426">Contributing</a></li>
+<li><a href="#org18a30ae">Credits</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgbfb81c1" class="outline-2">
-<h2 id="orgbfb81c1">tl;dr</h2>
-<div class="outline-text-2" id="text-orgbfb81c1">
+<div id="outline-container-org71d32d6" class="outline-2">
+<h2 id="org71d32d6">tl;dr</h2>
+<div class="outline-text-2" id="text-org71d32d6">
 <p>
 This package generates pretty, responsive, websites from .org files and your choice of Emacs themes. You can optionally specify a header, footer, and additional CSS and JS to be included. To see the default output, for my chosen themes and with no header, footer or extras, view this README in your browser <a href="https://etown.dev/nice-org-html/">here</a>. If you're already there, you can find the GitHub repo <a href="https://github.com/ewantown/nice-org-html">here</a>.
 </p>
@@ -801,10 +918,9 @@ With the README I also publish these samples, which include a list-specified hea
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org97cadb1" class="outline-2">
-<h2 id="org97cadb1">About this package</h2>
-<div class="outline-text-2" id="text-org97cadb1">
+<div id="outline-container-orge3b9280" class="outline-2">
+<h2 id="orge3b9280">About this package</h2>
+<div class="outline-text-2" id="text-orge3b9280">
 <p>
 <b>nice-org-html</b> defines an Emacs pipeline for <a href="https://orgmode.org/manual/Exporting.html">exporting</a> Org files, or <a href="https://www.gnu.org/software/emacs/manual/html_node/org/Publishing.html">publishing</a> Org projects, to HTML. The generated HTML is optimized for readability and responsiveness, esp. of documents that include code, and makes it easy to achieve a custom look-and-feel, in part by leveraging the variety of themes available for Emacs. Under the hood, this is achieved by:
 </p>
@@ -817,24 +933,23 @@ With the README I also publish these samples, which include a list-specified hea
 </ol>
 </div>
 </div>
-
-<div id="outline-container-org17dd89c" class="outline-2">
-<h2 id="org17dd89c">How to use it</h2>
-<div class="outline-text-2" id="text-org17dd89c">
+<div id="outline-container-org208c042" class="outline-2">
+<h2 id="org208c042">How to use it</h2>
+<div class="outline-text-2" id="text-org208c042">
 </div>
-<div id="outline-container-orga031f26" class="outline-3">
-<h3 id="orga031f26">Setup</h3>
-<div class="outline-text-3" id="text-orga031f26">
+<div id="outline-container-orgf331017" class="outline-3">
+<h3 id="orgf331017">Setup</h3>
+<div class="outline-text-3" id="text-orgf331017">
 <ul class="org-ul">
 <li><p>
 Get the source files on your load path. E.g. with MELPA and use-package:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_b9d31cdaf3ca46c48444dc6df6bbb96e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_1448bb02131848c9bab2d5aadc99e393>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b9d31cdaf3ca46c48444dc6df6bbb96e=document.querySelector('button[name=btn_b9d31cdaf3ca46c48444dc6df6bbb96e]');
-copyBtnbtn_b9d31cdaf3ca46c48444dc6df6bbb96e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(require 'package)\n(add-to-list 'package-archives\n             '(\"melpa\" . \"http://melpa.org/packages/\"))\n(package-initialize)\n\n(unless (package-installed-p 'use-package)\n  (package-install 'use-package))\n`);copyBtnbtn_b9d31cdaf3ca46c48444dc6df6bbb96e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b9d31cdaf3ca46c48444dc6df6bbb96e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1448bb02131848c9bab2d5aadc99e393=document.querySelector('button[name=btn_1448bb02131848c9bab2d5aadc99e393]');
+copyBtnbtn_1448bb02131848c9bab2d5aadc99e393.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(require 'package)\n(add-to-list 'package-archives\n             '(\"melpa\" . \"http://melpa.org/packages/\"))\n(package-initialize)\n\n(unless (package-installed-p 'use-package)\n  (package-install 'use-package))\n`);copyBtnbtn_1448bb02131848c9bab2d5aadc99e393.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1448bb02131848c9bab2d5aadc99e393.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -852,22 +967,22 @@ let res = copyTextToClipboard(`(require 'package)\n(add-to-list 'package-archive
 Add something like this to your configuration file:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_2f957371d4c4465b9e23a58ec9148ba2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_01adaa47a1ec4872820b4cc3b88ef5e1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2f957371d4c4465b9e23a58ec9148ba2=document.querySelector('button[name=btn_2f957371d4c4465b9e23a58ec9148ba2]');
-copyBtnbtn_2f957371d4c4465b9e23a58ec9148ba2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(use-package nice-org-html\n  :hook (org-mode . nice-org-html-mode)\n  :config\n  (setq nice-org-html-theme-alist\n        '((light . solo-jazz)\n          (dark  . tomorrow-night-eighties)))\n  (setq nice-org-html-default-mode 'dark)\n  (setq nice-org-html-headline-bullets nil)      \n`);copyBtnbtn_2f957371d4c4465b9e23a58ec9148ba2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2f957371d4c4465b9e23a58ec9148ba2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_01adaa47a1ec4872820b4cc3b88ef5e1=document.querySelector('button[name=btn_01adaa47a1ec4872820b4cc3b88ef5e1]');
+copyBtnbtn_01adaa47a1ec4872820b4cc3b88ef5e1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(use-package nice-org-html\n  :hook (org-mode . nice-org-html-mode)\n  :config\n  (setq nice-org-html-theme-alist\n        '((light . solo-jazz)\n          (dark  . tomorrow-night-eighties)))\n  (setq nice-org-html-default-mode 'dark)\n  (setq nice-org-html-headline-bullets nil) \n`);copyBtnbtn_01adaa47a1ec4872820b4cc3b88ef5e1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_01adaa47a1ec4872820b4cc3b88ef5e1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">nice-org-html</span>
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> nice-org-html
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:hook</span> (org-mode . nice-org-html-mode)
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-theme-alist
         '((light . solo-jazz)
           (dark  . tomorrow-night-eighties)))
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-default-mode 'dark)
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-headline-bullets nil)      
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-headline-bullets nil) 
 </pre>
 </div></div></li>
 <li>If values for any of these variables are <i>not</i> specified, these defaults will be used:
@@ -883,11 +998,11 @@ let res = copyTextToClipboard(`(use-package nice-org-html\n  :hook (org-mode . n
 To prefix headlines with the default bullets, instead use:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_9843b6a9864b49e9971e99ae45928956>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_1c8ab45f91ff499196330c99043d49c8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9843b6a9864b49e9971e99ae45928956=document.querySelector('button[name=btn_9843b6a9864b49e9971e99ae45928956]');
-copyBtnbtn_9843b6a9864b49e9971e99ae45928956.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets t)\n`);copyBtnbtn_9843b6a9864b49e9971e99ae45928956.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9843b6a9864b49e9971e99ae45928956.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1c8ab45f91ff499196330c99043d49c8=document.querySelector('button[name=btn_1c8ab45f91ff499196330c99043d49c8]');
+copyBtnbtn_1c8ab45f91ff499196330c99043d49c8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets t)\n`);copyBtnbtn_1c8ab45f91ff499196330c99043d49c8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1c8ab45f91ff499196330c99043d49c8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -898,11 +1013,11 @@ let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets t)\n`);copyB
 Or you can specify headline bullets with a plist like this (the defaults):
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_1e6ea85d1f1b465ea90ceb96620defa1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_00563e1c93c9484887ab9ce4d0616615>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1e6ea85d1f1b465ea90ceb96620defa1=document.querySelector('button[name=btn_1e6ea85d1f1b465ea90ceb96620defa1]');
-copyBtnbtn_1e6ea85d1f1b465ea90ceb96620defa1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets\n      '(:h1 \"◉\" :h2 \"✸\" :h3 \"▷\" :h4 \"⦁\" :h5 \"○\"))\n`);copyBtnbtn_1e6ea85d1f1b465ea90ceb96620defa1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e6ea85d1f1b465ea90ceb96620defa1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_00563e1c93c9484887ab9ce4d0616615=document.querySelector('button[name=btn_00563e1c93c9484887ab9ce4d0616615]');
+copyBtnbtn_00563e1c93c9484887ab9ce4d0616615.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets\n      '(:h1 \"◉\" :h2 \"✸\" :h3 \"▷\" :h4 \"⦁\" :h5 \"○\"))\n`);copyBtnbtn_00563e1c93c9484887ab9ce4d0616615.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_00563e1c93c9484887ab9ce4d0616615.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -912,6 +1027,59 @@ let res = copyTextToClipboard(`(setq nice-org-html-headline-bullets\n      '(:h1
 </div></div></li>
 </ul></li>
 </ul></li>
+<li><i>Admonitions</i> are the only HTML elements with colours guaranteed to be independent of your choice of source theme
+<ul class="org-ul">
+<li><p>
+Admonitions are rendered from these org special blocks: _note, _tip, _important, _warning, _caution
+</p>
+
+<div class='admonition note'><div class='admonition-title note'>Note</div><div class='admonition-content note'><p>
+This is a note
+</p>
+</div></div>
+
+<div class='admonition tip'><div class='admonition-title tip'>Tip</div><div class='admonition-content tip'><p>
+This is a tip
+</p>
+</div></div>
+
+<div class='admonition warning'><div class='admonition-title warning'>Warning</div><div class='admonition-content warning'><p>
+This is a warning
+</p>
+</div></div>
+
+<div class='admonition important'><div class='admonition-title important'>Important</div><div class='admonition-content important'><p>
+This is important
+</p>
+</div></div>
+
+<div class='admonition caution'><div class='admonition-title caution'>Caution</div><div class='admonition-content caution'><p>
+This is a caution
+</p>
+</div></div></li>
+
+<li><p>
+The colours of these blocks can be custom-set to hex values by modifying the variable <code>nice-org-html-clr-defs</code>:
+</p>
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>ELISP</span><button class='copyBtn' name=btn_59cd2872ec71401a90db61c493bc15c5>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_59cd2872ec71401a90db61c493bc15c5=document.querySelector('button[name=btn_59cd2872ec71401a90db61c493bc15c5]');
+copyBtnbtn_59cd2872ec71401a90db61c493bc15c5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq nice-org-html-clr-defs\n      ((light . (:note \"#0969da\" :tip \"#1a7f37\" :important \"#8250df\" :warning \"#9a6700\" :caution \"#cf222e\"))\n       (dark  . (:note \"#0969da\" :tip \"#1a7f37\" :important \"#8250df\" :warning \"#9a6700\" :caution \"#cf222e\"))))\n`);copyBtnbtn_59cd2872ec71401a90db61c493bc15c5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_59cd2872ec71401a90db61c493bc15c5.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> nice-org-html-clr-defs
+      ((light . (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:note</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#0969da"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:tip</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#1a7f37"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:important</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#8250df"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:warning</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#9a6700"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:caution</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#cf222e"</span>))
+       (dark  . (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:note</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#0969da"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:tip</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#1a7f37"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:important</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#8250df"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:warning</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#9a6700"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:caution</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#cf222e"</span>))))
+</pre>
+</div></div>
+<p>
+or declaring some value(s) for <code>:clr-defs</code> in a call to the <code>nice-org-html-publishing-function</code> macro, discussed below.
+</p></li>
+</ul></li>
+
 <li><p>
 Further look-and-feel customization is handled through the <code>nice-org-html-options</code> plist. The following properties and values are supported (so far):
 </p>
@@ -965,10 +1133,9 @@ Further look-and-feel customization is handled through the <code>nice-org-html-o
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org558123a" class="outline-3">
-<h3 id="org558123a">Exporting</h3>
-<div class="outline-text-3" id="text-org558123a">
+<div id="outline-container-org1b483c3" class="outline-3">
+<h3 id="org1b483c3">Exporting</h3>
+<div class="outline-text-3" id="text-org1b483c3">
 <ul class="org-ul">
 <li>After loading this package and hooking nice-org-html-mode to org-mode, when you open an Org buffer, nice-org-html-mode will activate.</li>
 
@@ -982,11 +1149,11 @@ Further look-and-feel customization is handled through the <code>nice-org-html-o
 A default HTML structure will be used for the header and/or footer, if a list of this form:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_40277e91bacb47ec9489f689a6d744fe>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_13a95d55e2c845c186b5eef9aa9c40be>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_40277e91bacb47ec9489f689a6d744fe=document.querySelector('button[name=btn_40277e91bacb47ec9489f689a6d744fe]');
-copyBtnbtn_40277e91bacb47ec9489f689a6d744fe.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`'((\"left\" . uri0) (\"link1\" . \"uri1\") ... (\"linkN\" . \"uriN\"))\n`);copyBtnbtn_40277e91bacb47ec9489f689a6d744fe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_40277e91bacb47ec9489f689a6d744fe.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_13a95d55e2c845c186b5eef9aa9c40be=document.querySelector('button[name=btn_13a95d55e2c845c186b5eef9aa9c40be]');
+copyBtnbtn_13a95d55e2c845c186b5eef9aa9c40be.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`'((\"left\" . uri0) (\"link1\" . \"uri1\") ... (\"linkN\" . \"uriN\"))\n`);copyBtnbtn_13a95d55e2c845c186b5eef9aa9c40be.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_13a95d55e2c845c186b5eef9aa9c40be.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1004,11 +1171,11 @@ These variables may also be set globally, and then used or overridden during int
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_d2287a2eff4d4fccb96171f9c96ec082>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_2ec7efbe9f534bfa94fbe9f040fe0dba>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d2287a2eff4d4fccb96171f9c96ec082=document.querySelector('button[name=btn_d2287a2eff4d4fccb96171f9c96ec082]');
-copyBtnbtn_d2287a2eff4d4fccb96171f9c96ec082.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq nice-org-html-header\n      '((\"title\" . \"/home.html\")\n        (\"foo\" . \"/foo.html\") (\"bar\" . \"/bar.html\")))\n;; Or: (setq nice-org-html-header \"path/to/your/header.html\")\n\n(setq nice-org-html-footer\n      '((\"© author\" . \"mailto:a@b.c\")\n        (\"oof\" . \"https://oof.a\") (\"rab\" . \"https://rab.b\")))\n;; Or: (setq nice-org-html-header \"path/to/your/footer.html\")\n\n(setq nice-org-html-css \"path/to/your/style.css\")\n\n(setq nice-org-html-js \"path/to/your/script.js\")\n\n(setq nice-org-html-options '(:layout \"compact\" :collapsing t))\n`);copyBtnbtn_d2287a2eff4d4fccb96171f9c96ec082.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d2287a2eff4d4fccb96171f9c96ec082.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2ec7efbe9f534bfa94fbe9f040fe0dba=document.querySelector('button[name=btn_2ec7efbe9f534bfa94fbe9f040fe0dba]');
+copyBtnbtn_2ec7efbe9f534bfa94fbe9f040fe0dba.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq nice-org-html-header\n      '((\"title\" . \"/home.html\")\n        (\"foo\" . \"/foo.html\") (\"bar\" . \"/bar.html\")))\n;; Or: (setq nice-org-html-header \"path/to/your/header.html\")\n\n(setq nice-org-html-footer\n      '((\"© author\" . \"mailto:a@b.c\")\n        (\"oof\" . \"https://oof.a\") (\"rab\" . \"https://rab.b\")))\n;; Or: (setq nice-org-html-header \"path/to/your/footer.html\")\n\n(setq nice-org-html-css \"path/to/your/style.css\")\n\n(setq nice-org-html-js \"path/to/your/script.js\")\n\n(setq nice-org-html-options '(:layout \"compact\" :collapsing t))\n`);copyBtnbtn_2ec7efbe9f534bfa94fbe9f040fe0dba.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2ec7efbe9f534bfa94fbe9f040fe0dba.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1032,21 +1199,20 @@ let res = copyTextToClipboard(`(setq nice-org-html-header\n      '((\"title\" . 
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orge746884" class="outline-3">
-<h3 id="orge746884">Publishing</h3>
-<div class="outline-text-3" id="text-orge746884">
+<div id="outline-container-org939102f" class="outline-3">
+<h3 id="org939102f">Publishing</h3>
+<div class="outline-text-3" id="text-org939102f">
 <ul class="org-ul">
 <li><p>
 This package is particularly well-suited to <i>publishing</i> Org <i>projects</i>, as websites comprised of many linked pages. The included publishing function, <code>nice-org-html-publish-to-html</code>, relies on global values for all of the above variables. To use it, in specifying the value of <code>org-publish-projects-alist</code>, for a given project just specify:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_7de09d50b2254edeaefd8ae2833e7e70>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_4da8c154606f4e8c9c61073747c66720>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7de09d50b2254edeaefd8ae2833e7e70=document.querySelector('button[name=btn_7de09d50b2254edeaefd8ae2833e7e70]');
-copyBtnbtn_7de09d50b2254edeaefd8ae2833e7e70.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`;; ...\n:publishing-function #'nice-org-html-publish-to-html\n;; ...\n`);copyBtnbtn_7de09d50b2254edeaefd8ae2833e7e70.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7de09d50b2254edeaefd8ae2833e7e70.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4da8c154606f4e8c9c61073747c66720=document.querySelector('button[name=btn_4da8c154606f4e8c9c61073747c66720]');
+copyBtnbtn_4da8c154606f4e8c9c61073747c66720.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`;; ...\n:publishing-function #'nice-org-html-publish-to-html\n;; ...\n`);copyBtnbtn_4da8c154606f4e8c9c61073747c66720.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4da8c154606f4e8c9c61073747c66720.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1061,11 +1227,11 @@ For more granular per-project configuration, there is a publishing-function-gene
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_7285a752d76d48d89bae9cb264e80043>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>EMACS-LISP</span><button class='copyBtn' name=btn_68ead5cb756b43b6b9868f4f05d35de9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7285a752d76d48d89bae9cb264e80043=document.querySelector('button[name=btn_7285a752d76d48d89bae9cb264e80043]');
-copyBtnbtn_7285a752d76d48d89bae9cb264e80043.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org\"\n   :base-directory \"path/to/source-x/\"       \n   :publishing-directory \"path/to/target-x/\"\n   ;; ...\n   :publishing-function\n   ,(nice-org-html-publishing-function\n     :theme-alist ((light . spacemacs-light) (dark . spacemacs-dark))\n     :default-mode dark\n     :headline-bullets (:h1 \"\" :h2 \"✸\" :h3 \"▷\" :h4 \"\" :h5 \"\")\n     :header \"path/to/your/header.html\"\n     :footer \"path/to/your/footer.html\"\n     :css \"path/to/your/style.css\"\n     :js \"path/to/your/script.js\"\n     :layout \"compact\"\n     :collapsing t)))\n`);copyBtnbtn_7285a752d76d48d89bae9cb264e80043.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7285a752d76d48d89bae9cb264e80043.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_68ead5cb756b43b6b9868f4f05d35de9=document.querySelector('button[name=btn_68ead5cb756b43b6b9868f4f05d35de9]');
+copyBtnbtn_68ead5cb756b43b6b9868f4f05d35de9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org\"\n   :base-directory \"path/to/source-x/\"       \n   :publishing-directory \"path/to/target-x/\"\n   ;; ...\n   :publishing-function\n   ,(nice-org-html-publishing-function\n     :theme-alist ((light . spacemacs-light) (dark . spacemacs-dark))\n     :default-mode dark\n     :headline-bullets (:h1 \"\" :h2 \"✸\" :h3 \"▷\" :h4 \"\" :h5 \"\")\n     :clr-defs ((light . (:note \"#ffc0cb\"))     ;; notes pink in light mode\n                (dark  . (:warning \"#ff4800\"))) ;; warnings orange in dark mode         \n     :header \"path/to/your/header.html\"\n     :footer \"path/to/your/footer.html\"\n     :css \"path/to/your/style.css\"\n     :js \"path/to/your/script.js\"\n     :layout \"compact\"\n     :collapsing t)))\n\n`);copyBtnbtn_68ead5cb756b43b6b9868f4f05d35de9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_68ead5cb756b43b6b9868f4f05d35de9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1079,47 +1245,56 @@ let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org
      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:theme-alist</span> ((light . spacemacs-light) (dark . spacemacs-dark))
      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:default-mode</span> dark
      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:headline-bullets</span> (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h1</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h2</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#10040;"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h3</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"&#9655;"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h4</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:h5</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span>)
+     <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:clr-defs</span> ((light . (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:note</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#ffc0cb"</span>))     <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">notes pink in light mode</span>
+                (dark  . (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:warning</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#ff4800"</span>))) <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">warnings orange in dark mode         </span>
      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:header</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/header.html"</span>
      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:footer</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/footer.html"</span>
      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:css</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/style.css"</span>
      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:js</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"path/to/your/script.js"</span>
      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:layout</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"compact"</span>
      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:collapsing</span> t)))
+
 </pre>
 </div></div>
 
 <ul class="org-ul">
 <li>Any variable for which values are not specified will take the global (or default) value.</li>
 </ul></li>
-
-<li>Finally, there is a less ergonomic alternative macro, <code>nice-org-html-make-publishing-function</code>, which takes values for all of the above configuration variables as direct arguments, rather than properties. The function defined by this macro does not validate its arguments, and the macro is primarily for use in contexts where invocations need to be constructed programmatically, with lexically bound variables spliced in. For most uses, <code>nice-org-html-publishing-function</code> should be preferred over the "-make-" alternative.</li>
 </ul>
 </div>
 </div>
 </div>
+<div id="outline-container-orgc4b494b" class="outline-2">
+<h2 id="orgc4b494b">Things to keep in mind</h2>
+<div class="outline-text-2" id="text-orgc4b494b">
+<div class='admonition important'><div class='admonition-title important'>Important</div><div class='admonition-content important'><p>
+For downloaded themes, you must run <code>M-x load-theme</code> at some point <i>before</i> exporting or publishing, so that Emacs "recognizes" the theme as safe to load. 
+</p>
+</div></div>
 
-<div id="outline-container-orge5ed366" class="outline-2">
-<h2 id="orge5ed366">Things to keep in mind</h2>
-<div class="outline-text-2" id="text-orge5ed366">
-<ul class="org-ul">
-<li><b>Important</b>: for downloaded themes, you must run <code>M-x load-theme</code> once, at some point, <i>before</i> exporting or publishing, so that Emacs "recognizes" the theme as safe to load. Failure to do so may brick an Emacs instance, requiring a restart.</li>
+<div class='admonition tip'><div class='admonition-title tip'>Tip</div><div class='admonition-content tip'><p>
+You can specify <code>""</code> as the bullet for a headline level to omit bullets for that level.
+</p>
+</div></div>
 
-<li>You can specify <code>""</code> as the bullet for a headline level to omit bullets for that level.</li>
+<div class='admonition note'><div class='admonition-title note'>Note</div><div class='admonition-content note'><p>
+The HTML specified by <code>nice-org-html-header</code> and <code>nice-org-html-footer</code> will inherit the package default styling, unless further styling for these is defined in the file specified by <code>nice-org-html-css</code>.
+</p>
+</div></div>
 
-<li>The HTML specified by <code>nice-org-html-header</code> and <code>nice-org-html-footer</code> will inherit the package default styling, unless further styling for these is defined in the file specified by <code>nice-org-html-css</code>.</li>
-
+<div class='admonition tip'><div class='admonition-title tip'>Tip</div><div class='admonition-content tip'><ul class="org-ul">
 <li>For easy CSS customization, the contents of each user-specified HTML file are wrapped together in a <code>&lt;div&gt;</code> element; with id = 'injected-header' and id = 'injected-footer', respectively, and both with class = 'injected'.</li>
 
 <li>The CSS specified by <code>nice-org-html-css</code> may also use the CSS variables defined in nice-org-html.css, which ultimately refer to Emacs face attribute values determined by your chosen themes.</li>
 
 <li>The CSS specified by <code>nice-org-html-css</code> may override the default styling.</li>
 </ul>
+</div></div>
 </div>
 </div>
-
-<div id="outline-container-orgfa8b7dd" class="outline-2">
-<h2 id="orgfa8b7dd">Contributing</h2>
-<div class="outline-text-2" id="text-orgfa8b7dd">
+<div id="outline-container-orgc377426" class="outline-2">
+<h2 id="orgc377426">Contributing</h2>
+<div class="outline-text-2" id="text-orgc377426">
 <ul class="org-ul">
 <li>If you find a bug and want it fixed, please raise an issue.</li>
 <li>If you would like to add or refine something feel free to:
@@ -1132,10 +1307,9 @@ let res = copyTextToClipboard(`\`((\"project-x/files\"\n   :base-extension \"org
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org2676451" class="outline-2">
-<h2 id="org2676451">Credits</h2>
-<div class="outline-text-2" id="text-org2676451">
+<div id="outline-container-org18a30ae" class="outline-2">
+<h2 id="org18a30ae">Credits</h2>
+<div class="outline-text-2" id="text-org18a30ae">
 <ul class="org-ul">
 <li>All of the theme developers, without which this package would be useless.</li>
 <li>Shi Tianshu's <a href="https://github.com/DogLooksGood/org-html-themify?tab=readme-ov-file">org-html-themify</a> provided the basic model for CSS interpolation.</li>

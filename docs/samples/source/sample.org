@@ -34,6 +34,26 @@ This is the sort of configuration used to generate this sample:
                        :src-lang t))))
   #+end_src
 
+* Admonitions
+#+begin_note
+This is a note
+#+end_note
+
+#+begin_tip
+This is a tip
+#+end_tip
+
+#+begin_important
+This is important
+#+end_important
+
+#+begin_warning
+This is a warning
+#+end_warning
+
+#+begin_caution
+This is a caution
+#+end_caution
 * Pretty Symbols
 + Basic:
 
