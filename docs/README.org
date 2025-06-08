@@ -46,7 +46,7 @@ With the README I also publish these samples, which include a list-specified hea
             '((light . solo-jazz)
               (dark  . tomorrow-night-eighties)))
       (setq nice-org-html-default-mode 'dark)
-      (setq nice-org-html-headline-bullets nil)      
+      (setq nice-org-html-headline-bullets nil) 
   #+end_src
 + If values for any of these variables are /not/ specified, these defaults will be used:
   + Themes: ~tsdh-light~ and ~tsdh-dark~ distributed with GNU Emacs
@@ -62,6 +62,37 @@ With the README I also publish these samples, which include a list-specified hea
         (setq nice-org-html-headline-bullets
               '(:h1 "◉" :h2 "✸" :h3 "▷" :h4 "⦁" :h5 "○"))
       #+end_src
++ /Admonitions/ are the only HTML elements with colours guaranteed to be independent of your choice of source theme
+  + Admonitions are rendered from these org special blocks: _note, _tip, _important, _warning, _caution
+    
+    #+begin_note
+    This is a note
+    #+end_note
+    
+    #+begin_tip
+    This is a tip
+    #+end_tip
+    
+    #+begin_warning
+    This is a warning
+    #+end_warning
+      
+    #+begin_important
+    This is important
+    #+end_important
+    
+    #+begin_caution
+    This is a caution
+    #+end_caution
+    
+  + The colours of these blocks can be custom-set to hex values by modifying the variable ~nice-org-html-clr-defs~:
+    #+begin_src elisp
+      (setq nice-org-html-clr-defs
+            ((light . (:note "#0969da" :tip "#1a7f37" :important "#8250df" :warning "#9a6700" :caution "#cf222e"))
+             (dark  . (:note "#0969da" :tip "#1a7f37" :important "#8250df" :warning "#9a6700" :caution "#cf222e"))))
+    #+end_src
+    or declaring some value(s) for ~:clr-defs~ in a call to the ~nice-org-html-publishing-function~ macro, discussed below.
+    
 + Further look-and-feel customization is handled through the ~nice-org-html-options~ plist. The following properties and values are supported (so far):
 
   |-------------+------------+--------------------------------------------------------------|
@@ -133,31 +164,39 @@ With the README I also publish these samples, which include a list-specified hea
          :theme-alist ((light . spacemacs-light) (dark . spacemacs-dark))
          :default-mode dark
          :headline-bullets (:h1 "" :h2 "✸" :h3 "▷" :h4 "" :h5 "")
+         :clr-defs ((light . (:note "#ffc0cb"))     ;; notes pink in light mode
+    		(dark  . (:warning "#ff4800"))) ;; warnings orange in dark mode         
          :header "path/to/your/header.html"
          :footer "path/to/your/footer.html"
          :css "path/to/your/style.css"
          :js "path/to/your/script.js"
          :layout "compact"
          :collapsing t)))
+
   #+end_src
 
   + Any variable for which values are not specified will take the global (or default) value.
-
-+ Finally, there is a less ergonomic alternative macro, ~nice-org-html-make-publishing-function~, which takes values for all of the above configuration variables as direct arguments, rather than properties. The function defined by this macro does not validate its arguments, and the macro is primarily for use in contexts where invocations need to be constructed programmatically, with lexically bound variables spliced in. For most uses, ~nice-org-html-publishing-function~ should be preferred over the "-make-" alternative.
   
 * Things to keep in mind
-+ *Important*: for downloaded themes, you must run ~M-x load-theme~ once, at some point, /before/ exporting or publishing, so that Emacs "recognizes" the theme as safe to load. Failure to do so may brick an Emacs instance, requiring a restart.
+#+begin_important
+For downloaded themes, you must run ~M-x load-theme~ at some point /before/ exporting or publishing, so that Emacs "recognizes" the theme as safe to load. 
+#+end_important
 
-+ You can specify ~""~ as the bullet for a headline level to omit bullets for that level.
-      
-+ The HTML specified by ~nice-org-html-header~ and ~nice-org-html-footer~ will inherit the package default styling, unless further styling for these is defined in the file specified by ~nice-org-html-css~.
-  
+#+begin_tip
+You can specify ~""~ as the bullet for a headline level to omit bullets for that level.
+#+end_tip 
+
+#+begin_note
+The HTML specified by ~nice-org-html-header~ and ~nice-org-html-footer~ will inherit the package default styling, unless further styling for these is defined in the file specified by ~nice-org-html-css~.
+#+end_note
+
+#+begin_tip
 + For easy CSS customization, the contents of each user-specified HTML file are wrapped together in a ~<div>~ element; with id = 'injected-header' and id = 'injected-footer', respectively, and both with class = 'injected'.
-  
-+ The CSS specified by ~nice-org-html-css~ may also use the CSS variables defined in nice-org-html.css, which ultimately refer to Emacs face attribute values determined by your chosen themes.
-  
-+ The CSS specified by ~nice-org-html-css~ may override the default styling.
 
++ The CSS specified by ~nice-org-html-css~ may also use the CSS variables defined in nice-org-html.css, which ultimately refer to Emacs face attribute values determined by your chosen themes.
+
++ The CSS specified by ~nice-org-html-css~ may override the default styling.
+#+end_tip
 * Contributing
 + If you find a bug and want it fixed, please raise an issue.
 + If you would like to add or refine something feel free to:

@@ -89,44 +89,49 @@ body {
 /* custom facing **************************************************************/
 /* The variable values are injected by CSS pre-processing in et-org-html.el */
 :root {
-    --bc-tb: #6E6E6E;
+    --bc-tb: #3b2685;
     --bc-block: initial;
-    --clr: #6E6E6E;
-    --clr-tb-hd: #6E6E6E;
-    --clr-code: #6E6E6E;
-    --bg: #cBc9b1;
-    --bg-code: #BBB9A1;
-    --bg-tb-hd: #BBB9A1;
-    --bg-block: initial;
-    --clr-link: #9B55C3;
-    --clr-title: #6E6E6E;
-    --clr-todo: #5D5C01;
+    --clr: #3b2685;
+    --clr-tb-hd: initial;
+    --clr-code: initial;
+    --bg: #fafafa;
+    --bg-code: #efeff1;
+    --bg-tb-hd: #efeff1;
+    --bg-block: #f4f4f4;
+    --clr-link: #005cc5;
+    --clr-title: #3b2685;
+    --clr-todo: #00afef;
     --bg-todo: initial;
-    --clr-done: #959595;
+    --clr-done: #778ca3;
     --bg-done: initial;
-    --ts-clr: #4170B3;
+    --ts-clr: #009c9f;
     --mg: 20px;
     --w-toc: 300px;
     --bg-keyword: initial;
-    --clr-keyword: #4170B3;
+    --clr-keyword: #009c9f;
     --bg-constant: initial;
-    --clr-constant: #9B55C3;
+    --clr-constant: #005cc5;
     --bg-comment: initial;
-    --clr-comment: #959595;
+    --clr-comment: #778ca3;
     --bg-comment-delimiter: initial;
-    --clr-comment-delimiter: #959595;
+    --clr-comment-delimiter: initial;
     --bg-function: initial;
-    --clr-function: #4A8F30;
+    --clr-function: #fa1090;
     --bg-variable: initial;
-    --clr-variable: #787800;
+    --clr-variable: #ff5200;
     --bg-preprocessor: initial;
-    --clr-preprocessor: #FF8512;
+    --clr-preprocessor: #009c9f;
     --bg-doc: initial;
-    --clr-doc: #7D7C21;
+    --clr-doc: initial;
     --bg-builtin: initial;
-    --clr-builtin: #528FD1;
+    --clr-builtin: #009c9f;
     --bg-string: initial;
-    --clr-string: #5D5C01;
+    --clr-string: #00afef;
+    --clr-note: #FFC0CB;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
 }
 
 body[data-mode='light'] {
@@ -137,44 +142,49 @@ body[data-mode='light'] {
 body[data-mode='dark'] {
     background: var(--bg);
     color: var(--clr);
-    --bc-tb: #DCDCCC;
+    --bc-tb: #cccccc;
     --bc-block: initial;
-    --clr: #DCDCCC;
-    --clr-code: #8FB28F;
-    --clr-tb-hd: #8FB28F;
-    --bg: #3F3F3F;
-    --bg-tb-hd: #2B2B2B;
-    --bg-code: #2B2B2B;
-    --bg-block: #494949;
-    --clr-link: #BFEBBF;
-    --clr-title: #DCDCCC;
-    --clr-todo: #CC9393;
+    --clr: #cccccc;
+    --clr-code: #cccccc;
+    --clr-tb-hd: #cccccc;
+    --bg: #2d2d2d;
+    --bg-tb-hd: #515151;
+    --bg-code: #515151;
+    --bg-block: initial;
+    --clr-link: #66cccc;
+    --clr-title: #cccccc;
+    --clr-todo: #99cc99;
     --bg-todo: initial;
-    --clr-done: #7F9F7F;
+    --clr-done: #999999;
     --bg-done: initial;
-    --ts-clr: #F0DFAF;
+    --ts-clr: #cc99cc;
     --mg: 20px;
     --w-toc: 300px;
     --bg-keyword: initial;
-    --clr-keyword: #F0DFAF;
+    --clr-keyword: #cc99cc;
     --bg-constant: initial;
-    --clr-constant: #BFEBBF;
+    --clr-constant: #66cccc;
     --bg-comment: initial;
-    --clr-comment: #7F9F7F;
+    --clr-comment: #999999;
     --bg-comment-delimiter: initial;
-    --clr-comment-delimiter: #5F7F5F;
+    --clr-comment-delimiter: #999999;
     --bg-function: initial;
-    --clr-function: #93E0E3;
+    --clr-function: #6699cc;
     --bg-variable: initial;
-    --clr-variable: #DFAF8F;
+    --clr-variable: #f99157;
     --bg-preprocessor: initial;
-    --clr-preprocessor: #94BFF3;
+    --clr-preprocessor: #cc99cc;
     --bg-doc: initial;
-    --clr-doc: #9FC59F;
+    --clr-doc: #999999;
     --bg-builtin: initial;
-    --clr-builtin: #DCDCCC;
+    --clr-builtin: #66cccc;
     --bg-string: initial;
-    --clr-string: #CC9393;
+    --clr-string: #99cc99;
+    --clr-note: #FFC0CB;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
 }
 
 /* exceptions for badly rendering themes **************************************/
@@ -487,6 +497,114 @@ pre {
     padding: 0.5rem;
 }
 
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
 /* responsive layouts *********************************************************/
 
 @media only screen and (max-width: 768px) {
@@ -771,32 +889,6 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
-<div id='generated-header' class='generated'><header>
- <nav>
-<a class='nav-title'href='/route/to/home.html' >
-SITE NAME
-</a>
-<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
-<label class='nav-button' for='nav-toggle-top'><span/></label>
-<div class='separator menu-sep'></div>
-<ul class='nav-list'>
-<li class='nav-item'>
-<a class='nav-link' href='/route/to/foo.html'>
-Foo</a>
-</li>
-<li class='nav-item'>
-<a class='nav-link' href='/route/to/bar.html'>
-Bar</a>
-</li>
-<li class='nav-item'>
-<a class='nav-link' href='/route/to/baz.html'>
-Baz</a>
-</li>
-</ul>
-<div class='separator'></div>
-</nav>
-</header>
-</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -805,66 +897,65 @@ Baz</a>
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org38e6a1d">H1 - one '*'s</a>
+<li><a href="#orgbf65781">H1 - one '*'s</a>
 <ul>
-<li><a href="#orgd98e9b8">H2 - two '*'s</a>
+<li><a href="#orge7296b8">H2 - two '*'s</a>
 <ul>
-<li><a href="#org697bcbf">H3 - three '*'s</a></li>
+<li><a href="#org8b7725b">H3 - three '*'s</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org306e27a">Source Blocks</a></li>
-<li><a href="#org37c15fb">Pretty Symbols</a></li>
-<li><a href="#org50f19c0">Table</a></li>
-<li><a href="#org67de628">Lists</a>
+<li><a href="#orge4e1a8f">Source Blocks</a></li>
+<li><a href="#org589c420">Admonitions</a></li>
+<li><a href="#org1a27653">Pretty Symbols</a></li>
+<li><a href="#org921ab62">Table</a></li>
+<li><a href="#orga2f258d">Lists</a>
 <ul>
-<li><a href="#org3a79eeb">todo List</a></li>
-<li><a href="#orge6aef10">Simple List</a></li>
-<li><a href="#org5a46323">Sorted List</a></li>
-<li><a href="#orgccc93c4">Check List</a></li>
+<li><a href="#orgdc30b2d">todo List</a></li>
+<li><a href="#orgb36d498">Simple List</a></li>
+<li><a href="#org23af4a2">Sorted List</a></li>
+<li><a href="#org408c943">Check List</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org38e6a1d" class="outline-2">
-<h2 id="org38e6a1d">H1 - one '*'s</h2>
-<div class="outline-text-2" id="text-org38e6a1d">
+<div id="outline-container-orgbf65781" class="outline-2">
+<h2 id="orgbf65781">H1 - one '*'s</h2>
+<div class="outline-text-2" id="text-orgbf65781">
 </div>
-<div id="outline-container-orgd98e9b8" class="outline-3">
-<h3 id="orgd98e9b8">H2 - two '*'s</h3>
-<div class="outline-text-3" id="text-orgd98e9b8">
+<div id="outline-container-orge7296b8" class="outline-3">
+<h3 id="orge7296b8">H2 - two '*'s</h3>
+<div class="outline-text-3" id="text-orge7296b8">
 </div>
-<div id="outline-container-org697bcbf" class="outline-4">
-<h4 id="org697bcbf">H3 - three '*'s</h4>
-<div class="outline-text-4" id="text-org697bcbf">
+<div id="outline-container-org8b7725b" class="outline-4">
+<h4 id="org8b7725b">H3 - three '*'s</h4>
+<div class="outline-text-4" id="text-org8b7725b">
 </div>
-<div id="outline-container-org8ab8ac3" class="outline-5">
-<h5 id="org8ab8ac3">H4 - four '*'s</h5>
-<div class="outline-text-5" id="text-org8ab8ac3">
+<div id="outline-container-org0e873d2" class="outline-5">
+<h5 id="org0e873d2">H4 - four '*'s</h5>
+<div class="outline-text-5" id="text-org0e873d2">
 </div>
-<div id="outline-container-org38f1265" class="outline-6">
-<h6 id="org38f1265">H5 - five '*'s</h6>
-</div>
+<div id="outline-container-org4b5eaf0" class="outline-6">
+<h6 id="org4b5eaf0">H5 - five '*'s</h6>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org306e27a" class="outline-2">
-<h2 id="org306e27a">Source Blocks</h2>
-<div class="outline-text-2" id="text-org306e27a">
+</div>
+<div id="outline-container-orge4e1a8f" class="outline-2">
+<h2 id="orge4e1a8f">Source Blocks</h2>
+<div class="outline-text-2" id="text-orge4e1a8f">
 <p>
 This is the sort of configuration used to generate this sample:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELISP</span><button class='copyBtn' name=btn_6d854b4086dd41989e654ab3deb9b9f3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELISP</span><button class='copyBtn' name=btn_6b1c2407ca734afaafe7c2b686af01c9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6d854b4086dd41989e654ab3deb9b9f3=document.querySelector('button[name=btn_6d854b4086dd41989e654ab3deb9b9f3]');
-copyBtnbtn_6d854b4086dd41989e654ab3deb9b9f3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           :collapsing t\n           :src-lang t))))\n`);copyBtnbtn_6d854b4086dd41989e654ab3deb9b9f3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6d854b4086dd41989e654ab3deb9b9f3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6b1c2407ca734afaafe7c2b686af01c9=document.querySelector('button[name=btn_6b1c2407ca734afaafe7c2b686af01c9]');
+copyBtnbtn_6b1c2407ca734afaafe7c2b686af01c9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           :collapsing t\n           :src-lang t))))\n`);copyBtnbtn_6b1c2407ca734afaafe7c2b686af01c9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6b1c2407ca734afaafe7c2b686af01c9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -892,10 +983,38 @@ let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice
 </div></div>
 </div>
 </div>
+<div id="outline-container-org589c420" class="outline-2">
+<h2 id="org589c420">Admonitions</h2>
+<div class="outline-text-2" id="text-org589c420">
+<div class='admonition note'><div class='admonition-title note'>Note</div><div class='admonition-content note'><p>
+This is a note
+</p>
+</div></div>
 
-<div id="outline-container-org37c15fb" class="outline-2">
-<h2 id="org37c15fb">Pretty Symbols</h2>
-<div class="outline-text-2" id="text-org37c15fb">
+<div class='admonition tip'><div class='admonition-title tip'>Tip</div><div class='admonition-content tip'><p>
+This is a tip
+</p>
+</div></div>
+
+<div class='admonition important'><div class='admonition-title important'>Important</div><div class='admonition-content important'><p>
+This is important
+</p>
+</div></div>
+
+<div class='admonition warning'><div class='admonition-title warning'>Warning</div><div class='admonition-content warning'><p>
+This is a warning
+</p>
+</div></div>
+
+<div class='admonition caution'><div class='admonition-title caution'>Caution</div><div class='admonition-content caution'><p>
+This is a caution
+</p>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org1a27653" class="outline-2">
+<h2 id="org1a27653">Pretty Symbols</h2>
+<div class="outline-text-2" id="text-org1a27653">
 <ul class="org-ul">
 <li><p>
 Basic:
@@ -916,10 +1035,9 @@ Basic:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org50f19c0" class="outline-2">
-<h2 id="org50f19c0">Table</h2>
-<div class="outline-text-2" id="text-org50f19c0">
+<div id="outline-container-org921ab62" class="outline-2">
+<h2 id="org921ab62">Table</h2>
+<div class="outline-text-2" id="text-org921ab62">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -972,26 +1090,24 @@ Basic:
 </table>
 </div>
 </div>
-
-<div id="outline-container-org67de628" class="outline-2">
-<h2 id="org67de628">Lists</h2>
-<div class="outline-text-2" id="text-org67de628">
+<div id="outline-container-orga2f258d" class="outline-2">
+<h2 id="orga2f258d">Lists</h2>
+<div class="outline-text-2" id="text-orga2f258d">
 </div>
-<div id="outline-container-org3a79eeb" class="outline-3">
-<h3 id="org3a79eeb">todo List</h3>
-<div class="outline-text-3" id="text-org3a79eeb">
+<div id="outline-container-orgdc30b2d" class="outline-3">
+<h3 id="orgdc30b2d">todo List</h3>
+<div class="outline-text-3" id="text-orgdc30b2d">
 </div>
-<div id="outline-container-orgf41c780" class="outline-5">
-<h5 id="orgf41c780"><span class="todo TODO">TODO</span> todo</h5>
+<div id="outline-container-org0225ce4" class="outline-5">
+<h5 id="org0225ce4"><span class="todo TODO">TODO</span> todo</h5>
 </div>
-<div id="outline-container-org4a86f2c" class="outline-5">
-<h5 id="org4a86f2c"><span class="done DONE">DONE</span> done</h5>
+<div id="outline-container-orgb7d0599" class="outline-5">
+<h5 id="orgb7d0599"><span class="done DONE">DONE</span> done</h5>
 </div>
 </div>
-
-<div id="outline-container-orge6aef10" class="outline-3">
-<h3 id="orge6aef10">Simple List</h3>
-<div class="outline-text-3" id="text-orge6aef10">
+<div id="outline-container-orgb36d498" class="outline-3">
+<h3 id="orgb36d498">Simple List</h3>
+<div class="outline-text-3" id="text-orgb36d498">
 <ul class="org-ul">
 <li>item</li>
 <li>item</li>
@@ -999,10 +1115,9 @@ Basic:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org5a46323" class="outline-3">
-<h3 id="org5a46323">Sorted List</h3>
-<div class="outline-text-3" id="text-org5a46323">
+<div id="outline-container-org23af4a2" class="outline-3">
+<h3 id="org23af4a2">Sorted List</h3>
+<div class="outline-text-3" id="text-org23af4a2">
 <ol class="org-ol">
 <li>item</li>
 <li>item</li>
@@ -1010,10 +1125,9 @@ Basic:
 </ol>
 </div>
 </div>
-
-<div id="outline-container-orgccc93c4" class="outline-3">
-<h3 id="orgccc93c4">Check List</h3>
-<div class="outline-text-3" id="text-orgccc93c4">
+<div id="outline-container-org408c943" class="outline-3">
+<h3 id="org408c943">Check List</h3>
+<div class="outline-text-3" id="text-org408c943">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> item</li>
 <li class="on"><code>[X]</code> item</li>
@@ -1023,35 +1137,13 @@ Basic:
 </div>
 </div>
 <div id="postamble" class="status">
-<div id='generated-footer' class='generated'><footer>
- <nav>
-<div class='separator'></div>
-<a class='nav-author'href='mailto:e@etown.dev' >
-© Ewan Townshend
-</a>
-<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
-<label class='nav-button' for='nav-toggle-bot'><span/></label>
-<div class='separator menu-sep'></div>
-<ul class='nav-list'>
-<li class='nav-item'>
-<a class='nav-link' href='https://github.com/ewantown'>
-GitHub</a>
-</li>
-<li class='nav-item'>
-<a class='nav-link' href='https://linkedin.com/in/ewan-townshend'>
-LinkedIn</a>
-</li>
-</ul>
-</nav>
-</footer>
-</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
 document.cookie = 'mode=dark'
 }
-document.cookie = 'light=ample-light'
-document.cookie = 'dark=zenburn'
+document.cookie = 'light=solo-jazz'
+document.cookie = 'dark=tomorrow-night-eighties'
 document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js

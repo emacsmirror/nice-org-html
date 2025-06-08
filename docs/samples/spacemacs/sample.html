@@ -89,44 +89,49 @@ body {
 /* custom facing **************************************************************/
 /* The variable values are injected by CSS pre-processing in et-org-html.el */
 :root {
-    --bc-tb: #b3b9be;
-    --bc-block: #da8b55;
-    --clr: #655370;
-    --clr-tb-hd: #655370;
-    --clr-code: #655370;
-    --bg: #fbf8ef;
-    --bg-code: #e7e5eb;
-    --bg-tb-hd: #e7e5eb;
-    --bg-block: #e8e3f0;
-    --clr-link: #4e3163;
-    --clr-title: #655370;
-    --clr-todo: #2d9574;
+    --bc-tb: #3b2685;
+    --bc-block: initial;
+    --clr: #3b2685;
+    --clr-tb-hd: initial;
+    --clr-code: initial;
+    --bg: #fafafa;
+    --bg-code: #efeff1;
+    --bg-tb-hd: #efeff1;
+    --bg-block: #f4f4f4;
+    --clr-link: #005cc5;
+    --clr-title: #3b2685;
+    --clr-todo: #00afef;
     --bg-todo: initial;
-    --clr-done: #2aa1ae;
-    --bg-done: #ecf3ec;
-    --ts-clr: #3a81c3;
+    --clr-done: #778ca3;
+    --bg-done: initial;
+    --ts-clr: #009c9f;
     --mg: 20px;
     --w-toc: 300px;
     --bg-keyword: initial;
-    --clr-keyword: #3a81c3;
+    --clr-keyword: #009c9f;
     --bg-constant: initial;
-    --clr-constant: #4e3163;
-    --bg-comment: #ecf3ec;
-    --clr-comment: #2aa1ae;
+    --clr-constant: #005cc5;
+    --bg-comment: initial;
+    --clr-comment: #778ca3;
     --bg-comment-delimiter: initial;
     --clr-comment-delimiter: initial;
     --bg-function: initial;
-    --clr-function: #6c3163;
+    --clr-function: #fa1090;
     --bg-variable: initial;
-    --clr-variable: #715ab1;
+    --clr-variable: #ff5200;
     --bg-preprocessor: initial;
-    --clr-preprocessor: #6c3163;
+    --clr-preprocessor: #009c9f;
     --bg-doc: initial;
-    --clr-doc: #da8b55;
+    --clr-doc: initial;
     --bg-builtin: initial;
-    --clr-builtin: #3a81c3;
+    --clr-builtin: #009c9f;
     --bg-string: initial;
-    --clr-string: #2d9574;
+    --clr-string: #00afef;
+    --clr-note: #FFC0CB;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
 }
 
 body[data-mode='light'] {
@@ -137,44 +142,49 @@ body[data-mode='light'] {
 body[data-mode='dark'] {
     background: var(--bg);
     color: var(--clr);
-    --bc-tb: #5d4d7a;
-    --bc-block: #9f8766;
-    --clr: #b2b2b2;
-    --clr-code: #b2b2b2;
-    --clr-tb-hd: #b2b2b2;
-    --bg: #292b2e;
-    --bg-tb-hd: #222226;
-    --bg-code: #222226;
-    --bg-block: #2f2b33;
-    --clr-link: #a45bad;
-    --clr-title: #b2b2b2;
-    --clr-todo: #2d9574;
+    --bc-tb: #cccccc;
+    --bc-block: initial;
+    --clr: #cccccc;
+    --clr-code: #cccccc;
+    --clr-tb-hd: #cccccc;
+    --bg: #2d2d2d;
+    --bg-tb-hd: #515151;
+    --bg-code: #515151;
+    --bg-block: initial;
+    --clr-link: #66cccc;
+    --clr-title: #cccccc;
+    --clr-todo: #99cc99;
     --bg-todo: initial;
-    --clr-done: #2aa1ae;
-    --bg-done: #292e34;
-    --ts-clr: #4f97d7;
+    --clr-done: #999999;
+    --bg-done: initial;
+    --ts-clr: #cc99cc;
     --mg: 20px;
     --w-toc: 300px;
     --bg-keyword: initial;
-    --clr-keyword: #4f97d7;
+    --clr-keyword: #cc99cc;
     --bg-constant: initial;
-    --clr-constant: #a45bad;
-    --bg-comment: #292e34;
-    --clr-comment: #2aa1ae;
+    --clr-constant: #66cccc;
+    --bg-comment: initial;
+    --clr-comment: #999999;
     --bg-comment-delimiter: initial;
-    --clr-comment-delimiter: initial;
+    --clr-comment-delimiter: #999999;
     --bg-function: initial;
-    --clr-function: #bc6ec5;
+    --clr-function: #6699cc;
     --bg-variable: initial;
-    --clr-variable: #7590db;
+    --clr-variable: #f99157;
     --bg-preprocessor: initial;
-    --clr-preprocessor: #bc6ec5;
+    --clr-preprocessor: #cc99cc;
     --bg-doc: initial;
-    --clr-doc: #9f8766;
+    --clr-doc: #999999;
     --bg-builtin: initial;
-    --clr-builtin: #4f97d7;
+    --clr-builtin: #66cccc;
     --bg-string: initial;
-    --clr-string: #2d9574;
+    --clr-string: #99cc99;
+    --clr-note: #FFC0CB;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
 }
 
 /* exceptions for badly rendering themes **************************************/
@@ -487,6 +497,114 @@ pre {
     padding: 0.5rem;
 }
 
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
 /* responsive layouts *********************************************************/
 
 @media only screen and (max-width: 768px) {
@@ -771,32 +889,6 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
-<div id='generated-header' class='generated'><header>
- <nav>
-<a class='nav-title'href='/route/to/home.html' >
-SITE NAME
-</a>
-<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
-<label class='nav-button' for='nav-toggle-top'><span/></label>
-<div class='separator menu-sep'></div>
-<ul class='nav-list'>
-<li class='nav-item'>
-<a class='nav-link' href='/route/to/foo.html'>
-Foo</a>
-</li>
-<li class='nav-item'>
-<a class='nav-link' href='/route/to/bar.html'>
-Bar</a>
-</li>
-<li class='nav-item'>
-<a class='nav-link' href='/route/to/baz.html'>
-Baz</a>
-</li>
-</ul>
-<div class='separator'></div>
-</nav>
-</header>
-</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -805,66 +897,65 @@ Baz</a>
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org48309ae">H1 - one '*'s</a>
+<li><a href="#org03c2ee4">H1 - one '*'s</a>
 <ul>
-<li><a href="#org58e09b0">H2 - two '*'s</a>
+<li><a href="#orgce3272d">H2 - two '*'s</a>
 <ul>
-<li><a href="#org3d8399b">H3 - three '*'s</a></li>
+<li><a href="#orge0226af">H3 - three '*'s</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org6e78648">Source Blocks</a></li>
-<li><a href="#org79d853b">Pretty Symbols</a></li>
-<li><a href="#org6b7974f">Table</a></li>
-<li><a href="#org381518f">Lists</a>
+<li><a href="#org49d0d85">Source Blocks</a></li>
+<li><a href="#orgdcbead9">Admonitions</a></li>
+<li><a href="#org257b74c">Pretty Symbols</a></li>
+<li><a href="#orgaf32132">Table</a></li>
+<li><a href="#org46afbdb">Lists</a>
 <ul>
-<li><a href="#orgbedd128">todo List</a></li>
-<li><a href="#org7337b63">Simple List</a></li>
-<li><a href="#org17974fc">Sorted List</a></li>
-<li><a href="#orged035c3">Check List</a></li>
+<li><a href="#org086b8e9">todo List</a></li>
+<li><a href="#org9d69ed8">Simple List</a></li>
+<li><a href="#org21ef44d">Sorted List</a></li>
+<li><a href="#org204be3e">Check List</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org48309ae" class="outline-2">
-<h2 id="org48309ae">H1 - one '*'s</h2>
-<div class="outline-text-2" id="text-org48309ae">
+<div id="outline-container-org03c2ee4" class="outline-2">
+<h2 id="org03c2ee4">H1 - one '*'s</h2>
+<div class="outline-text-2" id="text-org03c2ee4">
 </div>
-<div id="outline-container-org58e09b0" class="outline-3">
-<h3 id="org58e09b0">H2 - two '*'s</h3>
-<div class="outline-text-3" id="text-org58e09b0">
+<div id="outline-container-orgce3272d" class="outline-3">
+<h3 id="orgce3272d">H2 - two '*'s</h3>
+<div class="outline-text-3" id="text-orgce3272d">
 </div>
-<div id="outline-container-org3d8399b" class="outline-4">
-<h4 id="org3d8399b">H3 - three '*'s</h4>
-<div class="outline-text-4" id="text-org3d8399b">
+<div id="outline-container-orge0226af" class="outline-4">
+<h4 id="orge0226af">H3 - three '*'s</h4>
+<div class="outline-text-4" id="text-orge0226af">
 </div>
-<div id="outline-container-org995884b" class="outline-5">
-<h5 id="org995884b">H4 - four '*'s</h5>
-<div class="outline-text-5" id="text-org995884b">
+<div id="outline-container-org262096e" class="outline-5">
+<h5 id="org262096e">H4 - four '*'s</h5>
+<div class="outline-text-5" id="text-org262096e">
 </div>
-<div id="outline-container-org12cc536" class="outline-6">
-<h6 id="org12cc536">H5 - five '*'s</h6>
-</div>
+<div id="outline-container-org75ffd0f" class="outline-6">
+<h6 id="org75ffd0f">H5 - five '*'s</h6>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org6e78648" class="outline-2">
-<h2 id="org6e78648">Source Blocks</h2>
-<div class="outline-text-2" id="text-org6e78648">
+</div>
+<div id="outline-container-org49d0d85" class="outline-2">
+<h2 id="org49d0d85">Source Blocks</h2>
+<div class="outline-text-2" id="text-org49d0d85">
 <p>
 This is the sort of configuration used to generate this sample:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELISP</span><button class='copyBtn' name=btn_9810a5a4354a4c8c8339e947389e6d2c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELISP</span><button class='copyBtn' name=btn_9514098a1a4641b19a02db414a8ab65c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9810a5a4354a4c8c8339e947389e6d2c=document.querySelector('button[name=btn_9810a5a4354a4c8c8339e947389e6d2c]');
-copyBtnbtn_9810a5a4354a4c8c8339e947389e6d2c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           :collapsing t\n           :src-lang t))))\n`);copyBtnbtn_9810a5a4354a4c8c8339e947389e6d2c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9810a5a4354a4c8c8339e947389e6d2c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9514098a1a4641b19a02db414a8ab65c=document.querySelector('button[name=btn_9514098a1a4641b19a02db414a8ab65c]');
+copyBtnbtn_9514098a1a4641b19a02db414a8ab65c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice-org-html/samples/X\"\n         :base-directory \"nice-org-html/samples/source\"\n         :publishing-directory \"nice-org-html/samples/X\"\n         :htmlize-source t\n         :with-toc t\n         ;; ...\n         :publishing-function\n         ,(nice-org-html-publishing-function\n           :theme-alist ((light . <light-theme>) (dark . <dark-theme>))\n           :default-mode dark\n           :header ((\"SITE NAME\" . \"/route/to/home.html\")\n                    (\"Foo\" . \"/route/to/foo.html\")\n                    (\"Bar\" . \"/route/to/bar.html\")\n                    (\"Baz\" . \"/route/to/baz.html\"))\n           :footer ((\"© Author Name\" . \"mailto:a@b.com\")\n                    (\"GitHub\" . \"https://github.com/ewantown\")\n                    (\"LinkedIn\" . \"https://linkedin.com/me\"))\n           :collapsing t\n           :src-lang t))))\n`);copyBtnbtn_9514098a1a4641b19a02db414a8ab65c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9514098a1a4641b19a02db414a8ab65c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -892,10 +983,38 @@ let res = copyTextToClipboard(`(setq org-publish-project-alist\n      \`((\"nice
 </div></div>
 </div>
 </div>
+<div id="outline-container-orgdcbead9" class="outline-2">
+<h2 id="orgdcbead9">Admonitions</h2>
+<div class="outline-text-2" id="text-orgdcbead9">
+<div class='admonition note'><div class='admonition-title note'>Note</div><div class='admonition-content note'><p>
+This is a note
+</p>
+</div></div>
 
-<div id="outline-container-org79d853b" class="outline-2">
-<h2 id="org79d853b">Pretty Symbols</h2>
-<div class="outline-text-2" id="text-org79d853b">
+<div class='admonition tip'><div class='admonition-title tip'>Tip</div><div class='admonition-content tip'><p>
+This is a tip
+</p>
+</div></div>
+
+<div class='admonition important'><div class='admonition-title important'>Important</div><div class='admonition-content important'><p>
+This is important
+</p>
+</div></div>
+
+<div class='admonition warning'><div class='admonition-title warning'>Warning</div><div class='admonition-content warning'><p>
+This is a warning
+</p>
+</div></div>
+
+<div class='admonition caution'><div class='admonition-title caution'>Caution</div><div class='admonition-content caution'><p>
+This is a caution
+</p>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org257b74c" class="outline-2">
+<h2 id="org257b74c">Pretty Symbols</h2>
+<div class="outline-text-2" id="text-org257b74c">
 <ul class="org-ul">
 <li><p>
 Basic:
@@ -916,10 +1035,9 @@ Basic:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org6b7974f" class="outline-2">
-<h2 id="org6b7974f">Table</h2>
-<div class="outline-text-2" id="text-org6b7974f">
+<div id="outline-container-orgaf32132" class="outline-2">
+<h2 id="orgaf32132">Table</h2>
+<div class="outline-text-2" id="text-orgaf32132">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -972,26 +1090,24 @@ Basic:
 </table>
 </div>
 </div>
-
-<div id="outline-container-org381518f" class="outline-2">
-<h2 id="org381518f">Lists</h2>
-<div class="outline-text-2" id="text-org381518f">
+<div id="outline-container-org46afbdb" class="outline-2">
+<h2 id="org46afbdb">Lists</h2>
+<div class="outline-text-2" id="text-org46afbdb">
 </div>
-<div id="outline-container-orgbedd128" class="outline-3">
-<h3 id="orgbedd128">todo List</h3>
-<div class="outline-text-3" id="text-orgbedd128">
+<div id="outline-container-org086b8e9" class="outline-3">
+<h3 id="org086b8e9">todo List</h3>
+<div class="outline-text-3" id="text-org086b8e9">
 </div>
-<div id="outline-container-org0df8faf" class="outline-5">
-<h5 id="org0df8faf"><span class="todo TODO">TODO</span> todo</h5>
+<div id="outline-container-org76d8cff" class="outline-5">
+<h5 id="org76d8cff"><span class="todo TODO">TODO</span> todo</h5>
 </div>
-<div id="outline-container-org42609cd" class="outline-5">
-<h5 id="org42609cd"><span class="done DONE">DONE</span> done</h5>
+<div id="outline-container-orgea5239a" class="outline-5">
+<h5 id="orgea5239a"><span class="done DONE">DONE</span> done</h5>
 </div>
 </div>
-
-<div id="outline-container-org7337b63" class="outline-3">
-<h3 id="org7337b63">Simple List</h3>
-<div class="outline-text-3" id="text-org7337b63">
+<div id="outline-container-org9d69ed8" class="outline-3">
+<h3 id="org9d69ed8">Simple List</h3>
+<div class="outline-text-3" id="text-org9d69ed8">
 <ul class="org-ul">
 <li>item</li>
 <li>item</li>
@@ -999,10 +1115,9 @@ Basic:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org17974fc" class="outline-3">
-<h3 id="org17974fc">Sorted List</h3>
-<div class="outline-text-3" id="text-org17974fc">
+<div id="outline-container-org21ef44d" class="outline-3">
+<h3 id="org21ef44d">Sorted List</h3>
+<div class="outline-text-3" id="text-org21ef44d">
 <ol class="org-ol">
 <li>item</li>
 <li>item</li>
@@ -1010,10 +1125,9 @@ Basic:
 </ol>
 </div>
 </div>
-
-<div id="outline-container-orged035c3" class="outline-3">
-<h3 id="orged035c3">Check List</h3>
-<div class="outline-text-3" id="text-orged035c3">
+<div id="outline-container-org204be3e" class="outline-3">
+<h3 id="org204be3e">Check List</h3>
+<div class="outline-text-3" id="text-org204be3e">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> item</li>
 <li class="on"><code>[X]</code> item</li>
@@ -1023,35 +1137,13 @@ Basic:
 </div>
 </div>
 <div id="postamble" class="status">
-<div id='generated-footer' class='generated'><footer>
- <nav>
-<div class='separator'></div>
-<a class='nav-author'href='mailto:e@etown.dev' >
-© Ewan Townshend
-</a>
-<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
-<label class='nav-button' for='nav-toggle-bot'><span/></label>
-<div class='separator menu-sep'></div>
-<ul class='nav-list'>
-<li class='nav-item'>
-<a class='nav-link' href='https://github.com/ewantown'>
-GitHub</a>
-</li>
-<li class='nav-item'>
-<a class='nav-link' href='https://linkedin.com/in/ewan-townshend'>
-LinkedIn</a>
-</li>
-</ul>
-</nav>
-</footer>
-</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
 document.cookie = 'mode=dark'
 }
-document.cookie = 'light=spacemacs-light'
-document.cookie = 'dark=spacemacs-dark'
+document.cookie = 'light=solo-jazz'
+document.cookie = 'dark=tomorrow-night-eighties'
 document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js

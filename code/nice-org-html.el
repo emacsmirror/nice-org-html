@@ -6,7 +6,7 @@
 
 ;; Author: Ewan Townshend <ewan@etown.dev>
 ;; URL: https://github.com/ewantown/nice-org-html
-;; Package-Version: 1.2
+;; Package-Version: 1.3
 ;; Package-Requires: ((emacs "25.1") (s "1.13.0") (dash "2.19.1") (htmlize "1.58") (uuidgen "1.0"))
 ;; Keywords: org, org-export, html, css, js, tools
 
@@ -49,7 +49,6 @@
 ;; nice-org-html-export-to-html-file
 ;; nice-org-html-publish-to-html
 ;; nice-org-html-publishing-function
-;; nice-org-html-make-publishing-function
 
 ;;==============================================================================
 ;; TODO:
@@ -122,6 +121,9 @@ Options currently supported:
 :layout \"compact\", force header/footer link-collapse into drawer
 :layout \"expanded\", prevent header/footer link-collapse into drawer")
 
+(defvar nice-org-html-clr-defs
+  '((light . (:note "#0969da" :tip "#1a7f37" :important "#8250df" :warning "#9a6700" :caution "#cf222e"))
+    (dark .  (:note "#0969da" :tip "#1a7f37" :important "#8250df" :warning "#9a6700" :caution "#cf222e"))))
 ;;==============================================================================
 ;; Package local variables
 
@@ -339,7 +341,6 @@ Options currently supported:
 		  "</footer>\n</div>\n")))))
 
 
-
 (defun nice-org-html--postamble ()
   "Construct html postamble to main content area."
   (concat
@@ -424,16 +425,18 @@ Options currently supported:
 			   ,(intern (concat ":" a))
 			   ,(and k (intern (concat ":" k)))))
 	  (theme (alist-get ms nice-org-html-theme-alist)))
-    (progn
-      ;; load theme associated with mode of the clause
-      (unless (equal theme nice-org-html--temp-theme)
-	(disable-theme nice-org-html--temp-theme)
-	(load-theme theme t nil)
-	(setq nice-org-html--temp-theme theme))
-      ;; grab value for face-attribute specified by clause
-      (let ((val (face-attribute es as)))
-	(unless (or (not val) (equal val 'unspecified))
-	  (if ks (plist-get val ks) val))))))
+    (if (eq es 'user-defined)
+	(plist-get (alist-get ms nice-org-html-clr-defs) as)            
+      (progn
+	;; load theme associated with mode of the clause
+	(unless (equal theme nice-org-html--temp-theme)
+	  (disable-theme nice-org-html--temp-theme)
+	  (load-theme theme t nil)
+	  (setq nice-org-html--temp-theme theme))
+	;; grab value for face-attribute specified by clause
+	(let ((val (face-attribute es as)))
+	  (unless (or (not val) (equal val 'unspecified))
+	    (if ks (plist-get val ks) val)))))))
 
 ;;==============================================================================
 ;; Custom export backend for better org doc content export
@@ -477,8 +480,28 @@ Options currently supported:
 	  "setTimeout(() => { copyBtn" btn-id ".innerHTML = '&#10697;'}, 3000);"
 	  "\n});\n</script>\n"))
 
+(defun nice-org-html--admonition (block contents info)
+  (let ((type (org-element-property :type block)))
+    (concat "<div class='admonition " type "'>"
+	    "<div class='admonition-title " type "'>"
+	    (upcase (substring type 0 1)) (substring type 1)
+	    "</div>"
+	    "<div class='admonition-content " type "'>"
+	    contents
+	    "</div>"
+	    "</div>")))
+
+(defun nice-org-html--special-block (block contents info)
+  "Transform SPECIAL-BLOCK with CONTENTS and INFO to html"
+  (let ((block-type (org-element-property :type block)))
+    (cond ((member block-type '("note" "tip" "important" "warning" "caution"))
+	   (nice-org-html--admonition block contents info))
+	  (t (org-html-special-block block contents info)))))
+
 (org-export-define-derived-backend 'nice-html 'html
-  :translate-alist '((src-block . nice-org-html--src-block))
+  :translate-alist
+  '((src-block . nice-org-html--src-block)
+    (special-block . nice-org-html--special-block))
   :menu-entry
   '(?H "Export to nice HTML"
        ((?h "As HTML file" nice-org-html-export-to-html)
@@ -579,6 +602,7 @@ CONFIG is a plist, supporting the following properties:
 :css, shadows `nice-org-html-css'.
 :js, shadows `nice-org-html-js'.
 :layout, nil (for dynamic) or one of {\"compact\" \"expanded\"}.
+:clr-defs, shadows `nice-org-html-clr-defs'.
 
 Required but unspecified parameters are backstopped by globally set values."
   (declare (debug t))
@@ -636,8 +660,25 @@ Required but unspecified parameters are backstopped by globally set values."
 		   (or (and (stringp e) (file-exists-p e))
 		       (progn (when e (message "Error: invalid JS file: %S" e))
 			      nil)))))
+	      (nice-org-html-clr-defs
+	       (let* ((clr-props '(:note :tip :important :warning :caution))
+		      (init (copy-sequence nice-org-html-clr-defs))	     
+		      (defs  (funcall backstop :clr-defs init))
+		      (light (or (alist-get 'light defs) (alist-get 'light init)))
+		      (dark  (or (alist-get 'dark  defs) (alist-get 'dark  init)))
+		      (merge
+		       (lambda (sup sub)
+			 (--reduce-from
+			  (if (plist-member sub it)
+			      acc
+			      (plist-put acc it (plist-get sup it))
+			    acc)
+			  sub
+			  clr-props))))
+		 `((light . ,(funcall merge (alist-get 'light init) light))
+		   (dark  . ,(funcall merge (alist-get 'dark  init) dark)))))
 	      (base '(:theme-alist :default-mode))
-	      (main (append base '(:headline-bullets :header :footer :css :js)))
+	      (main (append base '(:headline-bullets :header :footer :css :js :clr-defs)))
 	      (options nice-org-html-options)
 	      (nice-org-html-options
 	       (--reduce-from
@@ -648,16 +689,13 @@ Required but unspecified parameters are backstopped by globally set values."
 	 (nice-org-html-publish-to-html plist filename pub-dir)))))
 
 
+(make-obsolete 'nice-org-html-make-publishing-function
+	       'nice-org-html-publishing-function
+	       "1.3")
 ;;;###autoload
-    (defmacro nice-org-html-make-publishing-function
-	(theme-alist default-mode bullets header footer css js &optional options)
-      "Create org-publishing function which quasi-closes over passed configuration.
-
-For most uses, `nice-org-html-publishing-function' is a better alternative, as
-the function defined by this \"maker\" macro does not validate its arguments.
-
-This macro is primarily for cases where invocations need to be constructed
-programmatically, with lexically bound variables or parameters spliced in.
+(defmacro nice-org-html-make-publishing-function
+    (theme-alist default-mode bullets header footer css js &optional options)
+  "DEPRECATED. Use `nice-org-html-publishing-function' macro instead.
 
 THEME-ALIST shadows `nice-org-html-theme-alist'.
 DEFAULT-MODE shadows `nice-org-html-default-mode'.
@@ -665,25 +703,24 @@ HEADER shadows `nice-org-html-header'.
 FOOTER shadows `nice-org-html-footer'.
 CSS shadows `nice-org-html-css'.
 JS shadows `nice-org-html-js'.
-OPTIONS shadows `nice-org-html-options'."
-      (declare (debug t))
-      (let ((sym (gensym "nice-org-html-publishing-function-")))
-	`(defun ,sym (plist filename pub-dir)
-	   (let* ((nice-org-html-theme-alist  ,theme-alist)
-		  (nice-org-html-default-mode ,default-mode)
-		  (nice-org-html-headline-bullets ,bullets)
-		  (nice-org-html-header ,header)
-		  (nice-org-html-footer ,footer)
-		  (nice-org-html-css ,css)
-		  (nice-org-html-js  ,js)
-		  (nice-org-html-options
-		   (--reduce-from
-		    (plist-put acc it (plist-get ,options it))
-		    nice-org-html-options
-		    (-filter
-		     (lambda (s) s)
-		     (--map (car-safe (plist-member ,options it)) ,options)))))
-	     (nice-org-html-publish-to-html plist filename pub-dir)))))
+OPTIONS shadows `nice-org-html-options'."      
+  (let ((sym (gensym "nice-org-html-publishing-function-")))
+    `(defun ,sym (plist filename pub-dir)
+       (let* ((nice-org-html-theme-alist  ,theme-alist)
+	      (nice-org-html-default-mode ,default-mode)
+	      (nice-org-html-headline-bullets ,bullets)
+	      (nice-org-html-header ,header)
+	      (nice-org-html-footer ,footer)
+	      (nice-org-html-css ,css)
+	      (nice-org-html-js  ,js)
+	      (nice-org-html-options
+	       (--reduce-from
+		(plist-put acc it (plist-get ,options it))
+		nice-org-html-options
+		(-filter
+		 (lambda (s) s)
+		 (--map (car-safe (plist-member ,options it)) ,options)))))
+	 (nice-org-html-publish-to-html plist filename pub-dir)))))
 
 ;;==============================================================================
 ;; Defined mode
