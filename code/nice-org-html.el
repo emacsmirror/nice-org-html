@@ -484,7 +484,7 @@ Options currently supported:
   (let ((type (org-element-property :type block)))
     (concat "<div class='admonition " type "'>"
 	    "<div class='admonition-title " type "'>"
-	    (upcase (substring type 0 1)) (substring type 1)
+	    (upcase (substring type 0 1)) (downcase (substring type 1))
 	    "</div>"
 	    "<div class='admonition-content " type "'>"
 	    contents
